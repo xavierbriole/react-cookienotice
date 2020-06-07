@@ -7,20 +7,18 @@
 ## Install
 
 ```bash
-npm install --save react-cookienotice
+yarn add --dev react-cookienotice
 ```
 
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React from 'react'
+import CookieNotice from 'react-cookienotice'
 
-import MyComponent from 'react-cookienotice'
-import 'react-cookienotice/dist/index.css'
-
-class Example extends Component {
+class Example extends React.Component {
   render() {
-    return <MyComponent />
+    return <CookieNotice />
   }
 }
 ```

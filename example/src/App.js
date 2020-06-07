@@ -1,10 +1,8 @@
 import React from 'react'
-
-import { ExampleComponent } from 'react-cookienotice'
-import 'react-cookienotice/dist/index.css'
+import CookieNotice from 'react-cookienotice'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return <CookieNotice />
 }
 
 export default App

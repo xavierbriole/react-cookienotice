@@ -1,9 +1,10 @@
 {
   "name": "react-cookienotice",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "An awesome cookie banner for your website",
   "author": "xavierbriole",
   "license": "MIT",
+  "homepage": "https://xavierbriole.github.io/react-cookienotice",
   "repository": "xavierbriole/react-cookienotice",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
@@ -14,9 +15,11 @@
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "flow": "flow check --color=always",
     "prepare": "run-s build",
-    "test": "run-s test:unit test:lint test:build",
+    "test": "run-s test:unit test:format test:lint test:build",
     "test:build": "run-s build",
+    "test:format": "prettier --check \"src/**/*.js\"",
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
@@ -24,11 +27,14 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "classnames": "^2.2.6",
+    "js-cookie": "^2.2.1",
+    "react": "^16.0.0",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
-    "microbundle-crl": "^0.13.10",
     "babel-eslint": "^10.0.3",
+    "classnames": "^2.2.6",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.7.0",
@@ -40,12 +46,16 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^4.0.1",
+    "flow-bin": "^0.126.1",
     "gh-pages": "^2.2.0",
+    "js-cookie": "^2.2.1",
+    "microbundle-crl": "^0.13.10",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^3.4.1",
+    "styled-components": "^4.4.1"
   },
   "files": [
     "dist"

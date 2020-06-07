@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import CookieNotice from '.'
 
-describe('ExampleComponent', () => {
+describe('CookieNotice', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(CookieNotice).toBeTruthy()
   })
 })
