@@ -2,6 +2,8 @@
 
 > An awesome cookie banner for your website
 
+[![Preview](https://i.imgur.com/YtxC2ef.png)](https://xavierbriole.github.io/react-cookienotice)
+
 [![NPM](https://img.shields.io/npm/v/react-cookienotice.svg)](https://www.npmjs.com/package/react-cookienotice) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
