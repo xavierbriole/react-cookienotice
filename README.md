@@ -4,7 +4,7 @@
 
 [![Preview](https://i.imgur.com/3weiUBB.png)](https://xavierbriole.github.io/react-cookienotice)
 
-[![NPM](https://img.shields.io/npm/v/react-cookienotice.svg)](https://www.npmjs.com/package/react-cookienotice) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-cookienotice.svg)](https://www.npmjs.com/package/react-cookienotice) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) ![npm-publish](https://github.com/xavierbriole/react-cookienotice/workflows/npm-publish/badge.svg)
 
 ## Install
 
