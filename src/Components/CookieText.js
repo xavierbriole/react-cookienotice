@@ -8,7 +8,7 @@ const Label = styled.span`
 `
 
 type Props = {|
-  label?: string
+  label?: string,
 |}
 
 export default class CookieText extends React.Component<Props> {

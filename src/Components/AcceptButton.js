@@ -39,7 +39,7 @@ const Button = styled.button`
 
 type Props = {|
   label?: string,
-  onButtonClick: () => void
+  onButtonClick: () => void,
 |}
 
 export default class AcceptButton extends React.Component<Props> {

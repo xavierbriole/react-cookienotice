@@ -45,11 +45,11 @@ type Props = {|
   readMoreButtonLink?: string,
   openInNewTab?: boolean,
   cookieTextLabel?: string,
-  reverseButtons?: boolean
+  reverseButtons?: boolean,
 |}
 
 type State = {|
-  cookiesAllowed: boolean
+  cookiesAllowed: boolean,
 |}
 
 export default class CookieNotice extends React.Component<Props, State> {
@@ -74,7 +74,7 @@ export default class CookieNotice extends React.Component<Props, State> {
       readMoreButtonLink,
       openInNewTab,
       cookieTextLabel,
-      reverseButtons
+      reverseButtons,
     } = this.props
 
     const { cookiesAllowed } = this.state
@@ -90,13 +90,13 @@ export default class CookieNotice extends React.Component<Props, State> {
         label={readMoreButtonLabel}
         link={readMoreButtonLink}
         openInNewTab={openInNewTab}
-      />
+      />,
     ]
 
     return (
       <Root
         className={classnames('cookie-notice-root', {
-          'cookies-allowed': cookiesAllowed
+          'cookies-allowed': cookiesAllowed,
         })}
       >
         <StickToBottom className='stick-to-bottom'>

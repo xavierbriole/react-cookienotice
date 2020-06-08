@@ -26,7 +26,7 @@ const Button = styled.a`
 type Props = {|
   label?: string,
   link?: string,
-  openInNewTab?: boolean
+  openInNewTab?: boolean,
 |}
 
 export default class ReadMoreButton extends React.Component<Props> {

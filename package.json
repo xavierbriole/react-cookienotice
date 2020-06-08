@@ -16,6 +16,7 @@
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "flow": "flow check --color=always",
+    "format": "prettier --write \"**/*.{js,json,css}\"",
     "prepare": "run-s build",
     "test": "run-s test:unit test:format test:lint test:build",
     "test:build": "run-s build",
