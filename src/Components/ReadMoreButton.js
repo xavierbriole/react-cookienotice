@@ -12,14 +12,21 @@ const Button = styled.a`
   border-radius: 24px;
   box-shadow: none;
   text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.5s ease 0s;
 
   &:hover {
     color: #1d1148;
+    border-color: #1d1148;
     background: #ffffff;
   }
 
   &:not(:first-child) {
     margin-left: 8px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
   }
 `
 
@@ -30,14 +37,24 @@ type Props = {|
 |}
 
 export default class ReadMoreButton extends React.Component<Props> {
+  computeOpenInNewTab(): '_blank' | '_self' {
+    const { openInNewTab } = this.props
+
+    if (typeof openInNewTab === 'undefined') {
+      return '_blank'
+    }
+
+    return openInNewTab ? '_blank' : '_self'
+  }
+
   render() {
-    const { label, link, openInNewTab } = this.props
+    const { label, link } = this.props
 
     return (
       <Button
         className='read-more-button'
-        href={link || 'https://www.google.com'}
-        target={openInNewTab ? '_blank' : undefined}
+        href={link || 'http://aboutcookies.org/'}
+        target={this.computeOpenInNewTab()}
       >
         {label || 'Read more'}
       </Button>

@@ -35,6 +35,10 @@ const Button = styled.button`
   &:not(:first-child) {
     margin-left: 8px;
   }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `
 
 type Props = {|

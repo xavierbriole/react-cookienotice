@@ -4,7 +4,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Label = styled.span`
+  font-size: 16px;
   margin: 0 20px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `
 
 type Props = {|

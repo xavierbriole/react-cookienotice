@@ -27,16 +27,23 @@ const StickToBottom = styled.div`
 `
 
 const Wrapper = styled.div`
-  max-width: 1000px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   opacity: 1;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 24px 32px, rgba(0, 0, 0, 0.1) 0px 8px 32px;
-  margin: 0 auto 48px;
+  margin: 0 ${(props) => props.marginSide}px 48px;
   background: #ffffff;
   padding: 16px;
-  border-radius: 32px;
+  border-radius: ${(props) => props.borderRadius}px;
+
+  @media (max-width: 768px) {
+    margin: 0 ${(props) => props.marginSide / 2.5}px 48px;
+  }
+`
+
+const ButtonsWrapper = styled.div`
+  display: flex;
 `
 
 type Props = {|
@@ -46,6 +53,8 @@ type Props = {|
   openInNewTab?: boolean,
   cookieTextLabel?: string,
   reverseButtons?: boolean,
+  borderRadius?: number,
+  marginSide?: number,
 |}
 
 type State = {|
@@ -67,6 +76,16 @@ export default class CookieNotice extends React.Component<Props, State> {
     this.setState({ cookiesAllowed: true })
   }
 
+  computeReverseButtons(): boolean {
+    const { reverseButtons } = this.props
+
+    if (typeof reverseButtons === 'undefined') {
+      return false
+    }
+
+    return reverseButtons
+  }
+
   render() {
     const {
       acceptButtonLabel,
@@ -74,10 +93,13 @@ export default class CookieNotice extends React.Component<Props, State> {
       readMoreButtonLink,
       openInNewTab,
       cookieTextLabel,
-      reverseButtons,
+      borderRadius,
+      marginSide,
     } = this.props
 
     const { cookiesAllowed } = this.state
+
+    const shouldReverseButtons = this.computeReverseButtons()
 
     const buttons = [
       <AcceptButton
@@ -100,12 +122,16 @@ export default class CookieNotice extends React.Component<Props, State> {
         })}
       >
         <StickToBottom className='stick-to-bottom'>
-          <Wrapper className='wrapper'>
+          <Wrapper
+            className='wrapper'
+            borderRadius={borderRadius || 32}
+            marginSide={marginSide || 80}
+          >
             <CookieIcon />
             <CookieText label={cookieTextLabel} />
-            <div className='buttons'>
-              {reverseButtons ? buttons.reverse() : buttons}
-            </div>
+            <ButtonsWrapper className='buttons-wrapper'>
+              {shouldReverseButtons ? buttons.reverse() : buttons}
+            </ButtonsWrapper>
           </Wrapper>
         </StickToBottom>
       </Root>
