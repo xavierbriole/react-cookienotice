@@ -23,6 +23,19 @@ class Example extends React.Component {
 }
 ```
 
+## Parameters
+
+| Key                 | Type      | Description                                           | Default value                                                  |
+| ------------------- | --------- | ----------------------------------------------------- | -------------------------------------------------------------- |
+| acceptButtonLabel   | `string`  | Edit the "Accept" button label                        | Accept                                                         |
+| readMoreButtonLabel | `string`  | Edit the "Read more" button label                     | Read more                                                      |
+| readMoreButtonLink  | `string`  | Edit the "Read more" button link                      | <http://aboutcookies.org/>                                     |
+| openInNewTab        | `boolean` | Open the "Read more" button link in a new tab         | true                                                           |
+| cookieTextLabel     | `string`  | Main cookie notice label                              | This website uses cookies to improve your browsing experience. |
+| reverseButtons      | `boolean` | Reverse buttons direction                             | false                                                          |
+| borderRadius        | `number`  | Cookie notice border radius (in px)                   | 32                                                             |
+| marginSide          | `number`  | Margin between cookie notice and browser side (in px) | 80                                                             |
+
 ## License
 
 MIT © [xavierbriole](https://github.com/xavierbriole)
