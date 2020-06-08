@@ -44,6 +44,7 @@ const Wrapper = styled.div`
 
 const ButtonsWrapper = styled.div`
   display: flex;
+  align-items: center;
 `
 
 type Props = {|
