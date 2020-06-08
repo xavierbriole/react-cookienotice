@@ -28,7 +28,7 @@ const StickToBottom = styled.div`
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: ${(props) => props.justifyContent};
   align-items: center;
   opacity: 1;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 24px 32px, rgba(0, 0, 0, 0.1) 0px 8px 32px;
@@ -56,6 +56,7 @@ type Props = {|
   reverseButtons?: boolean,
   borderRadius?: number,
   marginSide?: number,
+  justifyContent?: 'space-around' | 'space-between',
 |}
 
 type State = {|
@@ -96,6 +97,7 @@ export default class CookieNotice extends React.Component<Props, State> {
       cookieTextLabel,
       borderRadius,
       marginSide,
+      justifyContent,
     } = this.props
 
     const { cookiesAllowed } = this.state
@@ -127,6 +129,7 @@ export default class CookieNotice extends React.Component<Props, State> {
             className='wrapper'
             borderRadius={borderRadius || 32}
             marginSide={marginSide || 80}
+            justifyContent={justifyContent || 'space-between'}
           >
             <CookieIcon />
             <CookieText label={cookieTextLabel} />
