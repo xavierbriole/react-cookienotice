@@ -6,7 +6,7 @@ import styled from 'styled-components'
 const Button = styled.button`
   border-style: none;
   color: #1d1148;
-  width: max-content;
+  width: 100%;
   font-size: 16px;
   background: #ffffff;
   border-radius: 24px;
@@ -37,7 +37,12 @@ const Button = styled.button`
   }
 
   @media (max-width: 768px) {
-    font-size: 14px;
+    &:not(:first-child) {
+      margin-left: 0;
+    }
+
+    font-size: 12px;
+    margin: 5px 0;
   }
 `
 

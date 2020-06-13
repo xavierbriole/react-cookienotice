@@ -45,6 +45,10 @@ const Wrapper = styled.div`
 const ButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 
 type Props = {|
