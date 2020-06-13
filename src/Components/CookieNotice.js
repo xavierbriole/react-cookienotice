@@ -30,9 +30,10 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: ${(props) => props.justifyContent};
   align-items: center;
+  max-width: ${(props) => props.maxWidth}px;
   opacity: 1;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 24px 32px, rgba(0, 0, 0, 0.1) 0px 8px 32px;
-  margin: 0 ${(props) => props.marginSide}px 48px;
+  margin: 0 auto 48px;
   background: #ffffff;
   padding: 16px;
   border-radius: ${(props) => props.borderRadius}px;
@@ -59,8 +60,8 @@ type Props = {|
   cookieTextLabel?: string,
   reverseButtons?: boolean,
   borderRadius?: number,
-  marginSide?: number,
   justifyContent?: 'space-around' | 'space-between',
+  maxWidth?: number,
 |}
 
 type State = {|
@@ -92,6 +93,16 @@ export default class CookieNotice extends React.Component<Props, State> {
     return reverseButtons
   }
 
+  computeMaxWidth(): number {
+    const { maxWidth } = this.props
+
+    if (typeof maxWidth === 'undefined') {
+      return 1000
+    }
+
+    return maxWidth < 400 ? 400 : maxWidth
+  }
+
   render() {
     const {
       acceptButtonLabel,
@@ -100,7 +111,6 @@ export default class CookieNotice extends React.Component<Props, State> {
       openInNewTab,
       cookieTextLabel,
       borderRadius,
-      marginSide,
       justifyContent,
     } = this.props
 
@@ -132,8 +142,8 @@ export default class CookieNotice extends React.Component<Props, State> {
           <Wrapper
             className='wrapper'
             borderRadius={borderRadius || 32}
-            marginSide={marginSide || 80}
             justifyContent={justifyContent || 'space-between'}
+            maxWidth={this.computeMaxWidth()}
           >
             <CookieIcon />
             <CookieText label={cookieTextLabel} />

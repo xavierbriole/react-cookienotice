@@ -27,6 +27,8 @@ class Example extends React.Component {
 
 ## Parameters
 
+All parameters are optionals
+
 | Key                 | Type      | Description                                                              | Default value                                                  |
 | ------------------- | --------- | ------------------------------------------------------------------------ | -------------------------------------------------------------- |
 | acceptButtonLabel   | `string`  | Edit the "Accept" button label                                           | Accept                                                         |
@@ -36,8 +38,8 @@ class Example extends React.Component {
 | cookieTextLabel     | `string`  | Main cookie notice label                                                 | This website uses cookies to improve your browsing experience. |
 | reverseButtons      | `boolean` | Reverse buttons direction                                                | false                                                          |
 | borderRadius        | `number`  | Cookie notice border radius (in px)                                      | 32                                                             |
-| marginSide          | `number`  | Margin between cookie notice and browser side (in px)                    | 80                                                             |
 | justifyContent      | `string`  | justify-content property for wrapper (`space-around` or `space-between`) | space-between                                                  |
+| maxWidth            | `number`  | Maximum cookie notice width                                              | 1000                                                           |
 
 ## License
 
