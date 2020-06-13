@@ -26,7 +26,12 @@ const Button = styled.a`
   }
 
   @media (max-width: 768px) {
-    font-size: 14px;
+    &:not(:first-child) {
+      margin-left: 0;
+    }
+
+    font-size: 12px;
+    margin: 5px 0;
   }
 `
 

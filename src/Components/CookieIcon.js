@@ -6,7 +6,7 @@ import styled from 'styled-components'
 const Icon = styled.div`
   &:before {
     content: '🍪';
-    font-size: 32px;
+    font-size: 30px;
   }
 `
 

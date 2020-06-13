@@ -8,7 +8,7 @@ const Label = styled.span`
   margin: 0 20px;
 
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 12px;
   }
 `
 
