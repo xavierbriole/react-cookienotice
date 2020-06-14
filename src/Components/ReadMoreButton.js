@@ -36,32 +36,22 @@ const Button = styled.a`
 `
 
 type Props = {|
-  label?: string,
-  link?: string,
-  openInNewTab?: boolean,
+  label: string,
+  link: string,
+  openInNewTab: boolean,
 |}
 
 export default class ReadMoreButton extends React.Component<Props> {
-  computeOpenInNewTab(): '_blank' | '_self' {
-    const { openInNewTab } = this.props
-
-    if (typeof openInNewTab === 'undefined') {
-      return '_blank'
-    }
-
-    return openInNewTab ? '_blank' : '_self'
-  }
-
   render() {
-    const { label, link } = this.props
+    const { label, link, openInNewTab } = this.props
 
     return (
       <Button
         className='read-more-button'
-        href={link || 'http://aboutcookies.org/'}
-        target={this.computeOpenInNewTab()}
+        href={link}
+        target={openInNewTab ? '_blank' : '_self'}
       >
-        {label || 'Read more'}
+        {label}
       </Button>
     )
   }
