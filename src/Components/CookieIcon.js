@@ -10,9 +10,7 @@ const Icon = styled.div`
   }
 `
 
-type Props = {||}
-
-export default class CookieIcon extends React.Component<Props> {
+export default class CookieIcon extends React.Component<{}> {
   render() {
     return <Icon className='cookie-icon' />
   }

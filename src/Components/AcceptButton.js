@@ -47,7 +47,7 @@ const Button = styled.button`
 `
 
 type Props = {|
-  label?: string,
+  label: string,
   onButtonClick: () => void,
 |}
 
@@ -57,7 +57,7 @@ export default class AcceptButton extends React.Component<Props> {
 
     return (
       <Button className='accept-button' onClick={onButtonClick}>
-        <span>{label || 'Accept'}</span>
+        <span>{label}</span>
       </Button>
     )
   }
