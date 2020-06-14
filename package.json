@@ -6,6 +6,16 @@
   "license": "MIT",
   "homepage": "https://xavierbriole.github.io/react-cookienotice",
   "repository": "xavierbriole/react-cookienotice",
+  "keywords": [
+    "banner",
+    "cookie banner",
+    "cookie notice",
+    "cookies",
+    "gdpr",
+    "notice",
+    "react",
+    "rgpd"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
