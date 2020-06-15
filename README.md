@@ -9,7 +9,7 @@
 ## Install
 
 ```bash
-yarn add --dev react-cookienotice
+yarn add react-cookienotice
 ```
 
 ## Usage
