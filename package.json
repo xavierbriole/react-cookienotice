@@ -66,8 +66,8 @@
     "dist"
   ],
   "dependencies": {
-    "classnames": "^2.2.6",
-    "js-cookie": "^2.2.1",
-    "styled-components": "^4.4.1"
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
+    "clsx": "^1.1.1"
   }
 }

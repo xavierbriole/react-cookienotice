@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 export const validateAcceptButtonLabel = (parameter: any): string => {
   if (typeof parameter === 'string') {
