@@ -1,8 +1,9 @@
 // @flow
 
 import React from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
+// $FlowFixMe: Flow error from emotion package - https://github.com/emotion-js/emotion/issues/1913
 const Button = styled.button`
   border-style: none;
   color: #1d1148;
@@ -32,12 +33,12 @@ const Button = styled.button`
     outline: 0;
   }
 
-  &:not(:first-child) {
+  &:not(:first-of-type) {
     margin-left: 8px;
   }
 
   @media (max-width: 768px) {
-    &:not(:first-child) {
+    &:not(:first-of-type) {
       margin-left: 0;
     }
 

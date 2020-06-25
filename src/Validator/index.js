@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 export { validateAcceptButtonLabel } from './validator'
 export { validateReadMoreButtonLabel } from './validator'

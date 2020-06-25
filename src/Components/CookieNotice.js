@@ -1,9 +1,8 @@
 // @flow
 
 import React, { type ComponentType } from 'react'
-import classnames from 'classnames'
-import styled from 'styled-components'
-import Cookies from 'js-cookie'
+import clsx from 'clsx'
+import styled from '@emotion/styled'
 import AcceptButton from './AcceptButton'
 import ReadMoreButton from './ReadMoreButton'
 import CookieIcon from './CookieIcon'
@@ -19,6 +18,7 @@ import {
   validateJustifyContent,
   validateMaxWidth,
 } from '../Validator'
+import { getCookie, setCookie } from '../Helpers/cookies'
 
 type WrapperProps = {
   justifyContent: 'space-around' | 'space-between',
@@ -26,6 +26,7 @@ type WrapperProps = {
   borderRadius: number,
 }
 
+// $FlowFixMe: Flow error from emotion package - https://github.com/emotion-js/emotion/issues/1913
 const Root = styled.div`
   opacity: 1;
   transition: opacity 0.5s linear;
@@ -90,13 +91,13 @@ export default class CookieNotice extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
-    const cookieValue = Cookies.get('allow-cookies') === 'true'
+    const cookieValue = getCookie('allow-cookies') === 'true'
 
     this.state = { cookiesAllowed: cookieValue }
   }
 
   setCookie() {
-    Cookies.set('allow-cookies', 'true')
+    setCookie('allow-cookies', 'true')
 
     this.setState({ cookiesAllowed: true })
   }
@@ -132,7 +133,7 @@ export default class CookieNotice extends React.Component<Props, State> {
 
     return (
       <Root
-        className={classnames('cookie-notice-root', {
+        className={clsx('cookie-notice-root', {
           'cookies-allowed': cookiesAllowed,
         })}
       >
