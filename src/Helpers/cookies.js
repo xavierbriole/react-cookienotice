@@ -18,12 +18,12 @@ export const setCookie = (
     path
 }
 
-export const getCookie = (name: string): string => {
+export const getCookie = (name: string): string | null => {
   return document.cookie.split('; ').reduce((r, v) => {
     const parts = v.split('=')
 
     return parts[0] === name ? decodeURIComponent(parts[1]) : r
-  }, '')
+  }, null)
 }
 
 export const deleteCookie = (name: string, path: string): void => {
