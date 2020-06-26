@@ -2,9 +2,12 @@
 
 > An awesome cookie banner for your website
 
-[![Preview](https://i.imgur.com/3weiUBB.png)](https://xavierbriole.github.io/react-cookienotice)
+![Preview Light](screenshots/light.png)
+![Preview Dark](screenshots/dark.png)
 
 [![NPM](https://img.shields.io/npm/v/react-cookienotice.svg)](https://www.npmjs.com/package/react-cookienotice) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) ![npm-publish](https://github.com/xavierbriole/react-cookienotice/workflows/npm-publish/badge.svg)
+
+[Live preview](https://xavierbriole.github.io/react-cookienotice)
 
 ## Install
 
@@ -25,9 +28,9 @@ class Example extends React.Component {
 }
 ```
 
-## Parameters
+## Props
 
-All parameters are optionals
+All props are optionals
 
 | Key                 | Type      | Description                                                              | Default value                                                  |
 | ------------------- | --------- | ------------------------------------------------------------------------ | -------------------------------------------------------------- |

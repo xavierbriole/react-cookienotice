@@ -6,7 +6,7 @@ import styled from '@emotion/styled'
 // $FlowFixMe: Flow error from emotion package - https://github.com/emotion-js/emotion/issues/1913
 const Button = styled.button`
   border-style: none;
-  color: #1d1148;
+  color: #000000;
   width: 100%;
   font-size: 16px;
   background: #ffffff;
@@ -18,7 +18,6 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    color: #1d1148;
     background: #ffffff;
     box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
       0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
@@ -33,17 +32,26 @@ const Button = styled.button`
     outline: 0;
   }
 
-  &:not(:first-of-type) {
+  &:not(:first-child) /* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */ {
     margin-left: 8px;
   }
 
   @media (max-width: 768px) {
-    &:not(:first-of-type) {
+    &:not(:first-child) /* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */ {
       margin-left: 0;
     }
 
     font-size: 12px;
     margin: 5px 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background: #323232;
+    color: #ffffff;
+
+    &:hover {
+      background: #3a3a3a;
+    }
   }
 `
 
