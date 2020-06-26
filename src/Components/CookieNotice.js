@@ -60,6 +60,10 @@ const Wrapper: ComponentType<WrapperProps> = styled.div`
     margin-left: 48px;
     margin-right: 48px;
   }
+
+  @media (prefers-color-scheme: dark) {
+    background: #3a3a3a;
+  }
 `
 
 const ButtonsWrapper = styled.div`

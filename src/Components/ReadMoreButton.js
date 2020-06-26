@@ -7,9 +7,9 @@ import styled from '@emotion/styled'
 const Button = styled.a`
   font-size: 16px;
   height: auto;
-  color: #8c97a1;
+  color: #b5b5b5;
   padding: 10px 18px;
-  border: 1px solid #e0e2e4;
+  border: 1px solid #b5b5b5;
   border-radius: 24px;
   box-shadow: none;
   text-decoration: none;
@@ -17,22 +17,28 @@ const Button = styled.a`
   transition: all 0.5s ease 0s;
 
   &:hover {
-    color: #1d1148;
-    border-color: #1d1148;
-    background: #ffffff;
+    color: #000000;
+    border-color: #000000;
   }
 
-  &:not(:first-of-type) {
+  &:not(:first-child) /* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */ {
     margin-left: 8px;
   }
 
   @media (max-width: 768px) {
-    &:not(:first-of-type) {
+    &:not(:first-child) /* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */ {
       margin-left: 0;
     }
 
     font-size: 12px;
     margin: 5px 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+    }
   }
 `
 
