@@ -1,9 +1,8 @@
 // @flow
 
-import React from 'react'
-import styled from '@emotion/styled'
+import * as React from 'react'
+import styled from 'styled-components'
 
-// $FlowFixMe: Flow error from emotion package - https://github.com/emotion-js/emotion/issues/1913
 const Label = styled.span`
   color: #000000;
   font-size: 16px;

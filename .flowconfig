@@ -1,7 +1,8 @@
 [ignore]
+./dist/.*
+./example/.*
 
 [untyped]
-.*/node_modules/@emotion/cache/src/index.js
 
 [include]
 

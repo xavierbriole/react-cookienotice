@@ -1,8 +1,8 @@
 // @flow
 
-import React, { type ComponentType } from 'react'
+import * as React from 'react'
 import clsx from 'clsx'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import AcceptButton from './AcceptButton'
 import ReadMoreButton from './ReadMoreButton'
 import CookieIcon from './CookieIcon'
@@ -26,7 +26,6 @@ type WrapperProps = {
   borderRadius: number,
 }
 
-// $FlowFixMe: Flow error from emotion package - https://github.com/emotion-js/emotion/issues/1913
 const Root = styled.div`
   opacity: 1;
   transition: opacity 0.5s linear;
@@ -44,7 +43,7 @@ const StickToBottom = styled.div`
   z-index: 1201;
 `
 
-const Wrapper: ComponentType<WrapperProps> = styled.div`
+const Wrapper: React.ComponentType<WrapperProps> = styled.div`
   display: flex;
   justify-content: ${({ justifyContent }) => justifyContent};
   align-items: center;
