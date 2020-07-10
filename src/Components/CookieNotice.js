@@ -2,7 +2,7 @@
 
 import React, { type ComponentType } from 'react'
 import clsx from 'clsx'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import AcceptButton from './AcceptButton'
 import ReadMoreButton from './ReadMoreButton'
 import CookieIcon from './CookieIcon'
@@ -26,7 +26,6 @@ type WrapperProps = {
   borderRadius: number,
 }
 
-// $FlowFixMe: Flow error from emotion package - https://github.com/emotion-js/emotion/issues/1913
 const Root = styled.div`
   opacity: 1;
   transition: opacity 0.5s linear;
