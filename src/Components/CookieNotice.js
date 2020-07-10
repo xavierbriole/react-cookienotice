@@ -1,6 +1,6 @@
 // @flow
 
-import React, { type ComponentType } from 'react'
+import * as React from 'react'
 import clsx from 'clsx'
 import styled from 'styled-components'
 import AcceptButton from './AcceptButton'
@@ -43,7 +43,7 @@ const StickToBottom = styled.div`
   z-index: 1201;
 `
 
-const Wrapper: ComponentType<WrapperProps> = styled.div`
+const Wrapper: React.ComponentType<WrapperProps> = styled.div`
   display: flex;
   justify-content: ${({ justifyContent }) => justifyContent};
   align-items: center;

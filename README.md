@@ -18,7 +18,7 @@ yarn add react-cookienotice
 ## Usage
 
 ```jsx
-import React from 'react'
+import * as React from 'react'
 import CookieNotice from 'react-cookienotice'
 
 class Example extends React.Component {
