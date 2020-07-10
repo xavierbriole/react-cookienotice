@@ -66,8 +66,7 @@
     "dist"
   ],
   "dependencies": {
-    "@emotion/core": "^10.0.28",
-    "@emotion/styled": "^10.0.27",
-    "clsx": "^1.1.1"
+    "clsx": "^1.1.1",
+    "styled-components": "^4.4.1"
   }
 }
