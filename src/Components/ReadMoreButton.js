@@ -1,9 +1,8 @@
 // @flow
 
-import React from 'react'
-import styled from '@emotion/styled'
+import * as React from 'react'
+import styled from 'styled-components'
 
-// $FlowFixMe: Flow error from emotion package - https://github.com/emotion-js/emotion/issues/1913
 const Button = styled.a`
   font-size: 16px;
   height: auto;
@@ -21,12 +20,12 @@ const Button = styled.a`
     border-color: #000000;
   }
 
-  &:not(:first-child) /* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */ {
+  &:not(:first-child) {
     margin-left: 8px;
   }
 
   @media (max-width: 768px) {
-    &:not(:first-child) /* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */ {
+    &:not(:first-child) {
       margin-left: 0;
     }
 
