@@ -15,11 +15,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12.18.2
+          node-version: 12.18.4
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install Packages
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Run flow
         run: yarn run flow
