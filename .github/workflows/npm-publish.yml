@@ -33,7 +33,10 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
       - name: Build example
-        run: yarn run predeploy
+        working-directory: ./example
+        run: |
+          yarn install --frozen-lockfile
+          yarn run build
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
