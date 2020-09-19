@@ -3,15 +3,14 @@
 import * as React from 'react'
 import clsx from 'clsx'
 import styled from 'styled-components'
-import AcceptButton from './AcceptButton'
-import ReadMoreButton from './ReadMoreButton'
+import Buttons from './Buttons'
 import CookieIcon from './CookieIcon'
 import CookieText from './CookieText'
 import {
   validateAcceptButtonLabel,
   validateReadMoreButtonLabel,
   validateReadMoreButtonLink,
-  validateOpenInNewTab,
+  validateReadMoreButtonOpenInNewTab,
   validateCookieTextLabel,
   validateReverseButtons,
   validateBorderRadius,
@@ -19,6 +18,7 @@ import {
   validateMaxWidth,
 } from '../Validator'
 import { getCookie, setCookie } from '../Helpers/cookies'
+import packageJson from '../../package.json'
 
 type WrapperProps = {
   justifyContent: 'space-around' | 'space-between',
@@ -62,15 +62,6 @@ const Wrapper: React.ComponentType<WrapperProps> = styled.div`
 
   @media (prefers-color-scheme: dark) {
     background: #3a3a3a;
-  }
-`
-
-const ButtonsWrapper = styled.div`
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
   }
 `
 
@@ -120,23 +111,9 @@ export default class CookieNotice extends React.Component<Props, State> {
 
     const { cookiesAllowed } = this.state
 
-    const buttons = [
-      <AcceptButton
-        key='accept-button'
-        label={validateAcceptButtonLabel(acceptButtonLabel)}
-        onButtonClick={() => this.setCookie()}
-      />,
-      <ReadMoreButton
-        key='read-more-button'
-        label={validateReadMoreButtonLabel(readMoreButtonLabel)}
-        link={validateReadMoreButtonLink(readMoreButtonLink)}
-        openInNewTab={validateOpenInNewTab(openInNewTab)}
-      />,
-    ]
-
     return (
       <Root
-        className={clsx('cookie-notice-root', {
+        className={clsx(`cookie-notice-root version-${packageJson.version}`, {
           'cookies-allowed': cookiesAllowed,
         })}
       >
@@ -149,11 +126,20 @@ export default class CookieNotice extends React.Component<Props, State> {
           >
             <CookieIcon />
             <CookieText label={validateCookieTextLabel(cookieTextLabel)} />
-            <ButtonsWrapper className='buttons-wrapper'>
-              {validateReverseButtons(reverseButtons)
-                ? buttons.reverse()
-                : buttons}
-            </ButtonsWrapper>
+            <Buttons
+              acceptButtonLabel={validateAcceptButtonLabel(acceptButtonLabel)}
+              onAcceptButtonClick={() => this.setCookie()}
+              readMoreButtonLabel={validateReadMoreButtonLabel(
+                readMoreButtonLabel
+              )}
+              readMoreButtonLink={validateReadMoreButtonLink(
+                readMoreButtonLink
+              )}
+              readMoreButtonOpenInNewTab={validateReadMoreButtonOpenInNewTab(
+                openInNewTab
+              )}
+              reverseButtons={validateReverseButtons(reverseButtons)}
+            />
           </Wrapper>
         </StickToBottom>
       </Root>
