@@ -25,7 +25,9 @@
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
-    "flow": "flow check --color=always",
+    "flow": "run-s flow:annotation-check flow:check",
+    "flow:annotation-check": "check-flow-annotation ./src",
+    "flow:check": "flow check --color=always",
     "format": "prettier --write \"**/*.{js,json,css}\"",
     "prepare": "run-s build",
     "test": "run-s test:unit test:format test:lint test:build",
@@ -34,7 +36,6 @@
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
+    "check-flow-annotation": "^1.0.4",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.7.0",

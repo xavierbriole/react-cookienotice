@@ -1,7 +1,9 @@
+// @flow
+
 import { setCookie, getCookie, deleteCookie } from './cookies'
 
 describe('cookies', () => {
-  Date.now = jest.fn(() => 1593078841567)
+  jest.spyOn(Date, 'now').mockImplementation(() => 1593078841567)
 
   describe('setCookie', () => {
     beforeEach(() => {
@@ -45,10 +47,6 @@ describe('cookies', () => {
   })
 
   describe('getCookie', () => {
-    it('should return null if no cookie key are passed in param', () => {
-      expect(getCookie()).toEqual(null)
-    })
-
     it('should return null if the cookie key does not exist', () => {
       expect(getCookie('nokey')).toEqual(null)
     })

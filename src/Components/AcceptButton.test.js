@@ -1,3 +1,5 @@
+// @flow
+
 import AcceptButton from './AcceptButton'
 
 describe('AcceptButton', () => {
