@@ -33,7 +33,7 @@ export const validateReadMoreButtonLink = (parameter: any): string => {
   return 'http://aboutcookies.org/'
 }
 
-export const validateOpenInNewTab = (parameter: any): boolean => {
+export const validateReadMoreButtonOpenInNewTab = (parameter: any): boolean => {
   if (typeof parameter === 'boolean') {
     return parameter
   }

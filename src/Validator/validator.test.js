@@ -4,7 +4,7 @@ import {
   validateAcceptButtonLabel,
   validateReadMoreButtonLabel,
   validateReadMoreButtonLink,
-  validateOpenInNewTab,
+  validateReadMoreButtonOpenInNewTab,
   validateCookieTextLabel,
   validateReverseButtons,
   validateBorderRadius,
@@ -75,13 +75,13 @@ describe('validator', () => {
 
   describe('should validate openInNewTab', () => {
     it('with override', () => {
-      const result = validateOpenInNewTab(false)
+      const result = validateReadMoreButtonOpenInNewTab(false)
 
       expect(result).toBe(false)
     })
 
     it('default return', () => {
-      const result = validateOpenInNewTab(undefined)
+      const result = validateReadMoreButtonOpenInNewTab(undefined)
 
       expect(result).toBe(true)
     })
