@@ -99,13 +99,13 @@ export default class CookieNotice extends React.Component<Props, State> {
     this.state = { cookiesAllowed: cookieValue }
   }
 
-  setCookie() {
+  setCookie(): void {
     setCookie('allow-cookies', 'true')
 
     this.setState({ cookiesAllowed: true })
   }
 
-  render() {
+  render(): React.Node {
     const {
       acceptButtonLabel,
       readMoreButtonLabel,

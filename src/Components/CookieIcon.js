@@ -11,7 +11,7 @@ const Icon = styled.div`
 `
 
 export default class CookieIcon extends React.Component<{}> {
-  render() {
+  render(): React.Node {
     return <Icon className='cookie-icon' />
   }
 }

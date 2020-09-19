@@ -22,7 +22,7 @@ type Props = {|
 |}
 
 export default class CookieText extends React.Component<Props> {
-  render() {
+  render(): React.Node {
     const { label } = this.props
 
     return <Label className='cookie-text'>{label}</Label>

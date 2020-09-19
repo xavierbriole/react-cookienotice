@@ -60,7 +60,7 @@ type Props = {|
 |}
 
 export default class AcceptButton extends React.Component<Props> {
-  render() {
+  render(): React.Node {
     const { label, onButtonClick } = this.props
 
     return (
