@@ -48,7 +48,7 @@ type Props = {|
 |}
 
 export default class ReadMoreButton extends React.Component<Props> {
-  render() {
+  render(): React.Node {
     const { label, link, openInNewTab } = this.props
 
     return (
