@@ -1,3 +1,5 @@
+// @flow
+
 import CookieNotice from './CookieNotice'
 
 describe('CookieNotice', () => {

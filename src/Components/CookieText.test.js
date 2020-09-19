@@ -1,3 +1,5 @@
+// @flow
+
 import CookieText from './CookieText'
 
 describe('CookieText', () => {
