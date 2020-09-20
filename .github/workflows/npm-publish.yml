@@ -32,6 +32,18 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
+      - name: Create changelog
+        uses: notlmn/release-with-changelog@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-template: '- {hash} {title}'
+          template: |
+            ### Changelog
+
+            {commits}
+
+            {range}
+
       - name: Build example
         working-directory: ./example
         run: |
