@@ -1,6 +1,6 @@
 // @flow
 
-export const validateAcceptButtonLabel = (parameter: any): string => {
+export const validateAcceptButtonLabel = (parameter?: any): string => {
   if (typeof parameter === 'string') {
     return parameter
   }
@@ -8,7 +8,7 @@ export const validateAcceptButtonLabel = (parameter: any): string => {
   return 'Accept'
 }
 
-export const validateReadMoreButtonLabel = (parameter: any): string => {
+export const validateReadMoreButtonLabel = (parameter?: any): string => {
   if (typeof parameter === 'string') {
     return parameter
   }
@@ -16,7 +16,7 @@ export const validateReadMoreButtonLabel = (parameter: any): string => {
   return 'Read more'
 }
 
-export const validateReadMoreButtonLink = (parameter: any): string => {
+export const validateReadMoreButtonLink = (parameter?: any): string => {
   if (typeof parameter === 'string') {
     if (
       parameter.lastIndexOf('http://', 0) === 0 ||
@@ -33,7 +33,9 @@ export const validateReadMoreButtonLink = (parameter: any): string => {
   return 'http://aboutcookies.org/'
 }
 
-export const validateReadMoreButtonOpenInNewTab = (parameter: any): boolean => {
+export const validateReadMoreButtonOpenInNewTab = (
+  parameter?: any
+): boolean => {
   if (typeof parameter === 'boolean') {
     return parameter
   }
@@ -41,7 +43,7 @@ export const validateReadMoreButtonOpenInNewTab = (parameter: any): boolean => {
   return true
 }
 
-export const validateCookieTextLabel = (parameter: any): string => {
+export const validateCookieTextLabel = (parameter?: any): string => {
   if (typeof parameter === 'string') {
     return parameter
   }
@@ -49,7 +51,7 @@ export const validateCookieTextLabel = (parameter: any): string => {
   return 'This website uses cookies to improve your browsing experience.'
 }
 
-export const validateReverseButtons = (parameter: any): boolean => {
+export const validateReverseButtons = (parameter?: any): boolean => {
   if (typeof parameter === 'boolean') {
     return parameter
   }
@@ -57,16 +59,22 @@ export const validateReverseButtons = (parameter: any): boolean => {
   return false
 }
 
-export const validateBorderRadius = (parameter: any): number => {
+export const validateBorderRadius = (parameter?: any): number => {
   if (typeof parameter === 'number') {
-    return parameter
+    if (parameter >= 0) {
+      return parameter
+    }
+
+    throw new Error(
+      '[react-cookienotice] borderRadius parameter should not be negative'
+    )
   }
 
   return 32
 }
 
 export const validateJustifyContent = (
-  parameter: any
+  parameter?: any
 ): 'space-around' | 'space-between' => {
   if (typeof parameter === 'string') {
     if (parameter === 'space-around' || parameter === 'space-between') {
@@ -81,7 +89,7 @@ export const validateJustifyContent = (
   return 'space-between'
 }
 
-export const validateMaxWidth = (parameter: any): number => {
+export const validateMaxWidth = (parameter?: any): number => {
   if (typeof parameter === 'number') {
     if (parameter < 400) {
       return 400
@@ -91,4 +99,18 @@ export const validateMaxWidth = (parameter: any): number => {
   }
 
   return 1000
+}
+
+export const validateCookieExpiration = (parameter?: any): number => {
+  if (typeof parameter === 'number') {
+    if (parameter > 0) {
+      return parameter
+    }
+
+    throw new Error(
+      '[react-cookienotice] cookieExpiration parameter should be more than 0 day'
+    )
+  }
+
+  return 30
 }

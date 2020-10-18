@@ -27,6 +27,12 @@ jobs:
       - name: Run tests
         run: yarn run test
 
+      - name: Upload coverage
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./coverage
+
       - name: Publish on NPM
         run: yarn publish
         env:

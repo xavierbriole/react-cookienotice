@@ -10,6 +10,7 @@ import {
   validateBorderRadius,
   validateJustifyContent,
   validateMaxWidth,
+  validateCookieExpiration,
 } from '../Validator'
 
 describe('validator', () => {
@@ -118,10 +119,20 @@ describe('validator', () => {
   })
 
   describe('should validate borderRadius', () => {
-    it('with override', () => {
-      const result = validateBorderRadius(20)
+    describe('with override', () => {
+      it('parameter is a valid number', () => {
+        const result = validateBorderRadius(20)
 
-      expect(result).toBe(20)
+        expect(result).toBe(20)
+      })
+
+      it('parameter is not a valid number', () => {
+        expect(() => {
+          validateBorderRadius(-1)
+        }).toThrow(
+          '[react-cookienotice] borderRadius parameter should not be negative'
+        )
+      })
     })
 
     it('default return', () => {
@@ -188,6 +199,40 @@ describe('validator', () => {
       const result = validateMaxWidth(undefined)
 
       expect(result).toBe(1000)
+    })
+  })
+
+  describe('should validate cookieExpiration', () => {
+    describe('with override', () => {
+      it('parameter is a valid number', () => {
+        const result = validateCookieExpiration(20)
+
+        expect(result).toBe(20)
+      })
+
+      describe('parameter is not a valid number', () => {
+        it('parameter is 0', () => {
+          expect(() => {
+            validateCookieExpiration(0)
+          }).toThrow(
+            '[react-cookienotice] cookieExpiration parameter should be more than 0 day'
+          )
+        })
+
+        it('parameter is negative', () => {
+          expect(() => {
+            validateCookieExpiration(-1)
+          }).toThrow(
+            '[react-cookienotice] cookieExpiration parameter should be more than 0 day'
+          )
+        })
+      })
+    })
+
+    it('default return', () => {
+      const result = validateCookieExpiration(undefined)
+
+      expect(result).toBe(30)
     })
   })
 })
