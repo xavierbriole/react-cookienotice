@@ -14,7 +14,7 @@ describe('cookies', () => {
     })
 
     it('should set cookie', () => {
-      setCookie('key', 'value')
+      setCookie('key', 'value', 7, undefined)
 
       expect(window.document.cookie).toEqual(
         'key=value; expires=Thu, 02 Jul 2020 09:54:01 GMT; path=/'
@@ -22,7 +22,7 @@ describe('cookies', () => {
     })
 
     it('should set cookie with expiration', () => {
-      setCookie('key', 'value', 1)
+      setCookie('key', 'value', 1, undefined)
 
       expect(window.document.cookie).toEqual(
         'key=value; expires=Fri, 26 Jun 2020 09:54:01 GMT; path=/'
@@ -30,7 +30,7 @@ describe('cookies', () => {
     })
 
     it('should set cookie with path', () => {
-      setCookie('key', 'value', undefined, '/path')
+      setCookie('key', 'value', 7, '/path')
 
       expect(window.document.cookie).toEqual(
         'key=value; expires=Thu, 02 Jul 2020 09:54:01 GMT; path=/path'

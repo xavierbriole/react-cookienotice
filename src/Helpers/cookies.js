@@ -3,7 +3,7 @@
 export const setCookie = (
   name: string,
   value: string,
-  days?: number = 7,
+  days: number,
   path?: string = '/'
 ): void => {
   const expires = new Date(Date.now() + days * 864e5).toUTCString()

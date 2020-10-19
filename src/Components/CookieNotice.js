@@ -16,6 +16,7 @@ import {
   validateBorderRadius,
   validateJustifyContent,
   validateMaxWidth,
+  validateCookieExpiration,
 } from '../Validator'
 import { getCookie, setCookie } from '../Helpers/cookies'
 import packageJson from '../../package.json'
@@ -75,6 +76,7 @@ type Props = {|
   borderRadius?: number,
   justifyContent?: 'space-around' | 'space-between',
   maxWidth?: number,
+  cookieExpiration?: number,
 |}
 
 type State = {|
@@ -85,15 +87,19 @@ export default class CookieNotice extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
-    const cookieValue = getCookie('allow-cookies') === 'true'
+    const userCookiesAllowed = getCookie('allow-cookies') === 'true'
 
-    this.state = { cookiesAllowed: cookieValue }
+    this.state = { cookiesAllowed: userCookiesAllowed }
   }
 
   setCookie(): void {
-    setCookie('allow-cookies', 'true')
+    const { cookieExpiration } = this.props
 
-    this.setState({ cookiesAllowed: true })
+    const userCookieExpiration = validateCookieExpiration(cookieExpiration)
+
+    this.setState({ cookiesAllowed: true }, () => {
+      setCookie('allow-cookies', 'true', userCookieExpiration)
+    })
   }
 
   render(): React.Node {
