@@ -49,7 +49,7 @@ export default class Buttons extends React.Component<Props> {
     ]
 
     return (
-      <ButtonsWrapper className='buttons-wrapper'>
+      <ButtonsWrapper className='react-cookienotice-buttons-wrapper'>
         {reverseButtons ? buttons.reverse() : buttons}
       </ButtonsWrapper>
     )

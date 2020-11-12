@@ -3,15 +3,15 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-const Icon = styled.div`
+const StyledIcon = styled.div`
   &:before {
     content: '🍪';
     font-size: 30px;
   }
 `
 
-export default class CookieIcon extends React.Component<{}> {
+export default class Icon extends React.Component<{}> {
   render(): React.Node {
-    return <Icon className='cookie-icon' />
+    return <StyledIcon className='react-cookienotice-icon' />
   }
 }
