@@ -4,8 +4,8 @@ import * as React from 'react'
 import clsx from 'clsx'
 import styled from 'styled-components'
 import Buttons from './Buttons'
-import CookieIcon from './CookieIcon'
-import CookieText from './CookieText'
+import Icon from './Icon'
+import Text from './Text'
 import {
   validateAcceptButtonLabel,
   validateReadMoreButtonLabel,
@@ -27,7 +27,7 @@ type WrapperProps = {
   borderRadius: number,
 }
 
-const Root = styled.div`
+const RootStyled = styled.div`
   opacity: 1;
   transition: opacity 0.5s linear;
 
@@ -36,7 +36,7 @@ const Root = styled.div`
   }
 `
 
-const StickToBottom = styled.div`
+const StickToBottomStyled = styled.div`
   position: fixed;
   left: 0px;
   bottom: 0px;
@@ -44,7 +44,7 @@ const StickToBottom = styled.div`
   z-index: 1201;
 `
 
-const Wrapper: React.ComponentType<WrapperProps> = styled.div`
+const WrapperStyled: React.ComponentType<WrapperProps> = styled.div`
   display: flex;
   justify-content: ${({ justifyContent }) => justifyContent};
   align-items: center;
@@ -118,20 +118,23 @@ export default class CookieNotice extends React.Component<Props, State> {
     const { cookiesAllowed } = this.state
 
     return (
-      <Root
-        className={clsx(`cookie-notice-root version-${packageJson.version}`, {
-          'cookies-allowed': cookiesAllowed,
-        })}
+      <RootStyled
+        className={clsx(
+          `react-cookienotice-root version-${packageJson.version}`,
+          {
+            'cookies-allowed': cookiesAllowed,
+          }
+        )}
       >
-        <StickToBottom className='stick-to-bottom'>
-          <Wrapper
-            className='wrapper'
+        <StickToBottomStyled className='react-cookienotice-stick-to-bottom'>
+          <WrapperStyled
+            className='react-cookienotice-wrapper'
             borderRadius={validateBorderRadius(borderRadius)}
             justifyContent={validateJustifyContent(justifyContent)}
             maxWidth={validateMaxWidth(maxWidth)}
           >
-            <CookieIcon />
-            <CookieText label={validateCookieTextLabel(cookieTextLabel)} />
+            <Icon />
+            <Text label={validateCookieTextLabel(cookieTextLabel)} />
             <Buttons
               acceptButtonLabel={validateAcceptButtonLabel(acceptButtonLabel)}
               onAcceptButtonClick={() => this.setCookie()}
@@ -146,9 +149,9 @@ export default class CookieNotice extends React.Component<Props, State> {
               )}
               reverseButtons={validateReverseButtons(reverseButtons)}
             />
-          </Wrapper>
-        </StickToBottom>
-      </Root>
+          </WrapperStyled>
+        </StickToBottomStyled>
+      </RootStyled>
     )
   }
 }

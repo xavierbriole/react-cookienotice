@@ -3,7 +3,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-const Button = styled.a`
+const StyledButton = styled.a`
   font-size: 16px;
   height: auto;
   color: #b5b5b5;
@@ -52,13 +52,13 @@ export default class ReadMoreButton extends React.Component<Props> {
     const { label, link, openInNewTab } = this.props
 
     return (
-      <Button
-        className='read-more-button'
+      <StyledButton
+        className='react-cookienotice-read-more-button'
         href={link}
         target={openInNewTab ? '_blank' : '_self'}
       >
         {label}
-      </Button>
+      </StyledButton>
     )
   }
 }

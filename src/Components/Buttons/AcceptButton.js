@@ -3,7 +3,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-const Button = styled.button`
+const StyledButton = styled.button`
   border-style: none;
   color: #000000;
   width: 100%;
@@ -64,9 +64,12 @@ export default class AcceptButton extends React.Component<Props> {
     const { label, onButtonClick } = this.props
 
     return (
-      <Button className='accept-button' onClick={onButtonClick}>
+      <StyledButton
+        className='react-cookienotice-accept-button'
+        onClick={onButtonClick}
+      >
         <span>{label}</span>
-      </Button>
+      </StyledButton>
     )
   }
 }
