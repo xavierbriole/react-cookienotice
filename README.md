@@ -47,6 +47,7 @@ All props are optionals
 | justifyContent      | `string`  | justify-content property for wrapper (`space-around` or `space-between`) | space-between                                                  |
 | maxWidth            | `number`  | Maximum cookie notice width                                              | 1000                                                           |
 | cookieExpiration    | `number`  | Days after cookie expires and user should reaccept cookies               | 30                                                             |
+| darkTheme           | `boolean` | Enable dark theme                                                        | Auto                                                           |
 
 ## License
 
