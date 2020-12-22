@@ -1,9 +1,12 @@
 // @flow
 
+import * as React from 'react'
 import Icon from './Icon'
 
 describe('Icon', () => {
-  it('is truthy', () => {
-    expect(Icon).toBeTruthy()
+  it('should render', () => {
+    const wrapper = <Icon />
+
+    expect(wrapper).toMatchSnapshot()
   })
 })
