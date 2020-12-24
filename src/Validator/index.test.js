@@ -11,7 +11,8 @@ import {
   validateJustifyContent,
   validateMaxWidth,
   validateCookieExpiration,
-} from '../Validator'
+  validateDarkTheme,
+} from './index'
 
 describe('validator', () => {
   describe('should validate acceptButtonLabel', () => {
@@ -233,6 +234,42 @@ describe('validator', () => {
       const result = validateCookieExpiration(undefined)
 
       expect(result).toBe(30)
+    })
+  })
+
+  describe('should validate darkTheme', () => {
+    it('with override', () => {
+      const result = validateDarkTheme(true)
+
+      expect(result).toBe(true)
+    })
+
+    describe('default return', () => {
+      it('user dark theme system setting is enabled', () => {
+        Object.defineProperty(window, 'matchMedia', {
+          writable: true,
+          value: jest.fn().mockImplementation((query) => ({
+            matches: true,
+          })),
+        })
+
+        const result = validateDarkTheme(undefined)
+
+        expect(result).toBe(true)
+      })
+
+      it('user dark theme system setting is disabled', () => {
+        Object.defineProperty(window, 'matchMedia', {
+          writable: true,
+          value: jest.fn().mockImplementation((query) => ({
+            matches: false,
+          })),
+        })
+
+        const result = validateDarkTheme(undefined)
+
+        expect(result).toBe(false)
+      })
     })
   })
 })

@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import AcceptButton from './AcceptButton'
 import ReadMoreButton from './ReadMoreButton'
 
-const ButtonsWrapper = styled.div`
+const ButtonsWrapperStyled = styled.div`
   display: flex;
   align-items: center;
 
@@ -21,6 +21,7 @@ type Props = {|
   readMoreButtonLink: string,
   readMoreButtonOpenInNewTab: boolean,
   reverseButtons: boolean,
+  darkTheme: boolean,
 |}
 
 export default class Buttons extends React.Component<Props> {
@@ -32,6 +33,7 @@ export default class Buttons extends React.Component<Props> {
       readMoreButtonLink,
       readMoreButtonOpenInNewTab,
       reverseButtons,
+      darkTheme,
     } = this.props
 
     const buttons = [
@@ -39,19 +41,21 @@ export default class Buttons extends React.Component<Props> {
         key='accept-button'
         label={acceptButtonLabel}
         onButtonClick={onAcceptButtonClick}
+        darkTheme={darkTheme}
       />,
       <ReadMoreButton
         key='read-more-button'
         label={readMoreButtonLabel}
         link={readMoreButtonLink}
         openInNewTab={readMoreButtonOpenInNewTab}
+        darkTheme={darkTheme}
       />,
     ]
 
     return (
-      <ButtonsWrapper className='react-cookienotice-buttons-wrapper'>
+      <ButtonsWrapperStyled className='react-cookienotice-buttons-wrapper'>
         {reverseButtons ? buttons.reverse() : buttons}
-      </ButtonsWrapper>
+      </ButtonsWrapperStyled>
     )
   }
 }

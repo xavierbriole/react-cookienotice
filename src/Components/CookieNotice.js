@@ -17,7 +17,8 @@ import {
   validateJustifyContent,
   validateMaxWidth,
   validateCookieExpiration,
-} from '../Validator'
+  validateDarkTheme,
+} from '../Validator/index'
 import { getCookie, setCookie } from '../Helpers/cookies'
 import packageJson from '../../package.json'
 
@@ -56,13 +57,13 @@ const WrapperStyled: React.ComponentType<WrapperProps> = styled.div`
   padding: 16px;
   border-radius: ${({ borderRadius }) => borderRadius}px;
 
+  &.dark {
+    background: #3a3a3a;
+  }
+
   @media (max-width: ${({ maxWidth }) => maxWidth + 48}px) {
     margin-left: 48px;
     margin-right: 48px;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    background: #3a3a3a;
   }
 `
 
@@ -77,10 +78,12 @@ type Props = {|
   justifyContent?: 'space-around' | 'space-between',
   maxWidth?: number,
   cookieExpiration?: number,
+  darkTheme?: boolean,
 |}
 
 type State = {|
   cookiesAllowed: boolean,
+  darkTheme: boolean,
 |}
 
 export default class CookieNotice extends React.Component<Props, State> {
@@ -88,8 +91,12 @@ export default class CookieNotice extends React.Component<Props, State> {
     super(props)
 
     const userCookiesAllowed = getCookie('allow-cookies') === 'true'
+    const userSetDarkTheme = validateDarkTheme(props.darkTheme)
 
-    this.state = { cookiesAllowed: userCookiesAllowed }
+    this.state = {
+      cookiesAllowed: userCookiesAllowed,
+      darkTheme: userSetDarkTheme,
+    }
   }
 
   setCookie(): void {
@@ -115,7 +122,7 @@ export default class CookieNotice extends React.Component<Props, State> {
       maxWidth,
     } = this.props
 
-    const { cookiesAllowed } = this.state
+    const { cookiesAllowed, darkTheme } = this.state
 
     return (
       <RootStyled
@@ -128,13 +135,18 @@ export default class CookieNotice extends React.Component<Props, State> {
       >
         <StickToBottomStyled className='react-cookienotice-stick-to-bottom'>
           <WrapperStyled
-            className='react-cookienotice-wrapper'
+            className={clsx('react-cookienotice-wrapper', {
+              dark: darkTheme,
+            })}
             borderRadius={validateBorderRadius(borderRadius)}
             justifyContent={validateJustifyContent(justifyContent)}
             maxWidth={validateMaxWidth(maxWidth)}
           >
             <Icon />
-            <Text label={validateCookieTextLabel(cookieTextLabel)} />
+            <Text
+              label={validateCookieTextLabel(cookieTextLabel)}
+              darkTheme={darkTheme}
+            />
             <Buttons
               acceptButtonLabel={validateAcceptButtonLabel(acceptButtonLabel)}
               onAcceptButtonClick={() => this.setCookie()}
@@ -148,6 +160,7 @@ export default class CookieNotice extends React.Component<Props, State> {
                 openInNewTab
               )}
               reverseButtons={validateReverseButtons(reverseButtons)}
+              darkTheme={darkTheme}
             />
           </WrapperStyled>
         </StickToBottomStyled>

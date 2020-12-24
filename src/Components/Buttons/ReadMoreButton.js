@@ -2,8 +2,9 @@
 
 import * as React from 'react'
 import styled from 'styled-components'
+import clsx from 'clsx'
 
-const StyledButton = styled.a`
+const ButtonStyled = styled.a`
   font-size: 16px;
   height: auto;
   color: #b5b5b5;
@@ -24,6 +25,13 @@ const StyledButton = styled.a`
     margin-left: 8px;
   }
 
+  &.dark {
+    &:hover {
+      color: #ffffff;
+      border-color: #ffffff;
+    }
+  }
+
   @media (max-width: 768px) {
     &:not(:first-child) {
       margin-left: 0;
@@ -32,33 +40,29 @@ const StyledButton = styled.a`
     font-size: 12px;
     margin: 5px 0;
   }
-
-  @media (prefers-color-scheme: dark) {
-    &:hover {
-      color: #ffffff;
-      border-color: #ffffff;
-    }
-  }
 `
 
 type Props = {|
   label: string,
   link: string,
   openInNewTab: boolean,
+  darkTheme: boolean,
 |}
 
 export default class ReadMoreButton extends React.Component<Props> {
   render(): React.Node {
-    const { label, link, openInNewTab } = this.props
+    const { label, link, openInNewTab, darkTheme } = this.props
 
     return (
-      <StyledButton
-        className='react-cookienotice-read-more-button'
+      <ButtonStyled
+        className={clsx('react-cookienotice-read-more-button', {
+          dark: darkTheme,
+        })}
         href={link}
         target={openInNewTab ? '_blank' : '_self'}
       >
         {label}
-      </StyledButton>
+      </ButtonStyled>
     )
   }
 }

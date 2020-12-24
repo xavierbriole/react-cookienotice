@@ -2,8 +2,9 @@
 
 import * as React from 'react'
 import styled from 'styled-components'
+import clsx from 'clsx'
 
-const StyledButton = styled.button`
+const ButtonStyled = styled.button`
   border-style: none;
   color: #000000;
   width: 100%;
@@ -35,6 +36,15 @@ const StyledButton = styled.button`
     margin-left: 8px;
   }
 
+  &.dark {
+    background: #323232;
+    color: #ffffff;
+
+    &:hover {
+      background: #3a3a3a;
+    }
+  }
+
   @media (max-width: 768px) {
     &:not(:first-child) {
       margin-left: 0;
@@ -43,33 +53,27 @@ const StyledButton = styled.button`
     font-size: 12px;
     margin: 5px 0;
   }
-
-  @media (prefers-color-scheme: dark) {
-    background: #323232;
-    color: #ffffff;
-
-    &:hover {
-      background: #3a3a3a;
-    }
-  }
 `
 
 type Props = {|
   label: string,
   onButtonClick: () => void,
+  darkTheme: boolean,
 |}
 
 export default class AcceptButton extends React.Component<Props> {
   render(): React.Node {
-    const { label, onButtonClick } = this.props
+    const { label, onButtonClick, darkTheme } = this.props
 
     return (
-      <StyledButton
-        className='react-cookienotice-accept-button'
+      <ButtonStyled
+        className={clsx('react-cookienotice-accept-button', {
+          dark: darkTheme,
+        })}
         onClick={onButtonClick}
       >
         <span>{label}</span>
-      </StyledButton>
+      </ButtonStyled>
     )
   }
 }
