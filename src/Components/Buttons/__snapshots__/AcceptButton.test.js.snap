@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AcceptButton with darkTheme should render 1`] = `
+<AcceptButton
+  darkTheme={true}
+  label="label"
+  onButtonClick={[Function]}
+/>
+`;
+
+exports[`AcceptButton without darkTheme should render 1`] = `
+<AcceptButton
+  darkTheme={false}
+  label="label"
+  onButtonClick={[Function]}
+/>
+`;
