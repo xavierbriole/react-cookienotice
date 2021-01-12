@@ -11,6 +11,7 @@ import {
   validateJustifyContent,
   validateMaxWidth,
   validateCookieExpiration,
+  validateCookieName,
   validateDarkTheme,
 } from './index'
 
@@ -234,6 +235,52 @@ describe('validator', () => {
       const result = validateCookieExpiration(undefined)
 
       expect(result).toBe(30)
+    })
+  })
+
+  describe('should validate cookieName', () => {
+    describe('with override', () => {
+      it('parameter is a valid string', () => {
+        const result = validateCookieName('valid-cookie-name')
+
+        expect(result).toBe('valid-cookie-name')
+      })
+
+      it('parameter is an empty string', () => {
+        expect(() => {
+          validateCookieName('')
+        }).toThrow(
+          '[react-cookienotice] cookieName parameter should have at least one character'
+        )
+      })
+
+      it('parameter is a whitespace-only string', () => {
+        expect(() => {
+          validateCookieName('        ')
+        }).toThrow(
+          '[react-cookienotice] cookieName parameter should not contain whitespace'
+        )
+      })
+
+      it('parameter contains whitespace', () => {
+        expect(() => {
+          validateCookieName('cookie name with whitespace')
+        }).toThrow(
+          '[react-cookienotice] cookieName parameter should not contain whitespace'
+        )
+      })
+
+      it('parameter is a number', () => {
+        const result = validateCookieName(42)
+
+        expect(result).toBe('allow-cookies')
+      })
+    })
+
+    it('default return', () => {
+      const result = validateCookieName(undefined)
+
+      expect(result).toBe('allow-cookies')
     })
   })
 

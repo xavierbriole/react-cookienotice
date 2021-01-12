@@ -4,7 +4,11 @@ import * as React from 'react'
 import { shallow, mount } from 'enzyme'
 import CookieNotice from './CookieNotice'
 import AcceptButton from './Buttons/AcceptButton'
-import { validateCookieExpiration, validateDarkTheme } from '../Validator/index'
+import {
+  validateCookieExpiration,
+  validateCookieName,
+  validateDarkTheme,
+} from '../Validator/index'
 import { setCookie } from '../Helpers/cookies'
 
 jest.mock('../Validator/index', () => ({
@@ -18,6 +22,7 @@ jest.mock('../Validator/index', () => ({
   validateJustifyContent: jest.fn(),
   validateMaxWidth: jest.fn(),
   validateCookieExpiration: jest.fn(),
+  validateCookieName: jest.fn(),
   validateDarkTheme: jest.fn(),
 }))
 
@@ -139,37 +144,27 @@ describe('CookieNotice', () => {
     })
   })
 
-  describe('should set cookie', () => {
-    it('without cookie expiration', () => {
-      const wrapper = mount(<CookieNotice />)
+  it('should set cookie', () => {
+    mock(validateCookieName).mockImplementation(() => 'mockedCookieName')
+    mock(validateCookieExpiration).mockImplementation(
+      () => 'mockedCookieExpiration'
+    )
 
-      wrapper.find(AcceptButton).prop('onButtonClick')()
+    const wrapper = mount(<CookieNotice />)
 
-      expect(wrapper.state('cookiesAllowed')).toBe(true)
-      expect(setCookie).toHaveBeenCalledWith('allow-cookies', 'true', undefined)
+    wrapper.find(AcceptButton).prop('onButtonClick')()
 
-      wrapper.update()
+    expect(wrapper.state('cookiesAllowed')).toBe(true)
+    expect(setCookie).toHaveBeenCalledWith(
+      'mockedCookieName',
+      'true',
+      'mockedCookieExpiration'
+    )
 
-      expect(
-        wrapper.find('.react-cookienotice-root.cookies-allowed').at(0)
-      ).toHaveLength(1)
-    })
+    wrapper.update()
 
-    it('with cookie expiration', () => {
-      mock(validateCookieExpiration).mockImplementation(() => 10)
-
-      const wrapper = mount(<CookieNotice />)
-
-      wrapper.find(AcceptButton).prop('onButtonClick')()
-
-      expect(wrapper.state('cookiesAllowed')).toBe(true)
-      expect(setCookie).toHaveBeenCalledWith('allow-cookies', 'true', 10)
-
-      wrapper.update()
-
-      expect(
-        wrapper.find('.react-cookienotice-root.cookies-allowed').at(0)
-      ).toHaveLength(1)
-    })
+    expect(
+      wrapper.find('.react-cookienotice-root.cookies-allowed').at(0)
+    ).toHaveLength(1)
   })
 })

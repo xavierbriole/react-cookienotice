@@ -17,6 +17,7 @@ import {
   validateJustifyContent,
   validateMaxWidth,
   validateCookieExpiration,
+  validateCookieName,
   validateDarkTheme,
 } from '../Validator/index'
 import { getCookie, setCookie } from '../Helpers/cookies'
@@ -78,6 +79,7 @@ type Props = {|
   justifyContent?: 'space-around' | 'space-between',
   maxWidth?: number,
   cookieExpiration?: number,
+  cookieName?: string,
   darkTheme?: boolean,
 |}
 
@@ -90,7 +92,8 @@ export default class CookieNotice extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props)
 
-    const userCookiesAllowed = getCookie('allow-cookies') === 'true'
+    const userCookiesAllowed =
+      getCookie(validateCookieName(props.cookieName)) === 'true'
     const userSetDarkTheme = validateDarkTheme(props.darkTheme)
 
     this.state = {
@@ -100,12 +103,13 @@ export default class CookieNotice extends React.Component<Props, State> {
   }
 
   setCookie(): void {
-    const { cookieExpiration } = this.props
+    const { cookieExpiration, cookieName } = this.props
 
     const userCookieExpiration = validateCookieExpiration(cookieExpiration)
+    const userCookieName = validateCookieName(cookieName)
 
     this.setState({ cookiesAllowed: true }, () => {
-      setCookie('allow-cookies', 'true', userCookieExpiration)
+      setCookie(userCookieName, 'true', userCookieExpiration)
     })
   }
 
