@@ -19,6 +19,13 @@ describe('ReadMoreButton', () => {
       expect(comp).toMatchSnapshot()
     })
 
+    it('should have default class', () => {
+      const wrapper = shallow(comp)
+      expect(wrapper.find('.react-cookienotice-read-more-button')).toHaveLength(
+        1
+      )
+    })
+
     it('should not have dark class', () => {
       const wrapper = shallow(comp)
       expect(wrapper.find('.dark')).toHaveLength(0)
@@ -37,6 +44,13 @@ describe('ReadMoreButton', () => {
 
     it('should render', () => {
       expect(comp).toMatchSnapshot()
+    })
+
+    it('should have default class', () => {
+      const wrapper = shallow(comp)
+      expect(wrapper.find('.react-cookienotice-read-more-button')).toHaveLength(
+        1
+      )
     })
 
     it('should have dark class', () => {

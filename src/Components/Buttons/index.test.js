@@ -23,6 +23,22 @@ describe('Buttons', () => {
     expect(wrapper).toMatchSnapshot()
   })
 
+  it('should have default class', () => {
+    const wrapper = shallow(
+      <Buttons
+        acceptButtonLabel='acceptButtonLabel'
+        onAcceptButtonClick={() => {}}
+        readMoreButtonLabel='readMoreButtonLabel'
+        readMoreButtonLink='readMoreButtonLink'
+        readMoreButtonOpenInNewTab={false}
+        reverseButtons={false}
+        darkTheme={false}
+      />
+    )
+
+    expect(wrapper.find('.react-cookienotice-buttons-wrapper')).toHaveLength(1)
+  })
+
   describe('should manage reverse buttons', () => {
     it('without reverse', () => {
       const wrapper = shallow(
