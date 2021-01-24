@@ -115,6 +115,26 @@ export const validateCookieExpiration = (parameter?: any): number => {
   return 30
 }
 
+export const validateCookieName = (parameter?: any): string => {
+  if (typeof parameter === 'string') {
+    if (/\s/.test(parameter)) {
+      throw new Error(
+        '[react-cookienotice] cookieName parameter should not contain whitespace'
+      )
+    }
+
+    if (parameter === '') {
+      throw new Error(
+        '[react-cookienotice] cookieName parameter should have at least one character'
+      )
+    }
+
+    return parameter
+  }
+
+  return 'allow-cookies'
+}
+
 export const validateDarkTheme = (parameter?: any): boolean => {
   if (typeof parameter === 'boolean') {
     return parameter
