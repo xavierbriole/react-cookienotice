@@ -19,6 +19,7 @@ import {
   validateCookieExpiration,
   validateCookieName,
   validateDarkTheme,
+  validateDisplayIcon,
 } from '../Validator/index'
 import { getCookie, setCookie } from '../Helpers/cookies'
 import packageJson from '../../package.json'
@@ -81,6 +82,7 @@ type Props = {|
   cookieExpiration?: number,
   cookieName?: string,
   darkTheme?: boolean,
+  displayIcon?: boolean,
 |}
 
 type State = {|
@@ -124,6 +126,7 @@ export default class CookieNotice extends React.Component<Props, State> {
       borderRadius,
       justifyContent,
       maxWidth,
+      displayIcon,
     } = this.props
 
     const { cookiesAllowed, darkTheme } = this.state
@@ -146,7 +149,7 @@ export default class CookieNotice extends React.Component<Props, State> {
             justifyContent={validateJustifyContent(justifyContent)}
             maxWidth={validateMaxWidth(maxWidth)}
           >
-            <Icon />
+            {validateDisplayIcon(displayIcon) && <Icon />}
             <Text
               label={validateCookieTextLabel(cookieTextLabel)}
               darkTheme={darkTheme}

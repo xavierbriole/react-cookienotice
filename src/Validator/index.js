@@ -142,3 +142,11 @@ export const validateDarkTheme = (parameter?: any): boolean => {
 
   return window.matchMedia('(prefers-color-scheme: dark)').matches
 }
+
+export const validateDisplayIcon = (parameter?: any): boolean => {
+  if (typeof parameter === 'boolean') {
+    return parameter
+  }
+
+  return true
+}

@@ -58,6 +58,8 @@ All props are optionals
 | cookieExpiration    | `number`  | Days after cookie expires and user should reaccept cookies               | 30                                                             |
 | cookieName          | `string`  | The name of the cookie that saves the user consent                       | allow-cookies                                                  |
 | darkTheme           | `boolean` | Enable dark theme                                                        | Auto                                                           |
+| displayIcon         | `boolean` | Display the icon                                                         | true                                                           |
+
 
 ## License
 
