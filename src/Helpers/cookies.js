@@ -21,11 +21,13 @@ export const setCookie = (
 }
 
 export const getCookie = (name: string): string | null => {
-  return document.cookie.split('; ').reduce((r, v) => {
-    const parts = v.split('=')
+  if (isBrowser) {
+    return document.cookie.split('; ').reduce((r, v) => {
+      const parts = v.split('=')
 
-    return parts[0] === name ? decodeURIComponent(parts[1]) : r
-  }, null)
+      return parts[0] === name ? decodeURIComponent(parts[1]) : r
+    }, null)
+  }
 }
 
 export const deleteCookie = (name: string, path: string): void => {
