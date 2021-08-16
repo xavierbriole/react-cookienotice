@@ -1,4 +1,5 @@
 // @flow
+const isBrowser = typeof window !== "undefined"
 
 export const setCookie = (
   name: string,
@@ -7,15 +8,16 @@ export const setCookie = (
   path?: string = '/'
 ): void => {
   const expires = new Date(Date.now() + days * 864e5).toUTCString()
-
-  document.cookie =
-    name +
-    '=' +
-    encodeURIComponent(value) +
-    '; expires=' +
-    expires +
-    '; path=' +
-    path
+  if (isBrowser) {
+    document.cookie =
+      name +
+      '=' +
+      encodeURIComponent(value) +
+      '; expires=' +
+      expires +
+      '; path=' +
+      path
+  }
 }
 
 export const getCookie = (name: string): string | null => {
