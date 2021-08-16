@@ -8,7 +8,6 @@ export const setCookie = (
   path?: string = '/'
 ): void => {
   const expires = new Date(Date.now() + days * 864e5).toUTCString()
-  console.log("isBrowser", isBrowser)
   if (isBrowser) {
     document.cookie =
       name +
@@ -22,8 +21,6 @@ export const setCookie = (
 }
 
 export const getCookie = (name: string): string | null => {
-  console.log("isBrowser", isBrowser)
-
   if (isBrowser) {
     return document.cookie.split('; ').reduce((r, v) => {
       const parts = v.split('=')

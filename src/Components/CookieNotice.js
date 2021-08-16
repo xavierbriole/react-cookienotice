@@ -35,7 +35,6 @@ const RootStyled = styled.div`
   transition: opacity 0.5s linear;
 
   &.cookies-allowed {
-    display: none;
     opacity: 0;
   }
 `
@@ -99,11 +98,6 @@ export default class CookieNotice extends React.Component<Props, State> {
       getCookie(validateCookieName(props.cookieName)) === 'true'
     const userSetDarkTheme = validateDarkTheme(props.darkTheme)
 
-    console.log(
-      'cookie string',
-      getCookie(validateCookieName(props.cookieName))
-    )
-
     this.state = {
       cookiesAllowed: userCookiesAllowed,
       darkTheme: userSetDarkTheme,
@@ -136,6 +130,7 @@ export default class CookieNotice extends React.Component<Props, State> {
     } = this.props
 
     const { cookiesAllowed, darkTheme } = this.state
+    console.log('render cookiesAllowed', cookiesAllowed)
 
     return (
       <RootStyled
