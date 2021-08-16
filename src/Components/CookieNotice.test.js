@@ -24,6 +24,7 @@ jest.mock('../Validator/index', () => ({
   validateCookieExpiration: jest.fn(),
   validateCookieName: jest.fn(),
   validateDarkTheme: jest.fn(),
+  validateDisplayIcon: jest.fn(),
 }))
 
 jest.mock('../Helpers/cookies', () => ({

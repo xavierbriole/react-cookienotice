@@ -1,5 +1,5 @@
 // @flow
-const isBrowser = typeof window !== "undefined"
+const isBrowser = typeof window !== 'undefined'
 
 export const setCookie = (
   name: string,

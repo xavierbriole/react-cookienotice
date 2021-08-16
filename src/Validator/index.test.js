@@ -13,6 +13,7 @@ import {
   validateCookieExpiration,
   validateCookieName,
   validateDarkTheme,
+  validateDisplayIcon,
 } from './index'
 
 describe('validator', () => {
@@ -317,6 +318,20 @@ describe('validator', () => {
 
         expect(result).toBe(false)
       })
+    })
+  })
+
+  describe('should validate displayIcon', () => {
+    it('with override', () => {
+      const result = validateDisplayIcon(false)
+
+      expect(result).toBe(false)
+    })
+
+    it('default return', () => {
+      const result = validateDisplayIcon(undefined)
+
+      expect(result).toBe(true)
     })
   })
 })
