@@ -1,0 +1,10 @@
+{
+  "cookieNotice.titleLabel": "Le respect de votre vie privée est notre priorité !",
+  "cookieNotice.descriptionText": "Vous pouvez configurer vos réglages et choisir comment vous souhaitez que vos données personnelles soient utilisées. Vous pouvez configurer les réglages de manière indépendante pour chaque partenaire. Vous trouverez une description de chacun des objectifs sur la façon dont nos partenaires et nous-mêmes utilisons vos données personnelles.",
+  "buttons.declineAllButtonLabel": "Refuser tout",
+  "buttons.customButtonLabel": "Personnaliser",
+  "buttons.acceptAllButtonLabel": "Accepter tout",
+  "link.label": "Lire la politique de confidentialité",
+  "customize.label": "Personnaliser",
+  "customize.confirmButtonLabel": "Confirmer"
+}
