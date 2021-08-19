@@ -15,13 +15,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12.18.4
+          node-version: 14.17
 
       - name: Install Packages
         run: yarn install --frozen-lockfile
-
-      - name: Run flow
-        run: yarn run flow
 
       - name: Run tests
         run: yarn run test
