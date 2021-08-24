@@ -1,5 +1,4 @@
-import * as React from 'react'
-import styles from '../styles.module.css'
+import React from 'react'
 import { formatMessage } from '../intl/format'
 
 interface Props {
@@ -7,14 +6,12 @@ interface Props {
   linkHref?: string
 }
 
-const Link = ({ linkLabel, linkHref }: Props) => {
-  if (linkHref === undefined) {
-    return null
-  }
+const Link: React.FC<Props> = ({ linkLabel, linkHref }) => {
+  if (linkHref === undefined) return null
 
   return (
     <a
-      className={styles['react-cookienotice-link']}
+      className='react-cookienotice-link'
       href={linkHref}
       target='_blank'
       rel='noreferrer'

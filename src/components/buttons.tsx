@@ -1,5 +1,4 @@
-import * as React from 'react'
-import styles from '../styles.module.css'
+import React, { Children, useState } from 'react'
 import { formatMessage } from '../intl/format'
 import Customize from './customize'
 
@@ -15,7 +14,7 @@ interface Props {
   children: React.ReactNode
 }
 
-const Buttons = ({
+const Buttons: React.FC<Props> = ({
   declineAllButtonLabel,
   customButtonLabel,
   acceptAllButtonLabel,
@@ -25,28 +24,23 @@ const Buttons = ({
   onAcceptAllButtonClick,
   onConfirmButtonClick,
   children,
-}: Props) => {
-  const [
-    shouldDisplayCustomize,
-    setShouldDisplayCustomize,
-  ] = React.useState<boolean>(false)
+}) => {
+  const [shouldDisplayCustomize, setShouldDisplayCustomize] = useState<boolean>(
+    false
+  )
 
-  const shouldCustomize = React.Children.count(children) > 0
+  const shouldCustomize = Children.count(children) > 0
 
-  const onCustomButtonClick = () => {
+  const onCustomButtonClick = (): void => {
     setShouldDisplayCustomize(true)
   }
 
   return (
     <React.Fragment>
       <div
-        className={
-          styles[
-            `react-cookienotice-buttons${
-              shouldDisplayCustomize ? '-hidden' : ''
-            }`
-          ]
-        }
+        className={`react-cookienotice-buttons${
+          shouldDisplayCustomize ? '-hidden' : ''
+        }`}
       >
         <button onClick={onDeclineAllButtonClick}>
           {formatMessage(

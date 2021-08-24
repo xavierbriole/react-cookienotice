@@ -1,5 +1,4 @@
-import * as React from 'react'
-import styles from '../styles.module.css'
+import React, { useEffect, useRef, useState } from 'react'
 import { formatMessage } from '../intl/format'
 import Link from './link'
 import Buttons from './buttons'
@@ -28,7 +27,7 @@ interface Props {
   children: React.ReactNode
 }
 
-const CookieNotice = ({
+const CookieNotice: React.FC<Props> = ({
   titleLabel,
   descriptionText,
   linkLabel,
@@ -40,15 +39,15 @@ const CookieNotice = ({
   confirmButtonLabel,
   onServicesConfirm,
   children,
-}: Props) => {
-  const firstUpdate = React.useRef(true)
+}) => {
+  const firstUpdate = useRef(true)
   const [
     shouldDisplayCookieNotice,
     setShouldDisplayCookieNotice,
-  ] = React.useState<boolean>(true)
-  const [services, setServices] = React.useState<Array<ServiceState>>([])
+  ] = useState<boolean>(true)
+  const [services, setServices] = useState<Array<ServiceState>>([])
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleEvent = (event: MessageEvent) => {
       if (event.data.type === 'REACT_COOKIENOTICE_EVENT') {
         const eventData: ServiceEvent = event.data
@@ -67,7 +66,7 @@ const CookieNotice = ({
     return () => window.removeEventListener('message', handleEvent)
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false
       return
@@ -76,7 +75,7 @@ const CookieNotice = ({
     onServicesConfirm(services)
   }, [services])
 
-  const onDeclineAll = () => {
+  const onDeclineAll = (): void => {
     const nextServices = services.map((service) => ({
       ...service,
       enabled: false,
@@ -86,7 +85,7 @@ const CookieNotice = ({
     setShouldDisplayCookieNotice(false)
   }
 
-  const onAcceptAll = () => {
+  const onAcceptAll = (): void => {
     const nextServices = services.map((service) => ({
       ...service,
       enabled: true,
@@ -96,7 +95,7 @@ const CookieNotice = ({
     setShouldDisplayCookieNotice(false)
   }
 
-  const onConfirm = () => {
+  const onConfirm = (): void => {
     setShouldDisplayCookieNotice(false)
   }
 
@@ -105,12 +104,12 @@ const CookieNotice = ({
   }
 
   return (
-    <div className={styles['react-cookienotice-root']}>
-      <div className={styles['react-cookienotice-wrapper']}>
-        <span className={styles['react-cookienotice-title']}>
+    <div className='react-cookienotice-root'>
+      <div className='react-cookienotice-wrapper'>
+        <span className='react-cookienotice-title'>
           {formatMessage('cookieNotice.titleLabel', titleLabel)}
         </span>
-        <span className={styles['react-cookienotice-description']}>
+        <span className='react-cookienotice-description'>
           {formatMessage('cookieNotice.descriptionText', descriptionText)}
         </span>
         <Link linkHref={linkHref} linkLabel={linkLabel} />

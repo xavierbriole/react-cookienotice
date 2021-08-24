@@ -1,15 +1,14 @@
-import * as React from 'react'
-import styles from '../../styles.module.css'
+import React, { useEffect, useState } from 'react'
 import Event from '../../helpers/event'
 
-const Hubspot = () => {
-  const [checked, setChecked] = React.useState<boolean>(false)
+const Hubspot: React.FC = () => {
+  const [checked, setChecked] = useState<boolean>(false)
 
-  const onInputChange = () => {
+  const onInputChange = (): void => {
     setChecked(!checked)
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     Event.send({
       type: 'REACT_COOKIENOTICE_EVENT',
       service: 'HUBSPOT',
@@ -19,11 +18,11 @@ const Hubspot = () => {
 
   return (
     <React.Fragment>
-      <label className={styles['react-cookienotice-switch']}>
+      <label className='react-cookienotice-switch'>
         <input type='checkbox' onChange={onInputChange} checked={checked} />
-        <span className={styles['react-cookienotice-slider']} />
+        <span className='react-cookienotice-slider' />
       </label>
-      <span className={styles['react-cookienotice-service-name']}>Hubspot</span>
+      <span className='react-cookienotice-service-name'>Hubspot</span>
     </React.Fragment>
   )
 }

@@ -1,4 +1,4 @@
-import CookieNotice from '.'
+import { CookieNotice } from './index'
 
 describe('CookieNotice', () => {
   it('is truthy', () => {
