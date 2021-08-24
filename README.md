@@ -27,15 +27,13 @@ npm i --save react-cookienotice
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import React from 'react'
 
 import CookieNotice from 'react-cookienotice'
 import 'react-cookienotice/dist/index.css'
 
-class Example extends Component {
-  render() {
-    return <CookieNotice />
-  }
+const Example: React.FC = () => {
+  return <CookieNotice />
 }
 ```
 
