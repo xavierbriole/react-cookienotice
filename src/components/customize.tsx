@@ -24,7 +24,7 @@ const Customize: React.FC<Props> = ({
     <span className={styles['react-cookienotice-customize-label']}>
       {formatMessage('customize.label', customizeLabel)}
     </span>
-    <div className='react-cookienotice-services'>
+    <div className={styles['react-cookienotice-services']}>
       {Children.map(children, (child) => (
         <div className={styles['react-cookienotice-service']}>{child}</div>
       ))}
