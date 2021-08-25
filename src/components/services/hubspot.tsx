@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Event from '../../helpers/event'
-import styles from '../styles.module.css'
+import styles from '../../styles.module.css'
 
 const Hubspot: React.FC = () => {
   const [checked, setChecked] = useState<boolean>(false)
