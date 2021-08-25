@@ -25,7 +25,6 @@ interface Props {
   customizeLabel?: string
   confirmButtonLabel?: string
   onServicesConfirm: (enabledServices: Array<ServiceState>) => void
-  children: React.ReactNode
 }
 
 const CookieNotice: React.FC<Props> = ({

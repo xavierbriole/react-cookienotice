@@ -12,7 +12,6 @@ interface Props {
   onDeclineAllButtonClick?: () => void
   onAcceptAllButtonClick?: () => void
   onConfirmButtonClick?: () => void
-  children: React.ReactNode
 }
 
 const Buttons: React.FC<Props> = ({

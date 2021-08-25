@@ -7,7 +7,6 @@ interface Props {
   confirmButtonLabel?: string
   onConfirmButtonClick?: () => void
   shouldDisplay: boolean
-  children: React.ReactNode
 }
 
 const Customize: React.FC<Props> = ({
