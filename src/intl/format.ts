@@ -1,16 +1,22 @@
 import messages from './messages'
 
-export const formatMessage = (id: string, override?: string): string => {
-  const language = navigator.language.split('-')[0]
+const DEFAULT_LANGUAGE = 'en'
 
+export const formatMessage = (id: string, override?: string): string => {
   if (override !== undefined) {
     return override
   }
 
-  if (messages[language][id] === undefined) {
+  const navigatorLanguage = navigator.language.split('-')[0]
+  const availableLanguages = Object.keys(messages)
+  const usedLanguage = availableLanguages.includes(navigatorLanguage)
+    ? navigatorLanguage
+    : DEFAULT_LANGUAGE
+
+  if (messages[usedLanguage][id] === undefined) {
     console.error(`[intl] no message found for id "${id}"`)
     return id
   }
 
-  return messages[language][id]
+  return messages[usedLanguage][id]
 }
