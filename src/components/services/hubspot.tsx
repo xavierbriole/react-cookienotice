@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Event from '../../helpers/event'
+import styles from '../styles.module.css'
 
 const Hubspot: React.FC = () => {
   const [checked, setChecked] = useState<boolean>(false)
@@ -18,11 +19,11 @@ const Hubspot: React.FC = () => {
 
   return (
     <React.Fragment>
-      <label className='react-cookienotice-switch'>
+      <label className={styles['react-cookienotice-switch']}>
         <input type='checkbox' onChange={onInputChange} checked={checked} />
-        <span className='react-cookienotice-slider' />
+        <span className={styles['react-cookienotice-slider']} />
       </label>
-      <span className='react-cookienotice-service-name'>Hubspot</span>
+      <span className={styles['react-cookienotice-service-name']}>Hubspot</span>
     </React.Fragment>
   )
 }

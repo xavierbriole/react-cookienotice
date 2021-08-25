@@ -1,5 +1,6 @@
 import React, { Children } from 'react'
 import { formatMessage } from '../intl/format'
+import styles from '../styles.module.css'
 
 interface Props {
   customizeLabel?: string
@@ -17,14 +18,16 @@ const Customize: React.FC<Props> = ({
   children,
 }) => (
   <div
-    className={`react-cookienotice-customize${shouldDisplay ? '' : '-hidden'}`}
+    className={
+      styles[`react-cookienotice-customize${shouldDisplay ? '' : '-hidden'}`]
+    }
   >
-    <span className='react-cookienotice-customize-label'>
+    <span className={styles['react-cookienotice-customize-label']}>
       {formatMessage('customize.label', customizeLabel)}
     </span>
     <div className='react-cookienotice-services'>
       {Children.map(children, (child) => (
-        <div className='react-cookienotice-service'>{child}</div>
+        <div className={styles['react-cookienotice-service']}>{child}</div>
       ))}
     </div>
     <button onClick={onConfirmButtonClick}>

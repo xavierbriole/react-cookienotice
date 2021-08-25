@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { formatMessage } from '../intl/format'
 import Link from './link'
 import Buttons from './buttons'
+import styles from '../styles.module.css'
 
 interface ServiceEvent {
   service: string
@@ -104,12 +105,12 @@ const CookieNotice: React.FC<Props> = ({
   }
 
   return (
-    <div className='react-cookienotice-root'>
-      <div className='react-cookienotice-wrapper'>
-        <span className='react-cookienotice-title'>
+    <div className={styles['react-cookienotice-root']}>
+      <div className={styles['react-cookienotice-wrapper']}>
+        <span className={styles['react-cookienotice-title']}>
           {formatMessage('cookieNotice.titleLabel', titleLabel)}
         </span>
-        <span className='react-cookienotice-description'>
+        <span className={styles['react-cookienotice-description']}>
           {formatMessage('cookieNotice.descriptionText', descriptionText)}
         </span>
         <Link linkHref={linkHref} linkLabel={linkLabel} />

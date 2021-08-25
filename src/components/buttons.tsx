@@ -1,6 +1,7 @@
 import React, { Children, useState } from 'react'
 import { formatMessage } from '../intl/format'
 import Customize from './customize'
+import styles from '../styles.module.css'
 
 interface Props {
   declineAllButtonLabel?: string
@@ -38,9 +39,13 @@ const Buttons: React.FC<Props> = ({
   return (
     <React.Fragment>
       <div
-        className={`react-cookienotice-buttons${
-          shouldDisplayCustomize ? '-hidden' : ''
-        }`}
+        className={
+          styles[
+            `react-cookienotice-buttons${
+              shouldDisplayCustomize ? '-hidden' : ''
+            }`
+          ]
+        }
       >
         <button onClick={onDeclineAllButtonClick}>
           {formatMessage(

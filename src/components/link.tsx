@@ -1,5 +1,6 @@
 import React from 'react'
 import { formatMessage } from '../intl/format'
+import styles from '../styles.module.css'
 
 interface Props {
   linkLabel?: string
@@ -11,7 +12,7 @@ const Link: React.FC<Props> = ({ linkLabel, linkHref }) => {
 
   return (
     <a
-      className='react-cookienotice-link'
+      className={styles['react-cookienotice-link']}
       href={linkHref}
       target='_blank'
       rel='noreferrer'
