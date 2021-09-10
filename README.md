@@ -11,7 +11,7 @@
 ![npm-publish](https://github.com/xavierbriole/react-cookienotice/workflows/npm-publish/badge.svg)
 ![downloads](https://img.shields.io/badge/dynamic/json?color=blue&label=downloads&query=downloads&suffix=%2Fmonth&url=https%3A%2F%2Fapi.npmjs.org%2Fdownloads%2Fpoint%2Flast-month%2Freact-cookienotice)
 
-[Live preview](https://xavierbriole.github.io/react-cookienotice)
+[Live preview](https://react-cookienotice.vercel.app)
 
 ## Install
 
