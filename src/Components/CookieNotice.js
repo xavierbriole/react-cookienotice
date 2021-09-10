@@ -81,6 +81,7 @@ type Props = {|
   cookieExpiration?: number,
   cookieName?: string,
   darkTheme?: boolean,
+  onAcceptButtonClick?: () => void,
 |}
 
 type State = {|
@@ -103,13 +104,17 @@ export default class CookieNotice extends React.Component<Props, State> {
   }
 
   setCookie(): void {
-    const { cookieExpiration, cookieName } = this.props
+    const { cookieExpiration, cookieName, onAcceptButtonClick } = this.props
 
     const userCookieExpiration = validateCookieExpiration(cookieExpiration)
     const userCookieName = validateCookieName(cookieName)
 
     this.setState({ cookiesAllowed: true }, () => {
       setCookie(userCookieName, 'true', userCookieExpiration)
+
+      if (onAcceptButtonClick) {
+        onAcceptButtonClick()
+      }
     })
   }
 

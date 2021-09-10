@@ -167,4 +167,28 @@ describe('CookieNotice', () => {
       wrapper.find('.react-cookienotice-root.cookies-allowed').at(0)
     ).toHaveLength(1)
   })
+
+  describe('should call onAcceptButtonClick', () => {
+    it('with prop', () => {
+      const onAcceptButtonClick = jest.fn()
+
+      const wrapper = mount(
+        <CookieNotice onAcceptButtonClick={onAcceptButtonClick} />
+      )
+
+      wrapper.find(AcceptButton).prop('onButtonClick')()
+
+      expect(onAcceptButtonClick).toHaveBeenCalled()
+    })
+
+    it('without prop', () => {
+      const onAcceptButtonClick = jest.fn()
+
+      const wrapper = mount(<CookieNotice onAcceptButtonClick={undefined} />)
+
+      wrapper.find(AcceptButton).prop('onButtonClick')()
+
+      expect(onAcceptButtonClick).not.toHaveBeenCalled()
+    })
+  })
 })
