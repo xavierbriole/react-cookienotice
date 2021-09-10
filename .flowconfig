@@ -11,5 +11,6 @@
 [lints]
 
 [options]
+sharedmemory.hash_table_pow=21
 
 [strict]

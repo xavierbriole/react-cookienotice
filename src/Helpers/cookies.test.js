@@ -1,12 +1,13 @@
 // @flow
 
 import { setCookie, getCookie, deleteCookie } from './cookies'
+import MockDate from 'mockdate'
 
 describe('cookies', () => {
-  jest.spyOn(Date, 'now').mockImplementation(() => 1593078841567)
-
   describe('setCookie', () => {
     beforeEach(() => {
+      MockDate.set(new Date('2020-06-25T05:54:01'))
+
       Object.defineProperty(window.document, 'cookie', {
         writable: true,
         value: '',
