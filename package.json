@@ -71,6 +71,6 @@
   ],
   "dependencies": {
     "clsx": "^1.1.1",
-    "styled-components": "^4.4.1"
+    "styled-components": "^5.3.1"
   }
 }
