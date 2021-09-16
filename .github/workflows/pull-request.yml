@@ -20,9 +20,6 @@ jobs:
       - name: Install Packages
         run: yarn install --frozen-lockfile
 
-      - name: Run flow
-        run: yarn run flow
-
       - name: Run tests
         run: yarn run test
 

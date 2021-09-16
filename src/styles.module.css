@@ -1,0 +1,153 @@
+.react-cookienotice-stick-to-bottom {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  z-index: 1201;
+}
+
+.react-cookienotice-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 290px;
+  opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 24px 32px, rgba(0, 0, 0, 0.1) 0px 8px 32px;
+  margin: 0 auto 48px;
+  background: #ffffff;
+  font-size: 16px;
+  padding: 16px;
+  border-radius: 32px;
+}
+
+.react-cookienotice-icon::before {
+  content: '🍪';
+  font-size: 2em;
+}
+
+.react-cookienotice-text {
+  color: #000000;
+  font-size: 0.8em;
+  margin: 0 20px;
+}
+
+.react-cookienotice-buttons-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.react-cookienotice-accept-button {
+  border-style: none;
+  color: #000000;
+  width: 100%;
+  font-size: 0.8em;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 12px 24px;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  transition: all 0.5s ease 0s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.react-cookienotice-accept-button:hover {
+  background: #ffffff;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+.react-cookienotice-accept-button:active {
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.react-cookienotice-accept-button:focus {
+  outline: 0;
+}
+
+.react-cookienotice-read-more-button {
+  font-size: 0.8em;
+  height: auto;
+  color: #b5b5b5;
+  padding: 10px 18px;
+  border: 1px solid #b5b5b5;
+  border-radius: 24px;
+  box-shadow: none;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.5s ease 0s;
+  margin: 5px;
+}
+
+.react-cookienotice-read-more-button:hover {
+  color: #000000;
+  border-color: #000000;
+}
+
+@media screen and (min-width: 320px) {
+  .react-cookienotice-wrapper {
+    max-width: 250px;
+  }
+
+  .react-cookienotice-text {
+    font-size: 0.7em;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .react-cookienotice-wrapper {
+    max-width: 300px;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .react-cookienotice-wrapper {
+    max-width: 350px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .react-cookienotice-wrapper {
+    max-width: 700px;
+  }
+
+  .react-cookienotice-text {
+    font-size: 0.9em;
+  }
+
+  .react-cookienotice-buttons-wrapper {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .react-cookienotice-wrapper {
+    max-width: 900px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .react-cookienotice-wrapper {
+    background: #3a3a3a;
+  }
+
+  .react-cookienotice-text {
+    color: #ffffff;
+  }
+
+  .react-cookienotice-accept-button {
+    background: #323232;
+    color: #ffffff;
+  }
+
+  .react-cookienotice-accept-button:hover {
+    background: #3a3a3a;
+  }
+
+  .react-cookienotice-read-more-button:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+  }
+}

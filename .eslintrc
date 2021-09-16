@@ -1,11 +1,12 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "standard",
     "standard-react",
     "plugin:prettier/recommended",
-    "plugin:react/recommended",
-    "prettier"
+    "prettier/standard",
+    "prettier/react",
+    "plugin:@typescript-eslint/eslint-recommended"
   ],
   "env": {
     "node": true
