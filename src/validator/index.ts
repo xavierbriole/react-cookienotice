@@ -1,3 +1,5 @@
+import { err } from '../helpers/debug'
+
 export const validateAcceptButtonLabel = (
   parameter?: any,
 ): string | undefined => {
@@ -27,8 +29,8 @@ export const validateReadMoreButtonLink = (parameter?: any): string => {
       return parameter
     }
 
-    throw new Error(
-      '[react-cookienotice] readMoreButtonLink parameter should starts with "http://" or "https://"',
+    err(
+      `readMoreButtonLink parameter should starts with "http://" or "https://"`,
     )
   }
 
@@ -61,9 +63,7 @@ export const validateCookieExpiration = (parameter?: any): number => {
       return parameter
     }
 
-    throw new Error(
-      '[react-cookienotice] cookieExpiration parameter should be more than 0 day',
-    )
+    err(`cookieExpiration parameter should be more than 0 day`)
   }
 
   return 30
@@ -72,15 +72,11 @@ export const validateCookieExpiration = (parameter?: any): number => {
 export const validateCookieName = (parameter?: any): string => {
   if (typeof parameter === 'string') {
     if (/\s/.test(parameter)) {
-      throw new Error(
-        '[react-cookienotice] cookieName parameter should not contain whitespace',
-      )
+      err(`cookieName parameter should not contain whitespace`)
     }
 
     if (parameter === '') {
-      throw new Error(
-        '[react-cookienotice] cookieName parameter should have at least one character',
-      )
+      err(`cookieName parameter should have at least one character`)
     }
 
     return parameter

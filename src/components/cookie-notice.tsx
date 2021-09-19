@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import styles from '../styles.module.css'
 
@@ -7,6 +7,7 @@ import Text from './text'
 import Buttons from './buttons'
 
 import { setCookie, getCookie } from '../helpers/cookies'
+import { warn } from '../helpers/debug'
 import { formatMessage } from '../intl/format'
 import {
   validateAcceptButtonLabel,
@@ -39,18 +40,21 @@ const CookieNotice: React.FC<CookieNoticeProps> = ({
   cookieName,
   onAcceptButtonClick,
 }) => {
+  const validCookieExpiration = validateCookieExpiration(cookieExpiration)
   const validCookieName = validateCookieName(cookieName)
   const userCookiesAllowed = getCookie(validCookieName) === 'true'
 
   const [cookiesAllowed, setCookiesAllowed] = React.useState(userCookiesAllowed)
 
+  useEffect(() => {
+    warn(
+      'BREAKING CHANGE: With version >= 4.0.0 you also need to import the css file (read: https://github.com/xavierbriole/react-cookienotice#usage)',
+    )
+  }, [])
+
   const handleAcceptButtonClick = () => {
     setCookiesAllowed(true)
-    setCookie(
-      validCookieName,
-      'true',
-      validateCookieExpiration(cookieExpiration),
-    )
+    setCookie(validCookieName, 'true', validCookieExpiration)
     onAcceptButtonClick && onAcceptButtonClick()
   }
 
