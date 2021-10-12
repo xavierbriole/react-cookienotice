@@ -2,6 +2,12 @@
 
 > A lightweight & customizable cookie banner for your React App
 
+- 🍃 No dependency, full self-made package (1.3 kB)
+- 📱 Mobile first & responsive
+- ⚙️ Customizable with several props
+- 🍕 Very fast setup (less than 1 minute)
+- 🧪 Tested with functionals tests
+
 ![Preview Light](screenshots/light.png)
 ![Preview Dark](screenshots/dark.png)
 
