@@ -10,14 +10,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 290px;
+  flex-direction: column;
+  max-width: 100%;
   opacity: 1;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 24px 32px, rgba(0, 0, 0, 0.1) 0px 8px 32px;
-  margin: 0 auto 48px;
+  margin: 0;
   background: #ffffff;
   font-size: 16px;
   padding: 16px;
-  border-radius: 32px;
+  border-radius: 0;
 }
 
 .react-cookienotice-icon::before {
@@ -28,7 +29,7 @@
 .react-cookienotice-text {
   color: #000000;
   font-size: 0.8em;
-  margin: 0 20px;
+  margin: 20px;
 }
 
 .react-cookienotice-buttons-wrapper {
@@ -86,35 +87,22 @@
   border-color: #000000;
 }
 
-@media screen and (min-width: 320px) {
-  .react-cookienotice-wrapper {
-    max-width: 250px;
-  }
-
-  .react-cookienotice-text {
-    font-size: 0.7em;
-  }
-}
-
 @media screen and (min-width: 375px) {
   .react-cookienotice-wrapper {
     max-width: 300px;
+    flex-direction: row;
+    margin: 0 auto 48px;
+    border-radius: 32px;
   }
-}
 
-@media screen and (min-width: 425px) {
-  .react-cookienotice-wrapper {
-    max-width: 350px;
+  .react-cookienotice-text {
+    margin: 0 20px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .react-cookienotice-wrapper {
-    max-width: 700px;
-  }
-
-  .react-cookienotice-text {
-    font-size: 0.9em;
+    max-width: 540px;
   }
 
   .react-cookienotice-buttons-wrapper {
@@ -124,7 +112,13 @@
 
 @media screen and (min-width: 1024px) {
   .react-cookienotice-wrapper {
-    max-width: 900px;
+    max-width: 720px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .react-cookienotice-wrapper {
+    max-width: 1016px;
   }
 }
 
