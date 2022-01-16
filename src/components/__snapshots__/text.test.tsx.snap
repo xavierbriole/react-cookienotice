@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text should render 1`] = `
+<div
+  class="react-cookienotice-text"
+>
+  <span>
+    cookieTextLabel
+  </span>
+</div>
+`;
