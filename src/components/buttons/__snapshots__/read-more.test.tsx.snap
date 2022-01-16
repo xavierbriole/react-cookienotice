@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReadMoreButton with open in new tab false should render 1`] = `
+<a
+  class="react-cookienotice-read-more-button"
+  href="readMoreButtonLink"
+  target="_self"
+>
+  readMoreButtonLabel
+</a>
+`;
+
+exports[`ReadMoreButton with open in new tab true should render 1`] = `
+<a
+  class="react-cookienotice-read-more-button"
+  href="readMoreButtonLink"
+  rel="noreferrer"
+  target="_blank"
+>
+  readMoreButtonLabel
+</a>
+`;
