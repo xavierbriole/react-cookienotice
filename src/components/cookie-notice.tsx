@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
 import styles from '../styles.module.css'
 
@@ -44,7 +44,7 @@ const CookieNotice: React.FC<CookieNoticeProps> = ({
   const validCookieName = validateCookieName(cookieName)
   const userCookiesAllowed = getCookie(validCookieName) === 'true'
 
-  const [cookiesAllowed, setCookiesAllowed] = React.useState(userCookiesAllowed)
+  const [cookiesAllowed, setCookiesAllowed] = useState(userCookiesAllowed)
 
   useEffect(() => {
     warn(
@@ -52,11 +52,11 @@ const CookieNotice: React.FC<CookieNoticeProps> = ({
     )
   }, [])
 
-  const handleAcceptButtonClick = () => {
+  const handleAcceptButtonClick = useCallback(() => {
     setCookiesAllowed(true)
     setCookie(validCookieName, 'true', validCookieExpiration)
     onAcceptButtonClick && onAcceptButtonClick()
-  }
+  }, [])
 
   if (cookiesAllowed) {
     return null
