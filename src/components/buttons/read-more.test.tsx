@@ -18,18 +18,6 @@ describe('ReadMoreButton', () => {
       expect(container.firstChild).toMatchSnapshot()
     })
 
-    it('should display read more button label', () => {
-      const { getByText } = render(
-        <ReadMoreButton
-          readMoreButtonLabel='readMoreButtonLabel'
-          readMoreButtonLink='readMoreButtonLink'
-          readMoreButtonOpenInNewTab={false}
-        />,
-      )
-
-      expect(getByText('readMoreButtonLabel')).toBeInTheDocument()
-    })
-
     it('should have right attributes', () => {
       const { getByText } = render(
         <ReadMoreButton
@@ -40,8 +28,6 @@ describe('ReadMoreButton', () => {
       )
 
       const readMoreButton = getByText('readMoreButtonLabel')
-
-      readMoreButton.click()
 
       expect(readMoreButton.getAttribute('target')).toBe('_self')
       expect(readMoreButton.getAttribute('rel')).toBe(null)
@@ -61,18 +47,6 @@ describe('ReadMoreButton', () => {
       expect(container.firstChild).toMatchSnapshot()
     })
 
-    it('should display read more button label', () => {
-      const { getByText } = render(
-        <ReadMoreButton
-          readMoreButtonLabel='readMoreButtonLabel'
-          readMoreButtonLink='readMoreButtonLink'
-          readMoreButtonOpenInNewTab={true}
-        />,
-      )
-
-      expect(getByText('readMoreButtonLabel')).toBeInTheDocument()
-    })
-
     it('should have right attributes', () => {
       const { getByText } = render(
         <ReadMoreButton
@@ -84,10 +58,20 @@ describe('ReadMoreButton', () => {
 
       const readMoreButton = getByText('readMoreButtonLabel')
 
-      readMoreButton.click()
-
       expect(readMoreButton.getAttribute('target')).toBe('_blank')
       expect(readMoreButton.getAttribute('rel')).toBe('noreferrer')
     })
+  })
+
+  it('should display read more button label', () => {
+    const { getByText } = render(
+      <ReadMoreButton
+        readMoreButtonLabel='readMoreButtonLabel'
+        readMoreButtonLink='readMoreButtonLink'
+        readMoreButtonOpenInNewTab={false}
+      />,
+    )
+
+    expect(getByText('readMoreButtonLabel')).toBeInTheDocument()
   })
 })
