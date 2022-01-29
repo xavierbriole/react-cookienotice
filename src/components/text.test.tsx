@@ -5,6 +5,10 @@ import '@testing-library/jest-dom'
 import Text from './text'
 
 describe('Text', () => {
+  beforeEach(() => {
+    jest.resetAllMocks()
+  })
+
   it('should render', () => {
     const { container } = render(<Text cookieTextLabel='cookieTextLabel' />)
 

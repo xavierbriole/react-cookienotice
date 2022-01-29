@@ -4,6 +4,10 @@ import { render } from '@testing-library/react'
 import Buttons from './index'
 
 describe('Buttons', () => {
+  beforeEach(() => {
+    jest.resetAllMocks()
+  })
+
   describe('with open in new tab false', () => {
     it('should render', () => {
       const { container } = render(
