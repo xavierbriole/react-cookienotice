@@ -1,6 +1,10 @@
 import { formatMessage } from './format'
 
 describe('formatMessage', () => {
+  beforeEach(() => {
+    jest.resetAllMocks()
+  })
+
   it('should return a formatted message', () => {
     const mockedConsoleError = jest
       .spyOn(console, 'error')

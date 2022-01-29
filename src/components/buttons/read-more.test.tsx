@@ -5,6 +5,10 @@ import '@testing-library/jest-dom'
 import ReadMoreButton from './read-more'
 
 describe('ReadMoreButton', () => {
+  beforeEach(() => {
+    jest.resetAllMocks()
+  })
+
   describe('with open in new tab false', () => {
     it('should render', () => {
       const { container } = render(

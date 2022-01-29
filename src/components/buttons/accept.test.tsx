@@ -5,6 +5,10 @@ import '@testing-library/jest-dom'
 import AcceptButton from './accept'
 
 describe('AcceptButton', () => {
+  beforeEach(() => {
+    jest.resetAllMocks()
+  })
+
   it('should render', () => {
     const { container } = render(
       <AcceptButton

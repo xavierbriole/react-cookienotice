@@ -3,6 +3,10 @@ import MockDate from 'mockdate'
 import { setCookie, getCookie } from './cookies'
 
 describe('cookies', () => {
+  beforeEach(() => {
+    jest.resetAllMocks()
+  })
+
   it('should set cookie', () => {
     MockDate.set(new Date('2020-06-25T05:54:01'))
 
