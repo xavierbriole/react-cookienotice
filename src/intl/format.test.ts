@@ -1,27 +1,50 @@
 import { formatMessage } from './format'
 
-describe('formatMessage', () => {
+import messages from './messages'
+
+describe('format', () => {
   beforeEach(() => {
     jest.resetAllMocks()
   })
 
-  it('should return a formatted message', () => {
-    const mockedConsoleError = jest
-      .spyOn(console, 'error')
-      .mockImplementation(() => {})
+  describe('formatMessage', () => {
+    describe('with valid message', () => {
+      describe.each(Object.keys(messages))('%s', (language) => {
+        it.each(Object.keys(messages[language]))('%s', (id) => {
+          Object.defineProperty(navigator, 'language', {
+            writable: true,
+            value: language,
+          })
 
-    expect(formatMessage('message')).toBe('message')
-    expect(mockedConsoleError).toHaveBeenCalledWith(
-      '[intl] no message found for id "message"',
-    )
-  })
+          expect(formatMessage(id)).toBe(messages[language][id])
+        })
+      })
 
-  it('should return overriden message', () => {
-    const mockedConsoleError = jest
-      .spyOn(console, 'error')
-      .mockImplementation(() => {})
+      describe('unsupported language (fallback to en)', () => {
+        it.each(Object.keys(messages.en))('%s', (id) => {
+          Object.defineProperty(navigator, 'language', {
+            writable: true,
+            value: 'unsupported',
+          })
 
-    expect(formatMessage('message', 'override')).toBe('override')
-    expect(mockedConsoleError).not.toHaveBeenCalled()
+          expect(formatMessage(id)).toBe(messages.en[id])
+        })
+      })
+    })
+
+    it('with invalid message', () => {
+      const mockedConsoleError = jest
+        .spyOn(console, 'error')
+        .mockImplementation(() => {})
+
+      expect(formatMessage('invalid')).toBe('invalid')
+      expect(mockedConsoleError).toHaveBeenCalledWith(
+        '[intl] no message found for id "invalid"',
+      )
+    })
+
+    it('with overriden message', () => {
+      expect(formatMessage('message', 'override')).toBe('override')
+    })
   })
 })
