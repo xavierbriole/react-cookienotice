@@ -31,8 +31,8 @@
     "test:build": "run-s build",
     "test:format": "prettier --check .",
     "test:lint": "eslint .",
-    "test:unit": "cross-env TZ=America/New_York CI=1 react-scripts test --env=jsdom --colors --coverage",
-    "test:watch": "react-scripts test --env=jsdom",
+    "test:unit": "cross-env TZ=America/New_York CI=1 react-scripts test --env=jsdom --colors --coverage --collectCoverageFrom='[\"src/**/*.{ts,tsx}\",\"!src/**/*.stories.tsx\"]'",
+    "test:watch": "cross-env TZ=America/New_York react-scripts test --env=jsdom",
     "start-storybook": "start-storybook -c .storybook -p 9001"
   },
   "peerDependencies": {
