@@ -19,27 +19,73 @@ import {
   validateCookieName,
 } from '../validator'
 
-interface CookieNoticeProps {
+export interface CookieNoticeProps {
+  /**
+   * The label for the accept button.
+   * @default 'Accept'
+   */
   acceptButtonLabel?: string
-  readMoreButtonLabel?: string
-  readMoreButtonLink?: string
-  readMoreButtonOpenInNewTab?: boolean
-  cookieTextLabel?: string
-  cookieExpiration?: number
-  cookieName?: string
+  /**
+   * A callback function to be called when the accept button is clicked.
+   */
   onAcceptButtonClick?: () => void
+  /**
+   * The label for the read more button.
+   * @default 'Read more'
+   */
+  readMoreButtonLabel?: string
+  /**
+   * The link for the read more button.
+   * @default 'http://aboutcookies.org/'
+   */
+  readMoreButtonLink?: string
+  /**
+   * Whether the read more button should open in a new tab.
+   * @default true
+   */
+  readMoreButtonOpenInNewTab?: boolean
+  /**
+   * The text for the cookie banner.
+   * @default 'This website uses cookies to improve your browsing experience.'
+   */
+  cookieTextLabel?: string
+  /**
+   * Days after cookie expires and user should reaccept cookies.
+   * @default 30
+   */
+  cookieExpiration?: number
+  /**
+   * The name of the cookie that saves the user consent.
+   * @default 'allow-cookies'
+   */
+  cookieName?: string
 }
 
-const CookieNotice: React.FC<CookieNoticeProps> = ({
+/**
+ * The cookie banner.
+ *
+ * @example
+ * <CookieNotice
+ *   acceptButtonLabel='Accept'
+ *   onAcceptButtonClick={() => {}}
+ *   readMoreButtonLabel='Read more'
+ *   readMoreButtonLink='http://aboutcookies.org/'
+ *   readMoreButtonOpenInNewTab={true}
+ *   cookieTextLabel='This website uses cookies to improve your browsing experience.'
+ *   cookieExpiration={30}
+ *   cookieName='allow-cookies'
+ * />
+ */
+const CookieNotice = ({
   acceptButtonLabel,
+  onAcceptButtonClick,
   readMoreButtonLabel,
   readMoreButtonLink,
   readMoreButtonOpenInNewTab,
   cookieTextLabel,
   cookieExpiration,
   cookieName,
-  onAcceptButtonClick,
-}) => {
+}: CookieNoticeProps) => {
   const validCookieExpiration = validateCookieExpiration(cookieExpiration)
   const validCookieName = validateCookieName(cookieName)
   const userCookiesAllowed = getCookie(validCookieName) === 'true'
