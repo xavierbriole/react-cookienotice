@@ -7,8 +7,8 @@
 [![NPM](https://img.shields.io/npm/v/react-cookienotice.svg)](https://www.npmjs.com/package/react-cookienotice)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![codecov](https://codecov.io/gh/xavierbriole/react-cookienotice/branch/master/graph/badge.svg?token=256VJO28DU)](https://codecov.io/gh/xavierbriole/react-cookienotice)
-![npm-publish](https://github.com/xavierbriole/react-cookienotice/workflows/npm-publish/badge.svg)
-![downloads](https://img.shields.io/badge/dynamic/json?color=blue&label=downloads&query=downloads&suffix=%2Fmonth&url=https%3A%2F%2Fapi.npmjs.org%2Fdownloads%2Fpoint%2Flast-month%2Freact-cookienotice)
+[![npm-publish](https://github.com/xavierbriole/react-cookienotice/workflows/npm-publish/badge.svg)](https://github.com/xavierbriole/react-cookienotice/actions/workflows/npm-publish.yml)
+[![downloads](https://img.shields.io/badge/dynamic/json?color=blue&label=downloads&query=downloads&suffix=%2Fmonth&url=https%3A%2F%2Fapi.npmjs.org%2Fdownloads%2Fpoint%2Flast-month%2Freact-cookienotice)](http://npm-stats.org/#/react-cookienotice)
 [![live-preview](https://img.shields.io/badge/Live%20Preview-green.svg)](https://react-cookienotice.vercel.app)
 
 - 🍃 No dependency, full self-made package (1.3 kB - [BundlePhobia](https://bundlephobia.com/package/react-cookienotice))
