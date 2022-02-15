@@ -13,7 +13,7 @@ function App() {
         <button
           className='App-button'
           onClick={() => {
-            window.document.cookie = 'allow-cookies='
+            window.document.cookie = 'hide-notice='
             window.location.reload()
           }}
         >
