@@ -1,5 +1,6 @@
 {
-  "text.cookieTextLabel": "Ce site utilise les cookies pour améliorer votre expérience de navigation.",
-  "buttons.accept.acceptButtonLabel": "Accepter",
-  "buttons.readMore.readMoreButtonLabel": "En savoir plus"
+  "text.title": "Consentement aux cookies",
+  "text.description": "En cliquant sur \"Accepter\", vous consentez à l'utilisation de cookies par notre site Web pour vous offrir l'expérience la plus pertinente en mémorisant vos préférences en matière de cookies.",
+  "button.accept": "Accepter",
+  "button.decline": "Refuser"
 }
