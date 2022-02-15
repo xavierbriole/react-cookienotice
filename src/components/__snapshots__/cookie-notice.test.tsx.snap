@@ -21,6 +21,14 @@ exports[`CookieNotice should render 1`] = `
         descriptionLabel
       </span>
     </div>
+    <a
+      class="react-cookienotice-link"
+      href="https://example.com"
+      rel="noreferrer"
+      target="_blank"
+    >
+      readMoreLabel
+    </a>
   </div>
   <div
     class="react-cookienotice-buttons"

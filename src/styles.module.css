@@ -48,6 +48,17 @@
   margin: 0 0 10px;
 }
 
+.react-cookienotice-link {
+  font-size: 0.8em;
+  color: rgb(192, 192, 192);
+  text-decoration: none;
+  transition: color 0.5s ease;
+}
+
+.react-cookienotice-link:hover {
+  color: rgb(35, 157, 228);
+}
+
 .react-cookienotice-buttons {
   display: flex;
   justify-content: space-around;

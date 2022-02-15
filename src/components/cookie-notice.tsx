@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import styles from '../styles.module.css'
 
 import Text from './text'
+import Link from './link'
 import Button from './button'
 
 import { setCookie, getCookie } from '../helpers/cookies'
@@ -10,6 +11,8 @@ import { warn } from '../helpers/debug'
 import { formatMessage } from '../intl/format'
 import {
   validateLabel,
+  validateLink,
+  validateBoolean,
   validateCookieExpiration,
   validateCookieName,
 } from '../validator'
@@ -40,6 +43,18 @@ export interface CookieNoticeProps {
    */
   descriptionLabel?: string
   /**
+   * The label for the read more link.
+   */
+  readMoreLabel?: string
+  /**
+   * The target for the read more link.
+   */
+  readMoreLink?: string
+  /**
+   * Whether the read more link should open in a new tab.
+   */
+  readMoreInNewTab?: boolean
+  /**
    * Days after cookie expires and user should reaccept cookies.
    */
   cookieExpiration?: number
@@ -60,6 +75,9 @@ export interface CookieNoticeProps {
  *   onDeclineButtonClick={() => {}}
  *   titleLabel='titleLabel'
  *   descriptionLabel='descriptionLabel'
+ *   readMoreLabel='readMoreLabel'
+ *   readMoreLink='readMoreLink'
+ *   readMoreInNewTab={true}
  *   cookieExpiration={30}
  *   cookieName='cookieName'
  * />
@@ -71,11 +89,18 @@ const CookieNotice = ({
   onDeclineButtonClick,
   titleLabel,
   descriptionLabel,
+  readMoreLabel,
+  readMoreLink,
+  readMoreInNewTab,
   cookieExpiration,
   cookieName,
 }: CookieNoticeProps) => {
+  const validReadMoreLabel = validateLabel(readMoreLabel)
+  const validReadMoreLink = validateLink(readMoreLink)
+  const validReadMoreInNewTab = validateBoolean(readMoreInNewTab)
   const validCookieExpiration = validateCookieExpiration(cookieExpiration)
   const validCookieName = validateCookieName(cookieName)
+
   const shouldHideNotice = getCookie(validCookieName) === 'true'
 
   const [hideNotice, setHideNotice] = useState(shouldHideNotice)
@@ -111,6 +136,13 @@ const CookieNotice = ({
         <Text className={styles['react-cookienotice-description']}>
           {formatMessage('text.description', validateLabel(descriptionLabel))}
         </Text>
+        {validReadMoreLabel &&
+          validReadMoreLink &&
+          typeof validReadMoreInNewTab === 'boolean' && (
+            <Link to={validReadMoreLink} newTab={validReadMoreInNewTab}>
+              {validReadMoreLabel}
+            </Link>
+          )}
       </div>
       <div className={styles['react-cookienotice-buttons']}>
         <Button
