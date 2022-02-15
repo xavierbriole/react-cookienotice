@@ -2,19 +2,14 @@ import React, { useState, useEffect, useCallback } from 'react'
 
 import styles from '../styles.module.css'
 
-import Icon from './icon'
 import Text from './text'
-import Buttons from './buttons'
+import Button from './button'
 
 import { setCookie, getCookie } from '../helpers/cookies'
 import { warn } from '../helpers/debug'
 import { formatMessage } from '../intl/format'
 import {
-  validateAcceptButtonLabel,
-  validateReadMoreButtonLabel,
-  validateReadMoreButtonLink,
-  validateReadMoreButtonOpenInNewTab,
-  validateCookieTextLabel,
+  validateLabel,
   validateCookieExpiration,
   validateCookieName,
 } from '../validator'
@@ -22,7 +17,6 @@ import {
 export interface CookieNoticeProps {
   /**
    * The label for the accept button.
-   * @default 'Accept'
    */
   acceptButtonLabel?: string
   /**
@@ -30,33 +24,27 @@ export interface CookieNoticeProps {
    */
   onAcceptButtonClick?: () => void
   /**
-   * The label for the read more button.
-   * @default 'Read more'
+   * The label for the decline button.
    */
-  readMoreButtonLabel?: string
+  declineButtonLabel?: string
   /**
-   * The link for the read more button.
-   * @default 'http://aboutcookies.org/'
+   * A callback function to be called when the decline button is clicked.
    */
-  readMoreButtonLink?: string
+  onDeclineButtonClick?: () => void
   /**
-   * Whether the read more button should open in a new tab.
-   * @default true
+   * The title for the cookie banner.
    */
-  readMoreButtonOpenInNewTab?: boolean
+  titleLabel?: string
   /**
-   * The text for the cookie banner.
-   * @default 'This website uses cookies to improve your browsing experience.'
+   * The description for the cookie banner.
    */
-  cookieTextLabel?: string
+  descriptionLabel?: string
   /**
    * Days after cookie expires and user should reaccept cookies.
-   * @default 30
    */
   cookieExpiration?: number
   /**
    * The name of the cookie that saves the user consent.
-   * @default 'allow-cookies'
    */
   cookieName?: string
 }
@@ -66,31 +54,31 @@ export interface CookieNoticeProps {
  *
  * @example
  * <CookieNotice
- *   acceptButtonLabel='Accept'
+ *   acceptButtonLabel='acceptButtonLabel'
  *   onAcceptButtonClick={() => {}}
- *   readMoreButtonLabel='Read more'
- *   readMoreButtonLink='http://aboutcookies.org/'
- *   readMoreButtonOpenInNewTab={true}
- *   cookieTextLabel='This website uses cookies to improve your browsing experience.'
+ *   declineButtonLabel='declineButtonLabel'
+ *   onDeclineButtonClick={() => {}}
+ *   titleLabel='titleLabel'
+ *   descriptionLabel='descriptionLabel'
  *   cookieExpiration={30}
- *   cookieName='allow-cookies'
+ *   cookieName='cookieName'
  * />
  */
 const CookieNotice = ({
   acceptButtonLabel,
   onAcceptButtonClick,
-  readMoreButtonLabel,
-  readMoreButtonLink,
-  readMoreButtonOpenInNewTab,
-  cookieTextLabel,
+  declineButtonLabel,
+  onDeclineButtonClick,
+  titleLabel,
+  descriptionLabel,
   cookieExpiration,
   cookieName,
 }: CookieNoticeProps) => {
   const validCookieExpiration = validateCookieExpiration(cookieExpiration)
   const validCookieName = validateCookieName(cookieName)
-  const userCookiesAllowed = getCookie(validCookieName) === 'true'
+  const shouldHideNotice = getCookie(validCookieName) === 'true'
 
-  const [cookiesAllowed, setCookiesAllowed] = useState(userCookiesAllowed)
+  const [hideNotice, setHideNotice] = useState(shouldHideNotice)
 
   useEffect(() => {
     warn(
@@ -99,42 +87,46 @@ const CookieNotice = ({
   }, [])
 
   const handleAcceptButtonClick = useCallback(() => {
-    setCookiesAllowed(true)
+    setHideNotice(true)
     setCookie(validCookieName, 'true', validCookieExpiration)
     onAcceptButtonClick && onAcceptButtonClick()
   }, [])
 
-  if (cookiesAllowed) {
+  const handleDeclineButtonClick = useCallback(() => {
+    setHideNotice(true)
+    setCookie(validCookieName, 'true', validCookieExpiration)
+    onDeclineButtonClick && onDeclineButtonClick()
+  }, [])
+
+  if (hideNotice) {
     return null
   }
 
   return (
     <div className={styles['react-cookienotice-root']}>
-      <div className={styles['react-cookienotice-stick-to-bottom']}>
-        <div className={styles['react-cookienotice-wrapper']}>
-          <Icon />
-          <Text
-            cookieTextLabel={formatMessage(
-              'text.cookieTextLabel',
-              validateCookieTextLabel(cookieTextLabel),
-            )}
-          />
-          <Buttons
-            acceptButtonLabel={formatMessage(
-              'buttons.accept.acceptButtonLabel',
-              validateAcceptButtonLabel(acceptButtonLabel),
-            )}
-            handleAcceptButtonClick={handleAcceptButtonClick}
-            readMoreButtonLabel={formatMessage(
-              'buttons.readMore.readMoreButtonLabel',
-              validateReadMoreButtonLabel(readMoreButtonLabel),
-            )}
-            readMoreButtonLink={validateReadMoreButtonLink(readMoreButtonLink)}
-            readMoreButtonOpenInNewTab={validateReadMoreButtonOpenInNewTab(
-              readMoreButtonOpenInNewTab,
-            )}
-          />
-        </div>
+      <div className={styles['react-cookienotice-body']}>
+        <Text className={styles['react-cookienotice-title']}>
+          {formatMessage('text.title', validateLabel(titleLabel))}
+        </Text>
+        <Text className={styles['react-cookienotice-description']}>
+          {formatMessage('text.description', validateLabel(descriptionLabel))}
+        </Text>
+      </div>
+      <div className={styles['react-cookienotice-buttons']}>
+        <Button
+          label={formatMessage(
+            'button.accept',
+            validateLabel(acceptButtonLabel),
+          )}
+          onClick={handleAcceptButtonClick}
+        />
+        <Button
+          label={formatMessage(
+            'button.decline',
+            validateLabel(declineButtonLabel),
+          )}
+          onClick={handleDeclineButtonClick}
+        />
       </div>
     </div>
   )
