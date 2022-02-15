@@ -5,40 +5,36 @@ exports[`CookieNotice should render 1`] = `
   class="react-cookienotice-root"
 >
   <div
-    class="react-cookienotice-stick-to-bottom"
+    class="react-cookienotice-body"
   >
     <div
-      class="react-cookienotice-wrapper"
+      class="react-cookienotice-title"
     >
-      <div
-        class="react-cookienotice-icon"
-      />
-      <div
-        class="react-cookienotice-text"
-      >
-        <span>
-          cookieTextLabel
-        </span>
-      </div>
-      <div
-        class="react-cookienotice-buttons-wrapper"
-      >
-        <button
-          class="react-cookienotice-accept-button"
-        >
-          <span>
-            acceptButtonLabel
-          </span>
-        </button>
-        <a
-          class="react-cookienotice-read-more-button"
-          href="http://aboutcookies.org/"
-          target="_self"
-        >
-          readMoreButtonLabel
-        </a>
-      </div>
+      <span>
+        titleLabel
+      </span>
     </div>
+    <div
+      class="react-cookienotice-description"
+    >
+      <span>
+        descriptionLabel
+      </span>
+    </div>
+  </div>
+  <div
+    class="react-cookienotice-buttons"
+  >
+    <button
+      class="react-cookienotice-button"
+    >
+      acceptButtonLabel
+    </button>
+    <button
+      class="react-cookienotice-button"
+    >
+      declineButtonLabel
+    </button>
   </div>
 </div>
 `;
