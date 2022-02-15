@@ -10,23 +10,23 @@ describe('Button', () => {
   })
 
   it('should render', () => {
-    const { container } = render(<Button label='label' onClick={() => {}} />)
+    const { container } = render(<Button onClick={() => {}}>children</Button>)
 
     expect(container.firstChild).toMatchSnapshot()
   })
 
-  it('should display label', () => {
-    const { getByText } = render(<Button label='label' />)
+  it('should display children', () => {
+    const { getByText } = render(<Button>children</Button>)
 
-    expect(getByText('label')).toBeInTheDocument()
+    expect(getByText('children')).toBeInTheDocument()
   })
 
   it('should call onClick', () => {
     const onClick = jest.fn()
 
-    const { getByText } = render(<Button label='label' onClick={onClick} />)
+    const { getByText } = render(<Button onClick={onClick}>children</Button>)
 
-    const button = getByText('label')
+    const button = getByText('children')
 
     button.click()
 
