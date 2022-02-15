@@ -4,6 +4,6 @@ exports[`Button should render 1`] = `
 <button
   class="react-cookienotice-button"
 >
-  label
+  children
 </button>
 `;

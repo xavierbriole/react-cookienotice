@@ -145,20 +145,12 @@ const CookieNotice = ({
           )}
       </div>
       <div className={styles['react-cookienotice-buttons']}>
-        <Button
-          label={formatMessage(
-            'button.accept',
-            validateLabel(acceptButtonLabel),
-          )}
-          onClick={handleAcceptButtonClick}
-        />
-        <Button
-          label={formatMessage(
-            'button.decline',
-            validateLabel(declineButtonLabel),
-          )}
-          onClick={handleDeclineButtonClick}
-        />
+        <Button onClick={handleAcceptButtonClick}>
+          {formatMessage('button.accept', validateLabel(acceptButtonLabel))}
+        </Button>
+        <Button onClick={handleDeclineButtonClick}>
+          {formatMessage('button.decline', validateLabel(declineButtonLabel))}
+        </Button>
       </div>
     </div>
   )

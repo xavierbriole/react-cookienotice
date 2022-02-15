@@ -3,13 +3,13 @@ import React from 'react'
 import styles from '../styles.module.css'
 
 interface ButtonProps {
-  label: string
   onClick?: () => void
+  children: React.ReactNode
 }
 
-const Button = ({ label, onClick }: ButtonProps) => (
+const Button = ({ onClick, children }: ButtonProps) => (
   <button className={styles['react-cookienotice-button']} onClick={onClick}>
-    {label}
+    {children}
   </button>
 )
 
