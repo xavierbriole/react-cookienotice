@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link should render 1`] = `
+<a
+  class="react-cookienotice-link"
+  href="#"
+  rel="noreferrer"
+  target="_blank"
+>
+  children
+</a>
+`;

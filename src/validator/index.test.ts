@@ -1,4 +1,10 @@
-import { validateLabel, validateCookieExpiration, validateCookieName } from '.'
+import {
+  validateLabel,
+  validateLink,
+  validateBoolean,
+  validateCookieExpiration,
+  validateCookieName,
+} from '.'
 
 import { err } from '../helpers/debug'
 
@@ -18,6 +24,36 @@ describe('validator', () => {
 
     it('with no parameter', () => {
       expect(validateLabel(undefined)).toBeUndefined()
+    })
+  })
+
+  describe('should validate link', () => {
+    describe('with string', () => {
+      it('with http://', () => {
+        expect(validateLink('http://')).toBe('http://')
+      })
+
+      it('with https://', () => {
+        expect(validateLink('https://')).toBe('https://')
+      })
+
+      it('with invalid url', () => {
+        validateLink('invalid')
+
+        expect(err).toHaveBeenCalledWith(
+          'a link should start with "http://" or "https://"',
+        )
+      })
+    })
+  })
+
+  describe('should validate boolean', () => {
+    it('with boolean', () => {
+      expect(validateBoolean(true)).toBe(true)
+    })
+
+    it('with no parameter', () => {
+      expect(validateBoolean(undefined)).toBeUndefined()
     })
   })
 

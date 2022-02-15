@@ -25,12 +25,54 @@ describe('CookieNotice', () => {
         onDeclineButtonClick={() => {}}
         titleLabel='titleLabel'
         descriptionLabel='descriptionLabel'
+        readMoreLabel='readMoreLabel'
+        readMoreLink='https://example.com'
+        readMoreInNewTab={true}
         cookieExpiration={1}
         cookieName='cookieName'
       />,
     )
 
     expect(container.firstChild).toMatchSnapshot()
+  })
+
+  describe('should maybe display read more link', () => {
+    it('successfully', () => {
+      const { getByText } = render(
+        <CookieNotice
+          acceptButtonLabel='acceptButtonLabel'
+          onAcceptButtonClick={() => {}}
+          declineButtonLabel='declineButtonLabel'
+          onDeclineButtonClick={() => {}}
+          titleLabel='titleLabel'
+          descriptionLabel='descriptionLabel'
+          readMoreLabel='readMoreLabel'
+          readMoreLink='https://example.com'
+          readMoreInNewTab={true}
+          cookieExpiration={1}
+          cookieName='cookieName'
+        />,
+      )
+
+      expect(getByText('readMoreLabel')).toBeInTheDocument()
+    })
+
+    it('with failure', () => {
+      const { getByText } = render(
+        <CookieNotice
+          acceptButtonLabel='acceptButtonLabel'
+          onAcceptButtonClick={() => {}}
+          declineButtonLabel='declineButtonLabel'
+          onDeclineButtonClick={() => {}}
+          titleLabel='titleLabel'
+          descriptionLabel='descriptionLabel'
+          cookieExpiration={1}
+          cookieName='cookieName'
+        />,
+      )
+
+      expect(() => getByText('readMoreLabel')).toThrow()
+    })
   })
 
   describe('after accept button click', () => {
@@ -43,6 +85,9 @@ describe('CookieNotice', () => {
           onDeclineButtonClick={() => {}}
           titleLabel='titleLabel'
           descriptionLabel='descriptionLabel'
+          readMoreLabel='readMoreLabel'
+          readMoreLink='https://example.com'
+          readMoreInNewTab={true}
           cookieExpiration={1}
           cookieName='cookieName'
         />,
@@ -64,6 +109,9 @@ describe('CookieNotice', () => {
           onDeclineButtonClick={() => {}}
           titleLabel='titleLabel'
           descriptionLabel='descriptionLabel'
+          readMoreLabel='readMoreLabel'
+          readMoreLink='https://example.com'
+          readMoreInNewTab={true}
           cookieExpiration={1}
           cookieName='cookieName'
         />,
@@ -86,6 +134,9 @@ describe('CookieNotice', () => {
           onDeclineButtonClick={() => {}}
           titleLabel='titleLabel'
           descriptionLabel='descriptionLabel'
+          readMoreLabel='readMoreLabel'
+          readMoreLink='https://example.com'
+          readMoreInNewTab={true}
           cookieExpiration={1}
           cookieName='cookieName'
         />,
@@ -111,6 +162,9 @@ describe('CookieNotice', () => {
             onDeclineButtonClick={() => {}}
             titleLabel='titleLabel'
             descriptionLabel='descriptionLabel'
+            readMoreLabel='readMoreLabel'
+            readMoreLink='https://example.com'
+            readMoreInNewTab={true}
             cookieExpiration={1}
             cookieName='cookieName'
           />,
@@ -133,6 +187,9 @@ describe('CookieNotice', () => {
             onDeclineButtonClick={() => {}}
             titleLabel='titleLabel'
             descriptionLabel='descriptionLabel'
+            readMoreLabel='readMoreLabel'
+            readMoreLink='https://example.com'
+            readMoreInNewTab={true}
             cookieExpiration={1}
             cookieName='cookieName'
           />,
@@ -157,6 +214,9 @@ describe('CookieNotice', () => {
           onDeclineButtonClick={() => {}}
           titleLabel='titleLabel'
           descriptionLabel='descriptionLabel'
+          readMoreLabel='readMoreLabel'
+          readMoreLink='https://example.com'
+          readMoreInNewTab={true}
           cookieExpiration={1}
           cookieName='cookieName'
         />,
@@ -178,6 +238,9 @@ describe('CookieNotice', () => {
           onDeclineButtonClick={() => {}}
           titleLabel='titleLabel'
           descriptionLabel='descriptionLabel'
+          readMoreLabel='readMoreLabel'
+          readMoreLink='https://example.com'
+          readMoreInNewTab={true}
           cookieExpiration={1}
           cookieName='cookieName'
         />,
@@ -200,6 +263,9 @@ describe('CookieNotice', () => {
           onDeclineButtonClick={() => {}}
           titleLabel='titleLabel'
           descriptionLabel='descriptionLabel'
+          readMoreLabel='readMoreLabel'
+          readMoreLink='https://example.com'
+          readMoreInNewTab={true}
           cookieExpiration={1}
           cookieName='cookieName'
         />,
@@ -225,6 +291,9 @@ describe('CookieNotice', () => {
             onDeclineButtonClick={onDeclineButtonClick}
             titleLabel='titleLabel'
             descriptionLabel='descriptionLabel'
+            readMoreLabel='readMoreLabel'
+            readMoreLink='https://example.com'
+            readMoreInNewTab={true}
             cookieExpiration={1}
             cookieName='cookieName'
           />,
@@ -247,6 +316,9 @@ describe('CookieNotice', () => {
             declineButtonLabel='declineButtonLabel'
             titleLabel='titleLabel'
             descriptionLabel='descriptionLabel'
+            readMoreLabel='readMoreLabel'
+            readMoreLink='https://example.com'
+            readMoreInNewTab={true}
             cookieExpiration={1}
             cookieName='cookieName'
           />,

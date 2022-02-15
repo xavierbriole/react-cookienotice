@@ -8,6 +8,29 @@ export const validateLabel = (parameter?: any): string | undefined => {
   return undefined
 }
 
+export const validateLink = (parameter?: any): string | undefined => {
+  if (typeof parameter === 'string') {
+    if (
+      parameter.lastIndexOf('http://', 0) === 0 ||
+      parameter.lastIndexOf('https://', 0) === 0
+    ) {
+      return parameter
+    }
+
+    err(`a link should start with "http://" or "https://"`)
+  }
+
+  return undefined
+}
+
+export const validateBoolean = (parameter?: any): boolean | undefined => {
+  if (typeof parameter === 'boolean') {
+    return parameter
+  }
+
+  return undefined
+}
+
 export const validateCookieExpiration = (parameter?: any): number => {
   if (typeof parameter === 'number') {
     if (parameter > 0) {

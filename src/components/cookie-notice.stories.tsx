@@ -52,6 +52,18 @@ export default {
         },
       },
     },
+    readMoreLabel: {
+      description: 'The label for the read more link.',
+      type: { name: 'string', required: false },
+    },
+    readMoreLink: {
+      description: 'The link for the read more label.',
+      type: { name: 'string', required: false },
+    },
+    readMoreInNewTab: {
+      description: 'Whether the read more link should open in a new tab.',
+      type: { name: 'boolean', required: false },
+    },
     cookieExpiration: {
       description:
         'Days after cookie expires and user should reaccept cookies.',
