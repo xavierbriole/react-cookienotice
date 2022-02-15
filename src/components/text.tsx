@@ -1,26 +1,13 @@
 import React from 'react'
 
-import styles from '../styles.module.css'
-
-export interface TextProps {
-  /**
-   * The label for the text.
-   * @default 'This website uses cookies to improve your browsing experience.'
-   */
-  cookieTextLabel: string
+interface TextProps {
+  className?: string
+  children: React.ReactNode
 }
 
-/**
- * The cookie banner text.
- *
- * @example
- * <Text
- *   cookieTextLabel='This website uses cookies to improve your browsing experience.'
- * />
- */
-const Text = ({ cookieTextLabel }: TextProps) => (
-  <div className={styles['react-cookienotice-text']}>
-    <span>{cookieTextLabel}</span>
+const Text = ({ className, children }: TextProps) => (
+  <div className={className}>
+    <span>{children}</span>
   </div>
 )
 
