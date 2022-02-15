@@ -2,10 +2,10 @@
 
 exports[`Text should render 1`] = `
 <div
-  class="react-cookienotice-text"
+  class="className"
 >
   <span>
-    cookieTextLabel
+    children
   </span>
 </div>
 `;
