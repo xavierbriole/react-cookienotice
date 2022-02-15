@@ -20,54 +20,63 @@
   font-family: 'Work Sans', sans-serif;
   font-weight: 300;
   position: absolute;
-  background: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   height: auto;
   box-shadow: rgb(0 0 0 / 15%) 0px 4px 24px, rgb(0 0 0 / 5%) 0px 2px 6px;
   animation: slideUp 1s ease both;
   animation-delay: 2s;
 }
 
-.react-cookienotice-body {
+.react-cookienotice-root > .react-cookienotice-body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 20px;
+  color: rgb(0, 0, 0);
+  text-align: left;
 }
 
-.react-cookienotice-title {
-  color: rgb(0, 0, 0);
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-title {
   font-size: 1em;
   font-weight: 400;
   margin: 0 0 10px;
 }
 
-.react-cookienotice-description {
-  color: rgb(0, 0, 0);
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-description {
   font-size: 0.8em;
   line-height: 1.5em;
   margin: 0 0 10px;
 }
 
-.react-cookienotice-link {
+.react-cookienotice-root > .react-cookienotice-body > .react-cookienotice-link {
   font-size: 0.8em;
   color: rgb(192, 192, 192);
   text-decoration: none;
   transition: color 0.5s ease;
 }
 
-.react-cookienotice-link:hover {
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-link:hover {
   color: rgb(35, 157, 228);
 }
 
-.react-cookienotice-buttons {
+.react-cookienotice-root > .react-cookienotice-buttons {
   display: flex;
   justify-content: space-around;
 }
 
-.react-cookienotice-button {
+.react-cookienotice-root
+  > .react-cookienotice-buttons
+  > .react-cookienotice-button {
   border: none;
   margin: 0;
-  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
   cursor: pointer;
   text-align: center;
   padding: 10px;
@@ -78,16 +87,22 @@
   outline: none;
 }
 
-.react-cookienotice-button:first-child {
+.react-cookienotice-root
+  > .react-cookienotice-buttons
+  > .react-cookienotice-button:first-child {
   border-bottom-left-radius: 10px;
 }
 
-.react-cookienotice-button:last-child {
+.react-cookienotice-root
+  > .react-cookienotice-buttons
+  > .react-cookienotice-button:last-child {
   border-bottom-right-radius: 10px;
   border-right: none;
 }
 
-.react-cookienotice-button:hover {
+.react-cookienotice-root
+  > .react-cookienotice-buttons
+  > .react-cookienotice-button:hover {
   background-color: rgb(238, 238, 238);
 }
 
@@ -102,25 +117,25 @@
 
 @media (prefers-color-scheme: dark) {
   .react-cookienotice-root {
-    background: rgb(41, 41, 41);
+    background-color: rgb(41, 41, 41);
   }
 
-  .react-cookienotice-title {
+  .react-cookienotice-root > .react-cookienotice-body {
     color: rgb(255, 255, 255);
   }
 
-  .react-cookienotice-description {
-    color: rgb(255, 255, 255);
-  }
-
-  .react-cookienotice-button {
+  .react-cookienotice-root
+    > .react-cookienotice-buttons
+    > .react-cookienotice-button {
     color: rgb(255, 255, 255);
     background-color: rgb(41, 41, 41);
     border-right: 1px solid rgb(51, 51, 51);
     border-top: 1px solid rgb(51, 51, 51);
   }
 
-  .react-cookienotice-button:hover {
+  .react-cookienotice-root
+    > .react-cookienotice-buttons
+    > .react-cookienotice-button:hover {
     background-color: rgb(51, 51, 51);
   }
 }
