@@ -1,12 +1,4 @@
-import {
-  validateAcceptButtonLabel,
-  validateReadMoreButtonLabel,
-  validateReadMoreButtonLink,
-  validateReadMoreButtonOpenInNewTab,
-  validateCookieTextLabel,
-  validateCookieExpiration,
-  validateCookieName,
-} from '.'
+import { validateLabel, validateCookieExpiration, validateCookieName } from '.'
 
 import { err } from '../helpers/debug'
 
@@ -19,69 +11,13 @@ describe('validator', () => {
     jest.resetAllMocks()
   })
 
-  describe('should validate acceptButtonLabel', () => {
+  describe('should validate label', () => {
     it('with string', () => {
-      expect(validateAcceptButtonLabel('label')).toBe('label')
+      expect(validateLabel('label')).toBe('label')
     })
 
     it('with no parameter', () => {
-      expect(validateAcceptButtonLabel(undefined)).toBeUndefined()
-    })
-  })
-
-  describe('should validate readMoreButtonLabel', () => {
-    it('with string', () => {
-      expect(validateReadMoreButtonLabel('label')).toBe('label')
-    })
-
-    it('with no parameter', () => {
-      expect(validateReadMoreButtonLabel(undefined)).toBeUndefined()
-    })
-  })
-
-  describe('should validate readMoreButtonLink', () => {
-    describe('with string', () => {
-      it('with http://', () => {
-        expect(validateReadMoreButtonLink('http://')).toBe('http://')
-      })
-
-      it('with https://', () => {
-        expect(validateReadMoreButtonLink('https://')).toBe('https://')
-      })
-
-      it('with invalid url', () => {
-        validateReadMoreButtonLink('invalid')
-
-        expect(err).toHaveBeenCalledWith(
-          'readMoreButtonLink parameter should starts with "http://" or "https://"',
-        )
-      })
-    })
-
-    it('with no parameter', () => {
-      expect(validateReadMoreButtonLink(undefined)).toBe(
-        'http://aboutcookies.org/',
-      )
-    })
-  })
-
-  describe('should validate readMoreButtonOpenInNewTab', () => {
-    it('with boolean', () => {
-      expect(validateReadMoreButtonOpenInNewTab(true)).toBe(true)
-    })
-
-    it('with no parameter', () => {
-      expect(validateReadMoreButtonOpenInNewTab(undefined)).toBe(true)
-    })
-  })
-
-  describe('should validate cookieTextLabel', () => {
-    it('with string', () => {
-      expect(validateCookieTextLabel('label')).toBe('label')
-    })
-
-    it('with no parameter', () => {
-      expect(validateCookieTextLabel(undefined)).toBeUndefined()
+      expect(validateLabel(undefined)).toBeUndefined()
     })
   })
 
@@ -131,7 +67,7 @@ describe('validator', () => {
     })
 
     it('with no parameter', () => {
-      expect(validateCookieName(undefined)).toBe('allow-cookies')
+      expect(validateCookieName(undefined)).toBe('hide-notice')
     })
   })
 })
