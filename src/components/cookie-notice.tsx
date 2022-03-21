@@ -47,7 +47,7 @@ export interface CookieNoticeProps {
    */
   readMoreLabel?: string
   /**
-   * The target for the read more link.
+   * The link for the read more label.
    */
   readMoreLink?: string
   /**
