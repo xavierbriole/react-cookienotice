@@ -79,5 +79,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "caniuse-lite": "^1.0.30001324"
+  }
 }
