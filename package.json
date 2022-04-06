@@ -33,7 +33,8 @@
     "test:lint": "eslint .",
     "test:unit": "cross-env TZ=America/New_York CI=1 react-scripts test --env=jsdom --colors --coverage --collectCoverageFrom='[\"src/**/*.{ts,tsx}\",\"!src/**/*.stories.tsx\"]'",
     "test:watch": "cross-env TZ=America/New_York react-scripts test --env=jsdom",
-    "start-storybook": "start-storybook -c .storybook -p 9001"
+    "start-storybook": "start-storybook -c .storybook -p 9001",
+    "build-storybook": "build-storybook -c .storybook -o build/storybook"
   },
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0",
