@@ -1,8 +1,8 @@
-![Preview Light](screenshots/light.png)
-
 # react-cookienotice
 
 > A lightweight & customizable cookie banner for your React App
+
+![Preview Light](screenshots/light.png)
 
 [![NPM](https://img.shields.io/npm/v/react-cookienotice.svg)](https://www.npmjs.com/package/react-cookienotice)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
