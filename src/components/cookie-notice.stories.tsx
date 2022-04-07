@@ -91,3 +91,10 @@ const Template: ComponentStory<typeof CookieNotice> = (args) => (
 )
 
 export const Default = Template.bind({})
+export const WithReadMore = Template.bind({})
+WithReadMore.args = {
+  ...Default.args,
+  readMoreLabel: 'Read more',
+  readMoreLink: 'https://www.apple.com',
+  readMoreInNewTab: true,
+}
