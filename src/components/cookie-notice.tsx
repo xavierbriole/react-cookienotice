@@ -62,6 +62,22 @@ export interface CookieNoticeProps {
    * The name of the cookie that saves the user consent.
    */
   cookieName?: string
+  /**
+   * @deprecated Use titleLabel instead.
+   */
+  cookieTextLabel?: string
+  /**
+   * @deprecated Use readMoreLabel instead.
+   */
+  readMoreButtonLabel?: string
+  /**
+   * @deprecated Use readMoreLink instead.
+   */
+  readMoreButtonLink?: string
+  /**
+   * @deprecated Use readMoreInNewTab instead.
+   */
+  readMoreButtonOpenInNewTab?: boolean
 }
 
 /**
@@ -94,10 +110,20 @@ const CookieNotice = ({
   readMoreInNewTab,
   cookieExpiration,
   cookieName,
+  cookieTextLabel,
+  readMoreButtonLabel,
+  readMoreButtonLink,
+  readMoreButtonOpenInNewTab,
 }: CookieNoticeProps) => {
-  const validReadMoreLabel = validateLabel(readMoreLabel)
-  const validReadMoreLink = validateLink(readMoreLink)
-  const validReadMoreInNewTab = validateBoolean(readMoreInNewTab)
+  const validAcceptButtonLabel = validateLabel(acceptButtonLabel)
+  const validDeclineButtonLabel = validateLabel(declineButtonLabel)
+  const validTitleLabel = validateLabel(titleLabel || cookieTextLabel)
+  const validDescriptionLabel = validateLabel(descriptionLabel)
+  const validReadMoreLabel = validateLabel(readMoreLabel || readMoreButtonLabel)
+  const validReadMoreLink = validateLink(readMoreLink || readMoreButtonLink)
+  const validReadMoreInNewTab = validateBoolean(
+    readMoreInNewTab || readMoreButtonOpenInNewTab,
+  )
   const validCookieExpiration = validateCookieExpiration(cookieExpiration)
   const validCookieName = validateCookieName(cookieName)
 
@@ -131,10 +157,10 @@ const CookieNotice = ({
     <div className={styles['react-cookienotice-root']}>
       <div className={styles['react-cookienotice-body']}>
         <Text className={styles['react-cookienotice-title']}>
-          {formatMessage('text.title', validateLabel(titleLabel))}
+          {formatMessage('text.title', validTitleLabel)}
         </Text>
         <Text className={styles['react-cookienotice-description']}>
-          {formatMessage('text.description', validateLabel(descriptionLabel))}
+          {formatMessage('text.description', validDescriptionLabel)}
         </Text>
         {validReadMoreLabel &&
           validReadMoreLink &&
@@ -146,10 +172,10 @@ const CookieNotice = ({
       </div>
       <div className={styles['react-cookienotice-buttons']}>
         <Button onClick={handleAcceptButtonClick}>
-          {formatMessage('button.accept', validateLabel(acceptButtonLabel))}
+          {formatMessage('button.accept', validAcceptButtonLabel)}
         </Button>
         <Button onClick={handleDeclineButtonClick}>
-          {formatMessage('button.decline', validateLabel(declineButtonLabel))}
+          {formatMessage('button.decline', validDeclineButtonLabel)}
         </Button>
       </div>
     </div>
