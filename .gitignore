@@ -17,11 +17,23 @@ dist
 .env.test.local
 .env.production.local
 
+# ide
 .idea
+.vscode
 
+# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 # ci
 coverage
+
+# yarn v2
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
