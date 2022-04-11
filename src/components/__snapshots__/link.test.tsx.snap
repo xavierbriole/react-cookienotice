@@ -7,6 +7,6 @@ exports[`Link should render 1`] = `
   rel="noreferrer"
   target="_blank"
 >
-  children
+  label
 </a>
 `;
