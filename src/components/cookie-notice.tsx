@@ -122,7 +122,7 @@ const CookieNotice = ({
   const validReadMoreLabel = validateLabel(readMoreLabel || readMoreButtonLabel)
   const validReadMoreLink = validateLink(readMoreLink || readMoreButtonLink)
   const validReadMoreInNewTab = validateBoolean(
-    readMoreInNewTab || readMoreButtonOpenInNewTab,
+    readMoreInNewTab ?? readMoreButtonOpenInNewTab,
   )
   const validCookieExpiration = validateCookieExpiration(cookieExpiration)
   const validCookieName = validateCookieName(cookieName)
@@ -149,9 +149,7 @@ const CookieNotice = ({
     onDeclineButtonClick && onDeclineButtonClick()
   }, [])
 
-  if (hideNotice) {
-    return null
-  }
+  if (hideNotice) return null
 
   return (
     <div className={styles['react-cookienotice-root']}>
@@ -162,13 +160,11 @@ const CookieNotice = ({
         <Text className={styles['react-cookienotice-description']}>
           {formatMessage('text.description', validDescriptionLabel)}
         </Text>
-        {validReadMoreLabel &&
-          validReadMoreLink &&
-          typeof validReadMoreInNewTab === 'boolean' && (
-            <Link to={validReadMoreLink} newTab={validReadMoreInNewTab}>
-              {validReadMoreLabel}
-            </Link>
-          )}
+        <Link
+          to={validReadMoreLink}
+          newTab={validReadMoreInNewTab}
+          label={validReadMoreLabel}
+        />
       </div>
       <div className={styles['react-cookienotice-buttons']}>
         <Button onClick={handleAcceptButtonClick}>

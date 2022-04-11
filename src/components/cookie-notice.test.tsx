@@ -48,7 +48,7 @@ describe('CookieNotice', () => {
           descriptionLabel='descriptionLabel'
           readMoreLabel='readMoreLabel'
           readMoreLink='https://example.com'
-          readMoreInNewTab={true}
+          readMoreInNewTab={false}
           cookieExpiration={1}
           cookieName='cookieName'
         />,

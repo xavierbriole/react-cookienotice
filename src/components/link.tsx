@@ -3,20 +3,25 @@ import React from 'react'
 import styles from '../styles.module.css'
 
 interface LinkProps {
-  to: string
+  to?: string
   newTab?: boolean
-  children: React.ReactNode
+  label?: string
 }
 
-const Link = ({ to, newTab, children }: LinkProps) => (
-  <a
-    href={to}
-    target={newTab ? '_blank' : '_self'}
-    rel={newTab ? 'noreferrer' : undefined}
-    className={styles['react-cookienotice-link']}
-  >
-    {children}
-  </a>
-)
+const Link = ({ to, newTab, label }: LinkProps) => {
+  if (to === undefined || newTab === undefined || label === undefined)
+    return null
+
+  return (
+    <a
+      href={to}
+      target={newTab ? '_blank' : '_self'}
+      rel={newTab ? 'noreferrer' : undefined}
+      className={styles['react-cookienotice-link']}
+    >
+      {label}
+    </a>
+  )
+}
 
 export default Link
