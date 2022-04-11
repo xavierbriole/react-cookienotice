@@ -25,9 +25,12 @@ jobs:
         run: yarn run test
 
       - name: Publish on NPM
-        run: yarn npm publish
+        run: |
+          yarn config set npmAuthToken $NPM_AUTH_TOKEN
+          yarn config set npmAlwaysAuth true
+          yarn npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
       - name: Create changelog
         uses: notlmn/release-with-changelog@v3
