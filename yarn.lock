@@ -18669,8 +18669,8 @@ __metadata:
     storybook-dark-mode: ^1.0.9
     typescript: ^4.5.5
   peerDependencies:
-    react: ^16.0.0 || ^17.0.0
-    react-dom: ^16.0.0 || ^17.0.0
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
