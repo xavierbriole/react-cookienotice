@@ -1,42 +1,81 @@
 import { warn, err } from './debug'
 
 describe('debug', () => {
-  const originalEnv = process.env
+  describe('in development', () => {
+    const originalEnv = process.env
 
-  beforeEach(() => {
-    jest.resetModules()
+    beforeEach(() => {
+      jest.resetModules()
 
-    process.env = {
-      ...originalEnv,
-      NODE_ENV: 'development',
-    }
+      process.env = {
+        ...originalEnv,
+        NODE_ENV: 'development',
+      }
+    })
+
+    afterEach(() => {
+      process.env = originalEnv
+    })
+
+    it('should call console.warn', () => {
+      const mockedConsoleWarn = jest
+        .spyOn(console, 'warn')
+        .mockImplementation(() => {})
+
+      warn('message')
+
+      expect(mockedConsoleWarn).toHaveBeenCalledWith(
+        '[react-cookienotice] message',
+      )
+    })
+
+    it('should call console.error', () => {
+      const mockedConsoleError = jest
+        .spyOn(console, 'error')
+        .mockImplementation(() => {})
+
+      err('message')
+
+      expect(mockedConsoleError).toHaveBeenCalledWith(
+        '[react-cookienotice] message',
+      )
+    })
   })
 
-  afterEach(() => {
-    process.env = originalEnv
-  })
+  describe('in production', () => {
+    const originalEnv = process.env
 
-  it('should call console.warn', () => {
-    const mockedConsoleWarn = jest
-      .spyOn(console, 'warn')
-      .mockImplementation(() => {})
+    beforeEach(() => {
+      jest.resetModules()
 
-    warn('message')
+      process.env = {
+        ...originalEnv,
+        NODE_ENV: 'production',
+      }
+    })
 
-    expect(mockedConsoleWarn).toHaveBeenCalledWith(
-      '[react-cookienotice] message',
-    )
-  })
+    afterEach(() => {
+      process.env = originalEnv
+    })
 
-  it('should call console.error', () => {
-    const mockedConsoleError = jest
-      .spyOn(console, 'error')
-      .mockImplementation(() => {})
+    it('should not call console.warn', () => {
+      const mockedConsoleWarn = jest
+        .spyOn(console, 'warn')
+        .mockImplementation(() => {})
 
-    err('message')
+      warn('message')
 
-    expect(mockedConsoleError).toHaveBeenCalledWith(
-      '[react-cookienotice] message',
-    )
+      expect(mockedConsoleWarn).not.toHaveBeenCalled()
+    })
+
+    it('should not call console.error', () => {
+      const mockedConsoleError = jest
+        .spyOn(console, 'error')
+        .mockImplementation(() => {})
+
+      err('message')
+
+      expect(mockedConsoleError).not.toHaveBeenCalled()
+    })
   })
 })
