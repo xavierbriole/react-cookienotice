@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import CookieNotice from './cookie-notice'
@@ -95,7 +95,9 @@ describe('CookieNotice', () => {
 
       const acceptButton = getByText('acceptButtonLabel')
 
-      acceptButton.click()
+      act(() => {
+        acceptButton.click()
+      })
 
       expect(container.firstChild).toBeNull()
     })
@@ -119,7 +121,9 @@ describe('CookieNotice', () => {
 
       const acceptButton = getByText('acceptButtonLabel')
 
-      acceptButton.click()
+      act(() => {
+        acceptButton.click()
+      })
 
       expect(getCookie).toHaveBeenCalledTimes(2)
       expect(getCookie).toHaveBeenCalledWith('cookieName')
@@ -144,7 +148,9 @@ describe('CookieNotice', () => {
 
       const acceptButton = getByText('acceptButtonLabel')
 
-      acceptButton.click()
+      act(() => {
+        acceptButton.click()
+      })
 
       expect(setCookie).toHaveBeenCalledTimes(1)
       expect(setCookie).toHaveBeenCalledWith('cookieName', 'true', 1)
@@ -172,7 +178,9 @@ describe('CookieNotice', () => {
 
         const acceptButton = getByText('acceptButtonLabel')
 
-        acceptButton.click()
+        act(() => {
+          acceptButton.click()
+        })
 
         expect(onAcceptButtonClick).toHaveBeenCalledTimes(1)
       })
@@ -197,7 +205,9 @@ describe('CookieNotice', () => {
 
         const acceptButton = getByText('acceptButtonLabel')
 
-        acceptButton.click()
+        act(() => {
+          acceptButton.click()
+        })
 
         expect(onAcceptButtonClick).not.toBeCalled()
       })
@@ -224,7 +234,9 @@ describe('CookieNotice', () => {
 
       const declineButton = getByText('declineButtonLabel')
 
-      declineButton.click()
+      act(() => {
+        declineButton.click()
+      })
 
       expect(container.firstChild).toBeNull()
     })
@@ -248,7 +260,9 @@ describe('CookieNotice', () => {
 
       const declineButton = getByText('declineButtonLabel')
 
-      declineButton.click()
+      act(() => {
+        declineButton.click()
+      })
 
       expect(getCookie).toHaveBeenCalledTimes(2)
       expect(getCookie).toHaveBeenCalledWith('cookieName')
@@ -273,7 +287,9 @@ describe('CookieNotice', () => {
 
       const declineButton = getByText('declineButtonLabel')
 
-      declineButton.click()
+      act(() => {
+        declineButton.click()
+      })
 
       expect(setCookie).toHaveBeenCalledTimes(1)
       expect(setCookie).toHaveBeenCalledWith('cookieName', 'true', 1)
@@ -301,7 +317,9 @@ describe('CookieNotice', () => {
 
         const declineButton = getByText('declineButtonLabel')
 
-        declineButton.click()
+        act(() => {
+          declineButton.click()
+        })
 
         expect(onDeclineButtonClick).toHaveBeenCalledTimes(1)
       })
@@ -326,7 +344,9 @@ describe('CookieNotice', () => {
 
         const declineButton = getByText('declineButtonLabel')
 
-        declineButton.click()
+        act(() => {
+          declineButton.click()
+        })
 
         expect(onDeclineButtonClick).not.toBeCalled()
       })
