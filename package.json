@@ -5,7 +5,7 @@
   "author": "xavierbriole",
   "license": "MIT",
   "homepage": "https://react-cookienotice.vercel.app",
-  "repository": "xavierbriole/react-cookienotice",
+  "repository": "https://github.com/xavierbriole/react-cookienotice",
   "keywords": [
     "banner",
     "cookie banner",
@@ -30,7 +30,7 @@
     "test": "run-s test:unit test:format test:lint test:build",
     "test:build": "run-s build",
     "test:format": "prettier --check .",
-    "test:lint": "eslint .",
+    "test:lint": "eslint . --max-warnings 0",
     "test:unit": "cross-env TZ=America/New_York CI=1 react-scripts test --env=jsdom --colors --coverage --collectCoverageFrom='[\"src/**/*.{ts,tsx}\",\"!src/**/*.stories.tsx\"]'",
     "test:watch": "cross-env TZ=America/New_York react-scripts test --env=jsdom",
     "start-storybook": "start-storybook -c .storybook -p 9001",
