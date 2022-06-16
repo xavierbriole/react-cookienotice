@@ -64,6 +64,10 @@ export default {
       description: 'Whether the read more link should open in a new tab.',
       type: { name: 'boolean', required: false },
     },
+    hideDeclineButton: {
+      description: 'This will hide the decline button.',
+      type: { name: 'boolean', required: false },
+    },
     cookieExpiration: {
       description:
         'Days after cookie expires and user should reaccept cookies.',
@@ -91,10 +95,17 @@ const Template: ComponentStory<typeof CookieNotice> = (args) => (
 )
 
 export const Default = Template.bind({})
+
 export const WithReadMore = Template.bind({})
 WithReadMore.args = {
   ...Default.args,
   readMoreLabel: 'Read more',
   readMoreLink: 'https://www.apple.com',
   readMoreInNewTab: true,
+}
+
+export const WithoutDeclineButton = Template.bind({})
+WithoutDeclineButton.args = {
+  ...Default.args,
+  hideDeclineButton: true,
 }
