@@ -11,7 +11,7 @@
 [![downloads](https://img.shields.io/badge/dynamic/json?color=blue&label=downloads&query=downloads&suffix=%2Fmonth&url=https%3A%2F%2Fapi.npmjs.org%2Fdownloads%2Fpoint%2Flast-month%2Freact-cookienotice)](http://npm-stats.org/#/react-cookienotice)
 [![storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@main/badge/badge-storybook.svg)](https://react-cookienotice.vercel.app)
 
-- 🍃 No dependency, full self-made package (1.3 kB - [BundlePhobia](https://bundlephobia.com/package/react-cookienotice))
+- 🍃 No dependency, full self-made package (1.4 kB - [BundlePhobia](https://bundlephobia.com/package/react-cookienotice))
 - 📱 Mobile first & responsive
 - ⚙️ Customizable with several props
 - 🍕 Very fast setup (less than 1 minute)
@@ -67,6 +67,7 @@ If you want a "Read More" link, you must set all of the following props:
 | readMoreLabel        | `string`   | The label for the read more link.                                    | -                                                                                                                                                          |
 | readMoreLink         | `string`   | The link for the read more label.                                    | -                                                                                                                                                          |
 | readMoreInNewTab     | `boolean`  | Whether the read more link should open in a new tab.                 | -                                                                                                                                                          |
+| hideDeclineButton    | `boolean`  | This will hide the decline button.                                   | -                                                                                                                                                          |
 | cookieExpiration     | `number`   | Days after cookie expires and user should reaccept cookies.          | 30                                                                                                                                                         |
 | cookieName           | `string`   | The name of the cookie that saves the user consent.                  | hide-notice                                                                                                                                                |
 

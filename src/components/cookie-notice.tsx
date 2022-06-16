@@ -55,6 +55,10 @@ export interface CookieNoticeProps {
    */
   readMoreInNewTab?: boolean
   /**
+   * This will hide the decline button.
+   */
+  hideDeclineButton?: boolean
+  /**
    * Days after cookie expires and user should reaccept cookies.
    */
   cookieExpiration?: number
@@ -94,6 +98,7 @@ export interface CookieNoticeProps {
  *   readMoreLabel='readMoreLabel'
  *   readMoreLink='readMoreLink'
  *   readMoreInNewTab={true}
+ *   hideDeclineButton={true}
  *   cookieExpiration={30}
  *   cookieName='cookieName'
  * />
@@ -108,6 +113,7 @@ const CookieNotice = ({
   readMoreLabel,
   readMoreLink,
   readMoreInNewTab,
+  hideDeclineButton,
   cookieExpiration,
   cookieName,
   cookieTextLabel,
@@ -124,6 +130,7 @@ const CookieNotice = ({
   const validReadMoreInNewTab = validateBoolean(
     readMoreInNewTab ?? readMoreButtonOpenInNewTab,
   )
+  const validHideDeclineButton = validateBoolean(hideDeclineButton)
   const validCookieExpiration = validateCookieExpiration(cookieExpiration)
   const validCookieName = validateCookieName(cookieName)
 
@@ -170,9 +177,11 @@ const CookieNotice = ({
         <Button onClick={handleAcceptButtonClick}>
           {formatMessage('button.accept', validAcceptButtonLabel)}
         </Button>
-        <Button onClick={handleDeclineButtonClick}>
-          {formatMessage('button.decline', validDeclineButtonLabel)}
-        </Button>
+        {!validHideDeclineButton && (
+          <Button onClick={handleDeclineButtonClick}>
+            {formatMessage('button.decline', validDeclineButtonLabel)}
+          </Button>
+        )}
       </div>
     </div>
   )
