@@ -98,7 +98,7 @@ export interface CookieNoticeProps {
  *   readMoreLabel='readMoreLabel'
  *   readMoreLink='readMoreLink'
  *   readMoreInNewTab={true}
- *   hideDeclineButton={true}
+ *   hideDeclineButton={false}
  *   cookieExpiration={30}
  *   cookieName='cookieName'
  * />
