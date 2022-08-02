@@ -2,27 +2,27 @@
 
 exports[`CookieNotice should render 1`] = `
 <div
-  class="react-cookienotice-root"
+  class="react-cookienotice-root root"
 >
   <div
-    class="react-cookienotice-body"
+    class="react-cookienotice-body body"
   >
     <div
-      class="react-cookienotice-title"
+      class="react-cookienotice-title title"
     >
       <span>
         titleLabel
       </span>
     </div>
     <div
-      class="react-cookienotice-description"
+      class="react-cookienotice-description description"
     >
       <span>
         descriptionLabel
       </span>
     </div>
     <a
-      class="react-cookienotice-link"
+      class="react-cookienotice-link link"
       href="https://example.com"
       rel="noreferrer"
       target="_blank"
@@ -31,15 +31,15 @@ exports[`CookieNotice should render 1`] = `
     </a>
   </div>
   <div
-    class="react-cookienotice-buttons"
+    class="react-cookienotice-buttons buttons"
   >
     <button
-      class="react-cookienotice-button"
+      class="react-cookienotice-button button"
     >
       acceptButtonLabel
     </button>
     <button
-      class="react-cookienotice-button"
+      class="react-cookienotice-button button"
     >
       declineButtonLabel
     </button>
