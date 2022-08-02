@@ -2,7 +2,7 @@
 
 exports[`Link should render 1`] = `
 <a
-  class="react-cookienotice-link"
+  class="react-cookienotice-link link"
   href="#"
   rel="noreferrer"
   target="_blank"

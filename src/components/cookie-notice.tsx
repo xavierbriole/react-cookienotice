@@ -8,6 +8,7 @@ import Button from './button'
 
 import { setCookie, getCookie } from '../helpers/cookies'
 import { warn } from '../helpers/debug'
+import clsx from '../helpers/classnames'
 import { formatMessage } from '../intl/format'
 import {
   validateLabel,
@@ -159,12 +160,14 @@ const CookieNotice = ({
   if (hideNotice) return null
 
   return (
-    <div className={styles['react-cookienotice-root']}>
-      <div className={styles['react-cookienotice-body']}>
-        <Text className={styles['react-cookienotice-title']}>
+    <div className={clsx(['react-cookienotice-root', styles.root])}>
+      <div className={clsx('react-cookienotice-body', styles.body)}>
+        <Text className={clsx('react-cookienotice-title', styles.title)}>
           {formatMessage('text.title', validTitleLabel)}
         </Text>
-        <Text className={styles['react-cookienotice-description']}>
+        <Text
+          className={clsx('react-cookienotice-description', styles.description)}
+        >
           {formatMessage('text.description', validDescriptionLabel)}
         </Text>
         <Link
@@ -173,7 +176,7 @@ const CookieNotice = ({
           label={validReadMoreLabel}
         />
       </div>
-      <div className={styles['react-cookienotice-buttons']}>
+      <div className={clsx('react-cookienotice-buttons', styles.buttons)}>
         <Button onClick={handleAcceptButtonClick}>
           {formatMessage('button.accept', validAcceptButtonLabel)}
         </Button>
