@@ -25,10 +25,7 @@
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
-    "format": "prettier --write .",
-    "prepare": "run-s build",
-    "test": "run-s test:unit test:format test:lint test:build",
-    "test:build": "run-s build",
+    "test": "run-s test:format test:lint test:unit",
     "test:format": "prettier --check .",
     "test:lint": "eslint . --max-warnings 0",
     "test:unit": "cross-env TZ=America/New_York CI=1 react-scripts test --env=jsdom --colors --coverage --collectCoverageFrom='[\"src/**/*.{ts,tsx}\",\"!src/**/*.stories.tsx\"]'",
