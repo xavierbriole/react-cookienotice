@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 
 import styles from '../styles.module.css'
 
@@ -7,7 +7,6 @@ import Link from './link'
 import Button from './button'
 
 import { setCookie, getCookie } from '../helpers/cookies'
-import { warn } from '../helpers/debug'
 import clsx from '../helpers/classnames'
 import { formatMessage } from '../intl/format'
 import {
@@ -138,12 +137,6 @@ const CookieNotice = ({
   const shouldHideNotice = getCookie(validCookieName) === 'true'
 
   const [hideNotice, setHideNotice] = useState(shouldHideNotice)
-
-  useEffect(() => {
-    warn(
-      'BREAKING CHANGE: With version >= 4.0.0 you also need to import the css file (read: https://github.com/xavierbriole/react-cookienotice#usage)',
-    )
-  }, [])
 
   const handleAcceptButtonClick = useCallback(() => {
     setHideNotice(true)
