@@ -42,7 +42,8 @@ jobs:
         uses: fregante/release-with-changelog@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-template: '- {hash} {title}'
+          exclude: '^v?\d+\.\d+\.\d+/i'
+          commit-template: '- {title} ({hash})'
           template: |
             ### Changelog
 
