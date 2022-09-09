@@ -1,8 +1,6 @@
 import { err } from '../helpers/debug'
-
-import messages from './messages'
-
 import { formatMessage } from './format'
+import messages from './messages'
 
 jest.mock('../helpers/debug', () => ({
   err: jest.fn(),

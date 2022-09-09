@@ -1,10 +1,8 @@
-import React from 'react'
-import { render, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
-
+import { act, render } from '@testing-library/react'
+import React from 'react'
+import { getCookie, setCookie } from '../helpers/cookies'
 import CookieNotice from './cookie-notice'
-
-import { setCookie, getCookie } from '../helpers/cookies'
 
 jest.mock('../helpers/cookies', () => ({
   setCookie: jest.fn(),
