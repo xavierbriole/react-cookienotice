@@ -1,6 +1,12 @@
-import { formatMessage } from './format'
+import { err } from '../helpers/debug'
 
 import messages from './messages'
+
+import { formatMessage } from './format'
+
+jest.mock('../helpers/debug', () => ({
+  err: jest.fn(),
+}))
 
 describe('format', () => {
   beforeEach(() => {
@@ -33,14 +39,8 @@ describe('format', () => {
     })
 
     it('with invalid message', () => {
-      const mockedConsoleError = jest
-        .spyOn(console, 'error')
-        .mockImplementation(() => {})
-
       expect(formatMessage('invalid')).toBe('invalid')
-      expect(mockedConsoleError).toHaveBeenCalledWith(
-        '[intl] no message found for id "invalid"',
-      )
+      expect(err).toHaveBeenCalledWith('no message found for id "invalid"')
     })
 
     it('with overriden message', () => {

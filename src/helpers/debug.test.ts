@@ -1,4 +1,4 @@
-import { warn, err } from './debug'
+import { err } from './debug'
 
 describe('debug', () => {
   describe('in development', () => {
@@ -15,18 +15,6 @@ describe('debug', () => {
 
     afterEach(() => {
       process.env = originalEnv
-    })
-
-    it('should call console.warn', () => {
-      const mockedConsoleWarn = jest
-        .spyOn(console, 'warn')
-        .mockImplementation(() => {})
-
-      warn('message')
-
-      expect(mockedConsoleWarn).toHaveBeenCalledWith(
-        '[react-cookienotice] message',
-      )
     })
 
     it('should call console.error', () => {
@@ -56,16 +44,6 @@ describe('debug', () => {
 
     afterEach(() => {
       process.env = originalEnv
-    })
-
-    it('should not call console.warn', () => {
-      const mockedConsoleWarn = jest
-        .spyOn(console, 'warn')
-        .mockImplementation(() => {})
-
-      warn('message')
-
-      expect(mockedConsoleWarn).not.toHaveBeenCalled()
     })
 
     it('should not call console.error', () => {
