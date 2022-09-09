@@ -1,6 +1,5 @@
 import MockDate from 'mockdate'
-
-import { setCookie, getCookie } from './cookies'
+import { getCookie, setCookie } from './cookies'
 
 describe('cookies', () => {
   beforeEach(() => {

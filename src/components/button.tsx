@@ -1,8 +1,6 @@
 import React from 'react'
-
-import styles from '../styles.module.css'
-
 import clsx from '../helpers/classnames'
+import styles from '../styles.module.css'
 
 interface ButtonProps {
   onClick?: () => void

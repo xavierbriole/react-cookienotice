@@ -37,7 +37,6 @@ npm i --save react-cookienotice
 
 ```tsx
 import React from 'react'
-
 import CookieNotice from 'react-cookienotice'
 import 'react-cookienotice/dist/index.css'
 

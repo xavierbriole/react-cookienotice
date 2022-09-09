@@ -1,5 +1,4 @@
 import { err } from '../helpers/debug'
-
 import messages from './messages'
 
 const DEFAULT_LANGUAGE = 'en'

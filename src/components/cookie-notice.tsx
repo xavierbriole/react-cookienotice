@@ -1,21 +1,18 @@
-import React, { useState, useCallback } from 'react'
-
-import styles from '../styles.module.css'
-
-import Text from './text'
-import Link from './link'
-import Button from './button'
-
-import { setCookie, getCookie } from '../helpers/cookies'
+import React, { useCallback, useState } from 'react'
 import clsx from '../helpers/classnames'
+import { getCookie, setCookie } from '../helpers/cookies'
 import { formatMessage } from '../intl/format'
+import styles from '../styles.module.css'
 import {
-  validateLabel,
-  validateLink,
   validateBoolean,
   validateCookieExpiration,
   validateCookieName,
+  validateLabel,
+  validateLink,
 } from '../validator'
+import Button from './button'
+import Link from './link'
+import Text from './text'
 
 export interface CookieNoticeProps {
   /**

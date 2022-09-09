@@ -1,11 +1,10 @@
 import {
-  validateLabel,
-  validateLink,
   validateBoolean,
   validateCookieExpiration,
   validateCookieName,
+  validateLabel,
+  validateLink,
 } from '.'
-
 import { err } from '../helpers/debug'
 
 jest.mock('../helpers/debug', () => ({
