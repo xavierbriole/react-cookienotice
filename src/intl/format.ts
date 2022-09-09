@@ -1,3 +1,5 @@
+import { err } from '../helpers/debug'
+
 import messages from './messages'
 
 const DEFAULT_LANGUAGE = 'en'
@@ -14,7 +16,7 @@ export const formatMessage = (id: string, override?: string): string => {
     : DEFAULT_LANGUAGE
 
   if (messages[usedLanguage][id] === undefined) {
-    console.error(`[intl] no message found for id "${id}"`)
+    err(`no message found for id "${id}"`)
     return id
   }
 
