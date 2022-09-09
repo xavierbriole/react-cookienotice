@@ -18683,6 +18683,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier-plugin-organize-imports@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "prettier-plugin-organize-imports@npm:3.1.1"
+  peerDependencies:
+    "@volar/vue-typescript": ">=0.40.2"
+    prettier: ">=2.0"
+    typescript: ">=2.9"
+  peerDependenciesMeta:
+    "@volar/vue-typescript":
+      optional: true
+  checksum: a5776ddf70ba83990c5f97799a57e9844379226c25c5d3e89c072dce3615575aacc1da9c0870b86dcfd4df80df4194971538765f84a168cbb41d36de81740c30
+  languageName: node
+  linkType: hard
+
 "prettier@npm:>=2.2.1 <=2.3.0":
   version: 2.3.0
   resolution: "prettier@npm:2.3.0"
@@ -19185,6 +19199,7 @@ __metadata:
     npm-run-all: ^4.1.5
     postcss-normalize: ^10.0.1
     prettier: ^2.6.2
+    prettier-plugin-organize-imports: ^3.1.1
     react: ^18.1.0
     react-dom: ^18.1.0
     react-scripts: ^5.0.1
