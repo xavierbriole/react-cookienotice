@@ -1,3 +1,6 @@
+import { vi } from 'vitest'
+
+import { err } from '../helpers/debug'
 import {
   validateBoolean,
   validateCookieExpiration,
@@ -5,15 +8,14 @@ import {
   validateLabel,
   validateLink,
 } from '.'
-import { err } from '../helpers/debug'
 
-jest.mock('../helpers/debug', () => ({
-  err: jest.fn(),
+vi.mock('../helpers/debug', () => ({
+  err: vi.fn(),
 }))
 
 describe('validator', () => {
   beforeEach(() => {
-    jest.resetAllMocks()
+    vi.resetAllMocks()
   })
 
   describe('should validate label', () => {

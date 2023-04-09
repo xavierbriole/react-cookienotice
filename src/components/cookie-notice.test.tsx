@@ -1,17 +1,17 @@
-import '@testing-library/jest-dom'
 import { act, render } from '@testing-library/react'
-import React from 'react'
+import { vi } from 'vitest'
+
 import { getCookie, setCookie } from '../helpers/cookies'
 import CookieNotice from './cookie-notice'
 
-jest.mock('../helpers/cookies', () => ({
-  setCookie: jest.fn(),
-  getCookie: jest.fn(),
+vi.mock('../helpers/cookies', () => ({
+  setCookie: vi.fn(),
+  getCookie: vi.fn(),
 }))
 
 describe('CookieNotice', () => {
   beforeEach(() => {
-    jest.resetAllMocks()
+    vi.resetAllMocks()
   })
 
   it('should render', () => {
@@ -206,7 +206,7 @@ describe('CookieNotice', () => {
 
     describe('should call onAcceptButtonClick', () => {
       it('successfully if passed', () => {
-        const onAcceptButtonClick = jest.fn()
+        const onAcceptButtonClick = vi.fn()
 
         const { getByText } = render(
           <CookieNotice
@@ -235,7 +235,7 @@ describe('CookieNotice', () => {
       })
 
       it('with failure if not passed', () => {
-        const onAcceptButtonClick = jest.fn()
+        const onAcceptButtonClick = vi.fn()
 
         const { getByText } = render(
           <CookieNotice
@@ -350,7 +350,7 @@ describe('CookieNotice', () => {
 
     describe('should call onDeclineButtonClick', () => {
       it('successfully if passed', () => {
-        const onDeclineButtonClick = jest.fn()
+        const onDeclineButtonClick = vi.fn()
 
         const { getByText } = render(
           <CookieNotice
@@ -379,7 +379,7 @@ describe('CookieNotice', () => {
       })
 
       it('with failure if not passed', () => {
-        const onDeclineButtonClick = jest.fn()
+        const onDeclineButtonClick = vi.fn()
 
         const { getByText } = render(
           <CookieNotice

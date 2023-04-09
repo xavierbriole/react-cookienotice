@@ -1,4 +1,4 @@
-name: pull-request
+name: Run tests
 
 on:
   pull_request:
@@ -6,28 +6,24 @@ on:
       - master
 
 jobs:
-  pull-request:
+  run-tests:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16.13.2
-          cache: 'yarn'
+          node-version: 18.15.0
+          cache: 'npm'
 
-      - name: Install Packages
-        run: yarn install --immutable
-
-      - name: Check version
-        run: yarn version check
+      - name: Install dependencies
+        run: npm ci
 
       - name: Run tests
-        run: yarn run test
+        run: npm run test:ci
 
       - name: Upload coverage
         uses: codecov/codecov-action@v2
