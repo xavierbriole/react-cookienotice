@@ -1,13 +1,8 @@
-import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
-import React from 'react'
+
 import Link from './link'
 
 describe('Link', () => {
-  beforeEach(() => {
-    jest.resetAllMocks()
-  })
-
   it('should render', () => {
     const { container } = render(<Link to='#' newTab={true} label='label' />)
 
