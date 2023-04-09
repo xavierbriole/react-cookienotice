@@ -1,13 +1,10 @@
-import MockDate from 'mockdate'
+import { vi } from 'vitest'
+
 import { getCookie, setCookie } from './cookies'
 
 describe('cookies', () => {
-  beforeEach(() => {
-    jest.resetAllMocks()
-  })
-
   it('should set cookie', () => {
-    MockDate.set(new Date('2020-06-25T05:54:01'))
+    vi.useFakeTimers().setSystemTime(new Date('2020-06-25T05:54:01'))
 
     Object.defineProperty(window.document, 'cookie', {
       writable: true,

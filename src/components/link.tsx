@@ -1,7 +1,3 @@
-import React from 'react'
-import clsx from '../helpers/classnames'
-import styles from '../styles.module.css'
-
 interface LinkProps {
   to?: string
   newTab?: boolean
@@ -17,7 +13,7 @@ const Link = ({ to, newTab, label }: LinkProps) => {
       href={to}
       target={newTab ? '_blank' : '_self'}
       rel={newTab ? 'noreferrer' : undefined}
-      className={clsx('react-cookienotice-link', styles.link)}
+      className='react-cookienotice-link'
     >
       {label}
     </a>
