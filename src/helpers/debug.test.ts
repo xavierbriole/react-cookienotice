@@ -1,3 +1,5 @@
+import { vi } from 'vitest'
+
 import { err } from './debug'
 
 describe('debug', () => {
@@ -5,7 +7,7 @@ describe('debug', () => {
     const originalEnv = process.env
 
     beforeEach(() => {
-      jest.resetModules()
+      vi.resetModules()
 
       process.env = {
         ...originalEnv,
@@ -18,7 +20,7 @@ describe('debug', () => {
     })
 
     it('should call console.error', () => {
-      const mockedConsoleError = jest
+      const mockedConsoleError = vi
         .spyOn(console, 'error')
         .mockImplementation(() => {})
 
@@ -34,7 +36,7 @@ describe('debug', () => {
     const originalEnv = process.env
 
     beforeEach(() => {
-      jest.resetModules()
+      vi.resetModules()
 
       process.env = {
         ...originalEnv,
@@ -47,7 +49,7 @@ describe('debug', () => {
     })
 
     it('should not call console.error', () => {
-      const mockedConsoleError = jest
+      const mockedConsoleError = vi
         .spyOn(console, 'error')
         .mockImplementation(() => {})
 
