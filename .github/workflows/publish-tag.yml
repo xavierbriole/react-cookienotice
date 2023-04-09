@@ -1,0 +1,45 @@
+name: Publish tag
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  publish-tag:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'bump/')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: master
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.15.0
+          cache: 'npm'
+
+      - name: Setup Git user
+        uses: fregante/setup-git-user@v2
+
+      - name: Get version
+        id: get-version
+        run: |
+          echo "NEW_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Generate Github token
+        id: generate-token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - name: Publish tag
+        run: |
+          git tag v${{ steps.get-version.outputs.NEW_VERSION }}
+          git push --tags
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
