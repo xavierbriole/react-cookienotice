@@ -1,13 +1,9 @@
-import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
-import React from 'react'
+import { vi } from 'vitest'
+
 import Button from './button'
 
 describe('Button', () => {
-  beforeEach(() => {
-    jest.resetAllMocks()
-  })
-
   it('should render', () => {
     const { container } = render(<Button onClick={() => {}}>children</Button>)
 
@@ -21,7 +17,7 @@ describe('Button', () => {
   })
 
   it('should call onClick', () => {
-    const onClick = jest.fn()
+    const onClick = vi.fn()
 
     const { getByText } = render(<Button onClick={onClick}>children</Button>)
 
