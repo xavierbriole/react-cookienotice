@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Button should render 1`] = `
+exports[`Button > should render 1`] = `
 <button
-  class="react-cookienotice-button button"
+  class="react-cookienotice-button"
 >
   children
 </button>

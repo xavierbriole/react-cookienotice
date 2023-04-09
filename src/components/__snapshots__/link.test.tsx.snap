@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Link should render 1`] = `
+exports[`Link > should render 1`] = `
 <a
-  class="react-cookienotice-link link"
+  class="react-cookienotice-link"
   href="#"
   rel="noreferrer"
   target="_blank"
