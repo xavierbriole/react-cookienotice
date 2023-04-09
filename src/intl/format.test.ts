@@ -1,14 +1,16 @@
+import { vi } from 'vitest'
+
 import { err } from '../helpers/debug'
 import { formatMessage } from './format'
 import messages from './messages'
 
-jest.mock('../helpers/debug', () => ({
-  err: jest.fn(),
+vi.mock('../helpers/debug', () => ({
+  err: vi.fn(),
 }))
 
 describe('format', () => {
   beforeEach(() => {
-    jest.resetAllMocks()
+    vi.resetAllMocks()
   })
 
   describe('formatMessage', () => {

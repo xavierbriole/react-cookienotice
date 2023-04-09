@@ -1,10 +1,11 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
-import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
+
 import CookieNotice from './cookie-notice'
 
-export default {
+const meta: Meta<typeof CookieNotice> = {
   title: 'CookieNotice',
   component: CookieNotice,
+  tags: ['autodocs'],
   argTypes: {
     acceptButtonLabel: {
       description: 'The label for the accept button.',
@@ -87,24 +88,23 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof CookieNotice>
-
-const Template: ComponentStory<typeof CookieNotice> = (args) => (
-  <CookieNotice {...args} />
-)
-
-export const Default = Template.bind({})
-
-export const WithReadMore = Template.bind({})
-WithReadMore.args = {
-  ...Default.args,
-  readMoreLabel: 'Read more',
-  readMoreLink: 'https://www.apple.com',
-  readMoreInNewTab: true,
 }
 
-export const WithoutDeclineButton = Template.bind({})
-WithoutDeclineButton.args = {
-  ...Default.args,
-  hideDeclineButton: true,
+export default meta
+type Story = StoryObj<typeof CookieNotice>
+
+export const Default: Story = {}
+
+export const WithReadMore: Story = {
+  args: {
+    readMoreLabel: 'Read more',
+    readMoreLink: 'https://www.apple.com',
+    readMoreInNewTab: true,
+  },
+}
+
+export const WithoutDeclineButton: Story = {
+  args: {
+    hideDeclineButton: true,
+  },
 }
