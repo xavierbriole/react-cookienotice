@@ -12,7 +12,7 @@
   }
 }
 
-.root {
+.react-cookienotice-root {
   width: 100%;
   border-radius: 0;
   bottom: 0;
@@ -28,7 +28,7 @@
   animation-delay: 2s;
 }
 
-.root > .body {
+.react-cookienotice-root > .react-cookienotice-body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -37,35 +37,43 @@
   text-align: left;
 }
 
-.root > .body > .title {
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-title {
   font-size: 1em;
   font-weight: 400;
   margin: 0 0 10px;
 }
 
-.root > .body > .description {
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-description {
   font-size: 0.8em;
   line-height: 1.5em;
   margin: 0 0 10px;
 }
 
-.root > .body > .link {
+.react-cookienotice-root > .react-cookienotice-body > .react-cookienotice-link {
   font-size: 0.8em;
   color: rgb(192, 192, 192);
   text-decoration: none;
   transition: color 0.5s ease;
 }
 
-.root > .body > .link:hover {
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-link:hover {
   color: rgb(35, 157, 228);
 }
 
-.root > .buttons {
+.react-cookienotice-root > .react-cookienotice-buttons {
   display: flex;
   justify-content: space-around;
 }
 
-.root > .buttons > .button {
+.react-cookienotice-root
+  > .react-cookienotice-buttons
+  > .react-cookienotice-button {
   border: none;
   margin: 0;
   color: rgb(0, 0, 0);
@@ -82,21 +90,27 @@
   outline: none;
 }
 
-.root > .buttons > .button:first-child {
+.react-cookienotice-root
+  > .react-cookienotice-buttons
+  > .react-cookienotice-button:first-child {
   border-bottom-left-radius: 10px;
 }
 
-.root > .buttons > .button:last-child {
+.react-cookienotice-root
+  > .react-cookienotice-buttons
+  > .react-cookienotice-button:last-child {
   border-bottom-right-radius: 10px;
   border-right: none;
 }
 
-.root > .buttons > .button:hover {
+.react-cookienotice-root
+  > .react-cookienotice-buttons
+  > .react-cookienotice-button:hover {
   background-color: rgb(238, 238, 238);
 }
 
 @media screen and (min-width: 490px) {
-  .root {
+  .react-cookienotice-root {
     width: 450px;
     border-radius: 10px;
     bottom: 30px;
@@ -105,22 +119,26 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .root {
+  .react-cookienotice-root {
     background-color: rgb(41, 41, 41);
   }
 
-  .root > .body {
+  .react-cookienotice-root > .react-cookienotice-body {
     color: rgb(255, 255, 255);
   }
 
-  .root > .buttons > .button {
+  .react-cookienotice-root
+    > .react-cookienotice-buttons
+    > .react-cookienotice-button {
     color: rgb(255, 255, 255);
     background-color: rgb(41, 41, 41);
     border-right: 1px solid rgb(51, 51, 51);
     border-top: 1px solid rgb(51, 51, 51);
   }
 
-  .root > .buttons > .button:hover {
+  .react-cookienotice-root
+    > .react-cookienotice-buttons
+    > .react-cookienotice-button:hover {
     background-color: rgb(51, 51, 51);
   }
 }

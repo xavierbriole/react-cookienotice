@@ -1,13 +1,8 @@
-import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
-import React from 'react'
+
 import Text from './text'
 
 describe('Text', () => {
-  beforeEach(() => {
-    jest.resetAllMocks()
-  })
-
   it('should render', () => {
     const { container } = render(<Text className='className'>children</Text>)
 
