@@ -12,6 +12,7 @@ on:
           - patch
           - minor
           - major
+          - prerelease
 
 jobs:
   generate-version:
@@ -35,7 +36,12 @@ jobs:
           node-version: 18.15.0
           cache: 'npm'
 
-      - name: Generate new version
+      - if: github.event.inputs.version == 'prerelease'
+        name: Generate new preversion
+        run: npm version ${{ github.event.inputs.version }} --preid=beta
+
+      - if: github.event.inputs.version != 'prerelease'
+        name: Generate new version
         run: npm version ${{ github.event.inputs.version }}
 
       - name: Push new version tag
