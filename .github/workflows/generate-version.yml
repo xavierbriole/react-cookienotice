@@ -38,13 +38,8 @@ jobs:
           node-version: 18.15.0
           cache: 'npm'
 
-      - if: github.event.inputs.version == 'prepatch' && github.event.inputs.version == 'preminor' && github.event.inputs.version == 'premajor'
-        name: Generate new preversion
+      - name: Generate new version
         run: npm version ${{ github.event.inputs.version }} --preid=beta
-
-      - if: github.event.inputs.version != 'prerelease'
-        name: Generate new version
-        run: npm version ${{ github.event.inputs.version }}
 
       - name: Push new version tag
         run: git push origin master --tags
