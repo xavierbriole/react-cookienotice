@@ -1,0 +1,43 @@
+name: Publish tag
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types:
+      - closed
+    branches:
+      - 'bump/**'
+    paths:
+      - 'package.json'
+      - 'package-lock.json'
+
+jobs:
+  publish-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: master
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.15.0
+          cache: 'npm'
+
+      - name: Setup Git user
+        uses: fregante/setup-git-user@v2
+
+      - name: Get version
+        id: get-version
+        run: |
+          echo "NEW_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Publish tag
+        run: |
+          git tag ${{ steps.get-version.outputs.NEW_VERSION }}
+          git push --tags
