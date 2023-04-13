@@ -38,20 +38,13 @@ jobs:
         uses: fregante/setup-git-user@v2
 
       - name: Generate new version
-        run: npm version ${{ github.event.inputs.version }} --preid=beta
+        id: generate-version
+        run: |
+          npm version ${{ github.event.inputs.version }} --preid=beta
+          echo node -p "require('./package.json').version" >> $NEW_VERSION
 
-      - name: Push new version tag
-        run: git push origin master --tags
-
-      - name: Create changelog
-        uses: fregante/release-with-changelog@v3
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          exclude: '^v?\d+\.\d+\.\d+/i'
-          commit-template: '- {title} ({hash})'
-          template: |
-            ### Changelog
-
-            {commits}
-
-            {range}
+          title: Bump ${{ steps.generate-version.outputs.NEW_VERSION }}
+          branch: bump/${{ steps.generate-version.outputs.NEW_VERSION }}
