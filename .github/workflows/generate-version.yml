@@ -41,7 +41,7 @@ jobs:
         id: generate-version
         run: |
           npm version ${{ github.event.inputs.version }} --preid=beta
-          echo node -p "require('./package.json').version" >> $NEW_VERSION
+          echo node -p "require('./package.json').version" > $NEW_VERSION
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
