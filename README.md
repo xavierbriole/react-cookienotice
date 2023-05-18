@@ -17,7 +17,7 @@
 - ⏱️ Very fast setup (less than 1 minute)
 - 🧪 Tested with unit & functional tests
 - 🌙 Dark mode based on system settings
-- 🌎 Translated in French, English & Occitan ([create issue](https://github.com/xavierbriole/react-cookienotice/issues/new) or [submit pull request](https://github.com/xavierbriole/react-cookienotice/compare) for more languages)
+- 🌎 Translated in Deutsch, English, Español, Français, Italiano, 한국인, Occitan & 中文 ([create issue](https://github.com/xavierbriole/react-cookienotice/issues/new) or [submit pull request](https://github.com/xavierbriole/react-cookienotice/compare) for more languages)
 
 ## Install
 
