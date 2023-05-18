@@ -4,28 +4,22 @@
 
 ![Preview Light](screenshots/light.png)
 
-[![NPM](https://img.shields.io/npm/v/react-cookienotice.svg)](https://www.npmjs.com/package/react-cookienotice)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-[![codecov](https://codecov.io/gh/xavierbriole/react-cookienotice/branch/master/graph/badge.svg?token=256VJO28DU)](https://codecov.io/gh/xavierbriole/react-cookienotice)
-[![npm-publish](https://github.com/xavierbriole/react-cookienotice/workflows/npm-publish/badge.svg)](https://github.com/xavierbriole/react-cookienotice/actions/workflows/npm-publish.yml)
-[![downloads](https://img.shields.io/badge/dynamic/json?color=blue&label=downloads&query=downloads&suffix=%2Fmonth&url=https%3A%2F%2Fapi.npmjs.org%2Fdownloads%2Fpoint%2Flast-month%2Freact-cookienotice)](http://npm-stats.org/#/react-cookienotice)
+[![npm](https://badgen.net/npm/v/react-cookienotice)](https://www.npmjs.com/package/react-cookienotice)
+[![npm@next](https://badgen.net/npm/v/react-cookienotice/next)](https://www.npmjs.com/package/react-cookienotice)
+[![coverage](https://badgen.net/codecov/c/github/xavierbriole/react-cookienotice)](https://codecov.io/gh/xavierbriole/react-cookienotice)
+[![minzipped](https://badgen.net/bundlephobia/minzip/react-cookienotice)](https://bundlephobia.com/package/react-cookienotice)
+[![downloads](https://badgen.net/npm/dw/react-cookienotice)](http://npm-stats.org/#/react-cookienotice)
 [![storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@main/badge/badge-storybook.svg)](https://react-cookienotice.vercel.app)
 
-- 🍃 No dependency, full self-made package (1.4 kB - [BundlePhobia](https://bundlephobia.com/package/react-cookienotice))
+- 🍃 No dependency, full self-made package ([Bundlephobia](https://bundlephobia.com/package/react-cookienotice))
 - 📱 Mobile first & responsive
 - ⚙️ Customizable with several props
-- 🍕 Very fast setup (less than 1 minute)
-- 🧪 Tested with functionals tests
+- ⏱️ Very fast setup (less than 1 minute)
+- 🧪 Tested with unit & functional tests
 - 🌙 Dark mode based on system settings
-- 🌎 Translated in French & English ([create issue](https://github.com/xavierbriole/react-cookienotice/issues/new) for more languages)
+- 🌎 Translated in French, English & Occitan ([create issue](https://github.com/xavierbriole/react-cookienotice/issues/new) or [submit pull request](https://github.com/xavierbriole/react-cookienotice/compare) for more languages)
 
 ## Install
-
-### Yarn
-
-```bash
-yarn add react-cookienotice
-```
 
 ### npm
 
@@ -33,12 +27,18 @@ yarn add react-cookienotice
 npm i --save react-cookienotice
 ```
 
+### Yarn
+
+```bash
+yarn add react-cookienotice
+```
+
 ## Usage
 
 ```tsx
 import React from 'react'
-import CookieNotice from 'react-cookienotice'
-import 'react-cookienotice/dist/index.css'
+import { CookieNotice } from 'react-cookienotice'
+import 'react-cookienotice/dist/style.css'
 
 const Example = () => <CookieNotice />
 
