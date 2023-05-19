@@ -62,22 +62,6 @@ export interface CookieNoticeProps {
    * The name of the cookie that saves the user consent.
    */
   cookieName?: string
-  /**
-   * @deprecated Use titleLabel instead.
-   */
-  cookieTextLabel?: string
-  /**
-   * @deprecated Use readMoreLabel instead.
-   */
-  readMoreButtonLabel?: string
-  /**
-   * @deprecated Use readMoreLink instead.
-   */
-  readMoreButtonLink?: string
-  /**
-   * @deprecated Use readMoreInNewTab instead.
-   */
-  readMoreButtonOpenInNewTab?: boolean
 }
 
 /**
@@ -112,20 +96,14 @@ const CookieNotice = ({
   hideDeclineButton,
   cookieExpiration,
   cookieName,
-  cookieTextLabel,
-  readMoreButtonLabel,
-  readMoreButtonLink,
-  readMoreButtonOpenInNewTab,
 }: CookieNoticeProps) => {
   const validAcceptButtonLabel = validateLabel(acceptButtonLabel)
   const validDeclineButtonLabel = validateLabel(declineButtonLabel)
-  const validTitleLabel = validateLabel(titleLabel || cookieTextLabel)
+  const validTitleLabel = validateLabel(titleLabel)
   const validDescriptionLabel = validateLabel(descriptionLabel)
-  const validReadMoreLabel = validateLabel(readMoreLabel || readMoreButtonLabel)
-  const validReadMoreLink = validateLink(readMoreLink || readMoreButtonLink)
-  const validReadMoreInNewTab = validateBoolean(
-    readMoreInNewTab ?? readMoreButtonOpenInNewTab,
-  )
+  const validReadMoreLabel = validateLabel(readMoreLabel)
+  const validReadMoreLink = validateLink(readMoreLink)
+  const validReadMoreInNewTab = validateBoolean(readMoreInNewTab)
   const validHideDeclineButton = validateBoolean(hideDeclineButton)
   const validCookieExpiration = validateCookieExpiration(cookieExpiration)
   const validCookieName = validateCookieName(cookieName)
