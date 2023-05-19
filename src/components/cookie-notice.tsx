@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 
 import { getCookie, setCookie } from '../helpers/cookies'
 import { formatMessage } from '../intl/format'
@@ -108,7 +108,10 @@ const CookieNotice = ({
   const validCookieExpiration = validateCookieExpiration(cookieExpiration)
   const validCookieName = validateCookieName(cookieName)
 
-  const shouldHideNotice = getCookie(validCookieName) === 'true'
+  const shouldHideNotice = useMemo(
+    () => getCookie(validCookieName) === 'true',
+    [],
+  )
 
   const [hideNotice, setHideNotice] = useState(shouldHideNotice)
 

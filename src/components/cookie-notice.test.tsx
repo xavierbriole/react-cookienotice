@@ -148,7 +148,7 @@ describe('CookieNotice', () => {
       expect(container.firstChild).toBeNull()
     })
 
-    it('should call getCookie 2 times (first before click & second after click)', () => {
+    it('should call getCookie', () => {
       const { getByText } = render(
         <CookieNotice
           acceptButtonLabel='acceptButtonLabel'
@@ -172,7 +172,7 @@ describe('CookieNotice', () => {
         acceptButton.click()
       })
 
-      expect(getCookie).toHaveBeenCalledTimes(2)
+      expect(getCookie).toHaveBeenCalledTimes(1)
       expect(getCookie).toHaveBeenCalledWith('cookieName')
     })
 
@@ -292,7 +292,7 @@ describe('CookieNotice', () => {
       expect(container.firstChild).toBeNull()
     })
 
-    it('should call getCookie 2 times (first before click & second after click)', () => {
+    it('should call getCookie', () => {
       const { getByText } = render(
         <CookieNotice
           acceptButtonLabel='acceptButtonLabel'
@@ -316,7 +316,7 @@ describe('CookieNotice', () => {
         declineButton.click()
       })
 
-      expect(getCookie).toHaveBeenCalledTimes(2)
+      expect(getCookie).toHaveBeenCalledTimes(1)
       expect(getCookie).toHaveBeenCalledWith('cookieName')
     })
 
