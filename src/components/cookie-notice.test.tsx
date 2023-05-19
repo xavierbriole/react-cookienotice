@@ -26,7 +26,6 @@ describe('CookieNotice', () => {
         readMoreLabel='readMoreLabel'
         readMoreLink='https://example.com'
         readMoreInNewTab={true}
-        hideDeclineButton={false}
         cookieExpiration={1}
         cookieName='cookieName'
       />,
@@ -48,7 +47,6 @@ describe('CookieNotice', () => {
           readMoreLabel='readMoreLabel'
           readMoreLink='https://example.com'
           readMoreInNewTab={true}
-          hideDeclineButton={false}
           cookieExpiration={1}
           cookieName='cookieName'
         />,
@@ -66,57 +64,12 @@ describe('CookieNotice', () => {
           onDeclineButtonClick={() => {}}
           titleLabel='titleLabel'
           descriptionLabel='descriptionLabel'
-          hideDeclineButton={false}
           cookieExpiration={1}
           cookieName='cookieName'
         />,
       )
 
       expect(() => getByText('readMoreLabel')).toThrow()
-    })
-  })
-
-  describe('should maybe hide decline button', () => {
-    it('successfully', () => {
-      const { getByText } = render(
-        <CookieNotice
-          acceptButtonLabel='acceptButtonLabel'
-          onAcceptButtonClick={() => {}}
-          declineButtonLabel='declineButtonLabel'
-          onDeclineButtonClick={() => {}}
-          titleLabel='titleLabel'
-          descriptionLabel='descriptionLabel'
-          readMoreLabel='readMoreLabel'
-          readMoreLink='https://example.com'
-          readMoreInNewTab={true}
-          hideDeclineButton={true}
-          cookieExpiration={1}
-          cookieName='cookieName'
-        />,
-      )
-
-      expect(() => getByText('declineButtonLabel')).toThrow()
-    })
-
-    it('with failure', () => {
-      const { getByText } = render(
-        <CookieNotice
-          acceptButtonLabel='acceptButtonLabel'
-          onAcceptButtonClick={() => {}}
-          declineButtonLabel='declineButtonLabel'
-          onDeclineButtonClick={() => {}}
-          titleLabel='titleLabel'
-          descriptionLabel='descriptionLabel'
-          readMoreLabel='readMoreLabel'
-          readMoreLink='https://example.com'
-          readMoreInNewTab={true}
-          hideDeclineButton={false}
-          cookieExpiration={1}
-          cookieName='cookieName'
-        />,
-      )
-
-      expect(getByText('declineButtonLabel')).toBeInTheDocument()
     })
   })
 
@@ -133,7 +86,6 @@ describe('CookieNotice', () => {
           readMoreLabel='readMoreLabel'
           readMoreLink='https://example.com'
           readMoreInNewTab={true}
-          hideDeclineButton={false}
           cookieExpiration={1}
           cookieName='cookieName'
         />,
@@ -160,7 +112,6 @@ describe('CookieNotice', () => {
           readMoreLabel='readMoreLabel'
           readMoreLink='https://example.com'
           readMoreInNewTab={true}
-          hideDeclineButton={false}
           cookieExpiration={1}
           cookieName='cookieName'
         />,
@@ -188,7 +139,6 @@ describe('CookieNotice', () => {
           readMoreLabel='readMoreLabel'
           readMoreLink='https://example.com'
           readMoreInNewTab={true}
-          hideDeclineButton={false}
           cookieExpiration={1}
           cookieName='cookieName'
         />,
@@ -219,7 +169,6 @@ describe('CookieNotice', () => {
             readMoreLabel='readMoreLabel'
             readMoreLink='https://example.com'
             readMoreInNewTab={true}
-            hideDeclineButton={false}
             cookieExpiration={1}
             cookieName='cookieName'
           />,
@@ -235,8 +184,6 @@ describe('CookieNotice', () => {
       })
 
       it('with failure if not passed', () => {
-        const onAcceptButtonClick = vi.fn()
-
         const { getByText } = render(
           <CookieNotice
             acceptButtonLabel='acceptButtonLabel'
@@ -247,19 +194,12 @@ describe('CookieNotice', () => {
             readMoreLabel='readMoreLabel'
             readMoreLink='https://example.com'
             readMoreInNewTab={true}
-            hideDeclineButton={false}
             cookieExpiration={1}
             cookieName='cookieName'
           />,
         )
 
-        const acceptButton = getByText('acceptButtonLabel')
-
-        act(() => {
-          acceptButton.click()
-        })
-
-        expect(onAcceptButtonClick).not.toBeCalled()
+        expect(() => getByText('acceptButtonLabel')).toThrow()
       })
     })
   })
@@ -277,7 +217,6 @@ describe('CookieNotice', () => {
           readMoreLabel='readMoreLabel'
           readMoreLink='https://example.com'
           readMoreInNewTab={true}
-          hideDeclineButton={false}
           cookieExpiration={1}
           cookieName='cookieName'
         />,
@@ -304,7 +243,6 @@ describe('CookieNotice', () => {
           readMoreLabel='readMoreLabel'
           readMoreLink='https://example.com'
           readMoreInNewTab={true}
-          hideDeclineButton={false}
           cookieExpiration={1}
           cookieName='cookieName'
         />,
@@ -332,7 +270,6 @@ describe('CookieNotice', () => {
           readMoreLabel='readMoreLabel'
           readMoreLink='https://example.com'
           readMoreInNewTab={true}
-          hideDeclineButton={false}
           cookieExpiration={1}
           cookieName='cookieName'
         />,
@@ -363,7 +300,6 @@ describe('CookieNotice', () => {
             readMoreLabel='readMoreLabel'
             readMoreLink='https://example.com'
             readMoreInNewTab={true}
-            hideDeclineButton={false}
             cookieExpiration={1}
             cookieName='cookieName'
           />,
@@ -379,8 +315,6 @@ describe('CookieNotice', () => {
       })
 
       it('with failure if not passed', () => {
-        const onDeclineButtonClick = vi.fn()
-
         const { getByText } = render(
           <CookieNotice
             acceptButtonLabel='acceptButtonLabel'
@@ -391,19 +325,12 @@ describe('CookieNotice', () => {
             readMoreLabel='readMoreLabel'
             readMoreLink='https://example.com'
             readMoreInNewTab={true}
-            hideDeclineButton={false}
             cookieExpiration={1}
             cookieName='cookieName'
           />,
         )
 
-        const declineButton = getByText('declineButtonLabel')
-
-        act(() => {
-          declineButton.click()
-        })
-
-        expect(onDeclineButtonClick).not.toBeCalled()
+        expect(() => getByText('declineButtonLabel')).toThrow()
       })
     })
   })
