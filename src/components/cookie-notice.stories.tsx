@@ -64,10 +64,6 @@ const meta: Meta<typeof CookieNotice> = {
       description: 'Whether the read more link should open in a new tab.',
       type: { name: 'boolean', required: false },
     },
-    hideDeclineButton: {
-      description: 'This will hide the decline button.',
-      type: { name: 'boolean', required: false },
-    },
     cookieExpiration: {
       description:
         'Days after cookie expires and user should reaccept cookies.',
@@ -93,18 +89,25 @@ const meta: Meta<typeof CookieNotice> = {
 export default meta
 type Story = StoryObj<typeof CookieNotice>
 
-export const Default: Story = {}
-
-export const WithReadMore: Story = {
+export const Default: Story = {
   args: {
-    readMoreLabel: 'Read more',
-    readMoreLink: 'https://www.apple.com',
-    readMoreInNewTab: true,
+    onAcceptButtonClick: undefined,
+    onDeclineButtonClick: undefined,
   },
 }
 
-export const WithoutDeclineButton: Story = {
+export const WithAllProps: Story = {
   args: {
-    hideDeclineButton: true,
+    acceptButtonLabel: 'acceptButtonLabel',
+    onAcceptButtonClick: () => {},
+    declineButtonLabel: 'declineButtonLabel',
+    onDeclineButtonClick: () => {},
+    titleLabel: 'titleLabel',
+    descriptionLabel: 'descriptionLabel',
+    readMoreLabel: 'readMoreLabel',
+    readMoreLink: 'https://www.apple.com',
+    readMoreInNewTab: true,
+    cookieExpiration: 30,
+    cookieName: 'hide-notice',
   },
 }

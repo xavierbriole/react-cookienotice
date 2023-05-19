@@ -51,10 +51,6 @@ export interface CookieNoticeProps {
    */
   readMoreInNewTab?: boolean
   /**
-   * This will hide the decline button.
-   */
-  hideDeclineButton?: boolean
-  /**
    * Days after cookie expires and user should reaccept cookies.
    */
   cookieExpiration?: number
@@ -78,7 +74,6 @@ export interface CookieNoticeProps {
  *   readMoreLabel='readMoreLabel'
  *   readMoreLink='readMoreLink'
  *   readMoreInNewTab={true}
- *   hideDeclineButton={false}
  *   cookieExpiration={30}
  *   cookieName='cookieName'
  * />
@@ -93,7 +88,6 @@ const CookieNotice = ({
   readMoreLabel,
   readMoreLink,
   readMoreInNewTab,
-  hideDeclineButton,
   cookieExpiration,
   cookieName,
 }: CookieNoticeProps) => {
@@ -104,7 +98,6 @@ const CookieNotice = ({
   const validReadMoreLabel = validateLabel(readMoreLabel)
   const validReadMoreLink = validateLink(readMoreLink)
   const validReadMoreInNewTab = validateBoolean(readMoreInNewTab)
-  const validHideDeclineButton = validateBoolean(hideDeclineButton)
   const validCookieExpiration = validateCookieExpiration(cookieExpiration)
   const validCookieName = validateCookieName(cookieName)
 
@@ -115,17 +108,23 @@ const CookieNotice = ({
 
   const [hideNotice, setHideNotice] = useState(shouldHideNotice)
 
-  const handleAcceptButtonClick = useCallback(() => {
-    setHideNotice(true)
-    setCookie(validCookieName, 'true', validCookieExpiration)
-    onAcceptButtonClick && onAcceptButtonClick()
-  }, [])
+  const handleAcceptButtonClick = useCallback(
+    (callback: () => void) => () => {
+      setHideNotice(true)
+      setCookie(validCookieName, 'true', validCookieExpiration)
+      callback()
+    },
+    [],
+  )
 
-  const handleDeclineButtonClick = useCallback(() => {
-    setHideNotice(true)
-    setCookie(validCookieName, 'true', validCookieExpiration)
-    onDeclineButtonClick && onDeclineButtonClick()
-  }, [])
+  const handleDeclineButtonClick = useCallback(
+    (callback: () => void) => () => {
+      setHideNotice(true)
+      setCookie(validCookieName, 'true', validCookieExpiration)
+      callback()
+    },
+    [],
+  )
 
   if (hideNotice) return null
 
@@ -145,11 +144,13 @@ const CookieNotice = ({
         />
       </div>
       <div className='react-cookienotice-buttons'>
-        <Button onClick={handleAcceptButtonClick}>
-          {formatMessage('button.accept', validAcceptButtonLabel)}
-        </Button>
-        {!validHideDeclineButton && (
-          <Button onClick={handleDeclineButtonClick}>
+        {onAcceptButtonClick && (
+          <Button onClick={handleAcceptButtonClick(onAcceptButtonClick)}>
+            {formatMessage('button.accept', validAcceptButtonLabel)}
+          </Button>
+        )}
+        {onDeclineButtonClick && (
+          <Button onClick={handleDeclineButtonClick(onDeclineButtonClick)}>
             {formatMessage('button.decline', validDeclineButtonLabel)}
           </Button>
         )}
