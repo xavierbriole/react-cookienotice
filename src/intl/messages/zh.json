@@ -1,6 +1,10 @@
 {
   "text.title": "饼干同意",
   "text.description": "通过单击“接受”, 您同意我们网站使用cookie通过记住cookie首选项为您提供最相关的体验。",
+  "text.customizeTitle": "定制",
   "button.accept": "接受",
-  "button.decline": "衰退"
+  "button.acceptAll": "全都接受",
+  "button.declineAll": "拒绝全部",
+  "button.customize": "定制",
+  "button.back": "后退"
 }

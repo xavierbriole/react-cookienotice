@@ -1,6 +1,10 @@
 {
   "text.title": "Consenso dei cookie",
   "text.description": "Facendo clic su Accetta, acconsenti all'uso da parte del nostro sito Web per offrirti l'esperienza più pertinente ricordando le preferenze dei cookie.",
+  "text.customizeTitle": "personalizzare",
   "button.accept": "Accettare",
-  "button.decline": "Declino"
+  "button.acceptAll": "Accettare tutti",
+  "button.declineAll": "Rifiutare tutto",
+  "button.customize": "personalizzare",
+  "button.back": "Indietro"
 }

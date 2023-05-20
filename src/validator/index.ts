@@ -8,6 +8,24 @@ export const validateLabel = (parameter?: any): string | undefined => {
   return undefined
 }
 
+export const validateArrayOfStrings = (
+  parameter?: any,
+): string[] | undefined => {
+  if (Array.isArray(parameter)) {
+    if (parameter.length === 0) {
+      err(`array should have at least one element`)
+    }
+
+    if (parameter.every((element) => typeof element === 'string')) {
+      return parameter
+    }
+
+    err(`array should contain only string`)
+  }
+
+  return undefined
+}
+
 export const validateLink = (parameter?: any): string | undefined => {
   if (typeof parameter === 'string') {
     if (

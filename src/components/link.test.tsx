@@ -3,38 +3,26 @@ import { render } from '@testing-library/react'
 import Link from './link'
 
 describe('Link', () => {
-  it('should render', () => {
-    const { container } = render(<Link to='#' newTab={true} label='label' />)
+  describe('should render', () => {
+    it('with all props', () => {
+      const { asFragment } = render(<Link to='#' newTab={true} label='label' />)
 
-    expect(container.firstChild).toMatchSnapshot()
+      expect(asFragment()).toMatchSnapshot()
+    })
+
+    it('without props', () => {
+      const { asFragment } = render(
+        <Link to={undefined} newTab={undefined} label={undefined} />,
+      )
+
+      expect(asFragment()).toMatchSnapshot()
+    })
   })
 
-  describe('should maybe display link', () => {
-    it('successfully', () => {
-      const { getByText } = render(<Link to='#' newTab={true} label='label' />)
+  it('should display link', () => {
+    const { getByText } = render(<Link to='#' newTab={true} label='label' />)
 
-      expect(getByText('label')).toBeInTheDocument()
-    })
-
-    describe('with failure', () => {
-      it('with only "to" prop', () => {
-        const { getByText } = render(<Link to='#' />)
-
-        expect(() => getByText('label')).toThrow()
-      })
-
-      it('with only "newTab" prop', () => {
-        const { getByText } = render(<Link newTab={true} />)
-
-        expect(() => getByText('label')).toThrow()
-      })
-
-      it('with only "label" prop', () => {
-        const { getByText } = render(<Link label='label' />)
-
-        expect(() => getByText('label')).toThrow()
-      })
-    })
+    expect(getByText('label')).toBeInTheDocument()
   })
 
   it('should open in new tab', () => {

@@ -7,6 +7,50 @@ const meta: Meta<typeof CookieNotice> = {
   component: CookieNotice,
   tags: ['autodocs'],
   argTypes: {
+    acceptAllButtonLabel: {
+      description: 'The label for the accept all cookies button.',
+      type: { name: 'string', required: false },
+      table: {
+        defaultValue: { summary: 'Accept all' },
+      },
+    },
+    onAcceptAllButtonClick: {
+      description:
+        'A callback function to be called when the accept all cookies button is clicked.',
+      type: { name: 'function', required: false },
+      action: 'onAcceptAllButtonClick',
+    },
+    declineAllButtonLabel: {
+      description: 'The label for the decline all cookies button.',
+      type: { name: 'string', required: false },
+      table: {
+        defaultValue: { summary: 'Decline all' },
+      },
+    },
+    onDeclineAllButtonClick: {
+      description:
+        'A callback function to be called when the decline all cookies button is clicked.',
+      type: { name: 'function', required: false },
+      action: 'onDeclineAllButtonClick',
+    },
+    customizeButtonLabel: {
+      description: 'The label for the customize cookies button.',
+      type: { name: 'string', required: false },
+      table: {
+        defaultValue: { summary: 'Customize' },
+      },
+    },
+    customizeTitleLabel: {
+      description: 'The title for the customize view.',
+      type: { name: 'string', required: false },
+      table: {
+        defaultValue: { summary: 'Customize' },
+      },
+    },
+    services: {
+      description: 'List of services to be customized.',
+      type: { name: 'array', required: false },
+    },
     acceptButtonLabel: {
       description: 'The label for the accept button.',
       type: { name: 'string', required: false },
@@ -16,22 +60,16 @@ const meta: Meta<typeof CookieNotice> = {
     },
     onAcceptButtonClick: {
       description:
-        'A callback function to be called when the accept button is clicked.',
+        'A callback function to be called when the accept cookies button is clicked. The first param returns the checked services.',
       type: { name: 'function', required: false },
       action: 'onAcceptButtonClick',
     },
-    declineButtonLabel: {
-      description: 'The label for the decline button.',
+    backButtonLabel: {
+      description: 'The label for the back button.',
       type: { name: 'string', required: false },
       table: {
-        defaultValue: { summary: 'Decline' },
+        defaultValue: { summary: 'Back' },
       },
-    },
-    onDeclineButtonClick: {
-      description:
-        'A callback function to be called when the decline button is clicked.',
-      type: { name: 'function', required: false },
-      action: 'onDeclineButtonClick',
     },
     titleLabel: {
       description: 'The title for the cookie banner.',
@@ -91,23 +129,53 @@ type Story = StoryObj<typeof CookieNotice>
 
 export const Default: Story = {
   args: {
+    acceptAllButtonLabel: undefined,
+    onAcceptAllButtonClick: undefined,
+    declineAllButtonLabel: undefined,
+    onDeclineAllButtonClick: undefined,
+    customizeButtonLabel: undefined,
+    customizeTitleLabel: undefined,
+    services: undefined,
+    acceptButtonLabel: undefined,
     onAcceptButtonClick: undefined,
-    onDeclineButtonClick: undefined,
+    backButtonLabel: undefined,
+    titleLabel: undefined,
+    descriptionLabel: undefined,
+    readMoreLabel: undefined,
+    readMoreLink: undefined,
+    readMoreInNewTab: undefined,
+    cookieExpiration: undefined,
+    cookieName: undefined,
   },
 }
 
-export const WithAllProps: Story = {
+export const WithOverriddenLabels: Story = {
   args: {
+    acceptAllButtonLabel: 'acceptAllButtonLabel',
+    declineAllButtonLabel: 'declineAllButtonLabel',
+    customizeButtonLabel: 'customizeButtonLabel',
+    customizeTitleLabel: 'customizeTitleLabel',
+    services: ['service1', 'service2'],
     acceptButtonLabel: 'acceptButtonLabel',
-    onAcceptButtonClick: () => {},
-    declineButtonLabel: 'declineButtonLabel',
-    onDeclineButtonClick: () => {},
+    backButtonLabel: 'backButtonLabel',
     titleLabel: 'titleLabel',
     descriptionLabel: 'descriptionLabel',
     readMoreLabel: 'readMoreLabel',
-    readMoreLink: 'https://www.apple.com',
+    readMoreLink: 'https://www.example.com',
     readMoreInNewTab: true,
-    cookieExpiration: 30,
-    cookieName: 'hide-notice',
+  },
+}
+
+export const WithCustomServices: Story = {
+  args: {
+    services: ['Google Analytics', 'Hubspot'],
+  },
+}
+
+export const WithReadMore: Story = {
+  args: {
+    readMoreLabel: 'En savoir plus',
+    readMoreLink: 'https://www.example.com',
+    readMoreInNewTab: true,
   },
 }
