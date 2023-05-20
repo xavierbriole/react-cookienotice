@@ -1,6 +1,10 @@
 {
   "text.title": "Consentiment als cookies",
   "text.description": "En clicant Acceptar, consentètz a l'utilizacion de cookies per nòstre site Web per vos ofrir l'experiéncia mai pertinenta en memorizant vòstras preferéncias a prepaus dels cookies.",
+  "text.customizeTitle": "Personalizat",
   "button.accept": "Acceptar",
-  "button.decline": "Refusar"
+  "button.acceptAll": "Acceptar tot",
+  "button.declineAll": "Declinar tot",
+  "button.customize": "Personalizat",
+  "button.back": "Precedent"
 }

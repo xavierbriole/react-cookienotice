@@ -4,13 +4,17 @@ import { vi } from 'vitest'
 import Button from './button'
 
 describe('Button', () => {
-  it('should render', () => {
-    const { container } = render(<Button onClick={() => {}}>children</Button>)
-
-    expect(container.firstChild).toMatchSnapshot()
+  beforeEach(() => {
+    vi.resetAllMocks()
   })
 
-  it('should display children', () => {
+  it('should render', () => {
+    const { asFragment } = render(<Button onClick={() => {}}>children</Button>)
+
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('should display button', () => {
     const { getByText } = render(<Button>children</Button>)
 
     expect(getByText('children')).toBeInTheDocument()
@@ -25,6 +29,6 @@ describe('Button', () => {
 
     button.click()
 
-    expect(onClick).toHaveBeenCalled()
+    expect(onClick).toHaveBeenCalledTimes(1)
   })
 })

@@ -1,0 +1,141 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DefaultView > should render > with services 1`] = `
+<DocumentFragment>
+  <div
+    class="react-cookienotice-body"
+  >
+    <div
+      class="react-cookienotice-title"
+    >
+      <span>
+        titleLabel
+      </span>
+    </div>
+    <div
+      class="react-cookienotice-description"
+    >
+      <span>
+        descriptionLabel
+      </span>
+    </div>
+    <a
+      class="react-cookienotice-link"
+      href="readMoreLink"
+      rel="noreferrer"
+      target="_blank"
+    >
+      readMoreLabel
+    </a>
+  </div>
+  <div
+    class="react-cookienotice-buttons"
+  >
+    <button
+      class="react-cookienotice-button"
+    >
+      acceptAllButtonLabel
+    </button>
+    <button
+      class="react-cookienotice-button"
+    >
+      customizeButtonLabel
+    </button>
+    <button
+      class="react-cookienotice-button"
+    >
+      declineAllButtonLabel
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DefaultView > should render > with services empty 1`] = `
+<DocumentFragment>
+  <div
+    class="react-cookienotice-body"
+  >
+    <div
+      class="react-cookienotice-title"
+    >
+      <span>
+        titleLabel
+      </span>
+    </div>
+    <div
+      class="react-cookienotice-description"
+    >
+      <span>
+        descriptionLabel
+      </span>
+    </div>
+    <a
+      class="react-cookienotice-link"
+      href="readMoreLink"
+      rel="noreferrer"
+      target="_blank"
+    >
+      readMoreLabel
+    </a>
+  </div>
+  <div
+    class="react-cookienotice-buttons"
+  >
+    <button
+      class="react-cookienotice-button"
+    >
+      acceptAllButtonLabel
+    </button>
+    <button
+      class="react-cookienotice-button"
+    >
+      declineAllButtonLabel
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DefaultView > should render > without services 1`] = `
+<DocumentFragment>
+  <div
+    class="react-cookienotice-body"
+  >
+    <div
+      class="react-cookienotice-title"
+    >
+      <span>
+        titleLabel
+      </span>
+    </div>
+    <div
+      class="react-cookienotice-description"
+    >
+      <span>
+        descriptionLabel
+      </span>
+    </div>
+    <a
+      class="react-cookienotice-link"
+      href="readMoreLink"
+      rel="noreferrer"
+      target="_blank"
+    >
+      readMoreLabel
+    </a>
+  </div>
+  <div
+    class="react-cookienotice-buttons"
+  >
+    <button
+      class="react-cookienotice-button"
+    >
+      acceptAllButtonLabel
+    </button>
+    <button
+      class="react-cookienotice-button"
+    >
+      declineAllButtonLabel
+    </button>
+  </div>
+</DocumentFragment>
+`;

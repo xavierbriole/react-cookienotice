@@ -1,6 +1,10 @@
 {
   "text.title": "Zustimmung der Kekse",
   "text.description": "Wenn Sie auf Akzeptieren klicken, stimmen Sie der Verwendung von Cookies durch die Website zu, um Ihnen die relevanteste Erfahrung zu bieten, indem Sie sich an Ihre Cookie -Einstellungen erinnern.",
+  "text.customizeTitle": "Anpassen",
   "button.accept": "Akzeptieren",
-  "button.decline": "Abfall"
+  "button.acceptAll": "Akzeptiere alle",
+  "button.declineAll": "Alles ablehnen",
+  "button.customize": "Anpassen",
+  "button.back": "Zurück"
 }

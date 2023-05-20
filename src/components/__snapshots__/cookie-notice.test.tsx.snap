@@ -1,48 +1,55 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`CookieNotice > should render 1`] = `
-<div
-  class="react-cookienotice-root"
->
+<DocumentFragment>
   <div
-    class="react-cookienotice-body"
+    class="react-cookienotice-root"
   >
     <div
-      class="react-cookienotice-title"
+      class="react-cookienotice-body"
     >
-      <span>
-        titleLabel
-      </span>
+      <div
+        class="react-cookienotice-title"
+      >
+        <span>
+          titleLabel
+        </span>
+      </div>
+      <div
+        class="react-cookienotice-description"
+      >
+        <span>
+          descriptionLabel
+        </span>
+      </div>
+      <a
+        class="react-cookienotice-link"
+        href="https://www.example.com"
+        rel="noreferrer"
+        target="_blank"
+      >
+        readMoreLabel
+      </a>
     </div>
     <div
-      class="react-cookienotice-description"
+      class="react-cookienotice-buttons"
     >
-      <span>
-        descriptionLabel
-      </span>
+      <button
+        class="react-cookienotice-button"
+      >
+        acceptAllButtonLabel
+      </button>
+      <button
+        class="react-cookienotice-button"
+      >
+        customizeButtonLabel
+      </button>
+      <button
+        class="react-cookienotice-button"
+      >
+        declineAllButtonLabel
+      </button>
     </div>
-    <a
-      class="react-cookienotice-link"
-      href="https://example.com"
-      rel="noreferrer"
-      target="_blank"
-    >
-      readMoreLabel
-    </a>
   </div>
-  <div
-    class="react-cookienotice-buttons"
-  >
-    <button
-      class="react-cookienotice-button"
-    >
-      acceptButtonLabel
-    </button>
-    <button
-      class="react-cookienotice-button"
-    >
-      declineButtonLabel
-    </button>
-  </div>
-</div>
+</DocumentFragment>
 `;

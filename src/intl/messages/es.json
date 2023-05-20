@@ -1,6 +1,10 @@
 {
   "text.title": "Consentimiento de cookies",
   "text.description": "Al hacer clic en Aceptar, usted acepta el uso de cookies de nuestro sitio web para proporcionarle la experiencia más relevante al recordar sus preferencias de cookies.",
+  "text.customizeTitle": "Personalizar",
   "button.accept": "Aceptar",
-  "button.decline": "Rechazar"
+  "button.acceptAll": "Aceptar todo",
+  "button.declineAll": "Declinar todo",
+  "button.customize": "Personalizar",
+  "button.back": "Atrás"
 }

@@ -15,323 +15,219 @@ describe('CookieNotice', () => {
   })
 
   it('should render', () => {
-    const { container } = render(
+    const { asFragment } = render(
       <CookieNotice
+        acceptAllButtonLabel='acceptAllButtonLabel'
+        onAcceptAllButtonClick={() => {}}
+        declineAllButtonLabel='declineAllButtonLabel'
+        onDeclineAllButtonClick={() => {}}
+        customizeButtonLabel='customizeButtonLabel'
+        customizeTitleLabel='customizeTitleLabel'
+        services={['service1', 'service2']}
         acceptButtonLabel='acceptButtonLabel'
         onAcceptButtonClick={() => {}}
-        declineButtonLabel='declineButtonLabel'
-        onDeclineButtonClick={() => {}}
+        backButtonLabel='backButtonLabel'
         titleLabel='titleLabel'
         descriptionLabel='descriptionLabel'
         readMoreLabel='readMoreLabel'
-        readMoreLink='https://example.com'
+        readMoreLink='https://www.example.com'
         readMoreInNewTab={true}
-        cookieExpiration={1}
+        cookieExpiration={30}
         cookieName='cookieName'
       />,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
-  describe('should maybe display read more link', () => {
-    it('successfully', () => {
-      const { getByText } = render(
-        <CookieNotice
-          acceptButtonLabel='acceptButtonLabel'
-          onAcceptButtonClick={() => {}}
-          declineButtonLabel='declineButtonLabel'
-          onDeclineButtonClick={() => {}}
-          titleLabel='titleLabel'
-          descriptionLabel='descriptionLabel'
-          readMoreLabel='readMoreLabel'
-          readMoreLink='https://example.com'
-          readMoreInNewTab={true}
-          cookieExpiration={1}
-          cookieName='cookieName'
-        />,
-      )
+  it('should handle accept all button click', () => {
+    const onAcceptAllButtonClick = vi.fn()
 
-      expect(getByText('readMoreLabel')).toBeInTheDocument()
+    const { getByText } = render(
+      <CookieNotice
+        acceptAllButtonLabel='acceptAllButtonLabel'
+        onAcceptAllButtonClick={onAcceptAllButtonClick}
+        declineAllButtonLabel='declineAllButtonLabel'
+        onDeclineAllButtonClick={() => {}}
+        customizeButtonLabel='customizeButtonLabel'
+        customizeTitleLabel='customizeTitleLabel'
+        services={['service1', 'service2']}
+        acceptButtonLabel='acceptButtonLabel'
+        onAcceptButtonClick={() => {}}
+        backButtonLabel='backButtonLabel'
+        titleLabel='titleLabel'
+        descriptionLabel='descriptionLabel'
+        readMoreLabel='readMoreLabel'
+        readMoreLink='https://www.example.com'
+        readMoreInNewTab={true}
+        cookieExpiration={30}
+        cookieName='cookieName'
+      />,
+    )
+
+    act(() => {
+      getByText('acceptAllButtonLabel').click()
     })
 
-    it('with failure', () => {
-      const { getByText } = render(
-        <CookieNotice
-          acceptButtonLabel='acceptButtonLabel'
-          onAcceptButtonClick={() => {}}
-          declineButtonLabel='declineButtonLabel'
-          onDeclineButtonClick={() => {}}
-          titleLabel='titleLabel'
-          descriptionLabel='descriptionLabel'
-          cookieExpiration={1}
-          cookieName='cookieName'
-        />,
-      )
-
-      expect(() => getByText('readMoreLabel')).toThrow()
-    })
+    expect(setCookie).toHaveBeenCalledTimes(1)
+    expect(setCookie).toHaveBeenCalledWith('cookieName', 'true', 30)
+    expect(onAcceptAllButtonClick).toHaveBeenCalledTimes(1)
   })
 
-  describe('after accept button click', () => {
-    it('should hide cookie notice', () => {
-      const { container, getByText } = render(
-        <CookieNotice
-          acceptButtonLabel='acceptButtonLabel'
-          onAcceptButtonClick={() => {}}
-          declineButtonLabel='declineButtonLabel'
-          onDeclineButtonClick={() => {}}
-          titleLabel='titleLabel'
-          descriptionLabel='descriptionLabel'
-          readMoreLabel='readMoreLabel'
-          readMoreLink='https://example.com'
-          readMoreInNewTab={true}
-          cookieExpiration={1}
-          cookieName='cookieName'
-        />,
-      )
+  it('should handle decline all button click', () => {
+    const onDeclineAllButtonClick = vi.fn()
 
-      const acceptButton = getByText('acceptButtonLabel')
+    const { getByText } = render(
+      <CookieNotice
+        acceptAllButtonLabel='acceptAllButtonLabel'
+        onAcceptAllButtonClick={() => {}}
+        declineAllButtonLabel='declineAllButtonLabel'
+        onDeclineAllButtonClick={onDeclineAllButtonClick}
+        customizeButtonLabel='customizeButtonLabel'
+        customizeTitleLabel='customizeTitleLabel'
+        services={['service1', 'service2']}
+        acceptButtonLabel='acceptButtonLabel'
+        onAcceptButtonClick={() => {}}
+        backButtonLabel='backButtonLabel'
+        titleLabel='titleLabel'
+        descriptionLabel='descriptionLabel'
+        readMoreLabel='readMoreLabel'
+        readMoreLink='https://www.example.com'
+        readMoreInNewTab={true}
+        cookieExpiration={30}
+        cookieName='cookieName'
+      />,
+    )
 
-      act(() => {
-        acceptButton.click()
-      })
-
-      expect(container.firstChild).toBeNull()
+    act(() => {
+      getByText('declineAllButtonLabel').click()
     })
 
-    it('should call getCookie', () => {
-      const { getByText } = render(
-        <CookieNotice
-          acceptButtonLabel='acceptButtonLabel'
-          onAcceptButtonClick={() => {}}
-          declineButtonLabel='declineButtonLabel'
-          onDeclineButtonClick={() => {}}
-          titleLabel='titleLabel'
-          descriptionLabel='descriptionLabel'
-          readMoreLabel='readMoreLabel'
-          readMoreLink='https://example.com'
-          readMoreInNewTab={true}
-          cookieExpiration={1}
-          cookieName='cookieName'
-        />,
-      )
-
-      const acceptButton = getByText('acceptButtonLabel')
-
-      act(() => {
-        acceptButton.click()
-      })
-
-      expect(getCookie).toHaveBeenCalledTimes(1)
-      expect(getCookie).toHaveBeenCalledWith('cookieName')
-    })
-
-    it('should call setCookie', () => {
-      const { getByText } = render(
-        <CookieNotice
-          acceptButtonLabel='acceptButtonLabel'
-          onAcceptButtonClick={() => {}}
-          declineButtonLabel='declineButtonLabel'
-          onDeclineButtonClick={() => {}}
-          titleLabel='titleLabel'
-          descriptionLabel='descriptionLabel'
-          readMoreLabel='readMoreLabel'
-          readMoreLink='https://example.com'
-          readMoreInNewTab={true}
-          cookieExpiration={1}
-          cookieName='cookieName'
-        />,
-      )
-
-      const acceptButton = getByText('acceptButtonLabel')
-
-      act(() => {
-        acceptButton.click()
-      })
-
-      expect(setCookie).toHaveBeenCalledTimes(1)
-      expect(setCookie).toHaveBeenCalledWith('cookieName', 'true', 1)
-    })
-
-    describe('should call onAcceptButtonClick', () => {
-      it('successfully if passed', () => {
-        const onAcceptButtonClick = vi.fn()
-
-        const { getByText } = render(
-          <CookieNotice
-            acceptButtonLabel='acceptButtonLabel'
-            onAcceptButtonClick={onAcceptButtonClick}
-            declineButtonLabel='declineButtonLabel'
-            onDeclineButtonClick={() => {}}
-            titleLabel='titleLabel'
-            descriptionLabel='descriptionLabel'
-            readMoreLabel='readMoreLabel'
-            readMoreLink='https://example.com'
-            readMoreInNewTab={true}
-            cookieExpiration={1}
-            cookieName='cookieName'
-          />,
-        )
-
-        const acceptButton = getByText('acceptButtonLabel')
-
-        act(() => {
-          acceptButton.click()
-        })
-
-        expect(onAcceptButtonClick).toHaveBeenCalledTimes(1)
-      })
-
-      it('with failure if not passed', () => {
-        const { getByText } = render(
-          <CookieNotice
-            acceptButtonLabel='acceptButtonLabel'
-            declineButtonLabel='declineButtonLabel'
-            onDeclineButtonClick={() => {}}
-            titleLabel='titleLabel'
-            descriptionLabel='descriptionLabel'
-            readMoreLabel='readMoreLabel'
-            readMoreLink='https://example.com'
-            readMoreInNewTab={true}
-            cookieExpiration={1}
-            cookieName='cookieName'
-          />,
-        )
-
-        expect(() => getByText('acceptButtonLabel')).toThrow()
-      })
-    })
+    expect(setCookie).toHaveBeenCalledTimes(1)
+    expect(setCookie).toHaveBeenCalledWith('cookieName', 'true', 30)
+    expect(onDeclineAllButtonClick).toHaveBeenCalledTimes(1)
   })
 
-  describe('after decline button click', () => {
-    it('should hide cookie notice', () => {
-      const { container, getByText } = render(
-        <CookieNotice
-          acceptButtonLabel='acceptButtonLabel'
-          onAcceptButtonClick={() => {}}
-          declineButtonLabel='declineButtonLabel'
-          onDeclineButtonClick={() => {}}
-          titleLabel='titleLabel'
-          descriptionLabel='descriptionLabel'
-          readMoreLabel='readMoreLabel'
-          readMoreLink='https://example.com'
-          readMoreInNewTab={true}
-          cookieExpiration={1}
-          cookieName='cookieName'
-        />,
-      )
+  it('should handle accept button click', () => {
+    const onAcceptButtonClick = vi.fn()
 
-      const declineButton = getByText('declineButtonLabel')
+    const { getByText, getByLabelText } = render(
+      <CookieNotice
+        acceptAllButtonLabel='acceptAllButtonLabel'
+        onAcceptAllButtonClick={() => {}}
+        declineAllButtonLabel='declineAllButtonLabel'
+        onDeclineAllButtonClick={() => {}}
+        customizeButtonLabel='customizeButtonLabel'
+        customizeTitleLabel='customizeTitleLabel'
+        services={['service1', 'service2']}
+        acceptButtonLabel='acceptButtonLabel'
+        onAcceptButtonClick={onAcceptButtonClick}
+        backButtonLabel='backButtonLabel'
+        titleLabel='titleLabel'
+        descriptionLabel='descriptionLabel'
+        readMoreLabel='readMoreLabel'
+        readMoreLink='https://www.example.com'
+        readMoreInNewTab={true}
+        cookieExpiration={30}
+        cookieName='cookieName'
+      />,
+    )
 
-      act(() => {
-        declineButton.click()
-      })
-
-      expect(container.firstChild).toBeNull()
+    act(() => {
+      getByText('customizeButtonLabel').click()
     })
 
-    it('should call getCookie', () => {
-      const { getByText } = render(
-        <CookieNotice
-          acceptButtonLabel='acceptButtonLabel'
-          onAcceptButtonClick={() => {}}
-          declineButtonLabel='declineButtonLabel'
-          onDeclineButtonClick={() => {}}
-          titleLabel='titleLabel'
-          descriptionLabel='descriptionLabel'
-          readMoreLabel='readMoreLabel'
-          readMoreLink='https://example.com'
-          readMoreInNewTab={true}
-          cookieExpiration={1}
-          cookieName='cookieName'
-        />,
-      )
-
-      const declineButton = getByText('declineButtonLabel')
-
-      act(() => {
-        declineButton.click()
-      })
-
-      expect(getCookie).toHaveBeenCalledTimes(1)
-      expect(getCookie).toHaveBeenCalledWith('cookieName')
+    act(() => {
+      getByLabelText('service1').click()
+      getByLabelText('service2').click()
     })
 
-    it('should call setCookie', () => {
-      const { getByText } = render(
-        <CookieNotice
-          acceptButtonLabel='acceptButtonLabel'
-          onAcceptButtonClick={() => {}}
-          declineButtonLabel='declineButtonLabel'
-          onDeclineButtonClick={() => {}}
-          titleLabel='titleLabel'
-          descriptionLabel='descriptionLabel'
-          readMoreLabel='readMoreLabel'
-          readMoreLink='https://example.com'
-          readMoreInNewTab={true}
-          cookieExpiration={1}
-          cookieName='cookieName'
-        />,
-      )
-
-      const declineButton = getByText('declineButtonLabel')
-
-      act(() => {
-        declineButton.click()
-      })
-
-      expect(setCookie).toHaveBeenCalledTimes(1)
-      expect(setCookie).toHaveBeenCalledWith('cookieName', 'true', 1)
+    act(() => {
+      getByText('acceptButtonLabel').click()
     })
 
-    describe('should call onDeclineButtonClick', () => {
-      it('successfully if passed', () => {
-        const onDeclineButtonClick = vi.fn()
+    expect(setCookie).toHaveBeenCalledTimes(1)
+    expect(setCookie).toHaveBeenCalledWith('cookieName', 'true', 30)
+    expect(onAcceptButtonClick).toHaveBeenCalledTimes(1)
+    expect(onAcceptButtonClick).toHaveBeenCalledWith(['service1', 'service2'])
+  })
 
-        const { getByText } = render(
-          <CookieNotice
-            acceptButtonLabel='acceptButtonLabel'
-            onAcceptButtonClick={() => {}}
-            declineButtonLabel='declineButtonLabel'
-            onDeclineButtonClick={onDeclineButtonClick}
-            titleLabel='titleLabel'
-            descriptionLabel='descriptionLabel'
-            readMoreLabel='readMoreLabel'
-            readMoreLink='https://example.com'
-            readMoreInNewTab={true}
-            cookieExpiration={1}
-            cookieName='cookieName'
-          />,
-        )
+  it('should get cookie on mount', () => {
+    render(
+      <CookieNotice
+        acceptAllButtonLabel='acceptAllButtonLabel'
+        onAcceptAllButtonClick={() => {}}
+        declineAllButtonLabel='declineAllButtonLabel'
+        onDeclineAllButtonClick={() => {}}
+        customizeButtonLabel='customizeButtonLabel'
+        customizeTitleLabel='customizeTitleLabel'
+        services={['service1', 'service2']}
+        acceptButtonLabel='acceptButtonLabel'
+        onAcceptButtonClick={() => {}}
+        backButtonLabel='backButtonLabel'
+        titleLabel='titleLabel'
+        descriptionLabel='descriptionLabel'
+        readMoreLabel='readMoreLabel'
+        readMoreLink='https://www.example.com'
+        readMoreInNewTab={true}
+        cookieExpiration={30}
+        cookieName='cookieName'
+      />,
+    )
 
-        const declineButton = getByText('declineButtonLabel')
+    expect(getCookie).toHaveBeenCalledTimes(1)
+    expect(getCookie).toHaveBeenCalledWith('cookieName')
+  })
 
-        act(() => {
-          declineButton.click()
-        })
+  it('should switch views', () => {
+    const { getByText, getByLabelText } = render(
+      <CookieNotice
+        acceptAllButtonLabel='acceptAllButtonLabel'
+        onAcceptAllButtonClick={() => {}}
+        declineAllButtonLabel='declineAllButtonLabel'
+        onDeclineAllButtonClick={() => {}}
+        customizeButtonLabel='customizeButtonLabel'
+        customizeTitleLabel='customizeTitleLabel'
+        services={['service1', 'service2']}
+        acceptButtonLabel='acceptButtonLabel'
+        onAcceptButtonClick={() => {}}
+        backButtonLabel='backButtonLabel'
+        titleLabel='titleLabel'
+        descriptionLabel='descriptionLabel'
+        readMoreLabel='readMoreLabel'
+        readMoreLink='https://www.example.com'
+        readMoreInNewTab={true}
+        cookieExpiration={30}
+        cookieName='cookieName'
+      />,
+    )
 
-        expect(onDeclineButtonClick).toHaveBeenCalledTimes(1)
-      })
+    expect(getByText('titleLabel')).toBeInTheDocument()
+    expect(getByText('descriptionLabel')).toBeInTheDocument()
+    expect(getByText('readMoreLabel')).toBeInTheDocument()
+    expect(getByText('acceptAllButtonLabel')).toBeInTheDocument()
+    expect(getByText('customizeButtonLabel')).toBeInTheDocument()
+    expect(getByText('declineAllButtonLabel')).toBeInTheDocument()
 
-      it('with failure if not passed', () => {
-        const { getByText } = render(
-          <CookieNotice
-            acceptButtonLabel='acceptButtonLabel'
-            onAcceptButtonClick={() => {}}
-            declineButtonLabel='declineButtonLabel'
-            titleLabel='titleLabel'
-            descriptionLabel='descriptionLabel'
-            readMoreLabel='readMoreLabel'
-            readMoreLink='https://example.com'
-            readMoreInNewTab={true}
-            cookieExpiration={1}
-            cookieName='cookieName'
-          />,
-        )
-
-        expect(() => getByText('declineButtonLabel')).toThrow()
-      })
+    act(() => {
+      getByText('customizeButtonLabel').click()
     })
+
+    expect(getByText('customizeTitleLabel')).toBeInTheDocument()
+    expect(getByLabelText('service1')).toBeInTheDocument()
+    expect(getByLabelText('service2')).toBeInTheDocument()
+    expect(getByText('acceptButtonLabel')).toBeInTheDocument()
+    expect(getByText('backButtonLabel')).toBeInTheDocument()
+
+    act(() => {
+      getByText('backButtonLabel').click()
+    })
+
+    expect(getByText('titleLabel')).toBeInTheDocument()
+    expect(getByText('descriptionLabel')).toBeInTheDocument()
+    expect(getByText('readMoreLabel')).toBeInTheDocument()
+    expect(getByText('acceptAllButtonLabel')).toBeInTheDocument()
+    expect(getByText('customizeButtonLabel')).toBeInTheDocument()
+    expect(getByText('declineAllButtonLabel')).toBeInTheDocument()
   })
 })

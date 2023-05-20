@@ -53,6 +53,100 @@
   margin: 0 0 10px;
 }
 
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services {
+  list-style-type: none;
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > li {
+  display: flex;
+  align-items: center;
+  margin: 0 0 10px;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > li
+  > input[type='checkbox'] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > li
+  > label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 40px;
+  height: 25px;
+  background: rgb(192, 192, 192);
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > li
+  > label::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > li
+  > input:checked
+  + label {
+  background: rgb(35, 157, 228);
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > li
+  > input:checked
+  + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > li
+  > label:active:after {
+  width: 20px;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > li
+  > span {
+  font-size: 0.8em;
+  margin-left: 10px;
+}
+
 .react-cookienotice-root > .react-cookienotice-body > .react-cookienotice-link {
   font-size: 0.8em;
   color: rgb(192, 192, 192);
@@ -111,7 +205,7 @@
 
 @media screen and (min-width: 490px) {
   .react-cookienotice-root {
-    width: 450px;
+    max-width: 470px;
     border-radius: 10px;
     bottom: 30px;
     left: 20px;

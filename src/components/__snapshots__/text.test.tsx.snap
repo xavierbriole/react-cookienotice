@@ -1,11 +1,23 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Text > should render 1`] = `
-<div
-  class="className"
->
-  <span>
-    children
-  </span>
-</div>
+exports[`Text > should render > with className 1`] = `
+<DocumentFragment>
+  <div
+    class="className"
+  >
+    <span>
+      children
+    </span>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Text > should render > without className 1`] = `
+<DocumentFragment>
+  <div>
+    <span>
+      children
+    </span>
+  </div>
+</DocumentFragment>
 `;

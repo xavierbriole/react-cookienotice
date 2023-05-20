@@ -1,0 +1,98 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CustomizeView > should render > with services 1`] = `
+<DocumentFragment>
+  <div
+    class="react-cookienotice-body"
+  >
+    <div
+      class="react-cookienotice-title"
+    >
+      <span>
+        customizeTitleLabel
+      </span>
+    </div>
+    <ul
+      class="react-cookienotice-services"
+    >
+      <li>
+        <input
+          id="service1"
+          name="service1"
+          type="checkbox"
+        />
+        <label
+          for="service1"
+        >
+          service1
+        </label>
+        <span>
+          service1
+        </span>
+      </li>
+      <li>
+        <input
+          id="service2"
+          name="service2"
+          type="checkbox"
+        />
+        <label
+          for="service2"
+        >
+          service2
+        </label>
+        <span>
+          service2
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div
+    class="react-cookienotice-buttons"
+  >
+    <button
+      class="react-cookienotice-button"
+    >
+      acceptButtonLabel
+    </button>
+    <button
+      class="react-cookienotice-button"
+    >
+      backButtonLabel
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CustomizeView > should render > with services empty 1`] = `
+<DocumentFragment>
+  <div
+    class="react-cookienotice-body"
+  >
+    <div
+      class="react-cookienotice-title"
+    >
+      <span>
+        customizeTitleLabel
+      </span>
+    </div>
+    <ul
+      class="react-cookienotice-services"
+    />
+  </div>
+  <div
+    class="react-cookienotice-buttons"
+  >
+    <button
+      class="react-cookienotice-button"
+    >
+      acceptButtonLabel
+    </button>
+    <button
+      class="react-cookienotice-button"
+    >
+      backButtonLabel
+    </button>
+  </div>
+</DocumentFragment>
+`;

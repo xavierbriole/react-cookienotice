@@ -2,6 +2,7 @@ import { vi } from 'vitest'
 
 import { err } from '../helpers/debug'
 import {
+  validateArrayOfStrings,
   validateBoolean,
   validateCookieExpiration,
   validateCookieName,
@@ -25,6 +26,32 @@ describe('validator', () => {
 
     it('with no parameter', () => {
       expect(validateLabel(undefined)).toBeUndefined()
+    })
+  })
+
+  describe('should validate array of strings', () => {
+    describe('with array', () => {
+      it('with valid array', () => {
+        expect(validateArrayOfStrings(['string'])).toEqual(['string'])
+      })
+
+      describe('with invalid array', () => {
+        it('with empty array', () => {
+          validateArrayOfStrings([])
+          expect(err).toHaveBeenCalledWith(
+            'array should have at least one element',
+          )
+        })
+
+        it('with array of non-string', () => {
+          validateArrayOfStrings([1])
+          expect(err).toHaveBeenCalledWith('array should contain only string')
+        })
+      })
+    })
+
+    it('with no parameter', () => {
+      expect(validateArrayOfStrings(undefined)).toBeUndefined()
     })
   })
 
