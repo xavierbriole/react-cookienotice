@@ -49,6 +49,7 @@ const meta: Meta<typeof CookieNotice> = {
     },
     services: {
       description: 'List of services to be customized.',
+      // @ts-ignore
       type: { name: 'array', required: false },
     },
     acceptButtonLabel: {
