@@ -28,10 +28,11 @@
   "module": "./dist/react-cookienotice.es.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "vite build",
     "test": "TZ=America/New_York vitest",
-    "test:ci": "run-s test:format test:lint test:coverage",
+    "test:ci": "run-s test:format test:ts test:lint test:coverage",
     "test:format": "prettier --check .",
+    "test:ts": "tsc --noEmit",
     "test:lint": "eslint --max-warnings 0 .",
     "test:coverage": "TZ=America/New_York vitest run --coverage",
     "storybook": "storybook dev -p 6006",
