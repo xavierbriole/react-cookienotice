@@ -2,6 +2,7 @@ import { resolve } from 'node:path'
 
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
+import banner from 'vite-plugin-banner'
 import dts from 'vite-plugin-dts'
 import EsLint from 'vite-plugin-linter'
 import tsConfigPaths from 'vite-tsconfig-paths'
@@ -19,6 +20,13 @@ export default defineConfig((configEnv) => ({
     dts({
       include: ['src/'],
     }),
+    banner(
+      `/**\n * ${packageJson.name} v${
+        packageJson.version
+      }\n * (c) 2020-${new Date().getFullYear()} by ${
+        packageJson.author
+      }\n * Released under the ${packageJson.license} License.\n */`,
+    ),
   ],
   test: {
     globals: true,
