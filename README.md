@@ -78,3 +78,11 @@ If you want a "Read More" link, you must set all of the following props:
 ## License
 
 MIT © [xavierbriole](https://github.com/xavierbriole)
+
+## Credits
+
+Built with [Vite](https://vitejs.dev) ⚡
+
+<a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
+    <img width="100" src="https://vitejs.dev/logo.svg" alt="Vite logo">
+</a>
