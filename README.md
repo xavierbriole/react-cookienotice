@@ -33,6 +33,8 @@ npm i --save react-cookienotice
 yarn add react-cookienotice
 ```
 
+> If you're using a SSR framework like Next.js, see [Troubleshooting](#troubleshooting) section.
+
 ## Usage
 
 ```tsx
@@ -74,6 +76,35 @@ If you want a "Read More" link, you must set all of the following props:
 | readMoreInNewTab        | `boolean`  | Whether the read more link should open in a new tab.                                                                      | -                                                                                                                                                                                         |
 | cookieExpiration        | `number`   | Days after cookie expires and user should reaccept cookies.                                                               | 30                                                                                                                                                                                        |
 | cookieName              | `string`   | The name of the cookie that saves the user consent.                                                                       | hide-notice                                                                                                                                                                               |
+
+## Troubleshooting
+
+### I'm using a SSR framework like Next.js and I have this error on build: `document is not defined`
+
+For SSR you need to import dynamically the module with [`next/dynamic`](https://nextjs.org/docs/advanced-features/dynamic-import#with-no-ssr) using `{ ssr: false }`. This prevents the component from being included on the server, and dynamically loads it on the client-side only.
+
+Create a new file which include the CookieNotice component :
+
+```tsx
+import { CookieNotice } from 'react-cookienotice'
+import 'react-cookienotice/dist/style.css'
+
+export default function CookieBanner() {
+  return <CookieNotice />
+}
+```
+
+then you can import it wherever the component is used :
+
+```tsx
+import dynamic from 'next/dynamic'
+
+const CookieBanner = dynamic(() => import('./cookie-banner'), { ssr: false })
+
+export default function Home() {
+  return <CookieBanner />
+}
+```
 
 ## License
 
