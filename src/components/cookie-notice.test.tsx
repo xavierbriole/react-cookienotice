@@ -14,30 +14,93 @@ describe('CookieNotice', () => {
     vi.resetAllMocks()
   })
 
-  it('should render', () => {
-    const { asFragment } = render(
-      <CookieNotice
-        acceptAllButtonLabel='acceptAllButtonLabel'
-        onAcceptAllButtonClick={() => {}}
-        declineAllButtonLabel='declineAllButtonLabel'
-        onDeclineAllButtonClick={() => {}}
-        customizeButtonLabel='customizeButtonLabel'
-        customizeTitleLabel='customizeTitleLabel'
-        services={['service1', 'service2']}
-        acceptButtonLabel='acceptButtonLabel'
-        onAcceptButtonClick={() => {}}
-        backButtonLabel='backButtonLabel'
-        titleLabel='titleLabel'
-        descriptionLabel='descriptionLabel'
-        readMoreLabel='readMoreLabel'
-        readMoreLink='https://www.example.com'
-        readMoreInNewTab={true}
-        cookieExpiration={30}
-        cookieName='cookieName'
-      />,
-    )
+  describe('should render', () => {
+    it('with default props', () => {
+      const { asFragment } = render(
+        <CookieNotice
+          acceptAllButtonLabel='acceptAllButtonLabel'
+          onAcceptAllButtonClick={() => {}}
+          declineAllButtonLabel='declineAllButtonLabel'
+          onDeclineAllButtonClick={() => {}}
+          customizeButtonLabel='customizeButtonLabel'
+          customizeTitleLabel='customizeTitleLabel'
+          services={['service1', 'service2']}
+          acceptButtonLabel='acceptButtonLabel'
+          onAcceptButtonClick={() => {}}
+          backButtonLabel='backButtonLabel'
+          titleLabel='titleLabel'
+          descriptionLabel='descriptionLabel'
+          readMoreLabel='readMoreLabel'
+          readMoreLink='https://www.example.com'
+          readMoreInNewTab={true}
+          cookieExpiration={30}
+          cookieName='cookieName'
+          position={{ vertical: 'bottom', horizontal: 'left' }}
+        />,
+      )
 
-    expect(asFragment()).toMatchSnapshot()
+      expect(asFragment()).toMatchSnapshot()
+    })
+
+    it('with no read more link', () => {
+      const { asFragment } = render(
+        <CookieNotice
+          acceptAllButtonLabel='acceptAllButtonLabel'
+          onAcceptAllButtonClick={() => {}}
+          declineAllButtonLabel='declineAllButtonLabel'
+          onDeclineAllButtonClick={() => {}}
+          customizeButtonLabel='customizeButtonLabel'
+          customizeTitleLabel='customizeTitleLabel'
+          services={['service1', 'service2']}
+          acceptButtonLabel='acceptButtonLabel'
+          onAcceptButtonClick={() => {}}
+          backButtonLabel='backButtonLabel'
+          titleLabel='titleLabel'
+          descriptionLabel='descriptionLabel'
+          readMoreLabel={undefined}
+          readMoreLink={undefined}
+          readMoreInNewTab={undefined}
+          cookieExpiration={30}
+          cookieName='cookieName'
+          position={{ vertical: 'bottom', horizontal: 'left' }}
+        />,
+      )
+
+      expect(asFragment()).toMatchSnapshot()
+    })
+
+    it.each([
+      [{ vertical: 'top', horizontal: 'left' }],
+      [{ vertical: 'top', horizontal: 'right' }],
+      [{ vertical: 'bottom', horizontal: 'left' }],
+      [{ vertical: 'bottom', horizontal: 'right' }],
+    ])('with position %s', (position) => {
+      const { asFragment } = render(
+        <CookieNotice
+          acceptAllButtonLabel='acceptAllButtonLabel'
+          onAcceptAllButtonClick={() => {}}
+          declineAllButtonLabel='declineAllButtonLabel'
+          onDeclineAllButtonClick={() => {}}
+          customizeButtonLabel='customizeButtonLabel'
+          customizeTitleLabel='customizeTitleLabel'
+          services={['service1', 'service2']}
+          acceptButtonLabel='acceptButtonLabel'
+          onAcceptButtonClick={() => {}}
+          backButtonLabel='backButtonLabel'
+          titleLabel='titleLabel'
+          descriptionLabel='descriptionLabel'
+          readMoreLabel='readMoreLabel'
+          readMoreLink='https://www.example.com'
+          readMoreInNewTab={true}
+          cookieExpiration={30}
+          cookieName='cookieName'
+          // @ts-ignore
+          position={position}
+        />,
+      )
+
+      expect(asFragment()).toMatchSnapshot()
+    })
   })
 
   it('should handle accept all button click', () => {
@@ -62,6 +125,7 @@ describe('CookieNotice', () => {
         readMoreInNewTab={true}
         cookieExpiration={30}
         cookieName='cookieName'
+        position={{ vertical: 'bottom', horizontal: 'left' }}
       />,
     )
 
@@ -96,6 +160,7 @@ describe('CookieNotice', () => {
         readMoreInNewTab={true}
         cookieExpiration={30}
         cookieName='cookieName'
+        position={{ vertical: 'bottom', horizontal: 'left' }}
       />,
     )
 
@@ -130,6 +195,7 @@ describe('CookieNotice', () => {
         readMoreInNewTab={true}
         cookieExpiration={30}
         cookieName='cookieName'
+        position={{ vertical: 'bottom', horizontal: 'left' }}
       />,
     )
 
@@ -172,6 +238,7 @@ describe('CookieNotice', () => {
         readMoreInNewTab={true}
         cookieExpiration={30}
         cookieName='cookieName'
+        position={{ vertical: 'bottom', horizontal: 'left' }}
       />,
     )
 
@@ -199,6 +266,7 @@ describe('CookieNotice', () => {
         readMoreInNewTab={true}
         cookieExpiration={30}
         cookieName='cookieName'
+        position={{ vertical: 'bottom', horizontal: 'left' }}
       />,
     )
 

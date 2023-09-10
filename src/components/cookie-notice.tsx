@@ -6,8 +6,9 @@ import {
   validateBoolean,
   validateCookieExpiration,
   validateCookieName,
-  validateLabel,
   validateLink,
+  validatePosition,
+  validateString,
 } from '../validator'
 import CustomizeView from './views/customize-view'
 import DefaultView from './views/default-view'
@@ -81,10 +82,16 @@ export interface CookieNoticeProps {
    * The name of the cookie that saves the user consent.
    */
   cookieName?: string
+  /**
+   * The position of the cookie banner.
+   */
+  position?: { vertical: 'top' | 'bottom'; horizontal: 'left' | 'right' }
 }
 
 /**
  * The cookie banner.
+ *
+ * [See documentation](https://github.com/xavierbriole/react-cookienotice#props)
  *
  * @example
  * <CookieNotice
@@ -105,6 +112,7 @@ export interface CookieNoticeProps {
  *   readMoreInNewTab={true}
  *   cookieExpiration={30}
  *   cookieName='cookieName'
+ *   position={{ vertical: 'bottom', horizontal: 'left' }}
  * />
  */
 const CookieNotice = ({
@@ -125,21 +133,23 @@ const CookieNotice = ({
   readMoreInNewTab,
   cookieExpiration,
   cookieName,
+  position,
 }: CookieNoticeProps) => {
-  const validAcceptAllButtonLabel = validateLabel(acceptAllButtonLabel)
-  const validDeclineAllButtonLabel = validateLabel(declineAllButtonLabel)
-  const validCustomizeButtonLabel = validateLabel(customizeButtonLabel)
-  const validCustomizeTitleLabel = validateLabel(customizeTitleLabel)
+  const validAcceptAllButtonLabel = validateString(acceptAllButtonLabel)
+  const validDeclineAllButtonLabel = validateString(declineAllButtonLabel)
+  const validCustomizeButtonLabel = validateString(customizeButtonLabel)
+  const validCustomizeTitleLabel = validateString(customizeTitleLabel)
   const validServices = validateArrayOfStrings(services)
-  const validAcceptButtonLabel = validateLabel(acceptButtonLabel)
-  const validBackButtonLabel = validateLabel(backButtonLabel)
-  const validTitleLabel = validateLabel(titleLabel)
-  const validDescriptionLabel = validateLabel(descriptionLabel)
-  const validReadMoreLabel = validateLabel(readMoreLabel)
+  const validAcceptButtonLabel = validateString(acceptButtonLabel)
+  const validBackButtonLabel = validateString(backButtonLabel)
+  const validTitleLabel = validateString(titleLabel)
+  const validDescriptionLabel = validateString(descriptionLabel)
+  const validReadMoreLabel = validateString(readMoreLabel)
   const validReadMoreLink = validateLink(readMoreLink)
   const validReadMoreInNewTab = validateBoolean(readMoreInNewTab)
   const validCookieExpiration = validateCookieExpiration(cookieExpiration)
   const validCookieName = validateCookieName(cookieName)
+  const validPosition = validatePosition(position)
 
   const shouldHideNotice = useMemo(
     () => getCookie(validCookieName) === 'true',
@@ -209,7 +219,13 @@ const CookieNotice = ({
     )
   }
 
-  return <div className='react-cookienotice-root'>{renderView()}</div>
+  return (
+    <div
+      className={`react-cookienotice-root ${validPosition.vertical} ${validPosition.horizontal}`}
+    >
+      {renderView()}
+    </div>
+  )
 }
 
 export default CookieNotice
