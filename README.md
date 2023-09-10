@@ -76,6 +76,7 @@ If you want a "Read More" link, you must set all of the following props:
 | readMoreInNewTab        | `boolean`  | Whether the read more link should open in a new tab.                                                                      | -                                                                                                                                                                                         |
 | cookieExpiration        | `number`   | Days after cookie expires and user should reaccept cookies.                                                               | 30                                                                                                                                                                                        |
 | cookieName              | `string`   | The name of the cookie that saves the user consent.                                                                       | hide-notice                                                                                                                                                                               |
+| position                | `object`   | The position of the cookie banner.                                                                                        | { vertical: 'bottom', horizontal: 'left' }                                                                                                                                                |
 
 ## Troubleshooting
 

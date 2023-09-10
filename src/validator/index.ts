@@ -1,6 +1,6 @@
 import { err } from '../helpers/debug'
 
-export const validateLabel = (parameter?: any): string | undefined => {
+export const validateString = (parameter?: any): string | undefined => {
   if (typeof parameter === 'string') {
     return parameter
   }
@@ -75,4 +75,22 @@ export const validateCookieName = (parameter?: any): string => {
   }
 
   return 'hide-notice'
+}
+
+export const validatePosition = (
+  parameter?: any,
+): { vertical: 'top' | 'bottom'; horizontal: 'left' | 'right' } => {
+  if (typeof parameter === 'object') {
+    if (parameter.vertical !== 'top' || parameter.vertical !== 'bottom') {
+      err(`position.vertical parameter should be "top" or "bottom"`)
+    }
+
+    if (parameter.horizontal !== 'left' || parameter.horizontal !== 'right') {
+      err(`position.horizontal parameter should be "left" or "right"`)
+    }
+
+    return parameter
+  }
+
+  return { vertical: 'bottom', horizontal: 'left' }
 }

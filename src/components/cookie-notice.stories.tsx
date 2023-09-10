@@ -122,6 +122,16 @@ const meta: Meta<typeof CookieNotice> = {
         },
       },
     },
+    position: {
+      description: 'The position of the cookie banner.',
+      // @ts-ignore
+      type: { name: 'object', required: false },
+      table: {
+        defaultValue: {
+          summary: "{ vertical: 'bottom', horizontal: 'left' }",
+        },
+      },
+    },
   },
 }
 
@@ -147,6 +157,7 @@ export const Default: Story = {
     readMoreInNewTab: undefined,
     cookieExpiration: undefined,
     cookieName: undefined,
+    position: undefined,
   },
 }
 

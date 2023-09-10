@@ -6,8 +6,9 @@ import {
   validateBoolean,
   validateCookieExpiration,
   validateCookieName,
-  validateLabel,
   validateLink,
+  validatePosition,
+  validateString,
 } from '.'
 
 vi.mock('../helpers/debug', () => ({
@@ -19,13 +20,13 @@ describe('validator', () => {
     vi.resetAllMocks()
   })
 
-  describe('should validate label', () => {
+  describe('should validate string', () => {
     it('with string', () => {
-      expect(validateLabel('label')).toBe('label')
+      expect(validateString('label')).toBe('label')
     })
 
     it('with no parameter', () => {
-      expect(validateLabel(undefined)).toBeUndefined()
+      expect(validateString(undefined)).toBeUndefined()
     })
   })
 
@@ -132,6 +133,41 @@ describe('validator', () => {
 
     it('with no parameter', () => {
       expect(validateCookieName(undefined)).toBe('hide-notice')
+    })
+  })
+
+  describe('should validate position', () => {
+    describe('with object', () => {
+      it('with valid object', () => {
+        expect(
+          validatePosition({ vertical: 'top', horizontal: 'right' }),
+        ).toEqual({ vertical: 'top', horizontal: 'right' })
+      })
+
+      describe('with invalid object', () => {
+        it('with invalid vertical', () => {
+          validatePosition({ vertical: 'invalid', horizontal: 'left' })
+
+          expect(err).toHaveBeenCalledWith(
+            'position.vertical parameter should be "top" or "bottom"',
+          )
+        })
+
+        it('with invalid horizontal', () => {
+          validatePosition({ vertical: 'bottom', horizontal: 'invalid' })
+
+          expect(err).toHaveBeenCalledWith(
+            'position.horizontal parameter should be "left" or "right"',
+          )
+        })
+      })
+    })
+
+    it('with no parameter', () => {
+      expect(validatePosition(undefined)).toEqual({
+        vertical: 'bottom',
+        horizontal: 'left',
+      })
     })
   })
 })
