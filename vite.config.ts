@@ -17,9 +17,7 @@ export default defineConfig((configEnv) => ({
       include: ['./src/**/*.ts', './src/**/*.tsx'],
       linters: [new EsLinter({ configEnv: configEnv }), new TypeScriptLinter()],
     }),
-    dts({
-      include: ['src/'],
-    }),
+    dts(),
     banner(
       `/**\n * ${packageJson.name} v${
         packageJson.version
