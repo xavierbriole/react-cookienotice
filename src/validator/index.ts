@@ -1,3 +1,4 @@
+import { CookieOptions } from '../helpers/cookies'
 import { err } from '../helpers/debug'
 
 export const validateString = (parameter?: any): string | undefined => {
@@ -49,34 +50,6 @@ export const validateBoolean = (parameter?: any): boolean | undefined => {
   return undefined
 }
 
-export const validateCookieExpiration = (parameter?: any): number => {
-  if (typeof parameter === 'number') {
-    if (parameter > 0) {
-      return parameter
-    }
-
-    err(`cookieExpiration parameter should be more than 0 day`)
-  }
-
-  return 30
-}
-
-export const validateCookieName = (parameter?: any): string => {
-  if (typeof parameter === 'string') {
-    if (/\s/.test(parameter)) {
-      err(`cookieName parameter should not contain whitespace`)
-    }
-
-    if (parameter === '') {
-      err(`cookieName parameter should have at least one character`)
-    }
-
-    return parameter
-  }
-
-  return 'hide-notice'
-}
-
 export const validatePosition = (
   parameter?: any,
 ): { vertical: 'top' | 'bottom'; horizontal: 'left' | 'right' } => {
@@ -93,4 +66,70 @@ export const validatePosition = (
   }
 
   return { vertical: 'bottom', horizontal: 'left' }
+}
+
+export const validateCookieOptions = (parameter?: any): CookieOptions => {
+  if (typeof parameter === 'object') {
+    if (typeof parameter.name !== 'string') {
+      err(`cookieOptions.name parameter should be a string`)
+    }
+
+    if (typeof parameter.value !== 'string') {
+      err(`cookieOptions.value parameter should be a string`)
+    }
+
+    if (typeof parameter.expires !== 'number') {
+      err(`cookieOptions.expires parameter should be a number`)
+    }
+
+    if (typeof parameter.secure !== 'boolean') {
+      err(`cookieOptions.secure parameter should be a boolean`)
+    }
+
+    if (typeof parameter.httpOnly !== 'boolean') {
+      err(`cookieOptions.httpOnly parameter should be a boolean`)
+    }
+
+    if (
+      /* v8 ignore next 3 */
+      parameter.sameSite !== 'strict' ||
+      parameter.sameSite !== 'lax' ||
+      parameter.sameSite !== 'none'
+    ) {
+      err(
+        `cookieOptions.sameSite parameter should be "strict", "lax" or "none"`,
+      )
+    }
+
+    if (/\s/.test(parameter.name)) {
+      err(`cookieOptions.name parameter should not contain whitespace`)
+    }
+
+    if (parameter.name === '') {
+      err(`cookieOptions.name parameter should have at least one character`)
+    }
+
+    if (/\s/.test(parameter.value)) {
+      err(`cookieOptions.value parameter should not contain whitespace`)
+    }
+
+    if (parameter.value === '') {
+      err(`cookieOptions.value parameter should have at least one character`)
+    }
+
+    if (parameter.expires <= 0) {
+      err(`cookieOptions.expires parameter should be more than 0 day`)
+    }
+
+    return parameter
+  }
+
+  return {
+    name: 'hide-notice',
+    value: 'true',
+    expires: 30,
+    secure: false,
+    httpOnly: false,
+    sameSite: 'lax',
+  }
 }

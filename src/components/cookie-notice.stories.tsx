@@ -103,25 +103,6 @@ const meta: Meta<typeof CookieNotice> = {
       description: 'Whether the read more link should open in a new tab.',
       type: { name: 'boolean', required: false },
     },
-    cookieExpiration: {
-      description:
-        'Days after cookie expires and user should reaccept cookies.',
-      type: { name: 'number', required: false },
-      table: {
-        defaultValue: {
-          summary: '30',
-        },
-      },
-    },
-    cookieName: {
-      description: 'The name of the cookie that saves the user consent.',
-      type: { name: 'string', required: false },
-      table: {
-        defaultValue: {
-          summary: 'hide-notice',
-        },
-      },
-    },
     position: {
       description: 'The position of the cookie banner.',
       // @ts-ignore
@@ -129,6 +110,17 @@ const meta: Meta<typeof CookieNotice> = {
       table: {
         defaultValue: {
           summary: "{ vertical: 'bottom', horizontal: 'left' }",
+        },
+      },
+    },
+    cookieOptions: {
+      description: 'Cookie options.',
+      // @ts-ignore
+      type: { name: 'object', required: false },
+      table: {
+        defaultValue: {
+          summary:
+            "{ name: 'hide-notice', value: 'true', expires: 30, secure: false, httpOnly: false, sameSite: 'lax' }",
         },
       },
     },
@@ -155,9 +147,8 @@ export const Default: Story = {
     readMoreLabel: undefined,
     readMoreLink: undefined,
     readMoreInNewTab: undefined,
-    cookieExpiration: undefined,
-    cookieName: undefined,
     position: undefined,
+    cookieOptions: undefined,
   },
 }
 

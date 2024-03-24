@@ -1,10 +1,30 @@
-export const setCookie = (name: string, value: string, days: number): void => {
-  const expires = new Date()
-  expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000)
-  document.cookie = `${name}=${value};expires=${expires.toUTCString()}`
+export type CookieOptions = {
+  name: string
+  value: string
+  expires: number
+  secure: boolean
+  httpOnly: boolean
+  sameSite: 'strict' | 'lax' | 'none'
+}
+
+export const setCookie = (options: CookieOptions): void => {
+  const { name, value, expires, secure, httpOnly, sameSite } = options
+
+  const date = new Date()
+  date.setTime(date.getTime() + expires * 24 * 60 * 60 * 1000)
+
+  let cookie = `${name}=${value};expires=${date.toUTCString()};path=/;`
+
+  if (secure) cookie += 'Secure;'
+  if (httpOnly) cookie += 'HttpOnly;'
+
+  cookie += `SameSite=${sameSite};`
+
+  document.cookie = cookie
 }
 
 export const getCookie = (name: string): string | null => {
   const value = document.cookie.match(`(^|;) ?${name}=([^;]*)(;|$)`)
+
   return value ? decodeURIComponent(value[2]) : null
 }
