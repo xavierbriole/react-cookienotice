@@ -1,5 +1,4 @@
-import { formatMessage } from 'src/intl/format'
-
+import { formatMessage } from '../../intl/format'
 import Button from '../button'
 import Link from '../link'
 import Text from '../text'
