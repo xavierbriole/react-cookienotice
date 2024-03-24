@@ -4,8 +4,7 @@ import { err } from '../helpers/debug'
 import {
   validateArrayOfStrings,
   validateBoolean,
-  validateCookieExpiration,
-  validateCookieName,
+  validateCookieOptions,
   validateLink,
   validatePosition,
   validateString,
@@ -86,56 +85,6 @@ describe('validator', () => {
     })
   })
 
-  describe('should validate cookieExpiration', () => {
-    describe('with number', () => {
-      it('with valid number', () => {
-        expect(validateCookieExpiration(1)).toBe(1)
-      })
-
-      it('with invalid number', () => {
-        validateCookieExpiration(0)
-
-        expect(err).toHaveBeenCalledWith(
-          'cookieExpiration parameter should be more than 0 day',
-        )
-      })
-    })
-
-    it('with no parameter', () => {
-      expect(validateCookieExpiration(undefined)).toBe(30)
-    })
-  })
-
-  describe('should validate cookieName', () => {
-    describe('with string', () => {
-      it('with valid name', () => {
-        expect(validateCookieName('name')).toBe('name')
-      })
-
-      describe('with invalid name', () => {
-        it('with whitespace', () => {
-          validateCookieName('name with whitespace')
-
-          expect(err).toHaveBeenCalledWith(
-            'cookieName parameter should not contain whitespace',
-          )
-        })
-
-        it('with empty string', () => {
-          validateCookieName('')
-
-          expect(err).toHaveBeenCalledWith(
-            'cookieName parameter should have at least one character',
-          )
-        })
-      })
-    })
-
-    it('with no parameter', () => {
-      expect(validateCookieName(undefined)).toBe('hide-notice')
-    })
-  })
-
   describe('should validate position', () => {
     describe('with object', () => {
       it('with valid object', () => {
@@ -167,6 +116,214 @@ describe('validator', () => {
       expect(validatePosition(undefined)).toEqual({
         vertical: 'bottom',
         horizontal: 'left',
+      })
+    })
+  })
+
+  describe('should validate cookie options', () => {
+    describe('with object', () => {
+      it.each(['strict', 'lax', 'none'])(
+        'with valid object and sameSite %s',
+        (sameSite) => {
+          expect(
+            validateCookieOptions({
+              name: 'hide-notice',
+              value: 'true',
+              expires: 30,
+              secure: false,
+              httpOnly: false,
+              sameSite,
+            }),
+          ).toEqual({
+            name: 'hide-notice',
+            value: 'true',
+            expires: 30,
+            secure: false,
+            httpOnly: false,
+            sameSite,
+          })
+        },
+      )
+
+      describe('with invalid object', () => {
+        it('with invalid name', () => {
+          validateCookieOptions({
+            name: 1,
+            value: 'true',
+            expires: 30,
+            secure: false,
+            httpOnly: false,
+            sameSite: 'lax',
+          })
+
+          expect(err).toHaveBeenCalledWith(
+            'cookieOptions.name parameter should be a string',
+          )
+        })
+
+        it('with invalid value', () => {
+          validateCookieOptions({
+            name: 'hide-notice',
+            value: 1,
+            expires: 30,
+            secure: false,
+            httpOnly: false,
+            sameSite: 'lax',
+          })
+
+          expect(err).toHaveBeenCalledWith(
+            'cookieOptions.value parameter should be a string',
+          )
+        })
+
+        it('with invalid expires', () => {
+          validateCookieOptions({
+            name: 'hide-notice',
+            value: 'true',
+            expires: 'invalid',
+            secure: false,
+            httpOnly: false,
+            sameSite: 'lax',
+          })
+
+          expect(err).toHaveBeenCalledWith(
+            'cookieOptions.expires parameter should be a number',
+          )
+        })
+
+        it('with invalid secure', () => {
+          validateCookieOptions({
+            name: 'hide-notice',
+            value: 'true',
+            expires: 30,
+            secure: 'invalid',
+            httpOnly: false,
+            sameSite: 'lax',
+          })
+
+          expect(err).toHaveBeenCalledWith(
+            'cookieOptions.secure parameter should be a boolean',
+          )
+        })
+
+        it('with invalid httpOnly', () => {
+          validateCookieOptions({
+            name: 'hide-notice',
+            value: 'true',
+            expires: 30,
+            secure: false,
+            httpOnly: 'invalid',
+            sameSite: 'lax',
+          })
+
+          expect(err).toHaveBeenCalledWith(
+            'cookieOptions.httpOnly parameter should be a boolean',
+          )
+        })
+
+        it.each(['invalid', 1, true, null, undefined, ''])(
+          'with invalid sameSite (%s)',
+          (sameSite) => {
+            validateCookieOptions({
+              name: 'hide-notice',
+              value: 'true',
+              expires: 30,
+              secure: false,
+              httpOnly: false,
+              sameSite,
+            })
+
+            expect(err).toHaveBeenCalledWith(
+              'cookieOptions.sameSite parameter should be "strict", "lax" or "none"',
+            )
+          },
+        )
+
+        it('with whitespace in name', () => {
+          validateCookieOptions({
+            name: 'hide notice',
+            value: 'true',
+            expires: 30,
+            secure: false,
+            httpOnly: false,
+            sameSite: 'lax',
+          })
+
+          expect(err).toHaveBeenCalledWith(
+            'cookieOptions.name parameter should not contain whitespace',
+          )
+        })
+
+        it('with empty name', () => {
+          validateCookieOptions({
+            name: '',
+            value: 'true',
+            expires: 30,
+            secure: false,
+            httpOnly: false,
+            sameSite: 'lax',
+          })
+
+          expect(err).toHaveBeenCalledWith(
+            'cookieOptions.name parameter should have at least one character',
+          )
+        })
+
+        it('with whitespace in value', () => {
+          validateCookieOptions({
+            name: 'hide-notice',
+            value: 'true ',
+            expires: 30,
+            secure: false,
+            httpOnly: false,
+            sameSite: 'lax',
+          })
+
+          expect(err).toHaveBeenCalledWith(
+            'cookieOptions.value parameter should not contain whitespace',
+          )
+        })
+
+        it('with empty value', () => {
+          validateCookieOptions({
+            name: 'hide-notice',
+            value: '',
+            expires: 30,
+            secure: false,
+            httpOnly: false,
+            sameSite: 'lax',
+          })
+
+          expect(err).toHaveBeenCalledWith(
+            'cookieOptions.value parameter should have at least one character',
+          )
+        })
+
+        it.each([0, -1])('with expires %s', (expires) => {
+          validateCookieOptions({
+            name: 'hide-notice',
+            value: 'true',
+            expires,
+            secure: false,
+            httpOnly: false,
+            sameSite: 'lax',
+          })
+
+          expect(err).toHaveBeenCalledWith(
+            'cookieOptions.expires parameter should be more than 0 day',
+          )
+        })
+      })
+    })
+
+    it('with no parameter', () => {
+      expect(validateCookieOptions(undefined)).toEqual({
+        name: 'hide-notice',
+        value: 'true',
+        expires: 30,
+        secure: false,
+        httpOnly: false,
+        sameSite: 'lax',
       })
     })
   })

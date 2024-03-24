@@ -33,9 +33,15 @@ describe('CookieNotice', () => {
           readMoreLabel='readMoreLabel'
           readMoreLink='https://www.example.com'
           readMoreInNewTab={true}
-          cookieExpiration={30}
-          cookieName='cookieName'
           position={{ vertical: 'bottom', horizontal: 'left' }}
+          cookieOptions={{
+            name: 'hide-notice',
+            value: 'true',
+            expires: 30,
+            secure: false,
+            httpOnly: false,
+            sameSite: 'lax',
+          }}
         />,
       )
 
@@ -60,9 +66,15 @@ describe('CookieNotice', () => {
           readMoreLabel={undefined}
           readMoreLink={undefined}
           readMoreInNewTab={undefined}
-          cookieExpiration={30}
-          cookieName='cookieName'
           position={{ vertical: 'bottom', horizontal: 'left' }}
+          cookieOptions={{
+            name: 'hide-notice',
+            value: 'true',
+            expires: 30,
+            secure: false,
+            httpOnly: false,
+            sameSite: 'lax',
+          }}
         />,
       )
 
@@ -92,10 +104,16 @@ describe('CookieNotice', () => {
           readMoreLabel='readMoreLabel'
           readMoreLink='https://www.example.com'
           readMoreInNewTab={true}
-          cookieExpiration={30}
-          cookieName='cookieName'
           // @ts-ignore
           position={position}
+          cookieOptions={{
+            name: 'hide-notice',
+            value: 'true',
+            expires: 30,
+            secure: false,
+            httpOnly: false,
+            sameSite: 'lax',
+          }}
         />,
       )
 
@@ -123,9 +141,15 @@ describe('CookieNotice', () => {
         readMoreLabel='readMoreLabel'
         readMoreLink='https://www.example.com'
         readMoreInNewTab={true}
-        cookieExpiration={30}
-        cookieName='cookieName'
         position={{ vertical: 'bottom', horizontal: 'left' }}
+        cookieOptions={{
+          name: 'hide-notice',
+          value: 'true',
+          expires: 30,
+          secure: false,
+          httpOnly: false,
+          sameSite: 'lax',
+        }}
       />,
     )
 
@@ -134,7 +158,14 @@ describe('CookieNotice', () => {
     })
 
     expect(setCookie).toHaveBeenCalledTimes(1)
-    expect(setCookie).toHaveBeenCalledWith('cookieName', 'true', 30)
+    expect(setCookie).toHaveBeenCalledWith({
+      name: 'hide-notice',
+      value: 'true',
+      expires: 30,
+      secure: false,
+      httpOnly: false,
+      sameSite: 'lax',
+    })
     expect(onAcceptAllButtonClick).toHaveBeenCalledTimes(1)
   })
 
@@ -158,9 +189,15 @@ describe('CookieNotice', () => {
         readMoreLabel='readMoreLabel'
         readMoreLink='https://www.example.com'
         readMoreInNewTab={true}
-        cookieExpiration={30}
-        cookieName='cookieName'
         position={{ vertical: 'bottom', horizontal: 'left' }}
+        cookieOptions={{
+          name: 'hide-notice',
+          value: 'true',
+          expires: 30,
+          secure: false,
+          httpOnly: false,
+          sameSite: 'lax',
+        }}
       />,
     )
 
@@ -169,7 +206,14 @@ describe('CookieNotice', () => {
     })
 
     expect(setCookie).toHaveBeenCalledTimes(1)
-    expect(setCookie).toHaveBeenCalledWith('cookieName', 'true', 30)
+    expect(setCookie).toHaveBeenCalledWith({
+      name: 'hide-notice',
+      value: 'true',
+      expires: 30,
+      secure: false,
+      httpOnly: false,
+      sameSite: 'lax',
+    })
     expect(onDeclineAllButtonClick).toHaveBeenCalledTimes(1)
   })
 
@@ -193,9 +237,15 @@ describe('CookieNotice', () => {
         readMoreLabel='readMoreLabel'
         readMoreLink='https://www.example.com'
         readMoreInNewTab={true}
-        cookieExpiration={30}
-        cookieName='cookieName'
         position={{ vertical: 'bottom', horizontal: 'left' }}
+        cookieOptions={{
+          name: 'hide-notice',
+          value: 'true',
+          expires: 30,
+          secure: false,
+          httpOnly: false,
+          sameSite: 'lax',
+        }}
       />,
     )
 
@@ -213,7 +263,14 @@ describe('CookieNotice', () => {
     })
 
     expect(setCookie).toHaveBeenCalledTimes(1)
-    expect(setCookie).toHaveBeenCalledWith('cookieName', 'true', 30)
+    expect(setCookie).toHaveBeenCalledWith({
+      name: 'hide-notice',
+      value: 'true',
+      expires: 30,
+      secure: false,
+      httpOnly: false,
+      sameSite: 'lax',
+    })
     expect(onAcceptButtonClick).toHaveBeenCalledTimes(1)
     expect(onAcceptButtonClick).toHaveBeenCalledWith(['service1', 'service2'])
   })
@@ -236,14 +293,20 @@ describe('CookieNotice', () => {
         readMoreLabel='readMoreLabel'
         readMoreLink='https://www.example.com'
         readMoreInNewTab={true}
-        cookieExpiration={30}
-        cookieName='cookieName'
         position={{ vertical: 'bottom', horizontal: 'left' }}
+        cookieOptions={{
+          name: 'hide-notice',
+          value: 'true',
+          expires: 30,
+          secure: false,
+          httpOnly: false,
+          sameSite: 'lax',
+        }}
       />,
     )
 
     expect(getCookie).toHaveBeenCalledTimes(1)
-    expect(getCookie).toHaveBeenCalledWith('cookieName')
+    expect(getCookie).toHaveBeenCalledWith('hide-notice')
   })
 
   it('should switch views', () => {
@@ -264,9 +327,15 @@ describe('CookieNotice', () => {
         readMoreLabel='readMoreLabel'
         readMoreLink='https://www.example.com'
         readMoreInNewTab={true}
-        cookieExpiration={30}
-        cookieName='cookieName'
         position={{ vertical: 'bottom', horizontal: 'left' }}
+        cookieOptions={{
+          name: 'hide-notice',
+          value: 'true',
+          expires: 30,
+          secure: false,
+          httpOnly: false,
+          sameSite: 'lax',
+        }}
       />,
     )
 

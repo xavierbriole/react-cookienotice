@@ -1,11 +1,10 @@
 import { useCallback, useMemo, useState } from 'react'
 
-import { getCookie, setCookie } from '../helpers/cookies'
+import { CookieOptions, getCookie, setCookie } from '../helpers/cookies'
 import {
   validateArrayOfStrings,
   validateBoolean,
-  validateCookieExpiration,
-  validateCookieName,
+  validateCookieOptions,
   validateLink,
   validatePosition,
   validateString,
@@ -75,17 +74,13 @@ export interface CookieNoticeProps {
    */
   readMoreInNewTab?: boolean
   /**
-   * Days after cookie expires and user should reaccept cookies.
-   */
-  cookieExpiration?: number
-  /**
-   * The name of the cookie that saves the user consent.
-   */
-  cookieName?: string
-  /**
    * The position of the cookie banner.
    */
   position?: { vertical: 'top' | 'bottom'; horizontal: 'left' | 'right' }
+  /**
+   * Cookie options.
+   */
+  cookieOptions?: CookieOptions
 }
 
 /**
@@ -110,9 +105,8 @@ export interface CookieNoticeProps {
  *   readMoreLabel='readMoreLabel'
  *   readMoreLink='readMoreLink'
  *   readMoreInNewTab={true}
- *   cookieExpiration={30}
- *   cookieName='cookieName'
  *   position={{ vertical: 'bottom', horizontal: 'left' }}
+ *   cookieOptions={{ name: 'hide-notice', value: 'true', expires: 30, secure: false, httpOnly: false, sameSite: 'lax' }}
  * />
  */
 const CookieNotice = ({
@@ -131,9 +125,8 @@ const CookieNotice = ({
   readMoreLabel,
   readMoreLink,
   readMoreInNewTab,
-  cookieExpiration,
-  cookieName,
   position,
+  cookieOptions,
 }: CookieNoticeProps) => {
   const validAcceptAllButtonLabel = validateString(acceptAllButtonLabel)
   const validDeclineAllButtonLabel = validateString(declineAllButtonLabel)
@@ -147,12 +140,11 @@ const CookieNotice = ({
   const validReadMoreLabel = validateString(readMoreLabel)
   const validReadMoreLink = validateLink(readMoreLink)
   const validReadMoreInNewTab = validateBoolean(readMoreInNewTab)
-  const validCookieExpiration = validateCookieExpiration(cookieExpiration)
-  const validCookieName = validateCookieName(cookieName)
   const validPosition = validatePosition(position)
+  const validCookieOptions = validateCookieOptions(cookieOptions)
 
   const shouldHideNotice = useMemo(
-    () => getCookie(validCookieName) === 'true',
+    () => getCookie(validCookieOptions.name) === validCookieOptions.value,
     [],
   )
 
@@ -161,7 +153,7 @@ const CookieNotice = ({
 
   const handleAcceptButtonClick = useCallback((services: string[]) => {
     setHideNotice(true)
-    setCookie(validCookieName, 'true', validCookieExpiration)
+    setCookie(validCookieOptions)
     onAcceptButtonClick?.(services)
   }, [])
 
@@ -171,7 +163,7 @@ const CookieNotice = ({
 
   const handleAcceptAllButtonClick = useCallback(() => {
     setHideNotice(true)
-    setCookie(validCookieName, 'true', validCookieExpiration)
+    setCookie(validCookieOptions)
     onAcceptAllButtonClick?.()
   }, [])
 
@@ -181,7 +173,7 @@ const CookieNotice = ({
 
   const handleDeclineAllButtonClick = useCallback(() => {
     setHideNotice(true)
-    setCookie(validCookieName, 'true', validCookieExpiration)
+    setCookie(validCookieOptions)
     onDeclineAllButtonClick?.()
   }, [])
 
