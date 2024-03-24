@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
-import { err } from 'src/helpers/debug'
-import { formatMessage } from 'src/intl/format'
 
+import { err } from '../../helpers/debug'
+import { formatMessage } from '../../intl/format'
 import Button from '../button'
 import Text from '../text'
 
