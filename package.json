@@ -91,5 +91,8 @@
       "require": "./dist/react-cookienotice.umd.js"
     },
     "./dist/style.css": "./dist/style.css"
+  },
+  "volta": {
+    "node": "20.11.1"
   }
 }

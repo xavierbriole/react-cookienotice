@@ -5,6 +5,9 @@ on:
     types:
       - published
 
+permissions:
+  id-token: write
+
 jobs:
   npm-prerelease-publish:
     if: github.event.release.prerelease == true
@@ -12,12 +15,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18.15.0
+          node-version: 20.11.1
           registry-url: https://registry.npmjs.org
           cache: 'npm'
 
@@ -28,6 +31,6 @@ jobs:
         run: npm run build
 
       - name: Publish package
-        run: npm publish --access=public --tag next
+        run: npm publish --provenance --access=public --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
