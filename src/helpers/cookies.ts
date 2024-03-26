@@ -1,12 +1,3 @@
-export type CookieOptions = {
-  name: string
-  value: string
-  expires: number
-  secure: boolean
-  httpOnly: boolean
-  sameSite: 'strict' | 'lax' | 'none'
-}
-
 export const setCookie = (options: CookieOptions): void => {
   const { name, value, expires, secure, httpOnly, sameSite } = options
 
@@ -23,7 +14,7 @@ export const setCookie = (options: CookieOptions): void => {
   document.cookie = cookie
 }
 
-export const getCookie = (name: string): string | null => {
+export const getCookieValue = (name: string): string | null => {
   const value = document.cookie.match(`(^|;) ?${name}=([^;]*)(;|$)`)
 
   return value ? decodeURIComponent(value[2]) : null

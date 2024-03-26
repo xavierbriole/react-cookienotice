@@ -15,7 +15,7 @@ interface DefaultViewProps {
   customizeButtonLabel?: string
   onDeclineAllButtonClick: () => void
   declineAllButtonLabel?: string
-  services?: string[]
+  services?: ServiceObject[]
 }
 
 const DefaultView = ({

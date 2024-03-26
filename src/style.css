@@ -85,16 +85,34 @@
 .react-cookienotice-root
   > .react-cookienotice-body
   > .react-cookienotice-services
-  > li {
+  > .react-cookienotice-service {
   display: flex;
   align-items: center;
+  margin: 0 0 20px;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > .react-cookienotice-service:last-child {
   margin: 0 0 10px;
 }
 
 .react-cookienotice-root
   > .react-cookienotice-body
   > .react-cookienotice-services
-  > li
+  > .react-cookienotice-service
+  > .react-cookienotice-service-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > .react-cookienotice-service
+  > .react-cookienotice-service-checkbox
   > input[type='checkbox'] {
   height: 0;
   width: 0;
@@ -104,7 +122,8 @@
 .react-cookienotice-root
   > .react-cookienotice-body
   > .react-cookienotice-services
-  > li
+  > .react-cookienotice-service
+  > .react-cookienotice-service-checkbox
   > label {
   cursor: pointer;
   text-indent: -9999px;
@@ -119,7 +138,8 @@
 .react-cookienotice-root
   > .react-cookienotice-body
   > .react-cookienotice-services
-  > li
+  > .react-cookienotice-service
+  > .react-cookienotice-service-checkbox
   > label::after {
   content: '';
   position: absolute;
@@ -135,7 +155,8 @@
 .react-cookienotice-root
   > .react-cookienotice-body
   > .react-cookienotice-services
-  > li
+  > .react-cookienotice-service
+  > .react-cookienotice-service-checkbox
   > input:checked
   + label {
   background: rgb(35, 157, 228);
@@ -144,7 +165,8 @@
 .react-cookienotice-root
   > .react-cookienotice-body
   > .react-cookienotice-services
-  > li
+  > .react-cookienotice-service
+  > .react-cookienotice-service-checkbox
   > input:checked
   + label:after {
   left: calc(100% - 5px);
@@ -154,7 +176,8 @@
 .react-cookienotice-root
   > .react-cookienotice-body
   > .react-cookienotice-services
-  > li
+  > .react-cookienotice-service
+  > .react-cookienotice-service-checkbox
   > label:active:after {
   width: 20px;
 }
@@ -162,10 +185,31 @@
 .react-cookienotice-root
   > .react-cookienotice-body
   > .react-cookienotice-services
-  > li
-  > span {
+  > .react-cookienotice-service
+  > .react-cookienotice-service-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > .react-cookienotice-service
+  > .react-cookienotice-service-info
+  > .react-cookienotice-service-info-name {
+  font-size: 0.9em;
+  font-weight: 400;
+  margin: 0 0 10px;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > .react-cookienotice-service
+  > .react-cookienotice-service-info
+  > .react-cookienotice-service-info-description {
   font-size: 0.8em;
-  margin-left: 10px;
 }
 
 .react-cookienotice-root > .react-cookienotice-body > .react-cookienotice-link {

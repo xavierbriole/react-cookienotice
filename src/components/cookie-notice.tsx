@@ -1,12 +1,12 @@
 import { useCallback, useMemo, useState } from 'react'
 
-import { CookieOptions, getCookie, setCookie } from '../helpers/cookies'
+import { getCookieValue, setCookie } from '../helpers/cookies'
 import {
-  validateArrayOfStrings,
   validateBoolean,
   validateCookieOptions,
   validateLink,
-  validatePosition,
+  validatePlacement,
+  validateServices,
   validateString,
 } from '../validator'
 import CustomizeView from './views/customize-view'
@@ -40,7 +40,7 @@ export interface CookieNoticeProps {
   /**
    * List of services to be customized.
    */
-  services?: string[]
+  services?: ServiceObject[]
   /**
    * The label for the accept button.
    */
@@ -74,9 +74,9 @@ export interface CookieNoticeProps {
    */
   readMoreInNewTab?: boolean
   /**
-   * The position of the cookie banner.
+   * The placement of the cookie banner.
    */
-  position?: { vertical: 'top' | 'bottom'; horizontal: 'left' | 'right' }
+  placement?: PlacementOptions
   /**
    * Cookie options.
    */
@@ -96,7 +96,7 @@ export interface CookieNoticeProps {
  *   onDeclineAllButtonClick={() => {}}
  *   customizeButtonLabel='customizeButtonLabel'
  *   customizeTitleLabel='customizeTitleLabel'
- *   services={['GOOGLE_ANALYTICS', 'HUBSPOT']}
+ *   services={[{ name: 'serviceName', description: 'serviceDescription', code: 'serviceCode' }]}
  *   acceptButtonLabel='acceptButtonLabel'
  *   onAcceptButtonClick={(services: string[]) => {}}
  *   backButtonLabel='backButtonLabel'
@@ -105,7 +105,7 @@ export interface CookieNoticeProps {
  *   readMoreLabel='readMoreLabel'
  *   readMoreLink='readMoreLink'
  *   readMoreInNewTab={true}
- *   position={{ vertical: 'bottom', horizontal: 'left' }}
+ *   placement={{ vertical: 'bottom', horizontal: 'left' }}
  *   cookieOptions={{ name: 'hide-notice', value: 'true', expires: 30, secure: false, httpOnly: false, sameSite: 'lax' }}
  * />
  */
@@ -125,14 +125,14 @@ const CookieNotice = ({
   readMoreLabel,
   readMoreLink,
   readMoreInNewTab,
-  position,
+  placement,
   cookieOptions,
 }: CookieNoticeProps) => {
   const validAcceptAllButtonLabel = validateString(acceptAllButtonLabel)
   const validDeclineAllButtonLabel = validateString(declineAllButtonLabel)
   const validCustomizeButtonLabel = validateString(customizeButtonLabel)
   const validCustomizeTitleLabel = validateString(customizeTitleLabel)
-  const validServices = validateArrayOfStrings(services)
+  const validServices = validateServices(services)
   const validAcceptButtonLabel = validateString(acceptButtonLabel)
   const validBackButtonLabel = validateString(backButtonLabel)
   const validTitleLabel = validateString(titleLabel)
@@ -140,11 +140,11 @@ const CookieNotice = ({
   const validReadMoreLabel = validateString(readMoreLabel)
   const validReadMoreLink = validateLink(readMoreLink)
   const validReadMoreInNewTab = validateBoolean(readMoreInNewTab)
-  const validPosition = validatePosition(position)
+  const validPlacement = validatePlacement(placement)
   const validCookieOptions = validateCookieOptions(cookieOptions)
 
   const shouldHideNotice = useMemo(
-    () => getCookie(validCookieOptions.name) === validCookieOptions.value,
+    () => getCookieValue(validCookieOptions.name) === validCookieOptions.value,
     [],
   )
 
@@ -213,7 +213,7 @@ const CookieNotice = ({
 
   return (
     <div
-      className={`react-cookienotice-root ${validPosition.vertical} ${validPosition.horizontal}`}
+      className={`react-cookienotice-root ${validPlacement.vertical} ${validPlacement.horizontal}`}
     >
       {renderView()}
     </div>

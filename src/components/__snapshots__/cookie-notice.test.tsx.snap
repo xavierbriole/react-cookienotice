@@ -100,7 +100,7 @@ exports[`CookieNotice > should render > with no read more link 1`] = `
 </DocumentFragment>
 `;
 
-exports[`CookieNotice > should render > with position { vertical: 'bottom', horizontal: 'left' } 1`] = `
+exports[`CookieNotice > should render > with placement { vertical: 'bottom', horizontal: 'left' } 1`] = `
 <DocumentFragment>
   <div
     class="react-cookienotice-root bottom left"
@@ -154,7 +154,7 @@ exports[`CookieNotice > should render > with position { vertical: 'bottom', hori
 </DocumentFragment>
 `;
 
-exports[`CookieNotice > should render > with position { vertical: 'bottom', horizontal: 'right' } 1`] = `
+exports[`CookieNotice > should render > with placement { vertical: 'bottom', horizontal: 'right' } 1`] = `
 <DocumentFragment>
   <div
     class="react-cookienotice-root bottom right"
@@ -208,7 +208,7 @@ exports[`CookieNotice > should render > with position { vertical: 'bottom', hori
 </DocumentFragment>
 `;
 
-exports[`CookieNotice > should render > with position { vertical: 'top', horizontal: 'left' } 1`] = `
+exports[`CookieNotice > should render > with placement { vertical: 'top', horizontal: 'left' } 1`] = `
 <DocumentFragment>
   <div
     class="react-cookienotice-root top left"
@@ -262,7 +262,7 @@ exports[`CookieNotice > should render > with position { vertical: 'top', horizon
 </DocumentFragment>
 `;
 
-exports[`CookieNotice > should render > with position { vertical: 'top', horizontal: 'right' } 1`] = `
+exports[`CookieNotice > should render > with placement { vertical: 'top', horizontal: 'right' } 1`] = `
 <DocumentFragment>
   <div
     class="react-cookienotice-root top right"
