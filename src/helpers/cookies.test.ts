@@ -1,16 +1,18 @@
 import { vi } from 'vitest'
 
-import { getCookie, setCookie } from './cookies'
+import { getCookieValue, setCookie } from './cookies'
 
 describe('cookies', () => {
-  describe('should set cookie', () => {
+  beforeEach(() => {
     vi.useFakeTimers().setSystemTime(new Date('2020-06-25T05:54:01'))
 
     Object.defineProperty(window.document, 'cookie', {
       writable: true,
       value: '',
     })
+  })
 
+  describe('should set cookie', () => {
     it('with secure true', () => {
       setCookie({
         name: 'name',
@@ -42,16 +44,16 @@ describe('cookies', () => {
     })
   })
 
-  describe('should get cookie', () => {
+  describe('should get cookie value', () => {
     it('should return null if the cookie does not exist', () => {
-      expect(getCookie('key')).toEqual(null)
+      expect(getCookieValue('key')).toEqual(null)
     })
 
     it('should return cookie value', () => {
       window.document.cookie =
         'name=value;expires=Thu, 02 Jul 2020 09:54:01 GMT'
 
-      expect(getCookie('name')).toEqual('value')
+      expect(getCookieValue('name')).toEqual('value')
     })
   })
 })

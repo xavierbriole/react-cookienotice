@@ -103,8 +103,8 @@ const meta: Meta<typeof CookieNotice> = {
       description: 'Whether the read more link should open in a new tab.',
       type: { name: 'boolean', required: false },
     },
-    position: {
-      description: 'The position of the cookie banner.',
+    placement: {
+      description: 'The placement of the cookie banner.',
       // @ts-ignore
       type: { name: 'object', required: false },
       table: {
@@ -147,7 +147,7 @@ export const Default: Story = {
     readMoreLabel: undefined,
     readMoreLink: undefined,
     readMoreInNewTab: undefined,
-    position: undefined,
+    placement: undefined,
     cookieOptions: undefined,
   },
 }
@@ -158,7 +158,18 @@ export const WithOverriddenLabels: Story = {
     declineAllButtonLabel: 'declineAllButtonLabel',
     customizeButtonLabel: 'customizeButtonLabel',
     customizeTitleLabel: 'customizeTitleLabel',
-    services: ['service1', 'service2'],
+    services: [
+      {
+        name: 'service1Name',
+        description: 'service1Description',
+        code: 'service1Code',
+      },
+      {
+        name: 'service2Name',
+        description: 'service2Description',
+        code: 'service2Code',
+      },
+    ],
     acceptButtonLabel: 'acceptButtonLabel',
     backButtonLabel: 'backButtonLabel',
     titleLabel: 'titleLabel',
@@ -171,7 +182,20 @@ export const WithOverriddenLabels: Story = {
 
 export const WithCustomServices: Story = {
   args: {
-    services: ['Google Analytics', 'Hubspot'],
+    services: [
+      {
+        name: 'Google Analytics',
+        description:
+          'Google Analytics is a web analytics service offered by Google that tracks and reports website traffic.',
+        code: 'GOOGLE_ANALYTICS',
+      },
+      {
+        name: 'HubSpot',
+        description:
+          'HubSpot is a developer and marketer of software products for inbound marketing, sales, and customer service.',
+        code: 'HUBSPOT',
+      },
+    ],
   },
 }
 

@@ -13,7 +13,18 @@ describe('CustomizeView', () => {
       const { asFragment } = render(
         <CustomizeView
           customizeTitleLabel='customizeTitleLabel'
-          services={['service1', 'service2']}
+          services={[
+            {
+              name: 'service1Name',
+              description: 'service1Description',
+              code: 'service1Code',
+            },
+            {
+              name: 'service2Name',
+              description: 'service2Description',
+              code: 'service2Code',
+            },
+          ]}
           onAcceptButtonClick={() => {}}
           acceptButtonLabel='acceptButtonLabel'
           onBackButtonClick={() => {}}
@@ -44,7 +55,18 @@ describe('CustomizeView', () => {
     const { getByLabelText } = render(
       <CustomizeView
         customizeTitleLabel='customizeTitleLabel'
-        services={['service1', 'service2']}
+        services={[
+          {
+            name: 'service1Name',
+            description: 'service1Description',
+            code: 'service1Code',
+          },
+          {
+            name: 'service2Name',
+            description: 'service2Description',
+            code: 'service2Code',
+          },
+        ]}
         onAcceptButtonClick={() => {}}
         acceptButtonLabel='acceptButtonLabel'
         onBackButtonClick={() => {}}
@@ -53,22 +75,22 @@ describe('CustomizeView', () => {
     )
 
     act(() => {
-      getByLabelText('service1').click()
+      getByLabelText('service1Code').click()
     })
 
-    expect(getByLabelText('service1')).toBeChecked()
+    expect(getByLabelText('service1Code')).toBeChecked()
 
     act(() => {
-      getByLabelText('service2').click()
+      getByLabelText('service2Code').click()
     })
 
-    expect(getByLabelText('service2')).toBeChecked()
+    expect(getByLabelText('service2Code')).toBeChecked()
 
     act(() => {
-      getByLabelText('service1').click()
+      getByLabelText('service1Code').click()
     })
 
-    expect(getByLabelText('service1')).not.toBeChecked()
+    expect(getByLabelText('service1Code')).not.toBeChecked()
   })
 
   describe('should handle accept button click', () => {
@@ -78,7 +100,18 @@ describe('CustomizeView', () => {
       const { getByText } = render(
         <CustomizeView
           customizeTitleLabel='customizeTitleLabel'
-          services={['service1', 'service2']}
+          services={[
+            {
+              name: 'service1Name',
+              description: 'service1Description',
+              code: 'service1Code',
+            },
+            {
+              name: 'service2Name',
+              description: 'service2Description',
+              code: 'service2Code',
+            },
+          ]}
           onAcceptButtonClick={onAcceptButtonClick}
           acceptButtonLabel='acceptButtonLabel'
           onBackButtonClick={() => {}}
@@ -100,7 +133,18 @@ describe('CustomizeView', () => {
       const { getByText, getByLabelText } = render(
         <CustomizeView
           customizeTitleLabel='customizeTitleLabel'
-          services={['service1', 'service2']}
+          services={[
+            {
+              name: 'service1Name',
+              description: 'service1Description',
+              code: 'service1Code',
+            },
+            {
+              name: 'service2Name',
+              description: 'service2Description',
+              code: 'service2Code',
+            },
+          ]}
           onAcceptButtonClick={onAcceptButtonClick}
           acceptButtonLabel='acceptButtonLabel'
           onBackButtonClick={() => {}}
@@ -109,7 +153,7 @@ describe('CustomizeView', () => {
       )
 
       act(() => {
-        getByLabelText('service1').click()
+        getByLabelText('service1Code').click()
       })
 
       act(() => {
@@ -117,7 +161,7 @@ describe('CustomizeView', () => {
       })
 
       expect(onAcceptButtonClick).toHaveBeenCalledTimes(1)
-      expect(onAcceptButtonClick).toHaveBeenCalledWith(['service1'])
+      expect(onAcceptButtonClick).toHaveBeenCalledWith(['service1Code'])
     })
 
     it('when multiple services are selected', () => {
@@ -126,7 +170,18 @@ describe('CustomizeView', () => {
       const { getByText, getByLabelText } = render(
         <CustomizeView
           customizeTitleLabel='customizeTitleLabel'
-          services={['service1', 'service2']}
+          services={[
+            {
+              name: 'service1Name',
+              description: 'service1Description',
+              code: 'service1Code',
+            },
+            {
+              name: 'service2Name',
+              description: 'service2Description',
+              code: 'service2Code',
+            },
+          ]}
           onAcceptButtonClick={onAcceptButtonClick}
           acceptButtonLabel='acceptButtonLabel'
           onBackButtonClick={() => {}}
@@ -135,11 +190,11 @@ describe('CustomizeView', () => {
       )
 
       act(() => {
-        getByLabelText('service1').click()
+        getByLabelText('service1Code').click()
       })
 
       act(() => {
-        getByLabelText('service2').click()
+        getByLabelText('service2Code').click()
       })
 
       act(() => {
@@ -147,7 +202,10 @@ describe('CustomizeView', () => {
       })
 
       expect(onAcceptButtonClick).toHaveBeenCalledTimes(1)
-      expect(onAcceptButtonClick).toHaveBeenCalledWith(['service1', 'service2'])
+      expect(onAcceptButtonClick).toHaveBeenCalledWith([
+        'service1Code',
+        'service2Code',
+      ])
     })
   })
 
@@ -157,7 +215,18 @@ describe('CustomizeView', () => {
     const { getByText } = render(
       <CustomizeView
         customizeTitleLabel='customizeTitleLabel'
-        services={['service1', 'service2']}
+        services={[
+          {
+            name: 'service1Name',
+            description: 'service1Description',
+            code: 'service1Code',
+          },
+          {
+            name: 'service2Name',
+            description: 'service2Description',
+            code: 'service2Code',
+          },
+        ]}
         onAcceptButtonClick={() => {}}
         acceptButtonLabel='acceptButtonLabel'
         onBackButtonClick={onBackButtonClick}

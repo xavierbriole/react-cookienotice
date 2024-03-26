@@ -1,12 +1,12 @@
 import { act, render } from '@testing-library/react'
 import { vi } from 'vitest'
 
-import { getCookie, setCookie } from '../helpers/cookies'
+import { getCookieValue, setCookie } from '../helpers/cookies'
 import CookieNotice from './cookie-notice'
 
 vi.mock('../helpers/cookies', () => ({
   setCookie: vi.fn(),
-  getCookie: vi.fn(),
+  getCookieValue: vi.fn(),
 }))
 
 describe('CookieNotice', () => {
@@ -24,7 +24,18 @@ describe('CookieNotice', () => {
           onDeclineAllButtonClick={() => {}}
           customizeButtonLabel='customizeButtonLabel'
           customizeTitleLabel='customizeTitleLabel'
-          services={['service1', 'service2']}
+          services={[
+            {
+              name: 'service1Name',
+              description: 'service1Description',
+              code: 'service1Code',
+            },
+            {
+              name: 'service2Name',
+              description: 'service2Description',
+              code: 'service2Code',
+            },
+          ]}
           acceptButtonLabel='acceptButtonLabel'
           onAcceptButtonClick={() => {}}
           backButtonLabel='backButtonLabel'
@@ -33,7 +44,7 @@ describe('CookieNotice', () => {
           readMoreLabel='readMoreLabel'
           readMoreLink='https://www.example.com'
           readMoreInNewTab={true}
-          position={{ vertical: 'bottom', horizontal: 'left' }}
+          placement={{ vertical: 'bottom', horizontal: 'left' }}
           cookieOptions={{
             name: 'hide-notice',
             value: 'true',
@@ -57,7 +68,18 @@ describe('CookieNotice', () => {
           onDeclineAllButtonClick={() => {}}
           customizeButtonLabel='customizeButtonLabel'
           customizeTitleLabel='customizeTitleLabel'
-          services={['service1', 'service2']}
+          services={[
+            {
+              name: 'service1Name',
+              description: 'service1Description',
+              code: 'service1Code',
+            },
+            {
+              name: 'service2Name',
+              description: 'service2Description',
+              code: 'service2Code',
+            },
+          ]}
           acceptButtonLabel='acceptButtonLabel'
           onAcceptButtonClick={() => {}}
           backButtonLabel='backButtonLabel'
@@ -66,7 +88,7 @@ describe('CookieNotice', () => {
           readMoreLabel={undefined}
           readMoreLink={undefined}
           readMoreInNewTab={undefined}
-          position={{ vertical: 'bottom', horizontal: 'left' }}
+          placement={{ vertical: 'bottom', horizontal: 'left' }}
           cookieOptions={{
             name: 'hide-notice',
             value: 'true',
@@ -86,7 +108,7 @@ describe('CookieNotice', () => {
       [{ vertical: 'top', horizontal: 'right' }],
       [{ vertical: 'bottom', horizontal: 'left' }],
       [{ vertical: 'bottom', horizontal: 'right' }],
-    ])('with position %s', (position) => {
+    ])('with placement %s', (placement) => {
       const { asFragment } = render(
         <CookieNotice
           acceptAllButtonLabel='acceptAllButtonLabel'
@@ -95,7 +117,18 @@ describe('CookieNotice', () => {
           onDeclineAllButtonClick={() => {}}
           customizeButtonLabel='customizeButtonLabel'
           customizeTitleLabel='customizeTitleLabel'
-          services={['service1', 'service2']}
+          services={[
+            {
+              name: 'service1Name',
+              description: 'service1Description',
+              code: 'service1Code',
+            },
+            {
+              name: 'service2Name',
+              description: 'service2Description',
+              code: 'service2Code',
+            },
+          ]}
           acceptButtonLabel='acceptButtonLabel'
           onAcceptButtonClick={() => {}}
           backButtonLabel='backButtonLabel'
@@ -105,7 +138,7 @@ describe('CookieNotice', () => {
           readMoreLink='https://www.example.com'
           readMoreInNewTab={true}
           // @ts-ignore
-          position={position}
+          placement={placement}
           cookieOptions={{
             name: 'hide-notice',
             value: 'true',
@@ -132,7 +165,18 @@ describe('CookieNotice', () => {
         onDeclineAllButtonClick={() => {}}
         customizeButtonLabel='customizeButtonLabel'
         customizeTitleLabel='customizeTitleLabel'
-        services={['service1', 'service2']}
+        services={[
+          {
+            name: 'service1Name',
+            description: 'service1Description',
+            code: 'service1Code',
+          },
+          {
+            name: 'service2Name',
+            description: 'service2Description',
+            code: 'service2Code',
+          },
+        ]}
         acceptButtonLabel='acceptButtonLabel'
         onAcceptButtonClick={() => {}}
         backButtonLabel='backButtonLabel'
@@ -141,7 +185,7 @@ describe('CookieNotice', () => {
         readMoreLabel='readMoreLabel'
         readMoreLink='https://www.example.com'
         readMoreInNewTab={true}
-        position={{ vertical: 'bottom', horizontal: 'left' }}
+        placement={{ vertical: 'bottom', horizontal: 'left' }}
         cookieOptions={{
           name: 'hide-notice',
           value: 'true',
@@ -180,7 +224,18 @@ describe('CookieNotice', () => {
         onDeclineAllButtonClick={onDeclineAllButtonClick}
         customizeButtonLabel='customizeButtonLabel'
         customizeTitleLabel='customizeTitleLabel'
-        services={['service1', 'service2']}
+        services={[
+          {
+            name: 'service1Name',
+            description: 'service1Description',
+            code: 'service1Code',
+          },
+          {
+            name: 'service2Name',
+            description: 'service2Description',
+            code: 'service2Code',
+          },
+        ]}
         acceptButtonLabel='acceptButtonLabel'
         onAcceptButtonClick={() => {}}
         backButtonLabel='backButtonLabel'
@@ -189,7 +244,7 @@ describe('CookieNotice', () => {
         readMoreLabel='readMoreLabel'
         readMoreLink='https://www.example.com'
         readMoreInNewTab={true}
-        position={{ vertical: 'bottom', horizontal: 'left' }}
+        placement={{ vertical: 'bottom', horizontal: 'left' }}
         cookieOptions={{
           name: 'hide-notice',
           value: 'true',
@@ -228,7 +283,18 @@ describe('CookieNotice', () => {
         onDeclineAllButtonClick={() => {}}
         customizeButtonLabel='customizeButtonLabel'
         customizeTitleLabel='customizeTitleLabel'
-        services={['service1', 'service2']}
+        services={[
+          {
+            name: 'service1Name',
+            description: 'service1Description',
+            code: 'service1Code',
+          },
+          {
+            name: 'service2Name',
+            description: 'service2Description',
+            code: 'service2Code',
+          },
+        ]}
         acceptButtonLabel='acceptButtonLabel'
         onAcceptButtonClick={onAcceptButtonClick}
         backButtonLabel='backButtonLabel'
@@ -237,7 +303,7 @@ describe('CookieNotice', () => {
         readMoreLabel='readMoreLabel'
         readMoreLink='https://www.example.com'
         readMoreInNewTab={true}
-        position={{ vertical: 'bottom', horizontal: 'left' }}
+        placement={{ vertical: 'bottom', horizontal: 'left' }}
         cookieOptions={{
           name: 'hide-notice',
           value: 'true',
@@ -254,8 +320,8 @@ describe('CookieNotice', () => {
     })
 
     act(() => {
-      getByLabelText('service1').click()
-      getByLabelText('service2').click()
+      getByLabelText('service1Code').click()
+      getByLabelText('service2Code').click()
     })
 
     act(() => {
@@ -272,7 +338,10 @@ describe('CookieNotice', () => {
       sameSite: 'lax',
     })
     expect(onAcceptButtonClick).toHaveBeenCalledTimes(1)
-    expect(onAcceptButtonClick).toHaveBeenCalledWith(['service1', 'service2'])
+    expect(onAcceptButtonClick).toHaveBeenCalledWith([
+      'service1Code',
+      'service2Code',
+    ])
   })
 
   it('should get cookie on mount', () => {
@@ -284,7 +353,18 @@ describe('CookieNotice', () => {
         onDeclineAllButtonClick={() => {}}
         customizeButtonLabel='customizeButtonLabel'
         customizeTitleLabel='customizeTitleLabel'
-        services={['service1', 'service2']}
+        services={[
+          {
+            name: 'service1Name',
+            description: 'service1Description',
+            code: 'service1Code',
+          },
+          {
+            name: 'service2Name',
+            description: 'service2Description',
+            code: 'service2Code',
+          },
+        ]}
         acceptButtonLabel='acceptButtonLabel'
         onAcceptButtonClick={() => {}}
         backButtonLabel='backButtonLabel'
@@ -293,7 +373,7 @@ describe('CookieNotice', () => {
         readMoreLabel='readMoreLabel'
         readMoreLink='https://www.example.com'
         readMoreInNewTab={true}
-        position={{ vertical: 'bottom', horizontal: 'left' }}
+        placement={{ vertical: 'bottom', horizontal: 'left' }}
         cookieOptions={{
           name: 'hide-notice',
           value: 'true',
@@ -305,8 +385,8 @@ describe('CookieNotice', () => {
       />,
     )
 
-    expect(getCookie).toHaveBeenCalledTimes(1)
-    expect(getCookie).toHaveBeenCalledWith('hide-notice')
+    expect(getCookieValue).toHaveBeenCalledTimes(1)
+    expect(getCookieValue).toHaveBeenCalledWith('hide-notice')
   })
 
   it('should switch views', () => {
@@ -318,7 +398,18 @@ describe('CookieNotice', () => {
         onDeclineAllButtonClick={() => {}}
         customizeButtonLabel='customizeButtonLabel'
         customizeTitleLabel='customizeTitleLabel'
-        services={['service1', 'service2']}
+        services={[
+          {
+            name: 'service1Name',
+            description: 'service1Description',
+            code: 'service1Code',
+          },
+          {
+            name: 'service2Name',
+            description: 'service2Description',
+            code: 'service2Code',
+          },
+        ]}
         acceptButtonLabel='acceptButtonLabel'
         onAcceptButtonClick={() => {}}
         backButtonLabel='backButtonLabel'
@@ -327,7 +418,7 @@ describe('CookieNotice', () => {
         readMoreLabel='readMoreLabel'
         readMoreLink='https://www.example.com'
         readMoreInNewTab={true}
-        position={{ vertical: 'bottom', horizontal: 'left' }}
+        placement={{ vertical: 'bottom', horizontal: 'left' }}
         cookieOptions={{
           name: 'hide-notice',
           value: 'true',
@@ -351,8 +442,8 @@ describe('CookieNotice', () => {
     })
 
     expect(getByText('customizeTitleLabel')).toBeInTheDocument()
-    expect(getByLabelText('service1')).toBeInTheDocument()
-    expect(getByLabelText('service2')).toBeInTheDocument()
+    expect(getByLabelText('service1Code')).toBeInTheDocument()
+    expect(getByLabelText('service2Code')).toBeInTheDocument()
     expect(getByText('acceptButtonLabel')).toBeInTheDocument()
     expect(getByText('backButtonLabel')).toBeInTheDocument()
 

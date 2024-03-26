@@ -15,35 +15,69 @@ exports[`CustomizeView > should render > with services 1`] = `
     <ul
       class="react-cookienotice-services"
     >
-      <li>
-        <input
-          id="service1"
-          name="service1"
-          type="checkbox"
-        />
-        <label
-          for="service1"
+      <li
+        class="react-cookienotice-service"
+      >
+        <div
+          class="react-cookienotice-service-checkbox"
         >
-          service1
-        </label>
-        <span>
-          service1
-        </span>
+          <input
+            id="service1Code"
+            name="service1Code"
+            type="checkbox"
+          />
+          <label
+            for="service1Code"
+          >
+            service1Code
+          </label>
+        </div>
+        <div
+          class="react-cookienotice-service-info"
+        >
+          <span
+            class="react-cookienotice-service-info-name"
+          >
+            service1Name
+          </span>
+          <span
+            class="react-cookienotice-service-info-description"
+          >
+            service1Description
+          </span>
+        </div>
       </li>
-      <li>
-        <input
-          id="service2"
-          name="service2"
-          type="checkbox"
-        />
-        <label
-          for="service2"
+      <li
+        class="react-cookienotice-service"
+      >
+        <div
+          class="react-cookienotice-service-checkbox"
         >
-          service2
-        </label>
-        <span>
-          service2
-        </span>
+          <input
+            id="service2Code"
+            name="service2Code"
+            type="checkbox"
+          />
+          <label
+            for="service2Code"
+          >
+            service2Code
+          </label>
+        </div>
+        <div
+          class="react-cookienotice-service-info"
+        >
+          <span
+            class="react-cookienotice-service-info-name"
+          >
+            service2Name
+          </span>
+          <span
+            class="react-cookienotice-service-info-description"
+          >
+            service2Description
+          </span>
+        </div>
       </li>
     </ul>
   </div>

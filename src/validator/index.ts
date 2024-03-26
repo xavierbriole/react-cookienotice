@@ -1,4 +1,3 @@
-import { CookieOptions } from '../helpers/cookies'
 import { err } from '../helpers/debug'
 
 export const validateString = (parameter?: any): string | undefined => {
@@ -9,19 +8,19 @@ export const validateString = (parameter?: any): string | undefined => {
   return undefined
 }
 
-export const validateArrayOfStrings = (
+export const validateServices = (
   parameter?: any,
-): string[] | undefined => {
+): ServiceObject[] | undefined => {
   if (Array.isArray(parameter)) {
     if (parameter.length === 0) {
-      err(`array should have at least one element`)
+      err(`services should have at least one element`)
     }
 
-    if (parameter.every((element) => typeof element === 'string')) {
+    if (parameter.every((element) => typeof element === 'object')) {
       return parameter
     }
 
-    err(`array should contain only string`)
+    err(`services should contain only objects`)
   }
 
   return undefined
@@ -50,16 +49,16 @@ export const validateBoolean = (parameter?: any): boolean | undefined => {
   return undefined
 }
 
-export const validatePosition = (
+export const validatePlacement = (
   parameter?: any,
 ): { vertical: 'top' | 'bottom'; horizontal: 'left' | 'right' } => {
   if (typeof parameter === 'object') {
     if (parameter.vertical !== 'top' || parameter.vertical !== 'bottom') {
-      err(`position.vertical parameter should be "top" or "bottom"`)
+      err(`placement.vertical parameter should be "top" or "bottom"`)
     }
 
     if (parameter.horizontal !== 'left' || parameter.horizontal !== 'right') {
-      err(`position.horizontal parameter should be "left" or "right"`)
+      err(`placement.horizontal parameter should be "left" or "right"`)
     }
 
     return parameter

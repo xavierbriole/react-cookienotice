@@ -1,13 +1,12 @@
 import { useCallback, useState } from 'react'
 
-import { err } from '../../helpers/debug'
 import { formatMessage } from '../../intl/format'
 import Button from '../button'
 import Text from '../text'
 
 interface CustomizeViewProps {
   customizeTitleLabel?: string
-  services: string[]
+  services: ServiceObject[]
   onAcceptButtonClick: (services: string[]) => void
   acceptButtonLabel?: string
   onBackButtonClick: () => void
@@ -44,26 +43,27 @@ const CustomizeView = ({
     onAcceptButtonClick(checkedServices)
   }, [checkedServices, onAcceptButtonClick])
 
-  const renderServices = () => {
-    if (services.length === 0) {
-      err('You must provide at least one service.')
-      return null
-    }
-
-    return services.map((service, index) => (
-      <li key={index}>
-        <input
-          type='checkbox'
-          id={service}
-          name={service}
-          checked={checkedServices.includes(service)}
-          onChange={handleCheckboxChange}
-        />
-        <label htmlFor={service}>{service}</label>
-        <span>{service}</span>
+  const renderServices = () =>
+    services.map(({ name, description, code }) => (
+      <li key={code} className='react-cookienotice-service'>
+        <div className='react-cookienotice-service-checkbox'>
+          <input
+            type='checkbox'
+            id={code}
+            name={code}
+            checked={checkedServices.includes(code)}
+            onChange={handleCheckboxChange}
+          />
+          <label htmlFor={code}>{code}</label>
+        </div>
+        <div className='react-cookienotice-service-info'>
+          <span className='react-cookienotice-service-info-name'>{name}</span>
+          <span className='react-cookienotice-service-info-description'>
+            {description}
+          </span>
+        </div>
       </li>
     ))
-  }
 
   return (
     <>

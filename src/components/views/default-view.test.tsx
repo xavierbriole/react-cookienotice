@@ -18,7 +18,18 @@ describe('DefaultView', () => {
           customizeButtonLabel='customizeButtonLabel'
           onDeclineAllButtonClick={() => {}}
           declineAllButtonLabel='declineAllButtonLabel'
-          services={['service1', 'service2']}
+          services={[
+            {
+              name: 'service1Name',
+              description: 'service1Description',
+              code: 'service1Code',
+            },
+            {
+              name: 'service2Name',
+              description: 'service2Description',
+              code: 'service2Code',
+            },
+          ]}
         />,
       )
 

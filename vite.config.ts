@@ -16,7 +16,16 @@ export default defineConfig((configEnv) => ({
     tsConfigPaths(),
     linterPlugin({
       include: ['./src/**/*.ts', './src/**/*.tsx'],
-      linters: [new EsLinter({ configEnv: configEnv }), new TypeScriptLinter()],
+      linters: [
+        new EsLinter({
+          configEnv: configEnv,
+          serveOptions: { clearCacheOnStart: true },
+        }),
+        new TypeScriptLinter(),
+      ],
+      build: {
+        includeMode: 'filesInFolder',
+      },
     }),
     dts(),
     banner(

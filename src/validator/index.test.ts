@@ -2,11 +2,11 @@ import { vi } from 'vitest'
 
 import { err } from '../helpers/debug'
 import {
-  validateArrayOfStrings,
   validateBoolean,
   validateCookieOptions,
   validateLink,
-  validatePosition,
+  validatePlacement,
+  validateServices,
   validateString,
 } from '.'
 
@@ -29,29 +29,45 @@ describe('validator', () => {
     })
   })
 
-  describe('should validate array of strings', () => {
+  describe('should validate services', () => {
     describe('with array', () => {
       it('with valid array', () => {
-        expect(validateArrayOfStrings(['string'])).toEqual(['string'])
+        expect(
+          validateServices([
+            {
+              name: 'service1Name',
+              description: 'service1Description',
+              code: 'service1Code',
+            },
+          ]),
+        ).toEqual([
+          {
+            name: 'service1Name',
+            description: 'service1Description',
+            code: 'service1Code',
+          },
+        ])
       })
 
       describe('with invalid array', () => {
         it('with empty array', () => {
-          validateArrayOfStrings([])
+          validateServices([])
           expect(err).toHaveBeenCalledWith(
-            'array should have at least one element',
+            'services should have at least one element',
           )
         })
 
         it('with array of non-string', () => {
-          validateArrayOfStrings([1])
-          expect(err).toHaveBeenCalledWith('array should contain only string')
+          validateServices([1])
+          expect(err).toHaveBeenCalledWith(
+            'services should contain only objects',
+          )
         })
       })
     })
 
     it('with no parameter', () => {
-      expect(validateArrayOfStrings(undefined)).toBeUndefined()
+      expect(validateServices(undefined)).toBeUndefined()
     })
   })
 
@@ -85,35 +101,35 @@ describe('validator', () => {
     })
   })
 
-  describe('should validate position', () => {
+  describe('should validate placement', () => {
     describe('with object', () => {
       it('with valid object', () => {
         expect(
-          validatePosition({ vertical: 'top', horizontal: 'right' }),
+          validatePlacement({ vertical: 'top', horizontal: 'right' }),
         ).toEqual({ vertical: 'top', horizontal: 'right' })
       })
 
       describe('with invalid object', () => {
         it('with invalid vertical', () => {
-          validatePosition({ vertical: 'invalid', horizontal: 'left' })
+          validatePlacement({ vertical: 'invalid', horizontal: 'left' })
 
           expect(err).toHaveBeenCalledWith(
-            'position.vertical parameter should be "top" or "bottom"',
+            'placement.vertical parameter should be "top" or "bottom"',
           )
         })
 
         it('with invalid horizontal', () => {
-          validatePosition({ vertical: 'bottom', horizontal: 'invalid' })
+          validatePlacement({ vertical: 'bottom', horizontal: 'invalid' })
 
           expect(err).toHaveBeenCalledWith(
-            'position.horizontal parameter should be "left" or "right"',
+            'placement.horizontal parameter should be "left" or "right"',
           )
         })
       })
     })
 
     it('with no parameter', () => {
-      expect(validatePosition(undefined)).toEqual({
+      expect(validatePlacement(undefined)).toEqual({
         vertical: 'bottom',
         horizontal: 'left',
       })
