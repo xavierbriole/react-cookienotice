@@ -8,6 +8,7 @@ import {
   validatePlacement,
   validateServices,
   validateString,
+  validateTimeout,
 } from '.'
 
 vi.mock('../helpers/debug', () => ({
@@ -29,6 +30,21 @@ describe('validator', () => {
     })
   })
 
+  describe('should validate timeout', () => {
+    it('with number', () => {
+      expect(validateTimeout(1000)).toBe(1000)
+    })
+
+    it('with no parameter', () => {
+      expect(validateTimeout(undefined)).toBe(1000)
+    })
+
+    it('with negative number', () => {
+      validateTimeout(-1)
+      expect(err).toHaveBeenCalledWith('timeout should be a positive number')
+    })
+  })
+
   describe('should validate services', () => {
     describe('with array', () => {
       it('with valid array', () => {
@@ -38,6 +54,7 @@ describe('validator', () => {
               name: 'service1Name',
               description: 'service1Description',
               code: 'service1Code',
+              alwaysActive: true,
             },
           ]),
         ).toEqual([
@@ -45,6 +62,7 @@ describe('validator', () => {
             name: 'service1Name',
             description: 'service1Description',
             code: 'service1Code',
+            alwaysActive: true,
           },
         ])
       })

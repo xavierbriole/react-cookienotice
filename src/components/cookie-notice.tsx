@@ -8,6 +8,7 @@ import {
   validatePlacement,
   validateServices,
   validateString,
+  validateTimeout,
 } from '../validator'
 import CustomizeView from './views/customize-view'
 import DefaultView from './views/default-view'
@@ -18,9 +19,9 @@ export interface CookieNoticeProps {
    */
   acceptAllButtonLabel?: string
   /**
-   * A callback function to be called when the accept all cookies button is clicked.
+   * A callback function to be called when the accept all cookies button is clicked. The first param returns the services if any.
    */
-  onAcceptAllButtonClick?: () => void
+  onAcceptAllButtonClick?: (services?: string[]) => void
   /**
    * The label for the decline all cookies button.
    */
@@ -53,6 +54,18 @@ export interface CookieNoticeProps {
    * The label for the back button.
    */
   backButtonLabel?: string
+  /**
+   * The label for the always active services.
+   */
+  alwaysActiveLabel?: string
+  /**
+   * The label for the accept all button in the customize view.
+   */
+  customizeAcceptAllButtonLabel?: string
+  /**
+   * The timeout for the accept all button in the customize view.
+   */
+  customizeAcceptAllTimeout?: number
   /**
    * The title for the cookie banner.
    */
@@ -91,7 +104,7 @@ export interface CookieNoticeProps {
  * @example
  * <CookieNotice
  *   acceptAllButtonLabel='acceptAllButtonLabel'
- *   onAcceptAllButtonClick={() => {}}
+ *   onAcceptAllButtonClick={(services?: string[]) => {}}
  *   declineAllButtonLabel='declineAllButtonLabel'
  *   onDeclineAllButtonClick={() => {}}
  *   customizeButtonLabel='customizeButtonLabel'
@@ -100,6 +113,9 @@ export interface CookieNoticeProps {
  *   acceptButtonLabel='acceptButtonLabel'
  *   onAcceptButtonClick={(services: string[]) => {}}
  *   backButtonLabel='backButtonLabel'
+ *   alwaysActiveLabel='alwaysActiveLabel'
+ *   customizeAcceptAllButtonLabel='customizeAcceptAllButtonLabel'
+ *   customizeAcceptAllTimeout={1000}
  *   titleLabel='titleLabel'
  *   descriptionLabel='descriptionLabel'
  *   readMoreLabel='readMoreLabel'
@@ -120,6 +136,9 @@ const CookieNotice = ({
   acceptButtonLabel,
   onAcceptButtonClick,
   backButtonLabel,
+  alwaysActiveLabel,
+  customizeAcceptAllButtonLabel,
+  customizeAcceptAllTimeout,
   titleLabel,
   descriptionLabel,
   readMoreLabel,
@@ -135,6 +154,13 @@ const CookieNotice = ({
   const validServices = validateServices(services)
   const validAcceptButtonLabel = validateString(acceptButtonLabel)
   const validBackButtonLabel = validateString(backButtonLabel)
+  const validAlwaysActiveLabel = validateString(alwaysActiveLabel)
+  const validCustomizeAcceptAllButtonLabel = validateString(
+    customizeAcceptAllButtonLabel,
+  )
+  const validCustomizeAcceptAllTimeout = validateTimeout(
+    customizeAcceptAllTimeout,
+  )
   const validTitleLabel = validateString(titleLabel)
   const validDescriptionLabel = validateString(descriptionLabel)
   const validReadMoreLabel = validateString(readMoreLabel)
@@ -148,11 +174,11 @@ const CookieNotice = ({
     [],
   )
 
-  const [hideNotice, setHideNotice] = useState(shouldHideNotice)
+  const [hideWithAnimation, setHideWithAnimation] = useState(false)
   const [showCustomizeView, setShowCustomizeView] = useState(false)
 
   const handleAcceptButtonClick = useCallback((services: string[]) => {
-    setHideNotice(true)
+    setHideWithAnimation(true)
     setCookie(validCookieOptions)
     onAcceptButtonClick?.(services)
   }, [])
@@ -161,10 +187,10 @@ const CookieNotice = ({
     setShowCustomizeView(false)
   }, [])
 
-  const handleAcceptAllButtonClick = useCallback(() => {
-    setHideNotice(true)
+  const handleAcceptAllButtonClick = useCallback((services?: string[]) => {
+    setHideWithAnimation(true)
     setCookie(validCookieOptions)
-    onAcceptAllButtonClick?.()
+    onAcceptAllButtonClick?.(services)
   }, [])
 
   const handleCustomizeButtonClick = useCallback(() => {
@@ -172,12 +198,19 @@ const CookieNotice = ({
   }, [])
 
   const handleDeclineAllButtonClick = useCallback(() => {
-    setHideNotice(true)
+    setHideWithAnimation(true)
     setCookie(validCookieOptions)
     onDeclineAllButtonClick?.()
   }, [])
 
-  if (hideNotice) return null
+  const handleCustomizeAcceptAllButtonClick = useCallback(
+    (services: string[]) => {
+      setHideWithAnimation(true)
+      setCookie(validCookieOptions)
+      onAcceptAllButtonClick?.(services)
+    },
+    [],
+  )
 
   const renderView = () => {
     if (showCustomizeView && validServices) {
@@ -189,6 +222,10 @@ const CookieNotice = ({
           acceptButtonLabel={validAcceptButtonLabel}
           onBackButtonClick={handleBackButtonClick}
           backButtonLabel={validBackButtonLabel}
+          alwaysActiveLabel={validAlwaysActiveLabel}
+          customizeAcceptAllButtonLabel={validCustomizeAcceptAllButtonLabel}
+          onCustomizeAcceptAllButtonClick={handleCustomizeAcceptAllButtonClick}
+          customizeAcceptAllTimeout={validCustomizeAcceptAllTimeout}
         />
       )
     }
@@ -213,7 +250,7 @@ const CookieNotice = ({
 
   return (
     <div
-      className={`react-cookienotice-root ${validPlacement.vertical} ${validPlacement.horizontal}`}
+      className={`react-cookienotice-root${hideWithAnimation ? ' hide-with-animation' : ''}${shouldHideNotice ? ' hidden' : ''} ${validPlacement.vertical} ${validPlacement.horizontal}`}
     >
       {renderView()}
     </div>

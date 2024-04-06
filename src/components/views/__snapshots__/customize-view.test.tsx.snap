@@ -22,6 +22,8 @@ exports[`CustomizeView > should render > with services 1`] = `
           class="react-cookienotice-service-checkbox"
         >
           <input
+            checked=""
+            disabled=""
             id="service1Code"
             name="service1Code"
             type="checkbox"
@@ -35,11 +37,22 @@ exports[`CustomizeView > should render > with services 1`] = `
         <div
           class="react-cookienotice-service-info"
         >
-          <span
-            class="react-cookienotice-service-info-name"
+          <div
+            class="react-cookienotice-service-info-name-wrapper"
           >
-            service1Name
-          </span>
+            <span
+              class="react-cookienotice-service-info-name"
+            >
+              service1Name
+            </span>
+            <div
+              class="react-cookienotice-service-info-always-active"
+            >
+              <span>
+                alwaysActiveLabel
+              </span>
+            </div>
+          </div>
           <span
             class="react-cookienotice-service-info-description"
           >
@@ -67,11 +80,15 @@ exports[`CustomizeView > should render > with services 1`] = `
         <div
           class="react-cookienotice-service-info"
         >
-          <span
-            class="react-cookienotice-service-info-name"
+          <div
+            class="react-cookienotice-service-info-name-wrapper"
           >
-            service2Name
-          </span>
+            <span
+              class="react-cookienotice-service-info-name"
+            >
+              service2Name
+            </span>
+          </div>
           <span
             class="react-cookienotice-service-info-description"
           >
@@ -87,12 +104,17 @@ exports[`CustomizeView > should render > with services 1`] = `
     <button
       class="react-cookienotice-button"
     >
-      acceptButtonLabel
+      backButtonLabel
     </button>
     <button
       class="react-cookienotice-button"
     >
-      backButtonLabel
+      customizeAcceptAllButtonLabel
+    </button>
+    <button
+      class="react-cookienotice-button"
+    >
+      acceptButtonLabel
     </button>
   </div>
 </DocumentFragment>
@@ -120,12 +142,17 @@ exports[`CustomizeView > should render > with services empty 1`] = `
     <button
       class="react-cookienotice-button"
     >
-      acceptButtonLabel
+      backButtonLabel
     </button>
     <button
       class="react-cookienotice-button"
     >
-      backButtonLabel
+      customizeAcceptAllButtonLabel
+    </button>
+    <button
+      class="react-cookienotice-button"
+    >
+      acceptButtonLabel
     </button>
   </div>
 </DocumentFragment>

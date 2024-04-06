@@ -1,4 +1,4 @@
-@keyframes slideUp {
+@keyframes slideUpFromBottom {
   from {
     visibility: hidden;
     opacity: 0;
@@ -9,6 +9,48 @@
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideDownFromBottom {
+  from {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes slideDownFromTop {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpFromTop {
+  from {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
   }
 }
 
@@ -25,18 +67,30 @@
   box-shadow:
     rgb(0 0 0 / 15%) 0px 4px 24px,
     rgb(0 0 0 / 5%) 0px 2px 6px;
-  animation: slideUp 1s ease both;
-  animation-delay: 2s;
+}
+
+.react-cookienotice-root.hidden {
+  display: none;
 }
 
 .react-cookienotice-root.top {
   top: 0;
   bottom: auto;
+  animation: slideDownFromTop 1s ease 2s both;
+}
+
+.react-cookienotice-root.hide-with-animation.top {
+  animation: slideUpFromTop 1s ease both;
 }
 
 .react-cookienotice-root.bottom {
   top: auto;
   bottom: 0;
+  animation: slideUpFromBottom 1s ease 2s both;
+}
+
+.react-cookienotice-root.hide-with-animation.bottom {
+  animation: slideDownFromBottom 1s ease both;
 }
 
 .react-cookienotice-root.left {
@@ -197,10 +251,35 @@
   > .react-cookienotice-services
   > .react-cookienotice-service
   > .react-cookienotice-service-info
+  > .react-cookienotice-service-info-name-wrapper {
+  display: flex;
+  margin: 0 0 10px;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > .react-cookienotice-service
+  > .react-cookienotice-service-info
+  > .react-cookienotice-service-info-name-wrapper
   > .react-cookienotice-service-info-name {
   font-size: 0.9em;
   font-weight: 400;
-  margin: 0 0 10px;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > .react-cookienotice-service
+  > .react-cookienotice-service-info
+  > .react-cookienotice-service-info-name-wrapper
+  > .react-cookienotice-service-info-always-active {
+  font-size: 0.7em;
+  color: rgb(255, 255, 255);
+  background-color: rgb(35, 157, 228);
+  padding: 2px 5px;
+  border-radius: 10px;
+  margin-left: 10px;
 }
 
 .react-cookienotice-root

@@ -8,6 +8,18 @@ export const validateString = (parameter?: any): string | undefined => {
   return undefined
 }
 
+export const validateTimeout = (parameter?: any): number => {
+  if (typeof parameter === 'number') {
+    if (parameter >= 0) {
+      return parameter
+    }
+
+    err(`timeout should be a positive number`)
+  }
+
+  return 1000
+}
+
 export const validateServices = (
   parameter?: any,
 ): ServiceObject[] | undefined => {

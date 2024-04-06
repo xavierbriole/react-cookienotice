@@ -6,5 +6,7 @@
   "button.acceptAll": "Accepter tout",
   "button.declineAll": "Refuser tout",
   "button.customize": "Personnaliser",
-  "button.back": "Retour"
+  "button.back": "Retour",
+  "button.customizeAcceptAll": "Accepter tout",
+  "text.alwaysActive": "Toujours actif"
 }

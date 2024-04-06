@@ -37,7 +37,7 @@ exports[`CookieNotice > should render > with default props 1`] = `
       <button
         class="react-cookienotice-button"
       >
-        acceptAllButtonLabel
+        declineAllButtonLabel
       </button>
       <button
         class="react-cookienotice-button"
@@ -47,7 +47,7 @@ exports[`CookieNotice > should render > with default props 1`] = `
       <button
         class="react-cookienotice-button"
       >
-        declineAllButtonLabel
+        acceptAllButtonLabel
       </button>
     </div>
   </div>
@@ -83,7 +83,7 @@ exports[`CookieNotice > should render > with no read more link 1`] = `
       <button
         class="react-cookienotice-button"
       >
-        acceptAllButtonLabel
+        declineAllButtonLabel
       </button>
       <button
         class="react-cookienotice-button"
@@ -93,7 +93,7 @@ exports[`CookieNotice > should render > with no read more link 1`] = `
       <button
         class="react-cookienotice-button"
       >
-        declineAllButtonLabel
+        acceptAllButtonLabel
       </button>
     </div>
   </div>
@@ -137,7 +137,7 @@ exports[`CookieNotice > should render > with placement { vertical: 'bottom', hor
       <button
         class="react-cookienotice-button"
       >
-        acceptAllButtonLabel
+        declineAllButtonLabel
       </button>
       <button
         class="react-cookienotice-button"
@@ -147,7 +147,7 @@ exports[`CookieNotice > should render > with placement { vertical: 'bottom', hor
       <button
         class="react-cookienotice-button"
       >
-        declineAllButtonLabel
+        acceptAllButtonLabel
       </button>
     </div>
   </div>
@@ -191,7 +191,7 @@ exports[`CookieNotice > should render > with placement { vertical: 'bottom', hor
       <button
         class="react-cookienotice-button"
       >
-        acceptAllButtonLabel
+        declineAllButtonLabel
       </button>
       <button
         class="react-cookienotice-button"
@@ -201,7 +201,7 @@ exports[`CookieNotice > should render > with placement { vertical: 'bottom', hor
       <button
         class="react-cookienotice-button"
       >
-        declineAllButtonLabel
+        acceptAllButtonLabel
       </button>
     </div>
   </div>
@@ -245,7 +245,7 @@ exports[`CookieNotice > should render > with placement { vertical: 'top', horizo
       <button
         class="react-cookienotice-button"
       >
-        acceptAllButtonLabel
+        declineAllButtonLabel
       </button>
       <button
         class="react-cookienotice-button"
@@ -255,7 +255,7 @@ exports[`CookieNotice > should render > with placement { vertical: 'top', horizo
       <button
         class="react-cookienotice-button"
       >
-        declineAllButtonLabel
+        acceptAllButtonLabel
       </button>
     </div>
   </div>
@@ -299,7 +299,7 @@ exports[`CookieNotice > should render > with placement { vertical: 'top', horizo
       <button
         class="react-cookienotice-button"
       >
-        acceptAllButtonLabel
+        declineAllButtonLabel
       </button>
       <button
         class="react-cookienotice-button"
@@ -309,7 +309,7 @@ exports[`CookieNotice > should render > with placement { vertical: 'top', horizo
       <button
         class="react-cookienotice-button"
       >
-        declineAllButtonLabel
+        acceptAllButtonLabel
       </button>
     </div>
   </div>

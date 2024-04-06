@@ -11,6 +11,10 @@ interface CustomizeViewProps {
   acceptButtonLabel?: string
   onBackButtonClick: () => void
   backButtonLabel?: string
+  alwaysActiveLabel?: string
+  customizeAcceptAllButtonLabel?: string
+  onCustomizeAcceptAllButtonClick?: (services: string[]) => void
+  customizeAcceptAllTimeout?: number
 }
 
 const CustomizeView = ({
@@ -20,6 +24,10 @@ const CustomizeView = ({
   acceptButtonLabel,
   onBackButtonClick,
   backButtonLabel,
+  alwaysActiveLabel,
+  customizeAcceptAllButtonLabel,
+  onCustomizeAcceptAllButtonClick,
+  customizeAcceptAllTimeout,
 }: CustomizeViewProps) => {
   const [checkedServices, setCheckedServices] = useState<string[]>([])
 
@@ -40,24 +48,44 @@ const CustomizeView = ({
   )
 
   const handleAcceptButtonClick = useCallback(() => {
-    onAcceptButtonClick(checkedServices)
+    const alwaysActiveServices = services
+      .filter(({ alwaysActive }) => alwaysActive)
+      .map(({ code }) => code)
+
+    onAcceptButtonClick([...checkedServices, ...alwaysActiveServices])
   }, [checkedServices, onAcceptButtonClick])
 
+  const handleAcceptAllButtonClick = useCallback(() => {
+    setCheckedServices(services.map(({ code }) => code))
+
+    setTimeout(() => {
+      onCustomizeAcceptAllButtonClick?.(services.map(({ code }) => code))
+    }, customizeAcceptAllTimeout)
+  }, [])
+
   const renderServices = () =>
-    services.map(({ name, description, code }) => (
+    services.map(({ name, description, code, alwaysActive }) => (
       <li key={code} className='react-cookienotice-service'>
         <div className='react-cookienotice-service-checkbox'>
           <input
             type='checkbox'
             id={code}
             name={code}
-            checked={checkedServices.includes(code)}
+            checked={alwaysActive || checkedServices.includes(code)}
             onChange={handleCheckboxChange}
+            disabled={alwaysActive}
           />
           <label htmlFor={code}>{code}</label>
         </div>
         <div className='react-cookienotice-service-info'>
-          <span className='react-cookienotice-service-info-name'>{name}</span>
+          <div className='react-cookienotice-service-info-name-wrapper'>
+            <span className='react-cookienotice-service-info-name'>{name}</span>
+            {alwaysActive && (
+              <Text className='react-cookienotice-service-info-always-active'>
+                {formatMessage('text.alwaysActive', alwaysActiveLabel)}
+              </Text>
+            )}
+          </div>
           <span className='react-cookienotice-service-info-description'>
             {description}
           </span>
@@ -74,11 +102,17 @@ const CustomizeView = ({
         <ul className='react-cookienotice-services'>{renderServices()}</ul>
       </div>
       <div className='react-cookienotice-buttons'>
-        <Button onClick={handleAcceptButtonClick}>
-          {formatMessage('button.accept', acceptButtonLabel)}
-        </Button>
         <Button onClick={onBackButtonClick}>
           {formatMessage('button.back', backButtonLabel)}
+        </Button>
+        <Button onClick={handleAcceptAllButtonClick}>
+          {formatMessage(
+            'button.customizeAcceptAll',
+            customizeAcceptAllButtonLabel,
+          )}
+        </Button>
+        <Button onClick={handleAcceptButtonClick}>
+          {formatMessage('button.accept', acceptButtonLabel)}
         </Button>
       </div>
     </>

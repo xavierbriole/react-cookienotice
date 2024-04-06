@@ -1,10 +1,12 @@
 {
   "text.title": "쿠키 동의",
-  "text.description": "수락을 클릭하면 귀하는 웹 사이트의 쿠키 사용에 동의하여 쿠키 선호도를 기억하여 가장 관련성이 높은 경험을 제공합니다.",
-  "text.customizeTitle": "사용자 정의하십시오",
+  "text.description": "동의를 클릭하면 귀하의 쿠키 기본 설정을 기억함으로써 가장 관련성 높은 경험을 제공하기 위해 당사 웹사이트의 쿠키 사용에 동의하는 것입니다.",
+  "text.customizeTitle": "사용자 정의",
   "button.accept": "수용하다",
   "button.acceptAll": "모든것을 받아 들인다",
-  "button.declineAll": "모두를 거절합니다",
-  "button.customize": "사용자 정의하십시오",
-  "button.back": "뒤쪽에"
+  "button.declineAll": "모두 거절",
+  "button.customize": "사용자 정의",
+  "button.back": "뒤쪽에",
+  "button.customizeAcceptAll": "모든것을 받아 들인다",
+  "text.alwaysActive": "항상 활성"
 }

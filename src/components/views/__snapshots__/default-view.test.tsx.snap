@@ -34,7 +34,7 @@ exports[`DefaultView > should render > with services 1`] = `
     <button
       class="react-cookienotice-button"
     >
-      acceptAllButtonLabel
+      declineAllButtonLabel
     </button>
     <button
       class="react-cookienotice-button"
@@ -44,7 +44,7 @@ exports[`DefaultView > should render > with services 1`] = `
     <button
       class="react-cookienotice-button"
     >
-      declineAllButtonLabel
+      acceptAllButtonLabel
     </button>
   </div>
 </DocumentFragment>
@@ -84,12 +84,12 @@ exports[`DefaultView > should render > with services empty 1`] = `
     <button
       class="react-cookienotice-button"
     >
-      acceptAllButtonLabel
+      declineAllButtonLabel
     </button>
     <button
       class="react-cookienotice-button"
     >
-      declineAllButtonLabel
+      acceptAllButtonLabel
     </button>
   </div>
 </DocumentFragment>
@@ -129,12 +129,12 @@ exports[`DefaultView > should render > without services 1`] = `
     <button
       class="react-cookienotice-button"
     >
-      acceptAllButtonLabel
+      declineAllButtonLabel
     </button>
     <button
       class="react-cookienotice-button"
     >
-      declineAllButtonLabel
+      acceptAllButtonLabel
     </button>
   </div>
 </DocumentFragment>
