@@ -11,6 +11,7 @@ type ServiceObject = {
   name: string
   description: string
   code: string
+  alwaysActive?: boolean
 }
 
 type PlacementOptions = {

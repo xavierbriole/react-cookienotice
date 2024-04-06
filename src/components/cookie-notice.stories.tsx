@@ -16,7 +16,7 @@ const meta: Meta<typeof CookieNotice> = {
     },
     onAcceptAllButtonClick: {
       description:
-        'A callback function to be called when the accept all cookies button is clicked.',
+        'A callback function to be called when the accept all cookies button is clicked. The first param returns the services if any.',
       type: { name: 'function', required: false },
       action: 'onAcceptAllButtonClick',
     },
@@ -70,6 +70,28 @@ const meta: Meta<typeof CookieNotice> = {
       type: { name: 'string', required: false },
       table: {
         defaultValue: { summary: 'Back' },
+      },
+    },
+    alwaysActiveLabel: {
+      description: 'The label for the always active services.',
+      type: { name: 'string', required: false },
+      table: {
+        defaultValue: { summary: 'Always active' },
+      },
+    },
+    customizeAcceptAllButtonLabel: {
+      description: 'The label for the accept all button in the customize view.',
+      type: { name: 'string', required: false },
+      table: {
+        defaultValue: { summary: 'Accept all' },
+      },
+    },
+    customizeAcceptAllTimeout: {
+      description:
+        'The timeout for the accept all button in the customize view.',
+      type: { name: 'number', required: false },
+      table: {
+        defaultValue: { summary: 1000 },
       },
     },
     titleLabel: {
@@ -142,6 +164,9 @@ export const Default: Story = {
     acceptButtonLabel: undefined,
     onAcceptButtonClick: undefined,
     backButtonLabel: undefined,
+    alwaysActiveLabel: undefined,
+    customizeAcceptAllButtonLabel: undefined,
+    customizeAcceptAllTimeout: undefined,
     titleLabel: undefined,
     descriptionLabel: undefined,
     readMoreLabel: undefined,
@@ -163,15 +188,25 @@ export const WithOverriddenLabels: Story = {
         name: 'service1Name',
         description: 'service1Description',
         code: 'service1Code',
+        alwaysActive: true,
       },
       {
         name: 'service2Name',
         description: 'service2Description',
         code: 'service2Code',
+        alwaysActive: false,
+      },
+      {
+        name: 'service3Name',
+        description: 'service3Description',
+        code: 'service3Code',
+        alwaysActive: false,
       },
     ],
     acceptButtonLabel: 'acceptButtonLabel',
     backButtonLabel: 'backButtonLabel',
+    alwaysActiveLabel: 'alwaysActiveLabel',
+    customizeAcceptAllButtonLabel: 'customizeAcceptAllButtonLabel',
     titleLabel: 'titleLabel',
     descriptionLabel: 'descriptionLabel',
     readMoreLabel: 'readMoreLabel',
@@ -184,16 +219,29 @@ export const WithCustomServices: Story = {
   args: {
     services: [
       {
-        name: 'Google Analytics',
+        name: 'Necessary Cookies',
         description:
-          'Google Analytics is a web analytics service offered by Google that tracks and reports website traffic.',
-        code: 'GOOGLE_ANALYTICS',
+          'Necessary cookies help make a website usable by enabling basic functions like page navigation and access to secure areas of the website. The website cannot function properly without these cookies.',
+        code: 'NECESSARY',
+        alwaysActive: true,
       },
       {
-        name: 'HubSpot',
+        name: 'Functional Cookies',
         description:
-          'HubSpot is a developer and marketer of software products for inbound marketing, sales, and customer service.',
-        code: 'HUBSPOT',
+          'Functional cookies enable a website to remember information that changes the way the website behaves or looks, like your preferred language or the region that you are in.',
+        code: 'FUNCTIONAL',
+      },
+      {
+        name: 'Performance Cookies',
+        description:
+          'Performance cookies help website owners to understand how visitors interact with websites by collecting and reporting information anonymously.',
+        code: 'PERFORMANCE',
+      },
+      {
+        name: 'Marketing Cookies',
+        description:
+          'Marketing cookies are used to track visitors across websites. The intention is to display ads that are relevant and engaging for the individual user and thereby more valuable for publishers and third party advertisers.',
+        code: 'MARKETING',
       },
     ],
   },

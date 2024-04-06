@@ -6,5 +6,7 @@
   "button.acceptAll": "Acceptar tot",
   "button.declineAll": "Declinar tot",
   "button.customize": "Personalizat",
-  "button.back": "Precedent"
+  "button.back": "Precedent",
+  "button.customizeAcceptAll": "Acceptar tot",
+  "text.alwaysActive": "Totjorn actiu"
 }
