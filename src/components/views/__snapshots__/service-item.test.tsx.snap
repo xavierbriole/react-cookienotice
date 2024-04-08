@@ -1,0 +1,137 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ServiceItem > should render > with always active 1`] = `
+<DocumentFragment>
+  <div
+    class="react-cookienotice-service"
+  >
+    <div
+      class="react-cookienotice-service-checkbox"
+    >
+      <input
+        checked=""
+        disabled=""
+        id="serviceCode"
+        name="serviceCode"
+        type="checkbox"
+      />
+      <label
+        for="serviceCode"
+      >
+        serviceCode
+      </label>
+    </div>
+    <div
+      class="react-cookienotice-service-info"
+    >
+      <button
+        class="react-cookienotice-service-info-title"
+      >
+        serviceName
+        <div
+          class="react-cookienotice-service-info-title-always-active"
+        >
+          <span>
+            alwaysActiveLabel
+          </span>
+        </div>
+      </button>
+      <div
+        class="react-cookienotice-service-info-content"
+        style="max-height: 0;"
+      >
+        <p
+          class="react-cookienotice-service-info-content-description"
+        >
+          serviceDescription
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ServiceItem > should render > with checked 1`] = `
+<DocumentFragment>
+  <div
+    class="react-cookienotice-service"
+  >
+    <div
+      class="react-cookienotice-service-checkbox"
+    >
+      <input
+        checked=""
+        id="serviceCode"
+        name="serviceCode"
+        type="checkbox"
+      />
+      <label
+        for="serviceCode"
+      >
+        serviceCode
+      </label>
+    </div>
+    <div
+      class="react-cookienotice-service-info"
+    >
+      <button
+        class="react-cookienotice-service-info-title"
+      >
+        serviceName
+      </button>
+      <div
+        class="react-cookienotice-service-info-content"
+        style="max-height: 0;"
+      >
+        <p
+          class="react-cookienotice-service-info-content-description"
+        >
+          serviceDescription
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ServiceItem > should render > without always active 1`] = `
+<DocumentFragment>
+  <div
+    class="react-cookienotice-service"
+  >
+    <div
+      class="react-cookienotice-service-checkbox"
+    >
+      <input
+        id="serviceCode"
+        name="serviceCode"
+        type="checkbox"
+      />
+      <label
+        for="serviceCode"
+      >
+        serviceCode
+      </label>
+    </div>
+    <div
+      class="react-cookienotice-service-info"
+    >
+      <button
+        class="react-cookienotice-service-info-title"
+      >
+        serviceName
+      </button>
+      <div
+        class="react-cookienotice-service-info-content"
+        style="max-height: 0;"
+      >
+        <p
+          class="react-cookienotice-service-info-content-description"
+        >
+          serviceDescription
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

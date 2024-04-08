@@ -12,10 +12,10 @@ exports[`CustomizeView > should render > with services 1`] = `
         customizeTitleLabel
       </span>
     </div>
-    <ul
+    <div
       class="react-cookienotice-services"
     >
-      <li
+      <div
         class="react-cookienotice-service"
       >
         <div
@@ -37,30 +37,31 @@ exports[`CustomizeView > should render > with services 1`] = `
         <div
           class="react-cookienotice-service-info"
         >
-          <div
-            class="react-cookienotice-service-info-name-wrapper"
+          <button
+            class="react-cookienotice-service-info-title"
           >
-            <span
-              class="react-cookienotice-service-info-name"
-            >
-              service1Name
-            </span>
+            service1Name
             <div
-              class="react-cookienotice-service-info-always-active"
+              class="react-cookienotice-service-info-title-always-active"
             >
               <span>
                 alwaysActiveLabel
               </span>
             </div>
-          </div>
-          <span
-            class="react-cookienotice-service-info-description"
+          </button>
+          <div
+            class="react-cookienotice-service-info-content"
+            style="max-height: 0;"
           >
-            service1Description
-          </span>
+            <p
+              class="react-cookienotice-service-info-content-description"
+            >
+              service1Description
+            </p>
+          </div>
         </div>
-      </li>
-      <li
+      </div>
+      <div
         class="react-cookienotice-service"
       >
         <div
@@ -80,23 +81,24 @@ exports[`CustomizeView > should render > with services 1`] = `
         <div
           class="react-cookienotice-service-info"
         >
+          <button
+            class="react-cookienotice-service-info-title"
+          >
+            service2Name
+          </button>
           <div
-            class="react-cookienotice-service-info-name-wrapper"
+            class="react-cookienotice-service-info-content"
+            style="max-height: 0;"
           >
-            <span
-              class="react-cookienotice-service-info-name"
+            <p
+              class="react-cookienotice-service-info-content-description"
             >
-              service2Name
-            </span>
+              service2Description
+            </p>
           </div>
-          <span
-            class="react-cookienotice-service-info-description"
-          >
-            service2Description
-          </span>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
   <div
     class="react-cookienotice-buttons"
@@ -132,7 +134,7 @@ exports[`CustomizeView > should render > with services empty 1`] = `
         customizeTitleLabel
       </span>
     </div>
-    <ul
+    <div
       class="react-cookienotice-services"
     />
   </div>
