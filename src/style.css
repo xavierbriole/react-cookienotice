@@ -131,9 +131,7 @@
 .react-cookienotice-root
   > .react-cookienotice-body
   > .react-cookienotice-services {
-  list-style-type: none;
   margin: 10px 0 0;
-  padding: 0;
 }
 
 .react-cookienotice-root
@@ -141,15 +139,8 @@
   > .react-cookienotice-services
   > .react-cookienotice-service {
   display: flex;
-  align-items: center;
+  align-items: start;
   margin: 0 0 20px;
-}
-
-.react-cookienotice-root
-  > .react-cookienotice-body
-  > .react-cookienotice-services
-  > .react-cookienotice-service:last-child {
-  margin: 0 0 10px;
 }
 
 .react-cookienotice-root
@@ -158,8 +149,7 @@
   > .react-cookienotice-service
   > .react-cookienotice-service-checkbox {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-top: 10px;
 }
 
 .react-cookienotice-root
@@ -171,6 +161,27 @@
   height: 0;
   width: 0;
   visibility: hidden;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > .react-cookienotice-service
+  > .react-cookienotice-service-checkbox
+  > input:checked
+  + label {
+  background: rgb(35, 157, 228);
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > .react-cookienotice-service
+  > .react-cookienotice-service-checkbox
+  > input:checked
+  + label::after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
 }
 
 .react-cookienotice-root
@@ -194,6 +205,15 @@
   > .react-cookienotice-services
   > .react-cookienotice-service
   > .react-cookienotice-service-checkbox
+  > label:active::after {
+  width: 20px;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > .react-cookienotice-service
+  > .react-cookienotice-service-checkbox
   > label::after {
   content: '';
   position: absolute;
@@ -210,75 +230,7 @@
   > .react-cookienotice-body
   > .react-cookienotice-services
   > .react-cookienotice-service
-  > .react-cookienotice-service-checkbox
-  > input:checked
-  + label {
-  background: rgb(35, 157, 228);
-}
-
-.react-cookienotice-root
-  > .react-cookienotice-body
-  > .react-cookienotice-services
-  > .react-cookienotice-service
-  > .react-cookienotice-service-checkbox
-  > input:checked
-  + label:after {
-  left: calc(100% - 5px);
-  transform: translateX(-100%);
-}
-
-.react-cookienotice-root
-  > .react-cookienotice-body
-  > .react-cookienotice-services
-  > .react-cookienotice-service
-  > .react-cookienotice-service-checkbox
-  > label:active:after {
-  width: 20px;
-}
-
-.react-cookienotice-root
-  > .react-cookienotice-body
-  > .react-cookienotice-services
-  > .react-cookienotice-service
   > .react-cookienotice-service-info {
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
-}
-
-.react-cookienotice-root
-  > .react-cookienotice-body
-  > .react-cookienotice-services
-  > .react-cookienotice-service
-  > .react-cookienotice-service-info
-  > .react-cookienotice-service-info-name-wrapper {
-  display: flex;
-  margin: 0 0 10px;
-}
-
-.react-cookienotice-root
-  > .react-cookienotice-body
-  > .react-cookienotice-services
-  > .react-cookienotice-service
-  > .react-cookienotice-service-info
-  > .react-cookienotice-service-info-name-wrapper
-  > .react-cookienotice-service-info-name {
-  font-size: 0.9em;
-  font-weight: 400;
-}
-
-.react-cookienotice-root
-  > .react-cookienotice-body
-  > .react-cookienotice-services
-  > .react-cookienotice-service
-  > .react-cookienotice-service-info
-  > .react-cookienotice-service-info-name-wrapper
-  > .react-cookienotice-service-info-always-active {
-  font-size: 0.7em;
-  color: rgb(255, 255, 255);
-  background-color: rgb(35, 157, 228);
-  padding: 2px 5px;
-  border-radius: 10px;
   margin-left: 10px;
 }
 
@@ -287,8 +239,64 @@
   > .react-cookienotice-services
   > .react-cookienotice-service
   > .react-cookienotice-service-info
-  > .react-cookienotice-service-info-description {
+  > .react-cookienotice-service-info-title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > .react-cookienotice-service
+  > .react-cookienotice-service-info
+  > .react-cookienotice-service-info-title::after {
+  content: '+';
+  font-size: 1.5em;
+  margin-left: auto;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > .react-cookienotice-service
+  > .react-cookienotice-service-info
+  > .react-cookienotice-service-info-title.open::after {
+  content: '-';
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > .react-cookienotice-service
+  > .react-cookienotice-service-info
+  > .react-cookienotice-service-info-title
+  > .react-cookienotice-service-info-title-always-active {
   font-size: 0.8em;
+  color: rgb(255, 255, 255);
+  background-color: rgb(35, 157, 228);
+  padding: 2px 5px;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-services
+  > .react-cookienotice-service
+  > .react-cookienotice-service-info
+  > .react-cookienotice-service-info-content {
+  padding: 0 10px;
+  max-height: 0;
+  overflow: hidden;
+  font-size: 0.8em;
+  transition: max-height 0.2s ease;
 }
 
 .react-cookienotice-root > .react-cookienotice-body > .react-cookienotice-link {

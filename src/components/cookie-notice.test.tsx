@@ -597,4 +597,195 @@ describe('CookieNotice', () => {
     expect(getByText('customizeButtonLabel')).toBeInTheDocument()
     expect(getByText('declineAllButtonLabel')).toBeInTheDocument()
   })
+
+  describe('should handle classNames', () => {
+    it('should add hide-with-animation class', () => {
+      const { getByText } = render(
+        <CookieNotice
+          acceptAllButtonLabel='acceptAllButtonLabel'
+          onAcceptAllButtonClick={() => {}}
+          declineAllButtonLabel='declineAllButtonLabel'
+          onDeclineAllButtonClick={() => {}}
+          customizeButtonLabel='customizeButtonLabel'
+          customizeTitleLabel='customizeTitleLabel'
+          services={[
+            {
+              name: 'service1Name',
+              description: 'service1Description',
+              code: 'service1Code',
+              alwaysActive: true,
+            },
+            {
+              name: 'service2Name',
+              description: 'service2Description',
+              code: 'service2Code',
+              alwaysActive: false,
+            },
+          ]}
+          acceptButtonLabel='acceptButtonLabel'
+          onAcceptButtonClick={() => {}}
+          backButtonLabel='backButtonLabel'
+          alwaysActiveLabel='alwaysActiveLabel'
+          customizeAcceptAllButtonLabel='customizeAcceptAllButtonLabel'
+          customizeAcceptAllTimeout={1000}
+          titleLabel='titleLabel'
+          descriptionLabel='descriptionLabel'
+          readMoreLabel='readMoreLabel'
+          readMoreLink='https://www.example.com'
+          readMoreInNewTab={true}
+          placement={{ vertical: 'bottom', horizontal: 'left' }}
+          cookieOptions={{
+            name: 'hide-notice',
+            value: 'true',
+            expires: 30,
+            secure: false,
+            httpOnly: false,
+            sameSite: 'lax',
+          }}
+        />,
+      )
+
+      const cookieNoticeBeforeAccept = document.querySelector(
+        '.react-cookienotice-root',
+      )
+
+      if (!cookieNoticeBeforeAccept) {
+        throw new Error('Cookie notice not found')
+      }
+
+      expect(cookieNoticeBeforeAccept.className).not.toContain(
+        'hide-with-animation',
+      )
+
+      act(() => {
+        getByText('acceptAllButtonLabel').click()
+      })
+
+      const cookieNoticeAfterAccept = document.querySelector(
+        '.react-cookienotice-root',
+      )
+
+      if (!cookieNoticeAfterAccept) {
+        throw new Error('Cookie notice not found')
+      }
+
+      expect(cookieNoticeAfterAccept.className).toContain('hide-with-animation')
+    })
+
+    it('should mount without hidden class', () => {
+      // @ts-ignore
+      getCookieValue.mockReturnValue('')
+
+      render(
+        <CookieNotice
+          acceptAllButtonLabel='acceptAllButtonLabel'
+          onAcceptAllButtonClick={() => {}}
+          declineAllButtonLabel='declineAllButtonLabel'
+          onDeclineAllButtonClick={() => {}}
+          customizeButtonLabel='customizeButtonLabel'
+          customizeTitleLabel='customizeTitleLabel'
+          services={[
+            {
+              name: 'service1Name',
+              description: 'service1Description',
+              code: 'service1Code',
+              alwaysActive: true,
+            },
+            {
+              name: 'service2Name',
+              description: 'service2Description',
+              code: 'service2Code',
+              alwaysActive: false,
+            },
+          ]}
+          acceptButtonLabel='acceptButtonLabel'
+          onAcceptButtonClick={() => {}}
+          backButtonLabel='backButtonLabel'
+          alwaysActiveLabel='alwaysActiveLabel'
+          customizeAcceptAllButtonLabel='customizeAcceptAllButtonLabel'
+          customizeAcceptAllTimeout={1000}
+          titleLabel='titleLabel'
+          descriptionLabel='descriptionLabel'
+          readMoreLabel='readMoreLabel'
+          readMoreLink='https://www.example.com'
+          readMoreInNewTab={true}
+          placement={{ vertical: 'bottom', horizontal: 'left' }}
+          cookieOptions={{
+            name: 'hide-notice',
+            value: 'true',
+            expires: 30,
+            secure: false,
+            httpOnly: false,
+            sameSite: 'lax',
+          }}
+        />,
+      )
+
+      const cookieNotice = document.querySelector('.react-cookienotice-root')
+
+      if (!cookieNotice) {
+        throw new Error('Cookie notice not found')
+      }
+
+      expect(cookieNotice.className).not.toContain('hidden')
+    })
+
+    it('should mount with hidden class', () => {
+      // @ts-ignore
+      getCookieValue.mockReturnValue('true')
+
+      render(
+        <CookieNotice
+          acceptAllButtonLabel='acceptAllButtonLabel'
+          onAcceptAllButtonClick={() => {}}
+          declineAllButtonLabel='declineAllButtonLabel'
+          onDeclineAllButtonClick={() => {}}
+          customizeButtonLabel='customizeButtonLabel'
+          customizeTitleLabel='customizeTitleLabel'
+          services={[
+            {
+              name: 'service1Name',
+              description: 'service1Description',
+              code: 'service1Code',
+              alwaysActive: true,
+            },
+            {
+              name: 'service2Name',
+              description: 'service2Description',
+              code: 'service2Code',
+              alwaysActive: false,
+            },
+          ]}
+          acceptButtonLabel='acceptButtonLabel'
+          onAcceptButtonClick={() => {}}
+          backButtonLabel='backButtonLabel'
+          alwaysActiveLabel='alwaysActiveLabel'
+          customizeAcceptAllButtonLabel='customizeAcceptAllButtonLabel'
+          customizeAcceptAllTimeout={1000}
+          titleLabel='titleLabel'
+          descriptionLabel='descriptionLabel'
+          readMoreLabel='readMoreLabel'
+          readMoreLink='https://www.example.com'
+          readMoreInNewTab={true}
+          placement={{ vertical: 'bottom', horizontal: 'left' }}
+          cookieOptions={{
+            name: 'hide-notice',
+            value: 'true',
+            expires: 30,
+            secure: false,
+            httpOnly: false,
+            sameSite: 'lax',
+          }}
+        />,
+      )
+
+      const cookieNotice = document.querySelector('.react-cookienotice-root')
+
+      if (!cookieNotice) {
+        throw new Error('Cookie notice not found')
+      }
+
+      expect(cookieNotice.className).toContain('hidden')
+    })
+  })
 })
