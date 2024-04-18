@@ -4,12 +4,22 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
+permissions:
+  issues: write
+  pull-requests: write
+  discussions: write
+
+concurrency:
+  group: lock-threads
+
 jobs:
   lock-threads:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: dessant/lock-threads@v2
+      - name: Lock inactive issues, pull requests, and discussions
+        uses: dessant/lock-threads@v5
         with:
-          github-token: ${{ github.token }}
-          issue-lock-inactive-days: '180'
+          issue-inactive-days: '180'
+          pr-inactive-days: '180'
+          discussion-inactive-days: '180'
