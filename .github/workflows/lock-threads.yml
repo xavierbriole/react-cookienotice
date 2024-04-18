@@ -1,4 +1,4 @@
-name: Close inactives issues
+name: Lock threads
 
 on:
   schedule:
