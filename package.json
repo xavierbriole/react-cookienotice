@@ -87,8 +87,14 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/react-cookienotice.es.js",
-      "require": "./dist/react-cookienotice.umd.js"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/react-cookienotice.es.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/react-cookienotice.umd.js"
+      }
     },
     "./dist/style.css": "./dist/style.css"
   },
