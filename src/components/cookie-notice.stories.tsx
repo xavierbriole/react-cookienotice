@@ -91,7 +91,7 @@ const meta: Meta<typeof CookieNotice> = {
         'The timeout for the accept all button in the customize view.',
       type: { name: 'number', required: false },
       table: {
-        defaultValue: { summary: 1000 },
+        defaultValue: { summary: '1000' },
       },
     },
     titleLabel: {
