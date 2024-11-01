@@ -8,7 +8,14 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: resolve('src', 'setupTests.ts'),
     coverage: {
-      exclude: ['.storybook/**', '**/*.stories.tsx', 'src/index.ts'],
+      exclude: [
+        '.storybook/**',
+        '**/*.stories.tsx',
+        'src/index.ts',
+        '**/*.test.{ts,tsx}',
+        '**/*.d.ts',
+        '**/{eslint,vite,vitest}.config.{?(c|m)js,ts}',
+      ],
     },
   },
 })
