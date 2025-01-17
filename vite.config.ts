@@ -49,8 +49,8 @@ export default defineConfig((configEnv) => ({
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-        }
-      }
+        },
+      },
     },
   },
 }))
