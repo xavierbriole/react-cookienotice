@@ -60,18 +60,18 @@ const ServiceItem = ({
         >
           {name}
           {alwaysActive && (
-            <Text className='react-cookienotice-service-info-title-always-active'>
-              {formatMessage('text.alwaysActive', alwaysActiveLabel)}
-            </Text>
+            <div className='react-cookienotice-service-info-title-always-active'>
+              <Text>
+                {formatMessage('text.alwaysActive', alwaysActiveLabel)}
+              </Text>
+            </div>
           )}
         </button>
         <div
           ref={contentRef}
           className='react-cookienotice-service-info-content'
         >
-          <p className='react-cookienotice-service-info-content-description'>
-            {description}
-          </p>
+          <Text>{description}</Text>
         </div>
       </div>
     </div>

@@ -67,9 +67,11 @@ const CustomizeView = ({
   return (
     <>
       <div className='react-cookienotice-body'>
-        <Text className='react-cookienotice-title'>
-          {formatMessage('text.customizeTitle', customizeTitleLabel)}
-        </Text>
+        <div className='react-cookienotice-title'>
+          <Text>
+            {formatMessage('text.customizeTitle', customizeTitleLabel)}
+          </Text>
+        </div>
         <div className='react-cookienotice-services'>
           {services.map(({ name, description, code, alwaysActive }, index) => (
             <ServiceItem

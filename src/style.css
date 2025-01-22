@@ -54,7 +54,24 @@
   }
 }
 
+.react-cookienotice-label {
+  color: rgb(0, 0, 0);
+}
+
+.react-cookienotice-link {
+  font-size: 0.8em;
+  color: rgb(192, 192, 192);
+  text-decoration: none;
+  transition: color 0.5s ease;
+}
+
+.react-cookienotice-link:hover {
+  color: rgb(35, 157, 228);
+}
+
 .react-cookienotice-root {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   border-radius: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -106,32 +123,48 @@
 .react-cookienotice-root > .react-cookienotice-body {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
-  color: rgb(0, 0, 0);
-  text-align: left;
 }
 
 .react-cookienotice-root
   > .react-cookienotice-body
   > .react-cookienotice-title {
+  padding: 20px;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-title
+  > span {
   font-size: 1em;
   font-weight: 400;
-  margin: 0 0 10px;
 }
 
 .react-cookienotice-root
   > .react-cookienotice-body
   > .react-cookienotice-description {
+  padding: 0px 20px 20px;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-description
+  > span {
   font-size: 0.8em;
   line-height: 1.5em;
-  margin: 0 0 10px;
+}
+
+.react-cookienotice-root
+  > .react-cookienotice-body
+  > .react-cookienotice-read-more {
+  padding: 0px 20px 20px;
 }
 
 .react-cookienotice-root
   > .react-cookienotice-body
   > .react-cookienotice-services {
-  margin: 10px 0 0;
+  max-height: 50vh;
+  padding: 20px;
+  overflow-y: auto;
 }
 
 .react-cookienotice-root
@@ -140,7 +173,6 @@
   > .react-cookienotice-service {
   display: flex;
   align-items: start;
-  margin: 0 0 20px;
 }
 
 .react-cookienotice-root
@@ -231,6 +263,7 @@
   > .react-cookienotice-services
   > .react-cookienotice-service
   > .react-cookienotice-service-info {
+  flex: 1;
   margin-left: 10px;
 }
 
@@ -277,7 +310,8 @@
   > .react-cookienotice-service
   > .react-cookienotice-service-info
   > .react-cookienotice-service-info-title
-  > .react-cookienotice-service-info-title-always-active {
+  > .react-cookienotice-service-info-title-always-active
+  > span {
   font-size: 0.8em;
   color: rgb(255, 255, 255);
   background-color: rgb(35, 157, 228);
@@ -292,28 +326,25 @@
   > .react-cookienotice-service
   > .react-cookienotice-service-info
   > .react-cookienotice-service-info-content {
-  padding: 0 10px;
+  margin: 10px;
   max-height: 0;
   overflow: hidden;
-  font-size: 0.8em;
   transition: max-height 0.2s ease;
-}
-
-.react-cookienotice-root > .react-cookienotice-body > .react-cookienotice-link {
-  font-size: 0.8em;
-  color: rgb(192, 192, 192);
-  text-decoration: none;
-  transition: color 0.5s ease;
 }
 
 .react-cookienotice-root
   > .react-cookienotice-body
-  > .react-cookienotice-link:hover {
-  color: rgb(35, 157, 228);
+  > .react-cookienotice-services
+  > .react-cookienotice-service
+  > .react-cookienotice-service-info
+  > .react-cookienotice-service-info-content
+  > span {
+  font-size: 0.8em;
 }
 
 .react-cookienotice-root > .react-cookienotice-buttons {
   display: flex;
+  flex-shrink: 0;
   justify-content: space-around;
 }
 
@@ -368,7 +399,7 @@
     background-color: rgb(41, 41, 41);
   }
 
-  .react-cookienotice-root > .react-cookienotice-body {
+  .react-cookienotice-label {
     color: rgb(255, 255, 255);
   }
 
@@ -384,6 +415,16 @@
   .react-cookienotice-root
     > .react-cookienotice-buttons
     > .react-cookienotice-button:hover {
+    background-color: rgb(51, 51, 51);
+  }
+
+  .react-cookienotice-root
+    > .react-cookienotice-body
+    > .react-cookienotice-services
+    > .react-cookienotice-service
+    > .react-cookienotice-service-info
+    > .react-cookienotice-service-info-title {
+    color: rgb(255, 255, 255);
     background-color: rgb(51, 51, 51);
   }
 }

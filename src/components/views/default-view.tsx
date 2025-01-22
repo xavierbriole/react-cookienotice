@@ -41,17 +41,21 @@ const DefaultView = ({
   return (
     <>
       <div className='react-cookienotice-body'>
-        <Text className='react-cookienotice-title'>
-          {formatMessage('text.title', titleLabel)}
-        </Text>
-        <Text className='react-cookienotice-description'>
-          {formatMessage('text.description', descriptionLabel)}
-        </Text>
-        <Link
-          to={readMoreLink}
-          newTab={readMoreInNewTab}
-          label={readMoreLabel}
-        />
+        <div className='react-cookienotice-title'>
+          <Text>{formatMessage('text.title', titleLabel)}</Text>
+        </div>
+        <div className='react-cookienotice-description'>
+          <Text>{formatMessage('text.description', descriptionLabel)}</Text>
+        </div>
+        {readMoreLink && readMoreInNewTab && readMoreLabel && (
+          <div className='react-cookienotice-read-more'>
+            <Link
+              to={readMoreLink}
+              newTab={readMoreInNewTab}
+              label={readMoreLabel}
+            />
+          </div>
+        )}
       </div>
       <div className='react-cookienotice-buttons'>
         <Button onClick={onDeclineAllButtonClick}>

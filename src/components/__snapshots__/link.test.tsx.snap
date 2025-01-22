@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Link > should render > with all props 1`] = `
+exports[`Link > should render 1`] = `
 <DocumentFragment>
   <a
     class="react-cookienotice-link"
@@ -12,5 +12,3 @@ exports[`Link > should render > with all props 1`] = `
   </a>
 </DocumentFragment>
 `;
-
-exports[`Link > should render > without props 1`] = `<DocumentFragment />`;

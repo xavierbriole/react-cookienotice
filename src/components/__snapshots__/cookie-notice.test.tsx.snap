@@ -11,25 +11,33 @@ exports[`CookieNotice > should render > with default props 1`] = `
       <div
         class="react-cookienotice-title"
       >
-        <span>
+        <span
+          class="react-cookienotice-label"
+        >
           titleLabel
         </span>
       </div>
       <div
         class="react-cookienotice-description"
       >
-        <span>
+        <span
+          class="react-cookienotice-label"
+        >
           descriptionLabel
         </span>
       </div>
-      <a
-        class="react-cookienotice-link"
-        href="https://www.example.com"
-        rel="noreferrer"
-        target="_blank"
+      <div
+        class="react-cookienotice-read-more"
       >
-        readMoreLabel
-      </a>
+        <a
+          class="react-cookienotice-link"
+          href="https://www.example.com"
+          rel="noreferrer"
+          target="_blank"
+        >
+          readMoreLabel
+        </a>
+      </div>
     </div>
     <div
       class="react-cookienotice-buttons"
@@ -65,14 +73,18 @@ exports[`CookieNotice > should render > with no read more link 1`] = `
       <div
         class="react-cookienotice-title"
       >
-        <span>
+        <span
+          class="react-cookienotice-label"
+        >
           titleLabel
         </span>
       </div>
       <div
         class="react-cookienotice-description"
       >
-        <span>
+        <span
+          class="react-cookienotice-label"
+        >
           descriptionLabel
         </span>
       </div>
@@ -111,25 +123,33 @@ exports[`CookieNotice > should render > with placement { vertical: 'bottom', hor
       <div
         class="react-cookienotice-title"
       >
-        <span>
+        <span
+          class="react-cookienotice-label"
+        >
           titleLabel
         </span>
       </div>
       <div
         class="react-cookienotice-description"
       >
-        <span>
+        <span
+          class="react-cookienotice-label"
+        >
           descriptionLabel
         </span>
       </div>
-      <a
-        class="react-cookienotice-link"
-        href="https://www.example.com"
-        rel="noreferrer"
-        target="_blank"
+      <div
+        class="react-cookienotice-read-more"
       >
-        readMoreLabel
-      </a>
+        <a
+          class="react-cookienotice-link"
+          href="https://www.example.com"
+          rel="noreferrer"
+          target="_blank"
+        >
+          readMoreLabel
+        </a>
+      </div>
     </div>
     <div
       class="react-cookienotice-buttons"
@@ -165,25 +185,33 @@ exports[`CookieNotice > should render > with placement { vertical: 'bottom', hor
       <div
         class="react-cookienotice-title"
       >
-        <span>
+        <span
+          class="react-cookienotice-label"
+        >
           titleLabel
         </span>
       </div>
       <div
         class="react-cookienotice-description"
       >
-        <span>
+        <span
+          class="react-cookienotice-label"
+        >
           descriptionLabel
         </span>
       </div>
-      <a
-        class="react-cookienotice-link"
-        href="https://www.example.com"
-        rel="noreferrer"
-        target="_blank"
+      <div
+        class="react-cookienotice-read-more"
       >
-        readMoreLabel
-      </a>
+        <a
+          class="react-cookienotice-link"
+          href="https://www.example.com"
+          rel="noreferrer"
+          target="_blank"
+        >
+          readMoreLabel
+        </a>
+      </div>
     </div>
     <div
       class="react-cookienotice-buttons"
@@ -219,25 +247,33 @@ exports[`CookieNotice > should render > with placement { vertical: 'top', horizo
       <div
         class="react-cookienotice-title"
       >
-        <span>
+        <span
+          class="react-cookienotice-label"
+        >
           titleLabel
         </span>
       </div>
       <div
         class="react-cookienotice-description"
       >
-        <span>
+        <span
+          class="react-cookienotice-label"
+        >
           descriptionLabel
         </span>
       </div>
-      <a
-        class="react-cookienotice-link"
-        href="https://www.example.com"
-        rel="noreferrer"
-        target="_blank"
+      <div
+        class="react-cookienotice-read-more"
       >
-        readMoreLabel
-      </a>
+        <a
+          class="react-cookienotice-link"
+          href="https://www.example.com"
+          rel="noreferrer"
+          target="_blank"
+        >
+          readMoreLabel
+        </a>
+      </div>
     </div>
     <div
       class="react-cookienotice-buttons"
@@ -273,25 +309,33 @@ exports[`CookieNotice > should render > with placement { vertical: 'top', horizo
       <div
         class="react-cookienotice-title"
       >
-        <span>
+        <span
+          class="react-cookienotice-label"
+        >
           titleLabel
         </span>
       </div>
       <div
         class="react-cookienotice-description"
       >
-        <span>
+        <span
+          class="react-cookienotice-label"
+        >
           descriptionLabel
         </span>
       </div>
-      <a
-        class="react-cookienotice-link"
-        href="https://www.example.com"
-        rel="noreferrer"
-        target="_blank"
+      <div
+        class="react-cookienotice-read-more"
       >
-        readMoreLabel
-      </a>
+        <a
+          class="react-cookienotice-link"
+          href="https://www.example.com"
+          rel="noreferrer"
+          target="_blank"
+        >
+          readMoreLabel
+        </a>
+      </div>
     </div>
     <div
       class="react-cookienotice-buttons"

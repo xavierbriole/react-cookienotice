@@ -3,20 +3,10 @@ import { render } from '@testing-library/react'
 import Link from './link'
 
 describe('Link', () => {
-  describe('should render', () => {
-    it('with all props', () => {
-      const { asFragment } = render(<Link to='#' newTab={true} label='label' />)
+  it('should render', () => {
+    const { asFragment } = render(<Link to='#' newTab={true} label='label' />)
 
-      expect(asFragment()).toMatchSnapshot()
-    })
-
-    it('without props', () => {
-      const { asFragment } = render(
-        <Link to={undefined} newTab={undefined} label={undefined} />,
-      )
-
-      expect(asFragment()).toMatchSnapshot()
-    })
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('should display link', () => {
