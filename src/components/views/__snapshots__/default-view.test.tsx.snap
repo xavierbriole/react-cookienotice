@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`DefaultView > should render > with services 1`] = `
+exports[`DefaultView > should render > read more > with read more link 1`] = `
 <DocumentFragment>
   <div
     class="react-cookienotice-body"
@@ -8,25 +8,115 @@ exports[`DefaultView > should render > with services 1`] = `
     <div
       class="react-cookienotice-title"
     >
-      <span>
+      <span
+        class="react-cookienotice-label"
+      >
         titleLabel
       </span>
     </div>
     <div
       class="react-cookienotice-description"
     >
-      <span>
+      <span
+        class="react-cookienotice-label"
+      >
         descriptionLabel
       </span>
     </div>
-    <a
-      class="react-cookienotice-link"
-      href="readMoreLink"
-      rel="noreferrer"
-      target="_blank"
+    <div
+      class="react-cookienotice-read-more"
     >
-      readMoreLabel
-    </a>
+      <a
+        class="react-cookienotice-link"
+        href="readMoreLink"
+        rel="noreferrer"
+        target="_blank"
+      >
+        readMoreLabel
+      </a>
+    </div>
+  </div>
+  <div
+    class="react-cookienotice-buttons"
+  >
+    <button
+      class="react-cookienotice-button"
+    >
+      declineAllButtonLabel
+    </button>
+    <button
+      class="react-cookienotice-button"
+    >
+      acceptAllButtonLabel
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DefaultView > should render > read more > without read more link 1`] = `
+<DocumentFragment>
+  <div
+    class="react-cookienotice-body"
+  >
+    <div
+      class="react-cookienotice-title"
+    >
+      <span
+        class="react-cookienotice-label"
+      >
+        titleLabel
+      </span>
+    </div>
+    <div
+      class="react-cookienotice-description"
+    >
+      <span
+        class="react-cookienotice-label"
+      >
+        descriptionLabel
+      </span>
+    </div>
+  </div>
+  <div
+    class="react-cookienotice-buttons"
+  >
+    <button
+      class="react-cookienotice-button"
+    >
+      declineAllButtonLabel
+    </button>
+    <button
+      class="react-cookienotice-button"
+    >
+      acceptAllButtonLabel
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DefaultView > should render > services > with services 1`] = `
+<DocumentFragment>
+  <div
+    class="react-cookienotice-body"
+  >
+    <div
+      class="react-cookienotice-title"
+    >
+      <span
+        class="react-cookienotice-label"
+      >
+        titleLabel
+      </span>
+    </div>
+    <div
+      class="react-cookienotice-description"
+    >
+      <span
+        class="react-cookienotice-label"
+      >
+        descriptionLabel
+      </span>
+    </div>
   </div>
   <div
     class="react-cookienotice-buttons"
@@ -50,7 +140,7 @@ exports[`DefaultView > should render > with services 1`] = `
 </DocumentFragment>
 `;
 
-exports[`DefaultView > should render > with services empty 1`] = `
+exports[`DefaultView > should render > services > with services empty 1`] = `
 <DocumentFragment>
   <div
     class="react-cookienotice-body"
@@ -58,25 +148,21 @@ exports[`DefaultView > should render > with services empty 1`] = `
     <div
       class="react-cookienotice-title"
     >
-      <span>
+      <span
+        class="react-cookienotice-label"
+      >
         titleLabel
       </span>
     </div>
     <div
       class="react-cookienotice-description"
     >
-      <span>
+      <span
+        class="react-cookienotice-label"
+      >
         descriptionLabel
       </span>
     </div>
-    <a
-      class="react-cookienotice-link"
-      href="readMoreLink"
-      rel="noreferrer"
-      target="_blank"
-    >
-      readMoreLabel
-    </a>
   </div>
   <div
     class="react-cookienotice-buttons"
@@ -95,7 +181,7 @@ exports[`DefaultView > should render > with services empty 1`] = `
 </DocumentFragment>
 `;
 
-exports[`DefaultView > should render > without services 1`] = `
+exports[`DefaultView > should render > services > without services 1`] = `
 <DocumentFragment>
   <div
     class="react-cookienotice-body"
@@ -103,25 +189,21 @@ exports[`DefaultView > should render > without services 1`] = `
     <div
       class="react-cookienotice-title"
     >
-      <span>
+      <span
+        class="react-cookienotice-label"
+      >
         titleLabel
       </span>
     </div>
     <div
       class="react-cookienotice-description"
     >
-      <span>
+      <span
+        class="react-cookienotice-label"
+      >
         descriptionLabel
       </span>
     </div>
-    <a
-      class="react-cookienotice-link"
-      href="readMoreLink"
-      rel="noreferrer"
-      target="_blank"
-    >
-      readMoreLabel
-    </a>
   </div>
   <div
     class="react-cookienotice-buttons"

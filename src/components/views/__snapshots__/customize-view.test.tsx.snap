@@ -8,7 +8,9 @@ exports[`CustomizeView > should render > with services 1`] = `
     <div
       class="react-cookienotice-title"
     >
-      <span>
+      <span
+        class="react-cookienotice-label"
+      >
         customizeTitleLabel
       </span>
     </div>
@@ -44,7 +46,9 @@ exports[`CustomizeView > should render > with services 1`] = `
             <div
               class="react-cookienotice-service-info-title-always-active"
             >
-              <span>
+              <span
+                class="react-cookienotice-label"
+              >
                 alwaysActiveLabel
               </span>
             </div>
@@ -53,11 +57,11 @@ exports[`CustomizeView > should render > with services 1`] = `
             class="react-cookienotice-service-info-content"
             style="max-height: 0;"
           >
-            <p
-              class="react-cookienotice-service-info-content-description"
+            <span
+              class="react-cookienotice-label"
             >
               service1Description
-            </p>
+            </span>
           </div>
         </div>
       </div>
@@ -90,11 +94,11 @@ exports[`CustomizeView > should render > with services 1`] = `
             class="react-cookienotice-service-info-content"
             style="max-height: 0;"
           >
-            <p
-              class="react-cookienotice-service-info-content-description"
+            <span
+              class="react-cookienotice-label"
             >
               service2Description
-            </p>
+            </span>
           </div>
         </div>
       </div>
@@ -130,7 +134,9 @@ exports[`CustomizeView > should render > with services empty 1`] = `
     <div
       class="react-cookienotice-title"
     >
-      <span>
+      <span
+        class="react-cookienotice-label"
+      >
         customizeTitleLabel
       </span>
     </div>

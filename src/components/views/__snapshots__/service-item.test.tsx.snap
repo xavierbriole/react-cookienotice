@@ -31,7 +31,9 @@ exports[`ServiceItem > should render > with always active 1`] = `
         <div
           class="react-cookienotice-service-info-title-always-active"
         >
-          <span>
+          <span
+            class="react-cookienotice-label"
+          >
             alwaysActiveLabel
           </span>
         </div>
@@ -40,11 +42,11 @@ exports[`ServiceItem > should render > with always active 1`] = `
         class="react-cookienotice-service-info-content"
         style="max-height: 0;"
       >
-        <p
-          class="react-cookienotice-service-info-content-description"
+        <span
+          class="react-cookienotice-label"
         >
           serviceDescription
-        </p>
+        </span>
       </div>
     </div>
   </div>
@@ -83,11 +85,11 @@ exports[`ServiceItem > should render > with checked 1`] = `
         class="react-cookienotice-service-info-content"
         style="max-height: 0;"
       >
-        <p
-          class="react-cookienotice-service-info-content-description"
+        <span
+          class="react-cookienotice-label"
         >
           serviceDescription
-        </p>
+        </span>
       </div>
     </div>
   </div>
@@ -125,11 +127,11 @@ exports[`ServiceItem > should render > without always active 1`] = `
         class="react-cookienotice-service-info-content"
         style="max-height: 0;"
       >
-        <p
-          class="react-cookienotice-service-info-content-description"
+        <span
+          class="react-cookienotice-label"
         >
           serviceDescription
-        </p>
+        </span>
       </div>
     </div>
   </div>

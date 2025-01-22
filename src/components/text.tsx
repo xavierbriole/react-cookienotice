@@ -1,12 +1,9 @@
 interface TextProps {
-  className?: string
   children: React.ReactNode
 }
 
-const Text = ({ className, children }: TextProps) => (
-  <div className={className}>
-    <span>{children}</span>
-  </div>
+const Text = ({ children }: TextProps) => (
+  <span className='react-cookienotice-label'>{children}</span>
 )
 
 export default Text

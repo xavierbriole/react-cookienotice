@@ -9,80 +9,115 @@ describe('DefaultView', () => {
   })
 
   describe('should render', () => {
-    it('with services', () => {
-      const { asFragment } = render(
-        <DefaultView
-          titleLabel='titleLabel'
-          descriptionLabel='descriptionLabel'
-          readMoreLink='readMoreLink'
-          readMoreInNewTab={true}
-          readMoreLabel='readMoreLabel'
-          onAcceptAllButtonClick={() => {}}
-          acceptAllButtonLabel='acceptAllButtonLabel'
-          onCustomizeButtonClick={() => {}}
-          customizeButtonLabel='customizeButtonLabel'
-          onDeclineAllButtonClick={() => {}}
-          declineAllButtonLabel='declineAllButtonLabel'
-          services={[
-            {
-              name: 'service1Name',
-              description: 'service1Description',
-              code: 'service1Code',
-              alwaysActive: true,
-            },
-            {
-              name: 'service2Name',
-              description: 'service2Description',
-              code: 'service2Code',
-              alwaysActive: false,
-            },
-          ]}
-        />,
-      )
+    describe('services', () => {
+      it('with services', () => {
+        const { asFragment } = render(
+          <DefaultView
+            titleLabel='titleLabel'
+            descriptionLabel='descriptionLabel'
+            onAcceptAllButtonClick={() => {}}
+            acceptAllButtonLabel='acceptAllButtonLabel'
+            onCustomizeButtonClick={() => {}}
+            customizeButtonLabel='customizeButtonLabel'
+            onDeclineAllButtonClick={() => {}}
+            declineAllButtonLabel='declineAllButtonLabel'
+            services={[
+              {
+                name: 'service1Name',
+                description: 'service1Description',
+                code: 'service1Code',
+                alwaysActive: true,
+              },
+              {
+                name: 'service2Name',
+                description: 'service2Description',
+                code: 'service2Code',
+                alwaysActive: false,
+              },
+            ]}
+          />,
+        )
 
-      expect(asFragment()).toMatchSnapshot()
+        expect(asFragment()).toMatchSnapshot()
+      })
+
+      it('with services empty', () => {
+        const { asFragment } = render(
+          <DefaultView
+            titleLabel='titleLabel'
+            descriptionLabel='descriptionLabel'
+            onAcceptAllButtonClick={() => {}}
+            acceptAllButtonLabel='acceptAllButtonLabel'
+            onCustomizeButtonClick={() => {}}
+            customizeButtonLabel='customizeButtonLabel'
+            onDeclineAllButtonClick={() => {}}
+            declineAllButtonLabel='declineAllButtonLabel'
+            services={[]}
+          />,
+        )
+
+        expect(asFragment()).toMatchSnapshot()
+      })
+
+      it('without services', () => {
+        const { asFragment } = render(
+          <DefaultView
+            titleLabel='titleLabel'
+            descriptionLabel='descriptionLabel'
+            onAcceptAllButtonClick={() => {}}
+            acceptAllButtonLabel='acceptAllButtonLabel'
+            onCustomizeButtonClick={() => {}}
+            customizeButtonLabel='customizeButtonLabel'
+            onDeclineAllButtonClick={() => {}}
+            declineAllButtonLabel='declineAllButtonLabel'
+            services={undefined}
+          />,
+        )
+
+        expect(asFragment()).toMatchSnapshot()
+      })
     })
 
-    it('with services empty', () => {
-      const { asFragment } = render(
-        <DefaultView
-          titleLabel='titleLabel'
-          descriptionLabel='descriptionLabel'
-          readMoreLink='readMoreLink'
-          readMoreInNewTab={true}
-          readMoreLabel='readMoreLabel'
-          onAcceptAllButtonClick={() => {}}
-          acceptAllButtonLabel='acceptAllButtonLabel'
-          onCustomizeButtonClick={() => {}}
-          customizeButtonLabel='customizeButtonLabel'
-          onDeclineAllButtonClick={() => {}}
-          declineAllButtonLabel='declineAllButtonLabel'
-          services={[]}
-        />,
-      )
+    describe('read more', () => {
+      it('with read more link', () => {
+        const { asFragment } = render(
+          <DefaultView
+            titleLabel='titleLabel'
+            descriptionLabel='descriptionLabel'
+            readMoreLink='readMoreLink'
+            readMoreInNewTab={true}
+            readMoreLabel='readMoreLabel'
+            onAcceptAllButtonClick={() => {}}
+            acceptAllButtonLabel='acceptAllButtonLabel'
+            onCustomizeButtonClick={() => {}}
+            customizeButtonLabel='customizeButtonLabel'
+            onDeclineAllButtonClick={() => {}}
+            declineAllButtonLabel='declineAllButtonLabel'
+          />,
+        )
 
-      expect(asFragment()).toMatchSnapshot()
-    })
+        expect(asFragment()).toMatchSnapshot()
+      })
 
-    it('without services', () => {
-      const { asFragment } = render(
-        <DefaultView
-          titleLabel='titleLabel'
-          descriptionLabel='descriptionLabel'
-          readMoreLink='readMoreLink'
-          readMoreInNewTab={true}
-          readMoreLabel='readMoreLabel'
-          onAcceptAllButtonClick={() => {}}
-          acceptAllButtonLabel='acceptAllButtonLabel'
-          onCustomizeButtonClick={() => {}}
-          customizeButtonLabel='customizeButtonLabel'
-          onDeclineAllButtonClick={() => {}}
-          declineAllButtonLabel='declineAllButtonLabel'
-          services={undefined}
-        />,
-      )
+      it('without read more link', () => {
+        const { asFragment } = render(
+          <DefaultView
+            titleLabel='titleLabel'
+            descriptionLabel='descriptionLabel'
+            readMoreLink={undefined}
+            readMoreInNewTab={undefined}
+            readMoreLabel={undefined}
+            onAcceptAllButtonClick={() => {}}
+            acceptAllButtonLabel='acceptAllButtonLabel'
+            onCustomizeButtonClick={() => {}}
+            customizeButtonLabel='customizeButtonLabel'
+            onDeclineAllButtonClick={() => {}}
+            declineAllButtonLabel='declineAllButtonLabel'
+          />,
+        )
 
-      expect(asFragment()).toMatchSnapshot()
+        expect(asFragment()).toMatchSnapshot()
+      })
     })
   })
 
