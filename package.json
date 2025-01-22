@@ -101,7 +101,8 @@
         "default": "./dist/react-cookienotice.umd.js"
       }
     },
-    "./dist/style.css": "./dist/style.css"
+    "./style": "./dist/react-cookienotice.css",
+    "./dist/style.css": "./dist/react-cookienotice.css"
   },
   "volta": {
     "node": "20.11.1"
