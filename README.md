@@ -40,7 +40,7 @@ yarn add react-cookienotice
 ```tsx
 import React from 'react'
 import { CookieNotice } from 'react-cookienotice'
-import 'react-cookienotice/dist/style.css'
+import 'react-cookienotice/style'
 
 const Example = () => <CookieNotice />
 
@@ -90,7 +90,7 @@ Create a new file which include the CookieNotice component :
 
 ```tsx
 import { CookieNotice } from 'react-cookienotice'
-import 'react-cookienotice/dist/style.css'
+import 'react-cookienotice/style'
 
 export default function CookieBanner() {
   return <CookieNotice />
