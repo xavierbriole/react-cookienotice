@@ -9,3 +9,11 @@
     }
   }
 </style>
+
+<script>
+  function deleteCookie(name) {
+    document.cookie = name + '=; Max-Age=-99999999;'
+  }
+</script>
+
+<button onclick="deleteCookie('hide-notice')">Clear cookie</button>
