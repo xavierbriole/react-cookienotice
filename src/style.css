@@ -172,7 +172,7 @@
   > .react-cookienotice-services
   > .react-cookienotice-service {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .react-cookienotice-root
